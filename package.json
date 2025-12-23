@@ -1,0 +1,13 @@
+{
+  "name": "ai-phone-order-demo",
+  "version": "1.0.0",
+  "description": "AI Phone Order Assistant Demo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "openai": "^4.20.0"
+  }
+}

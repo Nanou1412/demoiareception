@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Phone Order Assistant – Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Audio elements -->
+    <audio id="notificationSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdH2LkpOQiHttYmBneIONkpGMgHFkXmN0hI+UkoyAcGReZneDjZKRin5vYl9oeYWPlJKKfW5gX2t7hpCUkoZ5a15gcn+JkpSSg3VoXWJ2goyUko+AcGNeanmEjZORi4BxZGBoeIKMkpCJfm9iX2p6hI6UkYl7bWBfbHuGj5SSh3hrXmFwfomRlJKDdGddYnWAjJSUkIFwY15reYWOlJGIfGxfX2x8hpCUkod4al5hcX6Jk5WSg3RnXGJ1gYyUlJCAb2JdbHqFjpWRiHtqXl9sfIeRlZOGd2leYHF+i5OVkoN0Zl1jdoKMlZWQf25hXGx6hY+VkYd6aF5gbnyIkZWUhHZmXWJ0gIyUlZF/bmBcbHqGj5aSh3loXmBvfYmSlZSDdGVcY3aBjJWVkX5tYFxseoaPlpKHeGheYG9+iZKVlIR1ZVxjdoGMlZWQfm1gW2x7ho+Wkod4aF1gbX2JkpWVhHVlXGN2gYyVlZB+bF9bbHuGj5aSh3hnXV9ufYmSlZSEdWRcY3eBjJaVkH5sX1tse4aQlpKHd2ddX259iZKVlIR0ZFxjd4GMlpWQfWtfW2x7hpCWkod3Z1xfbn2JkpaUhHRkXGN3gYyWlZB9a19abHyGkJaRh3ZnXF9vfomSlpWDdGNcY3eBjJaVkH1rXlpsfIaQlpGHdmZcX299iZOWlIN0Y1tjd4KMlpaQfGpeWmx8hpCWkYZ1ZlxfcH6Jk5aUg3NjW2N4goyWlpB8al5abH2GkJaRhnVlXF9wfomTlpSDc2JbY3iCjJaWkHxpXlpsfoaQlpGGdGVcYHF/ipOWlINyYltkeIKNlpaQe2leWm1+hpGWkYZ0ZFxgcX+Kk5aUgnJiWmR5g42Wl5B7aF5abX6GkZaRhXRkXGByf4qTl5WCcmFaZHmDjZaXkHtoXVptfoaRl5GFc2NcYHKAipSXlYJxYVpkeYONl5eQemddWm5/hpGXkYVzY1tgcoCKlJeVgnFhWWR5g42Xl5B6Z1xabn+HkZeShXJjW2BygIqUl5WCcGBZZHqEjZeXj3lmXFpvgIeRl5KEcmJbYHOAipSYlYFwYFlkeoSNl5ePeWZcWm+Ah5GXkoRyYlpgc4GKlJiVgXBfWWR6hI2Yl495ZVxab4CHkpiShHFhWmB0gYuUmJWAb19YZHuEjpiYj3llW1pvgIiSmJKEcWFaYHSBi5WYlYBvXlhke4SNmJiPeGRbWnCAiJKYkoNxYFphdIGLlZiVgG5eWGV7hI6YmI94ZFpacICIkpiSg3BgWWF1gYuVmJV/bl5XZXyFjpiYjndkWlpxgYiSmJKDb19ZYXWCi5WZlX9tXldlfIWOmZmOd2NaWnGBiJKZk4NvX1lhdoKLlpmVfm1eV2V8hY6ZmY52Y1lacYKIk5mTg25eWWF2gouWmZV+bF5XZnyFjpmaj3ZiWVpygomTmpODbV5YYnaCi5aZlX5sXVdnfIaOmpqOdWJZWnKCiZOak4NtXVhidoOLl5qVfWtdVmd9ho+amp91YVlacoKJk5qUgmxdWGJ3g4uXmpV9a1xXZ32Gj5qbnnRhWFpzgomUmpSDa1xYYneDi5ealXxqXFdofYeQm5uedGBYWnSCipSblINqXFdjd4SLl5uVfGpcV2h+h5Cbm51zYFdadIKKlJuVgmpcV2N4hIuXm5Z8aVxWaH6HkJycnXJfV1p0g4qVnJWCalxXY3iEjJiclntpW1ZpfoeQnJyccl9WWnWDipWclYFpW1dkeISMmJyWe2haVml/iJGcnZxxXlZadYOLlZ2VgWhbV2R5hIyYnZZ6aFpVaX+IkZ2dnHBeVlt1g4uVnZaBaFpWZHmFjJmdlnpnWlVqf4iRnZ2ccF5VW3aEi5adloFnWlZleYWMmZ6WemZaVWqAiJKenp1vXVVbd4SLlp6XgGZaVWV6hY2Zn5d5ZllUaoGIkp6fnW5dVFt3hIyXnpd/ZllVZnqGjZmgl3llWVRrgYmTn5+dbV1UW3iFjJefl39lWFVme4aNmp+Yd2VYVGuCiZOfn51tXFNbeIWMl5+Xf2RVVWZ7ho6aoJh3ZFhUbIKJk6CgnWxcU1t4hYyYoJh+ZFVVZnyGjpuhmHdkV1RsgomUoKCca1xTXHmFjZigmH5jVVVnfIaOm6GYdmNXVG2DiZShoJxrW1JceYaNmaGZfWNUVGd9h46coZl1Y1ZUbYOKlaGgnGpaUlx6ho2aoZl9YlRUZ32Hj5yimXVjVlNtg4qVoqGcalpSXHqGjpuimXxiVFNofoeQnKKZdGJVU26EipajopyY" type="audio/wav">
+    </audio>
+    
+    <!-- Landing Section -->
+    <div id="landing" class="section">
+        <div class="logo-container">
+            <div class="logo">🍽️</div>
+            <div class="logo-text">Restaurant Demo</div>
+        </div>
+        <h1>AI Phone Order Assistant – Demo</h1>
+        <p class="subtitle">Chat with the AI, it takes your pickup orders automatically</p>
+        <button id="startBtn" class="big-button">▶️ Start Demo</button>
+        <div class="features-list">
+            <div class="feature">🎤 Voice Recognition</div>
+            <div class="feature">🤖 Conversational AI</div>
+            <div class="feature">📱 Automatic SMS</div>
+            <div class="feature">🍳 Kitchen Ticket</div>
+        </div>
+    </div>
+
+    <!-- Chat Section -->
+    <div id="chatSection" class="section hidden">
+        <div class="header">
+            <h2>Order Assistant</h2>
+            <div id="listeningIndicator" class="listening-indicator">
+                <span class="listening-dot"></span>
+                <span class="listening-text">Listening...</span>
+            </div>
+            <button id="resetBtn" class="reset-button">Reset</button>
+        </div>
+        
+        <div id="menuCard" class="menu-card">
+            <h3>📋 Menu</h3>
+            <ul>
+                <li>Grilled Halloumi Salad – $17</li>
+                <li>Onion Rings – $6</li>
+                <li>Chocolate Brownie – $8</li>
+                <li>Lemon Iced Tea – $5</li>
+            </ul>
+        </div>
+
+        <div id="chatContainer" class="chat-container">
+            <!-- Chat bubbles will be added here -->
+        </div>
+
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="Just speak naturally or type..." />
+            <button id="voiceBtn" class="voice-button" title="Toggle voice mode">🎤</button>
+            <button id="sendBtn" class="send-button">Send</button>
+        </div>
+    </div>
+
+    <!-- Order Saved Section -->
+    <div id="orderSaved" class="section hidden">
+        <h2>✅ Order Confirmed</h2>
+        
+        <div class="confirmation-container">
+            <!-- Order Card -->
+            <div id="orderCard" class="order-card">
+                <!-- Order details will be shown here -->
+            </div>
+            
+            <!-- SMS Preview -->
+            <div class="sms-preview-section">
+                <h3>📱 SMS sent to customer</h3>
+                <div class="phone-mockup">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <div class="sms-header">
+                            <span class="sms-sender">Restaurant Demo</span>
+                            <span class="sms-time">Now</span>
+                        </div>
+                        <div class="sms-bubble" id="smsBubble">
+                            <!-- SMS content will be inserted here -->
+                        </div>
+                    </div>
+                    <div class="phone-home-bar"></div>
+                </div>
+            </div>
+            
+            <!-- Kitchen Ticket Preview -->
+            <div class="kitchen-preview-section">
+                <h3>🍳 Kitchen ticket received</h3>
+                <div class="kitchen-ticket" id="kitchenTicket">
+                    <div class="ticket-header">
+                        <div class="ticket-logo">🍽️ KITCHEN</div>
+                        <div class="ticket-order-num">ORDER #<span id="ticketOrderNum">001</span></div>
+                    </div>
+                    <div class="ticket-divider">================================</div>
+                    <div class="ticket-type">*** PICKUP / TAKEAWAY ***</div>
+                    <div class="ticket-divider">--------------------------------</div>
+                    <div class="ticket-time-section">
+                        <div class="ticket-label">PICKUP TIME:</div>
+                        <div class="ticket-pickup-time" id="ticketPickupTime">12:30</div>
+                    </div>
+                    <div class="ticket-divider">--------------------------------</div>
+                    <div class="ticket-items" id="ticketItems">
+                        <!-- Items will be inserted here -->
+                    </div>
+                    <div class="ticket-divider">--------------------------------</div>
+                    <div class="ticket-customer">
+                        <div class="ticket-label">CUSTOMER:</div>
+                        <div id="ticketCustomerName">Customer Name</div>
+                        <div id="ticketCustomerPhone">04XX XXX XXX</div>
+                    </div>
+                    <div class="ticket-divider">================================</div>
+                    <div class="ticket-footer">
+                        <div id="ticketDateTime">23/12/2025 - 11:45</div>
+                        <div class="ticket-print-info">*** AUTO PRINTED ***</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button id="newOrderBtn" class="big-button">New Order</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
