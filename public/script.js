@@ -36,7 +36,8 @@ const ticketContent = document.getElementById('ticketContent');
 let currentProcessStep = 0;
 let currentWorkflowStep = 0;
 let isAutoDemoMode = false;
-let autoDemoInterval = null;
+let autoDemoTimeout = null;
+let isWaitingForAI = false;
 
 // ============================================
 // Audio & TTS
@@ -45,61 +46,85 @@ let currentAudio = null;
 let isSpeaking = false;
 
 function playAIAudio(audioBase64) {
-    if (!audioBase64) return;
-    
-    if (currentAudio) {
-        currentAudio.pause();
-        currentAudio = null;
-    }
-    
-    const audio = new Audio('data:audio/mp3;base64,' + audioBase64);
-    currentAudio = audio;
-    
-    audio.onplay = () => { 
-        isSpeaking = true;
-        updateListeningUI('speaking');
-    };
-    audio.onended = () => { 
-        isSpeaking = false;
-        currentAudio = null;
-        onAISpeakingEnd();
-    };
-    audio.onerror = () => { 
-        isSpeaking = false;
-        currentAudio = null;
-        onAISpeakingEnd();
-    };
-    
-    audio.play().catch(e => {
-        console.log('Audio play failed:', e);
-        onAISpeakingEnd();
+    return new Promise((resolve) => {
+        if (!audioBase64) {
+            resolve();
+            return;
+        }
+        
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio = null;
+        }
+        
+        const audio = new Audio('data:audio/mp3;base64,' + audioBase64);
+        currentAudio = audio;
+        
+        audio.onplay = () => { 
+            isSpeaking = true;
+            updateListeningUI('speaking');
+            console.log('🔊 Audio started playing');
+        };
+        
+        audio.onended = () => { 
+            isSpeaking = false;
+            currentAudio = null;
+            console.log('🔊 Audio finished');
+            onAISpeakingEnd();
+            resolve();
+        };
+        
+        audio.onerror = (e) => { 
+            console.log('🔊 Audio error:', e);
+            isSpeaking = false;
+            currentAudio = null;
+            onAISpeakingEnd();
+            resolve();
+        };
+        
+        audio.play().catch(e => {
+            console.log('🔊 Audio play failed:', e);
+            // Fallback to speech synthesis
+            speakTextFallback(audio.dataset?.text || '');
+            resolve();
+        });
     });
 }
 
 function speakTextFallback(text) {
-    const synthesis = window.speechSynthesis;
-    if (!synthesis) return;
-    
-    synthesis.cancel();
-    
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-AU';
-    utterance.rate = 1.0;
-    
-    const voices = synthesis.getVoices();
-    const ausVoice = voices.find(v => v.lang === 'en-AU') || voices.find(v => v.lang.startsWith('en'));
-    if (ausVoice) utterance.voice = ausVoice;
-    
-    utterance.onstart = () => { 
-        isSpeaking = true;
-        updateListeningUI('speaking');
-    };
-    utterance.onend = () => { 
-        isSpeaking = false;
-        onAISpeakingEnd();
-    };
-    
-    synthesis.speak(utterance);
+    return new Promise((resolve) => {
+        const synthesis = window.speechSynthesis;
+        if (!synthesis || !text) {
+            resolve();
+            return;
+        }
+        
+        synthesis.cancel();
+        
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-AU';
+        utterance.rate = 1.0;
+        
+        const voices = synthesis.getVoices();
+        const ausVoice = voices.find(v => v.lang === 'en-AU') || voices.find(v => v.lang.startsWith('en'));
+        if (ausVoice) utterance.voice = ausVoice;
+        
+        utterance.onstart = () => { 
+            isSpeaking = true;
+            updateListeningUI('speaking');
+        };
+        utterance.onend = () => { 
+            isSpeaking = false;
+            onAISpeakingEnd();
+            resolve();
+        };
+        utterance.onerror = () => {
+            isSpeaking = false;
+            resolve();
+        };
+        
+        synthesis.speak(utterance);
+    });
 }
 
 // ============================================
@@ -203,9 +228,16 @@ function restartListening() {
 
 function onAISpeakingEnd() {
     isSpeaking = false;
+    isWaitingForAI = false;
     updateListeningUI('ready');
+    
     if (autoListenEnabled && !isAutoDemoMode) {
         setTimeout(startListening, 500);
+    }
+    
+    // If auto-demo mode, schedule next response
+    if (isAutoDemoMode) {
+        scheduleNextAutoResponse();
     }
 }
 
@@ -303,9 +335,10 @@ function addMessage(text, isAI = true) {
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
     
+    console.log(`${isAI ? '🤖 AI' : '👤 User'}: ${text.substring(0, 50)}...`);
+    
     // Update workflow based on message content
     if (!isAI) {
-        // User is responding
         updateWorkflowStep(Math.min(currentWorkflowStep + 1, 4));
     }
 }
@@ -313,7 +346,7 @@ function addMessage(text, isAI = true) {
 function showTyping() {
     if (typingIndicator) {
         typingIndicator.classList.add('visible');
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+        if (chatMessages) chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 }
 
@@ -327,7 +360,10 @@ function hideTyping() {
 // API Communication
 // ============================================
 async function sendToAI(message = null) {
+    isWaitingForAI = true;
     showTyping();
+    
+    console.log('📤 Sending to AI:', message || '(initial greeting)');
     
     try {
         const response = await fetch('/api/chat', {
@@ -339,11 +375,17 @@ async function sendToAI(message = null) {
         const data = await response.json();
         hideTyping();
         
+        console.log('📥 AI Response received:', data.response?.substring(0, 50) + '...');
+        console.log('🔊 Audio received:', data.audio ? 'Yes' : 'No');
+        console.log('✅ Order confirmed:', data.isConfirmed ? 'Yes' : 'No');
+        
         if (data.error) {
             addMessage('Error: ' + data.error, true);
+            isWaitingForAI = false;
             return;
         }
         
+        // Add the AI message to chat
         addMessage(data.response, true);
         
         // Progress the process based on conversation
@@ -351,20 +393,31 @@ async function sendToAI(message = null) {
             updateProcessStep(1);
         }
         
+        // Play audio or use fallback
         if (data.audio) {
-            playAIAudio(data.audio);
+            await playAIAudio(data.audio);
         } else {
-            speakTextFallback(data.response);
+            await speakTextFallback(data.response);
         }
         
+        // Handle order confirmation
         if (data.isConfirmed) {
             showOrderConfirmation(data.response);
+            // Stop auto demo on confirmation
+            if (isAutoDemoMode) {
+                setTimeout(() => {
+                    isAutoDemoMode = false;
+                    document.body.classList.remove('auto-demo-active');
+                    console.log('🎉 Auto-demo completed successfully!');
+                }, 2000);
+            }
         }
         
     } catch (error) {
         hideTyping();
         addMessage('Connection error. Please try again.', true);
         console.error('Error:', error);
+        isWaitingForAI = false;
     }
 }
 
@@ -375,13 +428,18 @@ async function resetConversation() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ sessionId })
         });
-    } catch (e) {}
+        console.log('🔄 Conversation reset');
+    } catch (e) {
+        console.error('Reset error:', e);
+    }
 }
 
 // ============================================
 // Order Confirmation
 // ============================================
 function showOrderConfirmation(aiResponse) {
+    console.log('🎉 Showing order confirmation!');
+    
     // Update process to final step
     updateProcessStep(3);
     updateWorkflowStep(5);
@@ -391,40 +449,45 @@ function showOrderConfirmation(aiResponse) {
     kitchenCard?.classList.add('active');
     
     const cardStatuses = document.querySelectorAll('.card-status');
-    cardStatuses.forEach(status => status.classList.add('ready'));
+    cardStatuses.forEach(status => {
+        status.textContent = '✓ Sent';
+        status.classList.add('ready');
+    });
     
     // Generate SMS content
     if (smsContent) {
-        smsContent.classList.remove('placeholder');
         smsContent.innerHTML = `
             <div class="sms-header">
                 <i class="fas fa-check-circle"></i>
                 <span>Aussie Bites Cafe</span>
             </div>
-            G'day! 🎉<br><br>
-            Your order is confirmed!<br><br>
-            📍 Ready for pickup soon<br><br>
-            Thanks mate! See you soon! 🙏
+            <div class="sms-content">
+                G'day! 🎉<br><br>
+                Your order is confirmed!<br><br>
+                📍 Ready for pickup soon<br><br>
+                Thanks mate! See you soon! 🙏
+            </div>
         `;
     }
     
     // Generate kitchen ticket
     if (ticketContent) {
-        ticketContent.classList.remove('placeholder');
         const orderNum = Math.floor(Math.random() * 900) + 100;
         const now = new Date();
         
         ticketContent.innerHTML = `
-            <div class="ticket-header">
-                <h4>ORDER #${orderNum}</h4>
-                <div class="order-number">${now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' })}</div>
-            </div>
-            <div class="ticket-items">
-                <div class="ticket-item"><span>1x</span> Order Item</div>
-            </div>
-            <div class="ticket-time">
-                <strong>PICKUP</strong>
-                As requested
+            <div class="ticket">
+                <div class="ticket-header">
+                    <h4>ORDER #${orderNum}</h4>
+                    <div class="order-number">${now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' })}</div>
+                </div>
+                <div class="ticket-items">
+                    <div class="ticket-item"><span>1x</span> Grilled Halloumi Salad</div>
+                    <div class="ticket-item"><span>1x</span> Onion Rings</div>
+                </div>
+                <div class="ticket-time">
+                    <strong>PICKUP: 12:30 PM</strong>
+                </div>
             </div>
         `;
     }
@@ -464,6 +527,8 @@ const autodemoPhrases = [
 let autodemoIndex = 0;
 
 async function startAutoDemo() {
+    console.log('🚀 Starting Auto-Demo...');
+    
     isAutoDemoMode = true;
     autodemoIndex = 0;
     document.body.classList.add('auto-demo-active');
@@ -480,55 +545,60 @@ async function startAutoDemo() {
     smsCard?.classList.remove('active');
     kitchenCard?.classList.remove('active');
     
+    const cardStatuses = document.querySelectorAll('.card-status');
+    cardStatuses.forEach(status => {
+        status.textContent = 'Waiting...';
+        status.classList.remove('ready');
+    });
+    
     if (smsContent) {
-        smsContent.classList.add('placeholder');
         smsContent.innerHTML = '<p class="sms-content placeholder">SMS will appear here when order is confirmed</p>';
     }
     if (ticketContent) {
-        ticketContent.classList.add('placeholder');
         ticketContent.innerHTML = '<div class="ticket placeholder">Kitchen ticket will appear here when order is confirmed</div>';
     }
     
     // Start with AI greeting
     await sendToAI(null);
-    
-    // Schedule auto responses
-    scheduleNextAutoResponse();
 }
 
 function scheduleNextAutoResponse() {
-    if (!isAutoDemoMode || autodemoIndex >= autodemoPhrases.length) {
-        isAutoDemoMode = false;
-        document.body.classList.remove('auto-demo-active');
+    if (!isAutoDemoMode) {
+        console.log('🛑 Auto-demo stopped');
         return;
     }
     
-    // Wait for AI to finish speaking, then respond
-    const checkAndRespond = () => {
-        if (!isSpeaking && !typingIndicator?.classList.contains('visible')) {
-            setTimeout(() => {
-                if (autodemoIndex < autodemoPhrases.length) {
-                    handleSend(autodemoPhrases[autodemoIndex]);
-                    autodemoIndex++;
-                    
-                    // Schedule next response after AI replies
-                    setTimeout(scheduleNextAutoResponse, 3000);
-                }
-            }, 1500);
-        } else {
-            setTimeout(checkAndRespond, 500);
-        }
-    };
+    if (autodemoIndex >= autodemoPhrases.length) {
+        console.log('✅ All auto-demo phrases completed');
+        return;
+    }
     
-    setTimeout(checkAndRespond, 2000);
+    console.log(`⏰ Scheduling auto-response ${autodemoIndex + 1}/${autodemoPhrases.length}`);
+    
+    // Clear any existing timeout
+    if (autoDemoTimeout) {
+        clearTimeout(autoDemoTimeout);
+    }
+    
+    // Wait 2 seconds after AI finishes speaking, then send next message
+    autoDemoTimeout = setTimeout(() => {
+        if (!isAutoDemoMode) return;
+        
+        const phrase = autodemoPhrases[autodemoIndex];
+        console.log(`💬 Auto-sending: "${phrase}"`);
+        
+        autodemoIndex++;
+        handleSend(phrase);
+    }, 2000);
 }
 
 function stopAutoDemo() {
+    console.log('🛑 Stopping Auto-Demo');
     isAutoDemoMode = false;
     document.body.classList.remove('auto-demo-active');
-    if (autoDemoInterval) {
-        clearInterval(autoDemoInterval);
-        autoDemoInterval = null;
+    if (autoDemoTimeout) {
+        clearTimeout(autoDemoTimeout);
+        autoDemoTimeout = null;
     }
 }
 
@@ -536,6 +606,8 @@ function stopAutoDemo() {
 // Interactive Mode
 // ============================================
 async function startInteractiveMode() {
+    console.log('🎤 Starting Interactive Mode...');
+    
     stopAutoDemo();
     autoListenEnabled = true;
     
@@ -551,12 +623,16 @@ async function startInteractiveMode() {
     smsCard?.classList.remove('active');
     kitchenCard?.classList.remove('active');
     
+    const cardStatuses = document.querySelectorAll('.card-status');
+    cardStatuses.forEach(status => {
+        status.textContent = 'Waiting...';
+        status.classList.remove('ready');
+    });
+    
     if (smsContent) {
-        smsContent.classList.add('placeholder');
         smsContent.innerHTML = '<p class="sms-content placeholder">SMS will appear here when order is confirmed</p>';
     }
     if (ticketContent) {
-        ticketContent.classList.add('placeholder');
         ticketContent.innerHTML = '<div class="ticket placeholder">Kitchen ticket will appear here when order is confirmed</div>';
     }
     
@@ -625,6 +701,16 @@ function closeROIModal() {
 // Event Listeners
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('🎬 AI Receptionist Demo loaded');
+    
+    // Load voices for speech synthesis
+    if (window.speechSynthesis) {
+        window.speechSynthesis.getVoices();
+        window.speechSynthesis.onvoiceschanged = () => {
+            window.speechSynthesis.getVoices();
+        };
+    }
+    
     // Demo mode buttons
     document.querySelector('.demo-mode-btn.interactive')?.addEventListener('click', startInteractiveMode);
     document.querySelector('.demo-mode-btn.auto-demo')?.addEventListener('click', startAutoDemo);
