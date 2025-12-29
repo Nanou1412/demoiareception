@@ -2,440 +2,281 @@
 <html lang="en-AU">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#6366f1">
-    <title>AI Receptionist – Restaurant Demo</title>
+    <title>AI Receptionist – Live Demo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- ============================================
-         HEADER
-         ============================================ -->
+    <!-- Header -->
     <header>
         <div class="container">
             <div class="logo">
-                <div class="logo-icon">🎙️</div>
+                <div class="logo-icon">📞</div>
                 <span>AI Receptionist</span>
             </div>
-            <div class="header-buttons">
-                <button class="menu-toggle-btn">
-                    <i class="fas fa-utensils"></i>
-                    <span>Menu</span>
+            <div class="header-actions">
+                <button class="btn-secondary" id="menuToggle">
+                    <i class="fas fa-utensils"></i> Menu
                 </button>
-                <button class="btn-roi">
-                    <i class="fas fa-calculator"></i>
-                    <span>ROI Calculator</span>
+                <button class="btn-primary" id="roiBtn">
+                    <i class="fas fa-calculator"></i> ROI
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- ============================================
-         HERO SECTION
-         ============================================ -->
+    <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <h1>
-                Never Miss Another Order with 
-                <span class="highlight">AI Phone Reception</span>
-            </h1>
-            <p class="subtitle">
-                Watch our AI handle a complete restaurant pickup order – from greeting to confirmation, 
-                with automatic SMS and kitchen ticket generation.
-            </p>
+            <div class="hero-badge">
+                <span class="pulse"></span>
+                Live AI Demo
+            </div>
+            <h1>Watch AI Handle a <span class="gradient-text">Real Phone Order</span></h1>
+            <p class="hero-subtitle">Experience how our AI receptionist takes orders naturally - with voice, personality, and zero wait times.</p>
             
-            <!-- Demo Mode Buttons -->
-            <div class="demo-modes">
-                <button class="demo-mode-btn interactive">
+            <div class="demo-buttons">
+                <button class="btn-demo primary" id="startInteractive">
                     <i class="fas fa-microphone"></i>
-                    Start Interactive Demo
+                    Try It Yourself
                 </button>
-                <button class="demo-mode-btn auto-demo">
-                    <i class="fas fa-play-circle"></i>
-                    Watch Auto-Demo
+                <button class="btn-demo secondary" id="startAutoDemo">
+                    <i class="fas fa-play"></i>
+                    Watch Demo
                 </button>
             </div>
         </div>
-        
-        <!-- Process Bar -->
-        <div class="process-bar">
-            <h3>Order Process Flow</h3>
-            <div class="process-steps">
-                <div class="process-step active" data-step="1">
-                    <div class="step-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <div class="step-info">
-                        <span class="step-number">Step 1</span>
-                        <span class="step-title">Call Received</span>
-                    </div>
+    </section>
+
+    <!-- Process Steps -->
+    <section class="process-section">
+        <div class="container">
+            <div class="process-bar">
+                <div class="process-step active" data-step="0">
+                    <div class="step-dot"><i class="fas fa-phone"></i></div>
+                    <span>Call</span>
                 </div>
-                
-                <div class="step-line line-1"></div>
-                
+                <div class="process-line" data-line="0"></div>
+                <div class="process-step" data-step="1">
+                    <div class="step-dot"><i class="fas fa-comments"></i></div>
+                    <span>Order</span>
+                </div>
+                <div class="process-line" data-line="1"></div>
                 <div class="process-step" data-step="2">
-                    <div class="step-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <div class="step-info">
-                        <span class="step-number">Step 2</span>
-                        <span class="step-title">AI Conversation</span>
-                    </div>
+                    <div class="step-dot"><i class="fas fa-check"></i></div>
+                    <span>Confirm</span>
                 </div>
-                
-                <div class="step-line line-2"></div>
-                
+                <div class="process-line" data-line="2"></div>
                 <div class="process-step" data-step="3">
-                    <div class="step-icon">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <div class="step-info">
-                        <span class="step-number">Step 3</span>
-                        <span class="step-title">Order Confirmed</span>
-                    </div>
-                </div>
-                
-                <div class="step-line line-3"></div>
-                
-                <div class="process-step" data-step="4">
-                    <div class="step-icon">
-                        <i class="fas fa-bell"></i>
-                    </div>
-                    <div class="step-info">
-                        <span class="step-number">Step 4</span>
-                        <span class="step-title">Notifications Sent</span>
-                    </div>
+                    <div class="step-dot"><i class="fas fa-bell"></i></div>
+                    <span>Done</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================
-         MAIN DEMO SECTION
-         ============================================ -->
-    <main>
-        <div class="demo-grid">
-            <!-- LEFT: Chat Section -->
-            <div class="chat-section">
-                <!-- Process Info Panel -->
-                <div class="process-info">
-                    <div class="process-info-header">
-                        <i class="fas fa-info-circle"></i>
-                        <span>What's happening now</span>
-                    </div>
-                    <div class="process-info-content">
-                        📞 L'IA décroche automatiquement l'appel et accueille le client avec un ton naturel et chaleureux.
-                    </div>
-                </div>
-                
-                <!-- Chat Container -->
-                <div class="chat-container">
-                    <div class="chat-header">
-                        <div class="chat-avatar">🤖</div>
-                        <div class="chat-info">
-                            <h3>Aussie Bites Cafe</h3>
-                            <p>AI Receptionist</p>
+    <!-- Main Demo -->
+    <main class="demo-section">
+        <div class="container">
+            <div class="demo-grid">
+                <!-- Phone Call Simulation -->
+                <div class="phone-container">
+                    <div class="phone-frame">
+                        <div class="phone-notch"></div>
+                        <div class="phone-header">
+                            <div class="call-status">
+                                <div class="call-pulse"></div>
+                                <span id="callStatus">Incoming Call...</span>
+                            </div>
+                            <div class="call-timer" id="callTimer">0:00</div>
                         </div>
-                        <div class="chat-status">
-                            <span class="status-dot"></span>
-                            <span>Online</span>
+                        
+                        <div class="phone-screen">
+                            <div class="caller-info">
+                                <div class="caller-avatar">👤</div>
+                                <div class="caller-name">Customer</div>
+                                <div class="caller-number">+61 4XX XXX XXX</div>
+                            </div>
+                            
+                            <div class="conversation" id="conversation">
+                                <!-- Messages appear here -->
+                            </div>
+                            
+                            <div class="typing-indicator" id="typingIndicator">
+                                <span></span><span></span><span></span>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="chat-messages" id="chatMessages">
-                        <!-- Messages will be added here dynamically -->
-                    </div>
-                    
-                    <!-- Typing Indicator -->
-                    <div class="typing-indicator">
-                        <div class="message-avatar">🤖</div>
-                        <div class="typing-dots">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                    
-                    <div class="chat-input-container">
-                        <div class="chat-input-wrapper">
-                            <input type="text" id="userInput" placeholder="Type your order or use voice...">
-                            <button id="voiceBtn" class="input-btn">
-                                <i class="fas fa-microphone"></i>
-                            </button>
-                            <button id="sendBtn" class="input-btn">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </div>
-                        <div class="listening-indicator">
-                            <i class="fas fa-circle"></i>
-                            <span>Listening...</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Quick Scenarios -->
-                    <div class="quick-scenarios">
-                        <p>Try these scenarios:</p>
-                        <div class="scenario-buttons">
-                            <button class="scenario-btn" data-text="I'd like to order a Grilled Halloumi Salad please">
-                                🥗 Order Salad
-                            </button>
-                            <button class="scenario-btn" data-text="What's on your menu today?">
-                                📋 View Menu
-                            </button>
-                            <button class="scenario-btn" data-text="Can I pick up in 30 minutes?">
-                                ⏰ Pickup Time
-                            </button>
+                        
+                        <div class="phone-controls">
+                            <div class="input-area">
+                                <input type="text" id="userInput" placeholder="Type or speak...">
+                                <button id="voiceBtn" class="control-btn voice">
+                                    <i class="fas fa-microphone"></i>
+                                </button>
+                                <button id="sendBtn" class="control-btn send">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                            <div class="quick-actions">
+                                <button class="quick-btn" data-text="I'd like to order please">🍽️ Order</button>
+                                <button class="quick-btn" data-text="What's on the menu?">📋 Menu</button>
+                                <button class="quick-btn" data-text="Can I pickup in 20 mins?">⏰ Time</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- RIGHT: Confirmation Sidebar -->
-            <div class="confirmation-sidebar">
-                <!-- SMS Confirmation Card -->
-                <div class="confirmation-card" id="smsCard">
-                    <div class="card-header">
-                        <i class="fas fa-sms"></i>
-                        <span>Customer SMS</span>
-                        <span class="card-status">Waiting...</span>
-                    </div>
-                    <div class="sms-mockup">
-                        <div class="sms-bubble" id="smsContent">
-                            <p class="sms-content placeholder">
-                                SMS confirmation will appear here when order is confirmed
-                            </p>
+
+                <!-- Live Results Panel -->
+                <div class="results-panel">
+                    <!-- Current Step Info -->
+                    <div class="info-card">
+                        <div class="card-icon"><i class="fas fa-info-circle"></i></div>
+                        <div class="card-content">
+                            <h3>What's Happening</h3>
+                            <p id="stepInfo">The AI is ready to answer the call and greet the customer naturally.</p>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Kitchen Ticket Card -->
-                <div class="confirmation-card" id="kitchenCard">
-                    <div class="card-header">
-                        <i class="fas fa-receipt"></i>
-                        <span>Kitchen Ticket</span>
-                        <span class="card-status">Waiting...</span>
-                    </div>
-                    <div class="kitchen-ticket" id="ticketContent">
-                        <div class="ticket placeholder">
-                            Kitchen ticket will appear here when order is confirmed
+
+                    <!-- SMS Preview -->
+                    <div class="result-card" id="smsCard">
+                        <div class="card-header">
+                            <i class="fas fa-sms"></i>
+                            <span>Customer SMS</span>
+                            <span class="status-badge" id="smsStatus">Pending</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="sms-preview" id="smsPreview">
+                                <div class="sms-placeholder">
+                                    <i class="fas fa-message"></i>
+                                    <span>SMS appears after confirmation</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Workflow Card -->
-                <div class="workflow-card">
-                    <h4><i class="fas fa-stream"></i> Live Workflow Status</h4>
-                    <div class="workflow-steps">
-                        <div class="workflow-step active">
-                            <div class="workflow-step-icon">
-                                <i class="fas fa-phone-volume"></i>
-                            </div>
-                            <div class="workflow-step-content">
-                                <h5>Call Answered</h5>
-                                <p>AI picks up automatically</p>
+
+                    <!-- Kitchen Ticket -->
+                    <div class="result-card" id="ticketCard">
+                        <div class="card-header">
+                            <i class="fas fa-receipt"></i>
+                            <span>Kitchen Ticket</span>
+                            <span class="status-badge" id="ticketStatus">Pending</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="ticket-preview" id="ticketPreview">
+                                <div class="ticket-placeholder">
+                                    <i class="fas fa-print"></i>
+                                    <span>Ticket prints after confirmation</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="workflow-step">
-                            <div class="workflow-step-icon">
-                                <i class="fas fa-list-alt"></i>
-                            </div>
-                            <div class="workflow-step-content">
-                                <h5>Order Collection</h5>
-                                <p>Collecting items & details</p>
-                            </div>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="stats-card">
+                        <div class="stat">
+                            <span class="stat-value" id="messageCount">0</span>
+                            <span class="stat-label">Messages</span>
                         </div>
-                        <div class="workflow-step">
-                            <div class="workflow-step-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="workflow-step-content">
-                                <h5>Pickup Time</h5>
-                                <p>Scheduling confirmed</p>
-                            </div>
+                        <div class="stat">
+                            <span class="stat-value" id="orderTotal">$0</span>
+                            <span class="stat-label">Order Total</span>
                         </div>
-                        <div class="workflow-step">
-                            <div class="workflow-step-icon">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="workflow-step-content">
-                                <h5>Customer Info</h5>
-                                <p>Name & contact saved</p>
-                            </div>
-                        </div>
-                        <div class="workflow-step">
-                            <div class="workflow-step-icon">
-                                <i class="fas fa-paper-plane"></i>
-                            </div>
-                            <div class="workflow-step-content">
-                                <h5>Notifications Sent</h5>
-                                <p>SMS & ticket printed</p>
-                            </div>
+                        <div class="stat">
+                            <span class="stat-value" id="callDuration">0:00</span>
+                            <span class="stat-label">Call Time</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- ============================================
-             MENU SECTION (Hidden by default)
-             ============================================ -->
-        <section class="menu-section hidden">
-            <div class="section-header">
-                <h2>🍽️ Sample Menu</h2>
-                <p>Items the AI can help customers order</p>
-            </div>
-            
-            <div class="menu-grid">
-                <!-- Mains -->
-                <div class="menu-category">
-                    <div class="category-header">
-                        <div class="category-icon">🥗</div>
-                        <h3>Mains</h3>
-                    </div>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="item-info">
-                                <h4>Grilled Halloumi Salad</h4>
-                                <p>Fresh greens, grilled halloumi, cherry tomatoes</p>
-                            </div>
-                            <span class="item-price">$17</span>
-                        </div>
-                        <div class="menu-item">
-                            <div class="item-info">
-                                <h4>Classic Beef Burger</h4>
-                                <p>Angus beef, cheddar, house sauce, brioche bun</p>
-                            </div>
-                            <span class="item-price">$19</span>
-                        </div>
-                        <div class="menu-item">
-                            <div class="item-info">
-                                <h4>Fish & Chips</h4>
-                                <p>Beer-battered barramundi, hand-cut chips</p>
-                            </div>
-                            <span class="item-price">$22</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Sides -->
-                <div class="menu-category">
-                    <div class="category-header">
-                        <div class="category-icon">🍟</div>
-                        <h3>Sides</h3>
-                    </div>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="item-info">
-                                <h4>Onion Rings</h4>
-                                <p>Crispy beer-battered onion rings</p>
-                            </div>
-                            <span class="item-price">$6</span>
-                        </div>
-                        <div class="menu-item">
-                            <div class="item-info">
-                                <h4>Sweet Potato Fries</h4>
-                                <p>With chipotle aioli</p>
-                            </div>
-                            <span class="item-price">$8</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Desserts -->
-                <div class="menu-category">
-                    <div class="category-header">
-                        <div class="category-icon">🍰</div>
-                        <h3>Desserts</h3>
-                    </div>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="item-info">
-                                <h4>Chocolate Brownie</h4>
-                                <p>Warm brownie with vanilla ice cream</p>
-                            </div>
-                            <span class="item-price">$8</span>
-                        </div>
-                        <div class="menu-item">
-                            <div class="item-info">
-                                <h4>Pavlova</h4>
-                                <p>Classic Aussie pav with fresh berries</p>
-                            </div>
-                            <span class="item-price">$10</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Drinks -->
-                <div class="menu-category">
-                    <div class="category-header">
-                        <div class="category-icon">🥤</div>
-                        <h3>Drinks</h3>
-                    </div>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="item-info">
-                                <h4>Lemon Iced Tea</h4>
-                                <p>House-made, refreshing</p>
-                            </div>
-                            <span class="item-price">$5</span>
-                        </div>
-                        <div class="menu-item">
-                            <div class="item-info">
-                                <h4>Flat White</h4>
-                                <p>Double shot, locally roasted beans</p>
-                            </div>
-                            <span class="item-price">$5</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <!-- ============================================
-         ROI CALCULATOR MODAL
-         ============================================ -->
+    <!-- Menu Section -->
+    <section class="menu-section hidden" id="menuSection">
+        <div class="container">
+            <h2><i class="fas fa-utensils"></i> Our Menu</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <span class="item-emoji">🥗</span>
+                    <div class="item-details">
+                        <h4>Grilled Halloumi Salad</h4>
+                        <p>Fresh greens, cherry tomatoes, grilled halloumi</p>
+                    </div>
+                    <span class="item-price">$17</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-emoji">🧅</span>
+                    <div class="item-details">
+                        <h4>Onion Rings</h4>
+                        <p>Crispy beer-battered rings</p>
+                    </div>
+                    <span class="item-price">$6</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-emoji">🍫</span>
+                    <div class="item-details">
+                        <h4>Chocolate Brownie</h4>
+                        <p>Warm with vanilla ice cream</p>
+                    </div>
+                    <span class="item-price">$8</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-emoji">🍋</span>
+                    <div class="item-details">
+                        <h4>Lemon Iced Tea</h4>
+                        <p>House-made, refreshing</p>
+                    </div>
+                    <span class="item-price">$5</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Modal -->
     <div class="modal-overlay" id="roiModal">
         <div class="modal">
-            <div class="modal-header">
-                <h2><i class="fas fa-chart-line"></i> ROI Calculator</h2>
-                <button class="modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
+            <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+            <h2><i class="fas fa-chart-line"></i> Calculate Your ROI</h2>
+            <div class="roi-form">
+                <div class="form-group">
+                    <label>Missed calls per day</label>
+                    <input type="number" id="missedCalls" value="10">
+                </div>
+                <div class="form-group">
+                    <label>Average order value ($)</label>
+                    <input type="number" id="avgOrder" value="35">
+                </div>
+                <div class="form-group">
+                    <label>Staff hourly rate ($)</label>
+                    <input type="number" id="hourlyRate" value="25">
+                </div>
+                <button class="btn-primary full-width" id="calculateROI">Calculate Savings</button>
             </div>
-            <div class="modal-body">
-                <form class="roi-form" onsubmit="event.preventDefault()">
-                    <div class="form-group">
-                        <label for="roiMissedCalls">Missed calls per day</label>
-                        <input type="number" id="roiMissedCalls" value="10" min="0">
-                    </div>
-                    <div class="form-group">
-                        <label for="roiAvgOrder">Average order value ($)</label>
-                        <input type="number" id="roiAvgOrder" value="35" min="0">
-                    </div>
-                    <div class="form-group">
-                        <label for="roiHourlyWage">Staff hourly wage ($)</label>
-                        <input type="number" id="roiHourlyWage" value="25" min="0">
-                    </div>
-                    <button type="button" class="btn-calculate">Calculate Savings</button>
-                </form>
-                
-                <div class="roi-results" id="roiResults">
-                    <!-- Results will appear here -->
+            <div class="roi-results hidden" id="roiResults">
+                <div class="roi-stat">
+                    <span>Monthly Revenue Recovered</span>
+                    <span class="roi-value" id="revenueRecovered">$0</span>
+                </div>
+                <div class="roi-stat">
+                    <span>Monthly Labour Saved</span>
+                    <span class="roi-value" id="labourSaved">$0</span>
+                </div>
+                <div class="roi-stat total">
+                    <span>Total Monthly Savings</span>
+                    <span class="roi-value" id="totalSavings">$0</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ============================================
-         FOOTER
-         ============================================ -->
+    <!-- Footer -->
     <footer>
-        <p>AI Receptionist Demo &copy; 2024 – Powered by OpenAI GPT-4 & TTS</p>
+        <p>AI Receptionist Demo • Powered by OpenAI GPT-4 & Neural TTS</p>
     </footer>
 
     <script src="script.js"></script>
