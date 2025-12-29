@@ -34,6 +34,10 @@ const ticketPreview = document.getElementById('ticketPreview');
 const smsStatus = document.getElementById('smsStatus');
 const ticketStatus = document.getElementById('ticketStatus');
 
+// Industry selector
+const industryBtns = document.querySelectorAll('.industry-btn');
+let currentIndustry = 'restaurant';
+
 // State
 let messageCount = 0;
 let callStartTime = null;
@@ -43,6 +47,129 @@ let isAutoDemoMode = false;
 let isSpeaking = false;
 let currentAudio = null;
 let orderTotal = 0;
+
+// ============================================
+// INDUSTRY CONFIGURATION
+// ============================================
+const industryConfig = {
+    restaurant: {
+        name: 'Aussie Bites Cafe',
+        aiName: 'Emma',
+        aiAvatar: '👩‍🍳',
+        customerAvatar: '👤',
+        stepLabels: ['Call', 'Order', 'Confirm', 'Done'],
+        totalLabel: 'Order Total',
+        confirmCard: 'Kitchen Ticket',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'orderItem' },
+            { delay: 2500, type: 'moreItems' },
+            { delay: 2000, type: 'noMore' },
+            { delay: 2500, type: 'pickupTime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        responses: {
+            greeting: ["Hi, I'd like to place an order for pickup please"],
+            orderItem: ["I'll have the Halloumi Salad please"],
+            moreItems: ["Yeah, add some Onion Rings too"],
+            noMore: ["That's all thanks"],
+            pickupTime: ["About 20 minutes"],
+            name: ["Sarah"],
+            phone: ["0412 345 678"],
+            confirm: ["Yep, perfect!"]
+        }
+    },
+    salon: {
+        name: 'Luxe Hair Studio',
+        aiName: 'Sophie',
+        aiAvatar: '💇‍♀️',
+        customerAvatar: '👤',
+        stepLabels: ['Call', 'Book', 'Confirm', 'Done'],
+        totalLabel: 'Service',
+        confirmCard: 'Appointment',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'service' },
+            { delay: 2500, type: 'stylist' },
+            { delay: 2500, type: 'datetime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        responses: {
+            greeting: ["Hi, I'd like to book an appointment please"],
+            service: ["I need a cut and colour"],
+            stylist: ["Anyone available is fine"],
+            datetime: ["This Saturday afternoon if possible"],
+            name: ["Jessica"],
+            phone: ["0423 456 789"],
+            confirm: ["That sounds perfect, thanks!"]
+        }
+    },
+    medical: {
+        name: 'Wellness Medical Centre',
+        aiName: 'Rachel',
+        aiAvatar: '👩‍⚕️',
+        customerAvatar: '👤',
+        stepLabels: ['Call', 'Book', 'Confirm', 'Done'],
+        totalLabel: 'Consult',
+        confirmCard: 'Appointment',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'service' },
+            { delay: 2500, type: 'doctor' },
+            { delay: 2500, type: 'datetime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'dob' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        responses: {
+            greeting: ["Hi, I'd like to book an appointment with a GP"],
+            service: ["Just a general checkup"],
+            doctor: ["Any doctor available is fine"],
+            datetime: ["Tomorrow morning if you have anything"],
+            name: ["Michael Thompson"],
+            dob: ["15th of March 1985"],
+            phone: ["0434 567 890"],
+            confirm: ["Yes, that's all correct"]
+        }
+    },
+    garage: {
+        name: 'Aussie Auto Care',
+        aiName: 'Mike',
+        aiAvatar: '🔧',
+        customerAvatar: '👤',
+        stepLabels: ['Call', 'Service', 'Confirm', 'Done'],
+        totalLabel: 'Service',
+        confirmCard: 'Job Card',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'service' },
+            { delay: 2500, type: 'vehicle' },
+            { delay: 2500, type: 'datetime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        responses: {
+            greeting: ["G'day, I need to book my car in for a service"],
+            service: ["Just a basic service and maybe check the brakes"],
+            vehicle: ["It's a 2019 Toyota Camry"],
+            datetime: ["Can I bring it in Monday morning?"],
+            name: ["Dave Wilson"],
+            phone: ["0445 678 901"],
+            confirm: ["Yeah, all good mate!"]
+        }
+    }
+};
+
+// Get current industry config
+function getConfig() {
+    return industryConfig[currentIndustry] || industryConfig.restaurant;
+}
 
 // ============================================
 // VOICE SYNTHESIS - Using OpenAI TTS
@@ -338,16 +465,20 @@ function updateProcessStep(step) {
 // CHAT UI
 // ============================================
 function addMessage(text, isAI = true, speakIt = true) {
+    const config = getConfig();
     const msgDiv = document.createElement('div');
     msgDiv.className = `message ${isAI ? 'ai' : 'user'}`;
     
+    const avatar = isAI ? config.aiAvatar : config.customerAvatar;
+    const speaker = isAI ? `${config.aiName} - ${config.name}` : 'Customer';
+    
     msgDiv.innerHTML = `
-        <div class="msg-avatar">${isAI ? '🤖' : '👤'}</div>
+        <div class="msg-avatar">${avatar}</div>
         <div>
             <div class="msg-bubble">${text}</div>
             <div class="msg-speaker">
                 <i class="fas fa-volume-up"></i>
-                ${isAI ? 'AI Receptionist' : 'Customer'}
+                ${speaker}
             </div>
         </div>
     `;
@@ -387,7 +518,7 @@ async function sendToAI(message = null) {
         const response = await fetch('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message, sessionId })
+            body: JSON.stringify({ message, sessionId, industry: currentIndustry })
         });
         
         const data = await response.json();
@@ -459,6 +590,7 @@ async function handleUserMessage(text) {
 // ORDER CONFIRMATION
 // ============================================
 function handleOrderConfirmed() {
+    const config = getConfig();
     updateProcessStep(3);
     
     // Activate cards
@@ -466,32 +598,92 @@ function handleOrderConfirmed() {
     ticketCard.classList.add('active');
     smsStatus.textContent = '✓ Sent';
     smsStatus.classList.add('sent');
-    ticketStatus.textContent = '✓ Printed';
+    ticketStatus.textContent = '✓ Done';
     ticketStatus.classList.add('sent');
     
-    // Generate SMS
-    smsPreview.innerHTML = `
-        <div class="sms-content">
-            G'day! 🎉<br><br>
-            Your order from <strong>Aussie Bites</strong> is confirmed!<br><br>
-            <strong>Total:</strong> $${orderTotal}<br>
-            <strong>Pickup:</strong> As requested<br><br>
-            Thanks mate! See you soon! 🙏
-        </div>
-    `;
+    // Generate SMS based on industry
+    const smsTemplates = {
+        restaurant: `
+            <div class="sms-content">
+                G'day! 🎉<br><br>
+                Your order from <strong>${config.name}</strong> is confirmed!<br><br>
+                <strong>Total:</strong> $${orderTotal}<br>
+                <strong>Pickup:</strong> As requested<br><br>
+                Thanks mate! See you soon! 🙏
+            </div>
+        `,
+        salon: `
+            <div class="sms-content">
+                Hey gorgeous! 💇‍♀️<br><br>
+                Your appointment at <strong>${config.name}</strong> is confirmed!<br><br>
+                We'll see you at your scheduled time.<br><br>
+                Can't wait to make you look fabulous! ✨
+            </div>
+        `,
+        medical: `
+            <div class="sms-content">
+                Hello,<br><br>
+                Your appointment at <strong>${config.name}</strong> is confirmed.<br><br>
+                Please arrive 10 minutes early with your Medicare card.<br><br>
+                See you soon! 🏥
+            </div>
+        `,
+        garage: `
+            <div class="sms-content">
+                G'day mate! 🔧<br><br>
+                Your service booking at <strong>${config.name}</strong> is confirmed!<br><br>
+                Bring the car in at your scheduled time.<br><br>
+                She'll be right! 🚗
+            </div>
+        `
+    };
     
-    // Generate ticket
+    smsPreview.innerHTML = smsTemplates[currentIndustry] || smsTemplates.restaurant;
+    
+    // Generate ticket/confirmation based on industry
     const orderNum = Math.floor(Math.random() * 900) + 100;
     const now = new Date();
-    ticketPreview.innerHTML = `
-        <div class="ticket-content">
-            <h4>ORDER #${orderNum}</h4>
-            <p style="text-align:center;color:#666;font-size:0.75rem;">${now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' })}</p>
-            <div class="ticket-item"><span>Items:</span><span>As ordered</span></div>
-            <div class="ticket-item"><span>Total:</span><span>$${orderTotal}</span></div>
-            <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** PICKUP ***</p>
-        </div>
-    `;
+    
+    const ticketTemplates = {
+        restaurant: `
+            <div class="ticket-content">
+                <h4>ORDER #${orderNum}</h4>
+                <p style="text-align:center;color:#666;font-size:0.75rem;">${now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' })}</p>
+                <div class="ticket-item"><span>Items:</span><span>As ordered</span></div>
+                <div class="ticket-item"><span>Total:</span><span>$${orderTotal}</span></div>
+                <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** PICKUP ***</p>
+            </div>
+        `,
+        salon: `
+            <div class="ticket-content">
+                <h4>APPOINTMENT #${orderNum}</h4>
+                <p style="text-align:center;color:#666;font-size:0.75rem;">${now.toLocaleDateString('en-AU')}</p>
+                <div class="ticket-item"><span>Service:</span><span>As booked</span></div>
+                <div class="ticket-item"><span>Stylist:</span><span>Assigned</span></div>
+                <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** CONFIRMED ***</p>
+            </div>
+        `,
+        medical: `
+            <div class="ticket-content">
+                <h4>BOOKING #${orderNum}</h4>
+                <p style="text-align:center;color:#666;font-size:0.75rem;">${now.toLocaleDateString('en-AU')}</p>
+                <div class="ticket-item"><span>Type:</span><span>GP Consult</span></div>
+                <div class="ticket-item"><span>Doctor:</span><span>Assigned</span></div>
+                <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** CONFIRMED ***</p>
+            </div>
+        `,
+        garage: `
+            <div class="ticket-content">
+                <h4>JOB CARD #${orderNum}</h4>
+                <p style="text-align:center;color:#666;font-size:0.75rem;">${now.toLocaleDateString('en-AU')}</p>
+                <div class="ticket-item"><span>Service:</span><span>As discussed</span></div>
+                <div class="ticket-item"><span>Vehicle:</span><span>Booked in</span></div>
+                <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** SERVICE BOOKED ***</p>
+            </div>
+        `
+    };
+    
+    ticketPreview.innerHTML = ticketTemplates[currentIndustry] || ticketTemplates.restaurant;
     
     // Stop call timer after a delay
     setTimeout(() => {
@@ -506,21 +698,10 @@ function handleOrderConfirmed() {
 // ============================================
 // AUTO-DEMO
 // ============================================
-// Script dynamique qui s'adapte au flux de l'IA
-const demoResponses = {
-    // Réponses naturelles pour chaque étape
-    greeting: ["Hi, I'd like to place an order for pickup please", "Hey, can I order some food?"],
-    orderItem: ["I'll have the Halloumi Salad please", "Can I get a Grilled Halloumi Salad"],
-    moreItems: ["Yeah, add some Onion Rings too", "And I'll grab some Onion Rings as well"],
-    noMore: ["That's all thanks", "No, that's everything", "That's it for me"],
-    pickupTime: ["About 20 minutes", "In 20 mins if that works", "Maybe 20 minutes?"],
-    name: ["Sarah", "It's Sarah", "The name's Sarah"],
-    phone: ["0412 345 678", "Oh four twelve, three four five, six seven eight"],
-    confirm: ["Yep, perfect!", "Sounds great, thanks!", "That's right, cheers!"]
-};
 
 function getRandomResponse(type) {
-    const responses = demoResponses[type] || [];
+    const config = getConfig();
+    const responses = config.responses[type] || [];
     return responses[Math.floor(Math.random() * responses.length)] || "Yes";
 }
 
@@ -530,6 +711,8 @@ let demoStage = 0;
 async function runAutoDemo() {
     isAutoDemoMode = true;
     demoStage = 0;
+    
+    const config = getConfig();
     
     // Reset everything
     await resetConversation();
@@ -556,17 +739,8 @@ async function runAutoDemo() {
     // AI greeting
     await sendToAI(null);
     
-    // Demo sequence - wait for AI then respond appropriately
-    const demoSequence = [
-        { delay: 2000, type: 'greeting' },      // Hi, I'd like to order
-        { delay: 2500, type: 'orderItem' },     // Halloumi salad
-        { delay: 2500, type: 'moreItems' },     // Onion rings
-        { delay: 2000, type: 'noMore' },        // That's all
-        { delay: 2500, type: 'pickupTime' },    // 20 minutes
-        { delay: 2000, type: 'name' },          // Sarah
-        { delay: 2000, type: 'phone' },         // Phone number
-        { delay: 2000, type: 'confirm' }        // Confirmation
-    ];
+    // Get demo sequence for current industry
+    const demoSequence = config.demoScript;
     
     for (let i = 0; i < demoSequence.length && isAutoDemoMode; i++) {
         // Wait for delay
@@ -652,6 +826,31 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.speechSynthesis) {
         speechSynthesis.getVoices();
     }
+    
+    // Industry selector
+    industryBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Update active state
+            industryBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Update current industry
+            currentIndustry = btn.dataset.industry;
+            
+            // Reset conversation for new industry
+            resetConversation();
+            conversation.innerHTML = '';
+            messageCount = 0;
+            orderTotal = 0;
+            messageCountEl.textContent = '0';
+            orderTotalEl.textContent = '$0';
+            updateProcessStep(0);
+            
+            // Update UI for selected industry
+            const config = getConfig();
+            console.log(`Switched to ${config.name} (${currentIndustry})`);
+        });
+    });
     
     // Demo buttons
     document.getElementById('startInteractive')?.addEventListener('click', startInteractiveMode);

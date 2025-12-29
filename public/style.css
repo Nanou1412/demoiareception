@@ -194,6 +194,59 @@ header .container {
     margin: 0 auto 2rem;
 }
 
+/* Industry Selector */
+.industry-selector {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+    background: var(--bg-elevated);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.industry-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.75rem 1.25rem;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 100px;
+}
+
+.industry-btn:hover {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.industry-btn.active {
+    background: rgba(99, 102, 241, 0.15);
+    border-color: var(--primary);
+}
+
+.industry-icon {
+    font-size: 1.75rem;
+}
+
+.industry-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.industry-btn.active .industry-name {
+    color: var(--primary-light);
+}
+
 .demo-buttons {
     display: flex;
     justify-content: center;
