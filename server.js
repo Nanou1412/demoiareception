@@ -142,6 +142,33 @@ app.post('/api/chat/reset', (req, res) => {
     res.json({ success: true });
 });
 
+// TTS endpoint for customer voice
+app.post('/api/chat/tts', async (req, res) => {
+    const { text, voice = 'echo', speed = 1.0 } = req.body;
+    
+    if (!openai) {
+        return res.status(500).json({ error: 'OpenAI not configured' });
+    }
+    
+    try {
+        const speechResponse = await openai.audio.speech.create({
+            model: 'tts-1-hd',
+            voice: voice, // 'echo' for male customer voice
+            input: text,
+            response_format: 'mp3',
+            speed: speed
+        });
+        
+        const audioBuffer = Buffer.from(await speechResponse.arrayBuffer());
+        const audioBase64 = audioBuffer.toString('base64');
+        
+        res.json({ audio: audioBase64 });
+    } catch (error) {
+        console.error('TTS Error:', error.message);
+        res.status(500).json({ error: 'TTS generation failed' });
+    }
+});
+
 // API endpoint to save order
 app.post('/api/order', (req, res) => {
     const order = {

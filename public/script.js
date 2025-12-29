@@ -45,22 +45,64 @@ let currentAudio = null;
 let orderTotal = 0;
 
 // ============================================
-// VOICE SYNTHESIS - More Natural
+// VOICE SYNTHESIS - Using OpenAI TTS
 // ============================================
-function getVoices() {
-    return new Promise(resolve => {
-        let voices = speechSynthesis.getVoices();
-        if (voices.length) {
-            resolve(voices);
-        } else {
-            speechSynthesis.onvoiceschanged = () => {
-                resolve(speechSynthesis.getVoices());
-            };
+
+// Cache for customer voice audio
+let customerVoiceEnabled = true;
+
+async function speakAsCustomer(text) {
+    if (!customerVoiceEnabled) return Promise.resolve();
+    
+    return new Promise(async (resolve) => {
+        try {
+            isSpeaking = true;
+            
+            // Use OpenAI TTS for customer voice (different voice)
+            const response = await fetch('/api/chat/tts', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    text, 
+                    voice: 'echo',  // Male voice for customer
+                    speed: 1.0
+                })
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                if (data.audio) {
+                    const audio = new Audio('data:audio/mp3;base64,' + data.audio);
+                    audio.volume = 1.0;
+                    
+                    audio.onended = () => {
+                        isSpeaking = false;
+                        resolve();
+                    };
+                    audio.onerror = () => {
+                        isSpeaking = false;
+                        resolve();
+                    };
+                    
+                    await audio.play();
+                    return;
+                }
+            }
+            
+            // Fallback to browser TTS
+            await speakWithBrowserTTS(text, 'customer');
+            isSpeaking = false;
+            resolve();
+            
+        } catch (error) {
+            console.error('Customer TTS error:', error);
+            isSpeaking = false;
+            resolve();
         }
     });
 }
 
-async function speakAsCustomer(text) {
+async function speakWithBrowserTTS(text, role = 'ai') {
     return new Promise(async (resolve) => {
         const synthesis = window.speechSynthesis;
         if (!synthesis) {
@@ -73,23 +115,46 @@ async function speakAsCustomer(text) {
         const voices = await getVoices();
         const utterance = new SpeechSynthesisUtterance(text);
         
-        // Find a natural male voice for customer
-        const customerVoice = voices.find(v => 
-            v.name.includes('Daniel') || 
-            v.name.includes('Alex') ||
-            v.name.includes('Tom') ||
-            (v.lang.includes('en') && v.name.toLowerCase().includes('male'))
-        ) || voices.find(v => v.lang.startsWith('en'));
+        if (role === 'customer') {
+            // Male voice for customer
+            const voice = voices.find(v => 
+                v.name.includes('Daniel') || 
+                v.name.includes('Alex') ||
+                (v.lang.includes('en') && v.name.toLowerCase().includes('male'))
+            ) || voices.find(v => v.lang.startsWith('en'));
+            if (voice) utterance.voice = voice;
+            utterance.pitch = 0.9;
+            utterance.rate = 1.0;
+        } else {
+            // Female voice for AI
+            const voice = voices.find(v => 
+                v.name.includes('Karen') || 
+                v.name.includes('Samantha') ||
+                (v.lang.includes('en') && v.name.toLowerCase().includes('female'))
+            ) || voices.find(v => v.lang.startsWith('en'));
+            if (voice) utterance.voice = voice;
+            utterance.pitch = 1.1;
+            utterance.rate = 1.05;
+        }
         
-        if (customerVoice) utterance.voice = customerVoice;
         utterance.lang = 'en-AU';
-        utterance.rate = 1.0;
-        utterance.pitch = 0.9;
-        
         utterance.onend = () => resolve();
         utterance.onerror = () => resolve();
         
         synthesis.speak(utterance);
+    });
+}
+
+function getVoices() {
+    return new Promise(resolve => {
+        let voices = speechSynthesis.getVoices();
+        if (voices.length) {
+            resolve(voices);
+        } else {
+            speechSynthesis.onvoiceschanged = () => {
+                resolve(speechSynthesis.getVoices());
+            };
+        }
     });
 }
 
@@ -111,10 +176,8 @@ async function speakAsAI(text) {
             v.name.includes('Samantha') || 
             v.name.includes('Karen') ||
             v.name.includes('Tessa') ||
-            v.name.includes('Moira') ||
             (v.lang.includes('en-AU'))
-        ) || voices.find(v => v.lang.startsWith('en') && v.name.toLowerCase().includes('female'))
-          || voices.find(v => v.lang.startsWith('en'));
+        ) || voices.find(v => v.lang.startsWith('en'));
         
         if (aiVoice) utterance.voice = aiVoice;
         utterance.lang = 'en-AU';
@@ -443,18 +506,30 @@ function handleOrderConfirmed() {
 // ============================================
 // AUTO-DEMO
 // ============================================
-const demoScript = [
-    { delay: 2000, text: "Hi, I'd like to order some food for pickup please" },
-    { delay: 2500, text: "Can I get a Grilled Halloumi Salad" },
-    { delay: 2500, text: "Yeah, and some Onion Rings too" },
-    { delay: 2000, text: "Hmm, maybe in about 20 minutes?" },
-    { delay: 2000, text: "It's Sarah" },
-    { delay: 2000, text: "0412 345 678" },
-    { delay: 2000, text: "Yep, that's right. Thanks!" }
-];
+// Script dynamique qui s'adapte au flux de l'IA
+const demoResponses = {
+    // Réponses naturelles pour chaque étape
+    greeting: ["Hi, I'd like to place an order for pickup please", "Hey, can I order some food?"],
+    orderItem: ["I'll have the Halloumi Salad please", "Can I get a Grilled Halloumi Salad"],
+    moreItems: ["Yeah, add some Onion Rings too", "And I'll grab some Onion Rings as well"],
+    noMore: ["That's all thanks", "No, that's everything", "That's it for me"],
+    pickupTime: ["About 20 minutes", "In 20 mins if that works", "Maybe 20 minutes?"],
+    name: ["Sarah", "It's Sarah", "The name's Sarah"],
+    phone: ["0412 345 678", "Oh four twelve, three four five, six seven eight"],
+    confirm: ["Yep, perfect!", "Sounds great, thanks!", "That's right, cheers!"]
+};
+
+function getRandomResponse(type) {
+    const responses = demoResponses[type] || [];
+    return responses[Math.floor(Math.random() * responses.length)] || "Yes";
+}
+
+// Track what stage we're at in the demo
+let demoStage = 0;
 
 async function runAutoDemo() {
     isAutoDemoMode = true;
+    demoStage = 0;
     
     // Reset everything
     await resetConversation();
@@ -481,9 +556,21 @@ async function runAutoDemo() {
     // AI greeting
     await sendToAI(null);
     
-    // Run through script
-    for (let i = 0; i < demoScript.length && isAutoDemoMode; i++) {
-        await new Promise(resolve => setTimeout(resolve, demoScript[i].delay));
+    // Demo sequence - wait for AI then respond appropriately
+    const demoSequence = [
+        { delay: 2000, type: 'greeting' },      // Hi, I'd like to order
+        { delay: 2500, type: 'orderItem' },     // Halloumi salad
+        { delay: 2500, type: 'moreItems' },     // Onion rings
+        { delay: 2000, type: 'noMore' },        // That's all
+        { delay: 2500, type: 'pickupTime' },    // 20 minutes
+        { delay: 2000, type: 'name' },          // Sarah
+        { delay: 2000, type: 'phone' },         // Phone number
+        { delay: 2000, type: 'confirm' }        // Confirmation
+    ];
+    
+    for (let i = 0; i < demoSequence.length && isAutoDemoMode; i++) {
+        // Wait for delay
+        await new Promise(resolve => setTimeout(resolve, demoSequence[i].delay));
         
         // Wait for AI to stop speaking
         while (isSpeaking) {
@@ -492,7 +579,12 @@ async function runAutoDemo() {
         
         if (!isAutoDemoMode) break;
         
-        await handleUserMessage(demoScript[i].text);
+        // Get appropriate response
+        const response = getRandomResponse(demoSequence[i].type);
+        await handleUserMessage(response);
+        
+        // Check if we're done (order confirmed)
+        if (!isAutoDemoMode) break;
         
         // Wait a bit after AI responds
         await new Promise(resolve => setTimeout(resolve, 500));

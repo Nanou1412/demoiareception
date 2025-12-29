@@ -6,6 +6,11 @@
   node_bundler = "esbuild"
 
 [[redirects]]
+  from = "/api/chat/tts"
+  to = "/.netlify/functions/chat-tts"
+  status = 200
+
+[[redirects]]
   from = "/api/chat/reset"
   to = "/.netlify/functions/chat-reset"
   status = 200
