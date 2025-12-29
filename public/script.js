@@ -227,9 +227,9 @@ function updateMicButton() {
                 if (listeningText) listeningText.textContent = 'Speaking...';
             } else if (autoListenEnabled) {
                 listeningIndicator.classList.add('active', 'paused');
-                if (listeningText) listeningText.textContent = 'Ready...';
+                if (listeningText) listeningText.textContent = 'Ready to listen';
             } else {
-                listeningIndicator.classList.remove('active');
+                listeningIndicator.classList.add('inactive');
             }
         }
     }
@@ -238,6 +238,10 @@ function updateMicButton() {
 // Start auto-listening after AI finishes speaking
 function onAISpeakingEnd() {
     isSpeaking = false;
+    // Update indicator
+    if (listeningIndicator) {
+        listeningIndicator.classList.remove('speaking');
+    }
     if (autoListenEnabled) {
         setTimeout(() => {
             startListening();
@@ -254,12 +258,12 @@ function addBubble(text, isAI = true) {
     chatContainer.scrollTop = chatContainer.scrollHeight;
 }
 
-// Add loading bubble
+// Add loading bubble with animated dots
 function addLoadingBubble() {
     const bubble = document.createElement('div');
     bubble.className = 'chat-bubble ai loading';
     bubble.id = 'loadingBubble';
-    bubble.textContent = '...';
+    bubble.innerHTML = '<span></span><span></span><span></span>';
     chatContainer.appendChild(bubble);
     chatContainer.scrollTop = chatContainer.scrollHeight;
 }
@@ -271,6 +275,12 @@ function removeLoadingBubble() {
 
 // Send message to AI
 async function sendToAI(message = null) {
+    // Update indicator to show AI is thinking
+    if (listeningIndicator && listeningText) {
+        listeningIndicator.classList.add('speaking');
+        listeningText.textContent = 'AI thinking...';
+    }
+    
     try {
         addLoadingBubble();
         
@@ -551,3 +561,20 @@ voiceBtn.addEventListener('click', () => {
         }
     }
 });
+
+// Menu toggle functionality
+const menuToggle = document.getElementById('menuToggle');
+const menuCard = document.getElementById('menuCard');
+
+if (menuToggle && menuCard) {
+    menuToggle.addEventListener('click', () => {
+        menuCard.classList.toggle('collapsed');
+    });
+}
+
+// Update listening indicator text based on state
+function updateListeningIndicatorText(text) {
+    if (listeningText) {
+        listeningText.textContent = text;
+    }
+}
