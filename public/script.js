@@ -970,6 +970,23 @@ const UI = {
         if (ticketTitle) ticketTitle.textContent = indLang.cardTitle;
         if (ticketIcon) ticketIcon.className = `fas ${ind.cardIcon}`;
         if (smsCardTitle) smsCardTitle.textContent = t('customerSMS');
+        
+        // Update CSS variables for industry color
+        this.updateIndustryColor();
+    },
+
+    updateIndustryColor() {
+        const ind = getIndustry();
+        const color = ind.color || '#6366f1';
+        
+        // Convert hex to RGB for glow effect
+        const r = parseInt(color.slice(1, 3), 16);
+        const g = parseInt(color.slice(3, 5), 16);
+        const b = parseInt(color.slice(5, 7), 16);
+        const glow = `rgba(${r}, ${g}, ${b}, 0.35)`;
+        
+        document.documentElement.style.setProperty('--industry-color', color);
+        document.documentElement.style.setProperty('--industry-glow', glow);
     },
 
     handleOrderConfirmed() {

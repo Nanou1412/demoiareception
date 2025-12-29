@@ -1,8 +1,10 @@
 /* ========================================
    AI RECEPTIONIST - MODERN PHONE UI
+   Optimized with dynamic industry colors
    ======================================== */
 
 :root {
+    /* Core colors */
     --primary: #6366f1;
     --primary-light: #818cf8;
     --primary-dark: #4f46e5;
@@ -11,26 +13,39 @@
     --warning: #f59e0b;
     --danger: #ef4444;
     
+    /* Industry color (dynamic - set by JS) */
+    --industry-color: var(--primary);
+    --industry-glow: rgba(99, 102, 241, 0.3);
+    
+    /* Backgrounds */
     --bg-dark: #0a0a1a;
     --bg-card: #12122a;
     --bg-elevated: #1a1a3a;
     --bg-phone: #000000;
     
+    /* Text */
     --text-white: #ffffff;
     --text-light: #e2e8f0;
     --text-muted: #94a3b8;
     --text-dim: #64748b;
     
+    /* Borders & Effects */
     --border: rgba(99, 102, 241, 0.2);
     --glow: rgba(99, 102, 241, 0.4);
     
+    /* Spacing */
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 20px;
     --radius-xl: 28px;
     
+    /* Shadows */
     --shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.3);
+    --shadow-glow: 0 0 40px var(--industry-glow);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
 }
 
 * {
@@ -230,7 +245,8 @@ header .container {
 
 .industry-btn.active {
     background: rgba(99, 102, 241, 0.15);
-    border-color: var(--primary);
+    border-color: var(--industry-color);
+    box-shadow: 0 0 15px var(--industry-glow);
 }
 
 .industry-icon {
@@ -333,10 +349,10 @@ header .container {
 }
 
 .process-step.active .step-dot {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    border-color: var(--primary);
+    background: var(--industry-color);
+    border-color: var(--industry-color);
     transform: scale(1.1);
-    box-shadow: var(--shadow-glow);
+    box-shadow: 0 0 25px var(--industry-glow);
 }
 
 .process-step.completed .step-dot {
@@ -362,7 +378,7 @@ header .container {
 }
 
 .process-line.active {
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+    background: var(--industry-color);
 }
 
 /* ========================================
@@ -412,7 +428,7 @@ header .container {
 }
 
 .phone-header {
-    background: linear-gradient(180deg, rgba(99, 102, 241, 0.3), transparent);
+    background: linear-gradient(180deg, var(--industry-glow), transparent);
     padding: 2.5rem 1rem 1rem;
     display: flex;
     justify-content: space-between;
@@ -531,7 +547,7 @@ header .container {
 }
 
 .message.ai .msg-avatar {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
+    background: var(--industry-color);
 }
 
 .message.user .msg-avatar {
@@ -551,7 +567,7 @@ header .container {
 }
 
 .message.user .msg-bubble {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    background: var(--industry-color);
     border-bottom-right-radius: 4px;
 }
 
@@ -655,7 +671,7 @@ header .container {
 }
 
 .control-btn.send {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    background: var(--industry-color);
     color: white;
 }
 
@@ -706,7 +722,7 @@ header .container {
 .card-icon {
     width: 45px;
     height: 45px;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
+    background: var(--industry-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -839,9 +855,7 @@ header .container {
     display: block;
     font-size: 1.5rem;
     font-weight: 800;
-    background: linear-gradient(135deg, var(--primary-light), var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--industry-color);
 }
 
 .stat-label {
