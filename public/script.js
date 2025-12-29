@@ -1,31 +1,30 @@
+// ============================================
+// AI Receptionist Demo - Main JavaScript
+// ============================================
+
 // Session ID for conversation
 const sessionId = 'session_' + Date.now();
 
 // DOM elements
-const landing = document.getElementById('landing');
-const chatSection = document.getElementById('chatSection');
-const orderSaved = document.getElementById('orderSaved');
-const chatContainer = document.getElementById('chatContainer');
-const userInput = document.getElementById('userInput');
-const voiceBtn = document.getElementById('voiceBtn');
-const sendBtn = document.getElementById('sendBtn');
-const startBtn = document.getElementById('startBtn');
-const resetBtn = document.getElementById('resetBtn');
-const newOrderBtn = document.getElementById('newOrderBtn');
-const orderCard = document.getElementById('orderCard');
-const notificationSound = document.getElementById('notificationSound');
-const listeningIndicator = document.getElementById('listeningIndicator');
-const listeningText = listeningIndicator?.querySelector('.listening-text');
+const messagesContainer = document.getElementById('messages');
+const messageInput = document.getElementById('message-input');
+const sendBtn = document.querySelector('.btn-send');
+const voiceBtn = document.querySelector('.btn-voice');
+const resetBtn = document.querySelector('.btn-reset');
+const transcriptContent = document.querySelector('.transcript-content');
+const confirmationSection = document.querySelector('.confirmation-section');
 
-// Text-to-Speech setup - Using OpenAI TTS (much more human-like)
+// TTS and Audio
 let currentAudio = null;
 let isSpeaking = false;
 
-// Play OpenAI TTS audio (base64 mp3)
+// ============================================
+// AUDIO & TTS
+// ============================================
+
 function playAIAudio(audioBase64) {
     if (!audioBase64) return;
     
-    // Stop any current audio
     if (currentAudio) {
         currentAudio.pause();
         currentAudio = null;
@@ -34,25 +33,27 @@ function playAIAudio(audioBase64) {
     const audio = new Audio('data:audio/mp3;base64,' + audioBase64);
     currentAudio = audio;
     
-    audio.onplay = () => { isSpeaking = true; };
+    audio.onplay = () => { 
+        isSpeaking = true; 
+        updateVoiceButtonState();
+    };
     audio.onended = () => { 
         isSpeaking = false; 
         currentAudio = null; 
-        onAISpeakingEnd(); // Restart listening after AI finishes speaking
+        onAISpeakingEnd();
     };
     audio.onerror = () => { 
         isSpeaking = false; 
         currentAudio = null; 
-        onAISpeakingEnd(); // Restart listening even on error
+        onAISpeakingEnd();
     };
     
     audio.play().catch(e => {
         console.log('Audio play failed:', e);
-        onAISpeakingEnd(); // Restart listening if audio fails
+        onAISpeakingEnd();
     });
 }
 
-// Fallback to browser TTS if OpenAI audio not available
 function speakTextFallback(text) {
     const synthesis = window.speechSynthesis;
     if (!synthesis) return;
@@ -67,32 +68,28 @@ function speakTextFallback(text) {
     
     const voices = synthesis.getVoices();
     const ausVoice = voices.find(v => v.lang === 'en-AU') || voices.find(v => v.lang.startsWith('en'));
-    if (ausVoice) {
-        utterance.voice = ausVoice;
-    }
+    if (ausVoice) utterance.voice = ausVoice;
     
-    utterance.onstart = () => { isSpeaking = true; };
+    utterance.onstart = () => { 
+        isSpeaking = true; 
+        updateVoiceButtonState();
+    };
     utterance.onend = () => { 
         isSpeaking = false; 
-        onAISpeakingEnd(); // Restart listening after AI finishes speaking
+        onAISpeakingEnd();
     };
     utterance.onerror = () => { 
         isSpeaking = false; 
-        onAISpeakingEnd(); // Restart listening even on error
+        onAISpeakingEnd();
     };
     
     synthesis.speak(utterance);
 }
 
-// Play notification sound
-function playNotificationSound() {
-    if (notificationSound) {
-        notificationSound.currentTime = 0;
-        notificationSound.play().catch(e => console.log('Audio play failed:', e));
-    }
-}
+// ============================================
+// SPEECH RECOGNITION
+// ============================================
 
-// Speech Recognition setup - Continuous conversation mode
 let recognition = null;
 let isListening = false;
 let autoListenEnabled = false;
@@ -120,26 +117,22 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
             }
         }
         
-        // Show interim results in input
-        userInput.value = finalTranscript + interimTranscript;
+        if (messageInput) {
+            messageInput.value = finalTranscript + interimTranscript;
+        }
         
-        // Reset silence timeout - wait for user to finish speaking
         clearTimeout(silenceTimeout);
         
         if (finalTranscript.trim()) {
-            // Wait 1.5 seconds of silence before sending
             silenceTimeout = setTimeout(() => {
                 if (finalTranscript.trim() && !isSpeaking) {
                     const message = finalTranscript.trim();
                     finalTranscript = '';
                     interimTranscript = '';
-                    userInput.value = '';
+                    if (messageInput) messageInput.value = '';
                     
-                    // Stop listening while AI responds
                     pauseListening();
-                    
-                    // Send the message
-                    addBubble(message, false);
+                    addMessage(message, false);
                     sendToAI(message);
                 }
             }, 1500);
@@ -149,16 +142,14 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
     recognition.onerror = (event) => {
         console.log('Speech recognition error:', event.error);
         if (event.error === 'no-speech' && autoListenEnabled) {
-            // Restart if no speech detected
             restartListening();
         }
     };
 
     recognition.onend = () => {
         isListening = false;
-        updateMicButton();
+        updateVoiceButtonState();
         
-        // Auto-restart if in conversation mode and AI is not speaking
         if (autoListenEnabled && !isSpeaking) {
             setTimeout(() => {
                 if (autoListenEnabled && !isSpeaking) {
@@ -174,7 +165,7 @@ function startListening() {
         try {
             isListening = true;
             recognition.start();
-            updateMicButton();
+            updateVoiceButtonState();
         } catch (e) {
             console.log('Recognition start error:', e);
         }
@@ -187,7 +178,7 @@ function pauseListening() {
         try {
             recognition.stop();
         } catch (e) {}
-        updateMicButton();
+        updateVoiceButtonState();
     }
 }
 
@@ -207,41 +198,24 @@ function restartListening() {
     }
 }
 
-function updateMicButton() {
+function updateVoiceButtonState() {
+    if (!voiceBtn) return;
+    
     if (isListening) {
         voiceBtn.classList.add('listening');
-        voiceBtn.textContent = '🔴';
-        // Update listening indicator
-        if (listeningIndicator) {
-            listeningIndicator.classList.add('active');
-            listeningIndicator.classList.remove('paused');
-            if (listeningText) listeningText.textContent = 'Listening...';
-        }
+        voiceBtn.innerHTML = '🔴 Listening...';
+    } else if (isSpeaking) {
+        voiceBtn.classList.remove('listening');
+        voiceBtn.innerHTML = '🔊 AI Speaking';
     } else {
         voiceBtn.classList.remove('listening');
-        voiceBtn.textContent = '🎤';
-        // Update listening indicator
-        if (listeningIndicator) {
-            if (isSpeaking) {
-                listeningIndicator.classList.add('active', 'paused');
-                if (listeningText) listeningText.textContent = 'Speaking...';
-            } else if (autoListenEnabled) {
-                listeningIndicator.classList.add('active', 'paused');
-                if (listeningText) listeningText.textContent = 'Ready to listen';
-            } else {
-                listeningIndicator.classList.add('inactive');
-            }
-        }
+        voiceBtn.innerHTML = '🎤 Voice';
     }
 }
 
-// Start auto-listening after AI finishes speaking
 function onAISpeakingEnd() {
     isSpeaking = false;
-    // Update indicator
-    if (listeningIndicator) {
-        listeningIndicator.classList.remove('speaking');
-    }
+    updateVoiceButtonState();
     if (autoListenEnabled) {
         setTimeout(() => {
             startListening();
@@ -249,40 +223,76 @@ function onAISpeakingEnd() {
     }
 }
 
-// Add chat bubble
-function addBubble(text, isAI = true) {
-    const bubble = document.createElement('div');
-    bubble.className = `chat-bubble ${isAI ? 'ai' : 'user'}`;
-    bubble.textContent = text;
-    chatContainer.appendChild(bubble);
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-}
+// ============================================
+// MESSAGES & CHAT
+// ============================================
 
-// Add loading bubble with animated dots
-function addLoadingBubble() {
-    const bubble = document.createElement('div');
-    bubble.className = 'chat-bubble ai loading';
-    bubble.id = 'loadingBubble';
-    bubble.innerHTML = '<span></span><span></span><span></span>';
-    chatContainer.appendChild(bubble);
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-}
-
-function removeLoadingBubble() {
-    const loading = document.getElementById('loadingBubble');
-    if (loading) loading.remove();
-}
-
-// Send message to AI
-async function sendToAI(message = null) {
-    // Update indicator to show AI is thinking
-    if (listeningIndicator && listeningText) {
-        listeningIndicator.classList.add('speaking');
-        listeningText.textContent = 'AI thinking...';
-    }
+function addMessage(text, isAI = true) {
+    if (!messagesContainer) return;
     
+    const message = document.createElement('div');
+    message.className = `message ${isAI ? 'ai' : 'user'}`;
+    message.textContent = text;
+    messagesContainer.appendChild(message);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    
+    // Add to transcript
+    addToTranscript(text, isAI);
+}
+
+function addTypingIndicator() {
+    if (!messagesContainer) return;
+    
+    const indicator = document.createElement('div');
+    indicator.className = 'typing-indicator';
+    indicator.id = 'typingIndicator';
+    indicator.innerHTML = '<span></span><span></span><span></span>';
+    messagesContainer.appendChild(indicator);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function removeTypingIndicator() {
+    const indicator = document.getElementById('typingIndicator');
+    if (indicator) indicator.remove();
+}
+
+// ============================================
+// TRANSCRIPT
+// ============================================
+
+function addToTranscript(text, isAI = true) {
+    if (!transcriptContent) return;
+    
+    const now = new Date();
+    const time = now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    
+    const entry = document.createElement('div');
+    entry.className = 'transcript-entry';
+    entry.innerHTML = `
+        <span class="transcript-time">${time}</span>
+        <div class="transcript-speaker ${isAI ? 'ai' : 'customer'}">
+            <strong>${isAI ? '🤖 AI Receptionist' : '👤 Customer'}</strong>
+            ${text}
+        </div>
+    `;
+    
+    transcriptContent.appendChild(entry);
+    transcriptContent.scrollTop = transcriptContent.scrollHeight;
+}
+
+function clearTranscript() {
+    if (transcriptContent) {
+        transcriptContent.innerHTML = '';
+    }
+}
+
+// ============================================
+// API COMMUNICATION
+// ============================================
+
+async function sendToAI(message = null) {
     try {
-        addLoadingBubble();
+        addTypingIndicator();
         
         const response = await fetch('/api/chat', {
             method: 'POST',
@@ -291,172 +301,251 @@ async function sendToAI(message = null) {
         });
         
         const data = await response.json();
-        removeLoadingBubble();
+        removeTypingIndicator();
         
         if (data.error) {
-            addBubble('Error: ' + data.error, true);
+            addMessage('Error: ' + data.error, true);
             return;
         }
         
-        addBubble(data.response, true);
+        addMessage(data.response, true);
         
-        // Play OpenAI TTS audio (human-like voice)
         if (data.audio) {
             playAIAudio(data.audio);
         } else {
-            // Fallback to browser TTS
             speakTextFallback(data.response);
         }
         
-        // If order is confirmed, show saved screen
         if (data.isConfirmed) {
-            // Play notification sound
-            playNotificationSound();
-            
             setTimeout(() => {
                 showOrderConfirmed();
             }, 2000);
         }
         
     } catch (error) {
-        removeLoadingBubble();
-        addBubble('Erreur de connexion. Veuillez réessayer.', true);
+        removeTypingIndicator();
+        addMessage('Connection error. Please try again.', true);
         console.error('Error:', error);
     }
 }
 
-// Show order confirmed
-function showOrderConfirmed() {
-    chatSection.classList.add('hidden');
-    orderSaved.classList.remove('hidden');
+async function resetConversation() {
+    try {
+        await fetch('/api/chat/reset', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ sessionId })
+        });
+    } catch (e) {
+        console.log('Reset error:', e);
+    }
+}
+
+// ============================================
+// DEMO SCENARIOS
+// ============================================
+
+const scenarios = {
+    quick: {
+        title: 'Quick Order',
+        messages: [
+            { delay: 500, text: "Hi, I'd like to place a quick order for pickup" },
+            { delay: 3000, text: "One Grilled Halloumi Salad please" },
+            { delay: 3000, text: "That's all, thanks" },
+            { delay: 2000, text: "In about 20 minutes" },
+            { delay: 2000, text: "Sarah" },
+            { delay: 2000, text: "0412 345 678" }
+        ]
+    },
+    full: {
+        title: 'Full Conversation',
+        messages: [
+            { delay: 500, text: "G'day! I'd like to order some food for pickup" },
+            { delay: 4000, text: "What do you recommend?" },
+            { delay: 4000, text: "The Halloumi Salad sounds great, I'll take that" },
+            { delay: 3000, text: "Can I add some Onion Rings as well?" },
+            { delay: 3000, text: "And a Lemon Iced Tea" },
+            { delay: 3000, text: "That's everything" },
+            { delay: 2500, text: "12:30 would be perfect" },
+            { delay: 2500, text: "Michael" },
+            { delay: 2500, text: "0498 765 432" }
+        ]
+    },
+    menu: {
+        title: 'Menu Query',
+        messages: [
+            { delay: 500, text: "Hi there, can you tell me what's on the menu?" },
+            { delay: 4000, text: "Do you have any vegetarian options?" },
+            { delay: 3500, text: "What's in the Halloumi Salad?" },
+            { delay: 3500, text: "Sounds delicious! I'll order that" },
+            { delay: 2500, text: "Plus a Chocolate Brownie for dessert" },
+            { delay: 2500, text: "That's all for me" },
+            { delay: 2500, text: "1pm please" },
+            { delay: 2000, text: "Emma" },
+            { delay: 2000, text: "0423 111 222" }
+        ]
+    }
+};
+
+let scenarioRunning = false;
+
+async function runScenario(scenarioKey) {
+    if (scenarioRunning) return;
+    scenarioRunning = true;
     
-    // Extract order info from conversation (demo values)
+    const scenario = scenarios[scenarioKey];
+    if (!scenario) return;
+    
+    // Clear and reset
+    if (messagesContainer) messagesContainer.innerHTML = '';
+    clearTranscript();
+    await resetConversation();
+    
+    // Scroll to demo section
+    document.querySelector('.demo-section')?.scrollIntoView({ behavior: 'smooth' });
+    
+    // Get initial AI greeting
+    await sendToAI(null);
+    
+    // Run through scenario messages
+    for (const msg of scenario.messages) {
+        await new Promise(resolve => setTimeout(resolve, msg.delay));
+        if (!scenarioRunning) break;
+        
+        addMessage(msg.text, false);
+        await sendToAI(msg.text);
+        
+        // Wait for audio to finish
+        await new Promise(resolve => {
+            const checkAudio = setInterval(() => {
+                if (!isSpeaking) {
+                    clearInterval(checkAudio);
+                    resolve();
+                }
+            }, 200);
+        });
+    }
+    
+    scenarioRunning = false;
+}
+
+function stopScenario() {
+    scenarioRunning = false;
+}
+
+// ============================================
+// ROI CALCULATOR
+// ============================================
+
+function calculateROI() {
+    const employees = parseFloat(document.getElementById('roiEmployees')?.value) || 2;
+    const calls = parseFloat(document.getElementById('roiCalls')?.value) || 50;
+    const hourlyRate = parseFloat(document.getElementById('roiRate')?.value) || 25;
+    
+    // Assumptions:
+    // - Average call duration: 3 minutes = 0.05 hours
+    // - AI handles 100% of calls
+    // - Monthly calculation
+    
+    const hoursPerMonth = calls * 30 * 0.05; // 3 min per call * 30 days
+    const monthlySavings = hoursPerMonth * hourlyRate;
+    const yearlySavings = monthlySavings * 12;
+    
+    const savingsElement = document.getElementById('savingsAmount');
+    if (savingsElement) {
+        savingsElement.textContent = '$' + Math.round(yearlySavings).toLocaleString();
+    }
+}
+
+// ============================================
+// ORDER CONFIRMATION
+// ============================================
+
+function showOrderConfirmed() {
+    if (confirmationSection) {
+        confirmationSection.classList.add('visible');
+        confirmationSection.scrollIntoView({ behavior: 'smooth' });
+        
+        // Update confirmation details
+        updateConfirmationDetails();
+    }
+}
+
+function updateConfirmationDetails() {
     const orderInfo = extractOrderFromChat();
     
-    // Update order card
-    orderCard.innerHTML = `
-        <p><strong>Name:</strong> ${orderInfo.name}</p>
-        <p><strong>Mobile:</strong> ${orderInfo.phone}</p>
-        <p><strong>Pickup Time:</strong> ${orderInfo.pickupTime}</p>
-        <p><strong>Items:</strong></p>
-        <ul class="items-list">
-            ${orderInfo.items.map(item => `<li>${item}</li>`).join('')}
-        </ul>
-        <p class="total">Total: ${orderInfo.total}</p>
-    `;
-    
-    // Update SMS bubble
-    const smsBubble = document.getElementById('smsBubble');
-    smsBubble.innerHTML = `
-        <span class="sms-emoji">✅</span>
-        <p><span class="sms-restaurant">Restaurant Demo</span></p>
-        <p>G'day ${orderInfo.name}!</p>
-        <p>Your order is confirmed:</p>
-        <div class="sms-items">
-            ${orderInfo.items.map(item => `• ${item}`).join('<br>')}
-        </div>
-        <p class="sms-total">Total: ${orderInfo.total}</p>
-        <p>📍 Pickup at <strong>${orderInfo.pickupTime}</strong></p>
-        <p class="sms-footer">Thanks for your order! See you soon 🙏</p>
-    `;
+    // Update SMS
+    const smsBubble = document.querySelector('.sms-bubble');
+    if (smsBubble) {
+        smsBubble.innerHTML = `
+            G'day ${orderInfo.name}! 🎉<br><br>
+            Your order is confirmed:<br>
+            ${orderInfo.items.map(item => `• ${item}`).join('<br>')}<br><br>
+            Total: ${orderInfo.total}<br>
+            📍 Pickup: ${orderInfo.pickupTime}<br><br>
+            Thanks mate! See you soon 🙏
+        `;
+    }
     
     // Update Kitchen Ticket
     const orderNum = String(Math.floor(Math.random() * 900) + 100);
-    document.getElementById('ticketOrderNum').textContent = orderNum;
-    document.getElementById('ticketPickupTime').textContent = orderInfo.pickupTime;
-    document.getElementById('ticketCustomerName').textContent = orderInfo.name;
-    document.getElementById('ticketCustomerPhone').textContent = orderInfo.phone;
     
-    // Update ticket items
-    const ticketItems = document.getElementById('ticketItems');
-    ticketItems.innerHTML = orderInfo.items.map(item => `
-        <div class="ticket-item">
-            <span><span class="ticket-item-qty">1x</span>${item}</span>
-        </div>
-    `).join('');
+    const ticketOrderNum = document.querySelector('.order-number');
+    if (ticketOrderNum) ticketOrderNum.textContent = '#' + orderNum;
     
-    // Update ticket date/time
-    const now = new Date();
-    const dateStr = now.toLocaleDateString('en-AU');
-    const timeStr = now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' });
-    document.getElementById('ticketDateTime').textContent = `${dateStr} - ${timeStr}`;
+    const pickupTime = document.querySelector('.pickup-time');
+    if (pickupTime) pickupTime.textContent = orderInfo.pickupTime;
     
-    // Trigger animations
-    triggerConfirmationAnimations();
+    const customerName = document.querySelector('.customer-name');
+    if (customerName) customerName.textContent = orderInfo.name + ' • ' + orderInfo.phone;
+    
+    const ticketItems = document.querySelector('.ticket-items');
+    if (ticketItems) {
+        ticketItems.innerHTML = orderInfo.items.map(item => `
+            <div class="ticket-item">
+                <span class="qty">1x</span>
+                <span class="name">${item}</span>
+            </div>
+        `).join('');
+    }
 }
 
-// Trigger animations on confirmation screen
-function triggerConfirmationAnimations() {
-    const phoneMockup = document.querySelector('.phone-mockup');
-    const kitchenTicket = document.querySelector('.kitchen-ticket');
-    
-    // Reset animations
-    orderCard.classList.remove('animate');
-    if (phoneMockup) phoneMockup.classList.remove('animate');
-    if (kitchenTicket) kitchenTicket.classList.remove('animate');
-    
-    // Trigger animations with delays
-    setTimeout(() => {
-        orderCard.classList.add('animate');
-    }, 100);
-    
-    setTimeout(() => {
-        if (phoneMockup) {
-            phoneMockup.classList.add('animate');
-            playNotificationSound();
-        }
-    }, 400);
-    
-    setTimeout(() => {
-        if (kitchenTicket) {
-            kitchenTicket.classList.add('animate');
-        }
-    }, 800);
-}
-
-// Extract order info from chat bubbles
 function extractOrderFromChat() {
-    const bubbles = chatContainer.querySelectorAll('.chat-bubble');
+    if (!messagesContainer) {
+        return { name: 'Customer', phone: '04XX XXX XXX', pickupTime: '12:30pm', items: ['Grilled Halloumi Salad'], total: '$17' };
+    }
+    
+    const messages = messagesContainer.querySelectorAll('.message');
     let lastAIMessage = '';
     
-    // Get the last AI message (should be the confirmation)
-    bubbles.forEach(bubble => {
-        if (bubble.classList.contains('ai')) {
-            lastAIMessage = bubble.textContent;
+    messages.forEach(msg => {
+        if (msg.classList.contains('ai')) {
+            lastAIMessage = msg.textContent;
         }
     });
     
-    // Demo extraction - in real app this would come from server
-    // Try to find patterns in the conversation
-    const userBubbles = Array.from(chatContainer.querySelectorAll('.chat-bubble.user'));
+    const userMessages = Array.from(messagesContainer.querySelectorAll('.message.user'));
     
-    // Default values for demo
     let name = 'Customer';
     let phone = '04XX XXX XXX';
     let pickupTime = '12:30pm';
-    let items = ['Grilled Halloumi Salad', 'Lemon Iced Tea'];
-    let total = '$22';
+    let items = ['Grilled Halloumi Salad'];
+    let total = '$17';
     
-    // Try to extract from user messages
-    userBubbles.forEach((bubble, index) => {
-        const text = bubble.textContent;
+    userMessages.forEach((msg, index) => {
+        const text = msg.textContent;
         
-        // Check for Australian phone pattern (04XX XXX XXX or similar)
         if (text.match(/04\d{2}[\s.-]?\d{3}[\s.-]?\d{3}/) || text.match(/\d{10}/)) {
             phone = text.trim();
-        }
-        // Check for time pattern
-        else if (text.match(/\d{1,2}[:.]\d{2}\s*(am|pm)?/i) || text.match(/\d{1,2}\s*(am|pm|o'clock)/i)) {
+        } else if (text.match(/\d{1,2}[:.]\d{2}\s*(am|pm)?/i) || text.match(/\d{1,2}\s*(am|pm|o'clock)/i)) {
             pickupTime = text.trim();
-        }
-        // Check if it's a name (short text, no numbers, after asking for name)
-        else if (text.length < 30 && !text.match(/\d/) && index > 2) {
+        } else if (text.length < 30 && !text.match(/\d/) && index > 2) {
             name = text.trim();
         }
     });
     
-    // Try to extract items from AI confirmation message
     const menuItems = ['Grilled Halloumi Salad', 'Onion Rings', 'Chocolate Brownie', 'Lemon Iced Tea'];
+    const prices = { 'Grilled Halloumi Salad': 17, 'Onion Rings': 6, 'Chocolate Brownie': 8, 'Lemon Iced Tea': 5 };
     const foundItems = [];
     
     menuItems.forEach(item => {
@@ -467,114 +556,124 @@ function extractOrderFromChat() {
     
     if (foundItems.length > 0) {
         items = foundItems;
-        // Calculate total
-        const prices = {
-            'Grilled Halloumi Salad': 17,
-            'Onion Rings': 6,
-            'Chocolate Brownie': 8,
-            'Lemon Iced Tea': 5
-        };
         let totalNum = 0;
-        foundItems.forEach(item => {
-            totalNum += prices[item] || 0;
-        });
+        foundItems.forEach(item => { totalNum += prices[item] || 0; });
         total = '$' + totalNum;
     }
     
     return { name, phone, pickupTime, items, total };
 }
 
-// Handle send
-async function handleSend() {
-    const message = userInput.value.trim();
-    if (!message) return;
+// ============================================
+// SMOOTH SCROLL
+// ============================================
 
-    addBubble(message, false);
-    userInput.value = '';
-    sendBtn.disabled = true;
-    voiceBtn.disabled = true;
-
-    await sendToAI(message);
+function scrollToDemo() {
+    document.querySelector('.demo-section')?.scrollIntoView({ behavior: 'smooth' });
     
-    sendBtn.disabled = false;
-    voiceBtn.disabled = false;
-}
-
-// Start demo
-async function startDemo() {
-    landing.classList.add('hidden');
-    chatSection.classList.remove('hidden');
-    chatContainer.innerHTML = '';
-    
-    // Enable auto-listening mode
-    autoListenEnabled = true;
-    
-    // Reset conversation on server
-    await fetch('/api/chat/reset', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sessionId })
-    });
-    
-    // Get initial greeting from AI
-    await sendToAI(null);
-}
-
-// Event listeners
-startBtn.addEventListener('click', startDemo);
-
-resetBtn.addEventListener('click', async () => {
-    chatContainer.innerHTML = '';
-    autoListenEnabled = true; // Re-enable auto-listening
-    await fetch('/api/chat/reset', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sessionId })
-    });
-    await sendToAI(null);
-});
-
-newOrderBtn.addEventListener('click', () => {
-    orderSaved.classList.add('hidden');
-    startDemo();
-});
-
-sendBtn.addEventListener('click', handleSend);
-
-userInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        handleSend();
-    }
-});
-
-// Voice button toggles auto-listening mode
-voiceBtn.addEventListener('click', () => {
-    if (autoListenEnabled) {
-        // Disable auto-listening
-        autoListenEnabled = false;
-        pauseListening();
-    } else {
-        // Enable auto-listening
+    // Start conversation mode
+    if (messagesContainer && messagesContainer.children.length === 0) {
         autoListenEnabled = true;
-        if (!isSpeaking) {
-            startListening();
+        resetConversation().then(() => sendToAI(null));
+    }
+}
+
+// ============================================
+// EVENT LISTENERS
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Send button
+    if (sendBtn) {
+        sendBtn.addEventListener('click', () => {
+            const message = messageInput?.value?.trim();
+            if (!message) return;
+            
+            addMessage(message, false);
+            messageInput.value = '';
+            sendToAI(message);
+        });
+    }
+    
+    // Enter key
+    if (messageInput) {
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const message = messageInput.value.trim();
+                if (!message) return;
+                
+                addMessage(message, false);
+                messageInput.value = '';
+                sendToAI(message);
+            }
+        });
+    }
+    
+    // Voice button
+    if (voiceBtn) {
+        voiceBtn.addEventListener('click', () => {
+            if (autoListenEnabled) {
+                autoListenEnabled = false;
+                pauseListening();
+            } else {
+                autoListenEnabled = true;
+                if (!isSpeaking) {
+                    startListening();
+                }
+            }
+            updateVoiceButtonState();
+        });
+    }
+    
+    // Reset button
+    if (resetBtn) {
+        resetBtn.addEventListener('click', async () => {
+            if (messagesContainer) messagesContainer.innerHTML = '';
+            clearTranscript();
+            stopScenario();
+            await resetConversation();
+            await sendToAI(null);
+        });
+    }
+    
+    // Scenario buttons
+    document.querySelectorAll('.scenario-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const scenario = btn.dataset.scenario;
+            if (scenario) {
+                runScenario(scenario);
+            }
+        });
+    });
+    
+    // ROI Calculator inputs
+    ['roiEmployees', 'roiCalls', 'roiRate'].forEach(id => {
+        const input = document.getElementById(id);
+        if (input) {
+            input.addEventListener('input', calculateROI);
         }
+    });
+    
+    // Initial ROI calculation
+    calculateROI();
+    
+    // Try Demo button
+    document.querySelectorAll('[onclick*="scrollToDemo"]').forEach(btn => {
+        btn.removeAttribute('onclick');
+        btn.addEventListener('click', scrollToDemo);
+    });
+    
+    // CTA buttons
+    const tryDemoBtn = document.querySelector('.btn-primary');
+    if (tryDemoBtn && tryDemoBtn.textContent.includes('Try')) {
+        tryDemoBtn.addEventListener('click', scrollToDemo);
     }
 });
 
-// Menu toggle functionality
-const menuToggle = document.getElementById('menuToggle');
-const menuCard = document.getElementById('menuCard');
+// ============================================
+// EXPORTS FOR INLINE HANDLERS
+// ============================================
 
-if (menuToggle && menuCard) {
-    menuToggle.addEventListener('click', () => {
-        menuCard.classList.toggle('collapsed');
-    });
-}
-
-// Update listening indicator text based on state
-function updateListeningIndicatorText(text) {
-    if (listeningText) {
-        listeningText.textContent = text;
-    }
-}
+window.scrollToDemo = scrollToDemo;
+window.runScenario = runScenario;
+window.calculateROI = calculateROI;

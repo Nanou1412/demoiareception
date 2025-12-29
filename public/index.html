@@ -7,10 +7,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="description" content="AI-powered voice ordering system for restaurants. No app needed, just speak naturally.">
-    <title>AI Order Assistant – Restaurant Demo</title>
+    <title>AI Receptionist – Never Miss Another Order</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,80 +19,338 @@
         <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdH2LkpOQiHttYmBneIONkpGMgHFkXmN0hI+UkoyAcGReZneDjZKRin5vYl9oeYWPlJKKfW5gX2t7hpCUkoZ5a15gcn+JkpSSg3VoXWJ2goyUko+AcGNeanmEjZORi4BxZGBoeIKMkpCJfm9iX2p6hI6UkYl7bWBfbHuGj5SSh3hrXmFwfomRlJKDdGddYnWAjJSUkIFwY15reYWOlJGIfGxfX2x8hpCUkod4al5hcX6Jk5WSg3RnXGJ1gYyUlJCAb2JdbHqFjpWRiHtqXl9sfIeRlZOGd2leYHF+i5OVkoN0Zl1jdoKMlZWQf25hXGx6hY+VkYd6aF5gbnyIkZWUhHZmXWJ0gIyUlZF/bmBcbHqGj5aSh3loXmBvfYmSlZSDdGVcY3aBjJWVkX5tYFxseoaPlpKHeGheYG9+iZKVlIR1ZVxjdoGMlZWQfm1gW2x7ho+Wkod4aF1gbX2JkpWVhHVlXGN2gYyVlZB+bF9bbHuGj5aSh3hnXV9ufYmSlZSEdWRcY3eBjJaVkH5sX1tse4aQlpKHd2ddX259iZKVlIR0ZFxjd4GMlpWQfWtfW2x7hpCWkod3Z1xfbn2JkpaUhHRkXGN3gYyWlZB9a19abHyGkJaRh3ZnXF9vfomSlpWDdGNcY3eBjJaVkH1rXlpsfIaQlpGHdmZcX299iZOWlIN0Y1tjd4KMlpaQfGpeWmx8hpCWkYZ1ZlxfcH6Jk5aUg3NjW2N4goyWlpB8al5abH2GkJaRhnVlXF9wfomTlpSDc2JbY3iCjJaWkHxpXlpsfoaQlpGGdGVcYHF/ipOWlINyYltkeIKNlpaQe2leWm1+hpGWkYZ0ZFxgcX+Kk5aUgnJiWmR5g42Wl5B7aF5abX6GkZaRhXRkXGByf4qTl5WCcmFaZHmDjZaXkHtoXVptfoaRl5GFc2NcYHKAipSXlYJxYVpkeYONl5eQemddWm5/hpGXkYVzY1tgcoCKlJeVgnFhWWR5g42Xl5B6Z1xabn+HkZeShXJjW2BygIqUl5WCcGBZZHqEjZeXj3lmXFpvgIeRl5KEcmJbYHOAipSYlYFwYFlkeoSNl5ePeWZcWm+Ah5GXkoRyYlpgc4GKlJiVgXBfWWR6hI2Yl495ZVxab4CHkpiShHFhWmB0gYuUmJWAb19YZHuEjpiYj3llW1pvgIiSmJKEcWFaYHSBi5WYlYBvXlhke4SNmJiPeGRbWnCAiJKYkoNxYFphdIGLlZiVgG5eWGV7hI6YmI94ZFpacICIkpiSg3BgWWF1gYuVmJV/bl5XZXyFjpiYjndkWlpxgYiSmJKDb19ZYXWCi5WZlX9tXldlfIWOmZmOd2NaWnGBiJKZk4NvX1lhdoKLlpmVfm1eV2V8hY6ZmY52Y1lacYKIk5mTg25eWWF2gouWmZV+bF5XZnyFjpmaj3ZiWVpygomTmpODbV5YYnaCi5aZlX5sXVdnfIaOmpqOdWJZWnKCiZOak4NtXVhidoOLl5qVfWtdVmd9ho+amp91YVlacoKJk5qUgmxdWGJ3g4uXmpV9a1xXZ32Gj5qbnnRhWFpzgomUmpSDa1xYYneDi5ealXxqXFdofYeQm5uedGBYWnSCipSblINqXFdjd4SLl5uVfGpcV2h+h5Cbm51zYFdadIKKlJuVgmpcV2N4hIuXm5Z8aVxWaH6HkJycnXJfV1p0g4qVnJWCalxXY3iEjJiclntpW1ZpfoeQnJyccl9WWnWDipWclYFpW1dkeISMmJyWe2haVml/iJGcnZxxXlZadYOLlZ2VgWhbV2R5hIyYnZZ6aFpVaX+IkZ2dnHBeVlt1g4uVnZaBaFpWZHmFjJmdlnpnWlVqf4iRnZ2ccF5VW3aEi5adloFnWlZleYWMmZ6WemZaVWqAiJKenp1vXVVbd4SLlp6XgGZaVWV6hY2Zn5d5ZllUaoGIkp6fnW5dVFt3hIyXnpd/ZllVZnqGjZmgl3llWVRrgYmTn5+dbV1UW3iFjJefl39lWFVme4aNmp+Yd2VYVGuCiZOfn51tXFNbeIWMl5+Xf2RVVWZ7ho6aoJh3ZFhUbIKJk6CgnWxcU1t4hYyYoJh+ZFVVZnyGjpuhmHdkV1RsgomUoKCca1xTXHmFjZigmH5jVVVnfIaOm6GYdmNXVG2DiZShoJxrW1JceYaNmaGZfWNUVGd9h46coZl1Y1ZUbYOKlaGgnGpaUlx6ho2aoZl9YlRUZ32Hj5yimXVjVlNtg4qVoqGcalpSXHqGjpuimXxiVFNofoeQnKKZdGJVU26EipajopyY" type="audio/wav">
     </audio>
     
-    <!-- Landing Section -->
+    <!-- ============================================
+         LANDING PAGE - SALES FOCUSED
+         ============================================ -->
     <div id="landing" class="section">
-        <div class="landing-bg"></div>
-        <div class="landing-content">
-            <div class="logo-container">
-                <div class="logo-icon">
-                    <span class="logo-emoji">🎙️</span>
-                    <div class="logo-pulse"></div>
+        <div class="landing-bg">
+            <div class="bg-gradient"></div>
+            <div class="bg-grid"></div>
+            <div class="bg-glow glow-1"></div>
+            <div class="bg-glow glow-2"></div>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-brand">
+                <span class="nav-logo">🎙️</span>
+                <span class="nav-name">AI Receptionist</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How it works</a>
+                <a href="#roi">ROI</a>
+            </div>
+        </nav>
+        
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>Now with GPT-4 Voice</span>
                 </div>
-                <div class="logo-text">AI Receptionist</div>
-                <div class="logo-tagline">Restaurant Voice Ordering</div>
+                
+                <h1>Never Miss<br/>Another Phone Order</h1>
+                
+                <p class="hero-subtitle">
+                    Your AI receptionist answers every call, takes orders naturally, 
+                    and sends confirmations automatically. <strong>24/7. No training needed.</strong>
+                </p>
+                
+                <div class="hero-cta">
+                    <button id="startBtn" class="big-button primary">
+                        <span class="btn-icon">▶</span>
+                        <span class="btn-text">Try Live Demo</span>
+                        <div class="btn-shine"></div>
+                    </button>
+                    <p class="cta-hint">No signup required • See it in action</p>
+                </div>
+                
+                <!-- Stats -->
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">Calls Answered</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <div class="stat-value">0 sec</div>
+                        <div class="stat-label">Wait Time</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <div class="stat-value">24/7</div>
+                        <div class="stat-label">Available</div>
+                    </div>
+                </div>
             </div>
             
-            <h1>Take Orders<br/><span class="highlight">Automatically</span></h1>
-            <p class="subtitle">Your AI assistant handles phone orders 24/7.<br/>Natural conversations. Zero wait time.</p>
+            <!-- Hero Visual -->
+            <div class="hero-visual">
+                <div class="phone-demo">
+                    <div class="phone-frame">
+                        <div class="phone-speaker"></div>
+                        <div class="phone-screen">
+                            <div class="demo-call">
+                                <div class="call-status">
+                                    <span class="call-dot"></span>
+                                    Incoming Call
+                                </div>
+                                <div class="call-ai">
+                                    <div class="ai-avatar-large">🤖</div>
+                                    <div class="ai-name">AI Receptionist</div>
+                                    <div class="ai-status">Answering...</div>
+                                </div>
+                                <div class="call-wave">
+                                    <span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                                <div class="call-transcript">
+                                    "G'day! Thanks for calling. What can I get started for ya?"
+                                </div>
+                            </div>
+                        </div>
+                        <div class="phone-home-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Problem/Solution Section -->
+        <div class="problem-section" id="features">
+            <div class="section-header">
+                <span class="section-tag">The Problem</span>
+                <h2>Missed Calls = Lost Revenue</h2>
+                <p>Every unanswered call during rush hour is a customer going to your competitor.</p>
+            </div>
             
-            <button id="startBtn" class="big-button">
-                <span class="btn-icon">▶</span>
-                <span class="btn-text">Try Live Demo</span>
-                <div class="btn-shine"></div>
-            </button>
+            <div class="comparison">
+                <div class="comparison-card before">
+                    <div class="comparison-header">
+                        <span class="comparison-icon">😰</span>
+                        <span class="comparison-title">Without AI</span>
+                    </div>
+                    <ul class="comparison-list">
+                        <li><span class="x-icon">✗</span> Missed calls during busy periods</li>
+                        <li><span class="x-icon">✗</span> Staff interrupted while cooking</li>
+                        <li><span class="x-icon">✗</span> Customers on hold, frustrated</li>
+                        <li><span class="x-icon">✗</span> Order errors from rushed calls</li>
+                        <li><span class="x-icon">✗</span> No orders after closing</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-arrow">→</div>
+                
+                <div class="comparison-card after">
+                    <div class="comparison-header">
+                        <span class="comparison-icon">🚀</span>
+                        <span class="comparison-title">With AI Receptionist</span>
+                    </div>
+                    <ul class="comparison-list">
+                        <li><span class="check-icon">✓</span> Every call answered instantly</li>
+                        <li><span class="check-icon">✓</span> Staff focus on food prep</li>
+                        <li><span class="check-icon">✓</span> Natural, friendly conversations</li>
+                        <li><span class="check-icon">✓</span> Accurate orders every time</li>
+                        <li><span class="check-icon">✓</span> Take orders 24/7</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- How It Works -->
+        <div class="how-section" id="how-it-works">
+            <div class="section-header">
+                <span class="section-tag">How It Works</span>
+                <h2>Simple. Seamless. Automatic.</h2>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">📞</div>
+                    <h3>Customer Calls</h3>
+                    <p>Your AI answers instantly with a friendly greeting</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">🗣️</div>
+                    <h3>Natural Conversation</h3>
+                    <p>Takes the order through real conversation</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">📱</div>
+                    <h3>SMS Confirmation</h3>
+                    <p>Customer gets instant order confirmation</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">🖨️</div>
+                    <h3>Kitchen Gets Ticket</h3>
+                    <p>Order prints directly in your kitchen</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ROI Calculator -->
+        <div class="roi-section" id="roi">
+            <div class="section-header">
+                <span class="section-tag">Your ROI</span>
+                <h2>Calculate Your Savings</h2>
+            </div>
+            
+            <div class="roi-card">
+                <div class="roi-inputs">
+                    <div class="roi-input-group">
+                        <label>Missed calls per day</label>
+                        <div class="roi-slider">
+                            <input type="range" id="missedCalls" min="5" max="50" value="15">
+                            <span class="roi-value" id="missedCallsValue">15</span>
+                        </div>
+                    </div>
+                    <div class="roi-input-group">
+                        <label>Average order value ($)</label>
+                        <div class="roi-slider">
+                            <input type="range" id="avgOrder" min="15" max="100" value="35">
+                            <span class="roi-value" id="avgOrderValue">$35</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="roi-results">
+                    <div class="roi-result">
+                        <div class="roi-result-label">Lost revenue per month</div>
+                        <div class="roi-result-value negative" id="lostRevenue">$15,750</div>
+                    </div>
+                    <div class="roi-result highlight">
+                        <div class="roi-result-label">You could recover</div>
+                        <div class="roi-result-value positive" id="recoveredRevenue">$15,750/month</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Features Grid -->
+        <div class="features-section">
+            <div class="section-header">
+                <span class="section-tag">Features</span>
+                <h2>Everything You Need</h2>
+            </div>
             
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🎤</div>
-                    <div class="feature-content">
-                        <div class="feature-title">Voice AI</div>
-                        <div class="feature-desc">Human-like conversations</div>
-                    </div>
+                    <h3>Natural Voice AI</h3>
+                    <p>Human-like conversations powered by GPT-4. Customers won't know it's AI.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <div class="feature-content">
-                        <div class="feature-title">Instant</div>
-                        <div class="feature-desc">No hold time ever</div>
-                    </div>
+                    <div class="feature-icon">🌏</div>
+                    <h3>Aussie Accent</h3>
+                    <p>Trained on Australian English. Uses local expressions naturally.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📱</div>
-                    <div class="feature-content">
-                        <div class="feature-title">SMS Confirm</div>
-                        <div class="feature-desc">Auto-sent to customer</div>
-                    </div>
+                    <h3>SMS Confirmations</h3>
+                    <p>Automatic text sent to customer with order details and pickup time.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🖨️</div>
-                    <div class="feature-content">
-                        <div class="feature-title">Kitchen Print</div>
-                        <div class="feature-desc">Direct to kitchen</div>
-                    </div>
+                    <h3>Kitchen Integration</h3>
+                    <p>Orders print directly to your kitchen printer. No manual entry.</p>
                 </div>
-            </div>
-            
-            <div class="powered-by">
-                <span class="powered-label">Powered by</span>
-                <div class="tech-badges">
-                    <span class="tech-badge">OpenAI GPT-4</span>
-                    <span class="tech-badge">Voice Synthesis</span>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Dashboard</h3>
+                    <p>Track all orders, listen to calls, and see analytics in real-time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>Easy Setup</h3>
+                    <p>Connect in 5 minutes. Works with your existing phone number.</p>
                 </div>
             </div>
         </div>
+        
+        <!-- Social Proof -->
+        <div class="testimonials-section">
+            <div class="section-header">
+                <span class="section-tag">Testimonials</span>
+                <h2>Loved by Restaurant Owners</h2>
+            </div>
+            
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p>"We were missing 20+ calls during Friday rush. Now we capture every single order. Revenue up 30%."</p>
+                    <div class="testimonial-author">
+                        <strong>Marco P.</strong>
+                        <span>Pizza Palace, Sydney</span>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p>"My staff can finally focus on cooking instead of answering phones. Game changer."</p>
+                    <div class="testimonial-author">
+                        <strong>Sarah L.</strong>
+                        <span>Thai Express, Melbourne</span>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Customers love it - they say it's faster than talking to a person!"</p>
+                    <div class="testimonial-author">
+                        <strong>Tom K.</strong>
+                        <span>Burger Joint, Brisbane</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Final CTA -->
+        <div class="final-cta">
+            <h2>Ready to Never Miss Another Order?</h2>
+            <p>Try the live demo now. No signup required.</p>
+            <button id="startBtn2" class="big-button primary large">
+                <span class="btn-icon">▶</span>
+                <span class="btn-text">Try Live Demo</span>
+                <div class="btn-shine"></div>
+            </button>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="nav-logo">🎙️</span>
+                    <span>AI Receptionist</span>
+                </div>
+                <p>Powered by OpenAI GPT-4 & Voice Synthesis</p>
+                <p class="footer-note">Demo project • Built with ❤️</p>
+            </div>
+        </footer>
     </div>
 
-    <!-- Chat Section -->
+    <!-- ============================================
+         CHAT SECTION
+         ============================================ -->
     <div id="chatSection" class="section hidden">
         <div class="chat-wrapper">
             <div class="chat-header">
                 <div class="chat-header-left">
+                    <button id="backBtn" class="back-button" title="Back to landing">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
                     <div class="ai-avatar">
                         <span>🤖</span>
                         <div class="avatar-status online"></div>
                     </div>
                     <div class="chat-header-info">
-                        <h2>Order Assistant</h2>
+                        <h2>AI Order Assistant</h2>
                         <div id="listeningIndicator" class="listening-indicator">
                             <div class="sound-wave">
                                 <span></span><span></span><span></span><span></span><span></span>
@@ -110,11 +368,21 @@
                 </button>
             </div>
             
-            <div id="menuCard" class="menu-card">
+            <!-- Quick Scenarios -->
+            <div class="quick-scenarios" id="quickScenarios">
+                <p class="scenarios-label">Try saying:</p>
+                <div class="scenario-buttons">
+                    <button class="scenario-btn" data-text="Hi, I'd like to order some food">👋 "Hi, I'd like to order"</button>
+                    <button class="scenario-btn" data-text="What's on the menu?">📋 "What's on the menu?"</button>
+                    <button class="scenario-btn" data-text="I'll have the halloumi salad please">🥗 "I'll have the salad"</button>
+                </div>
+            </div>
+            
+            <div id="menuCard" class="menu-card collapsed">
                 <div class="menu-header" id="menuToggle">
                     <div class="menu-header-left">
                         <span class="menu-icon">📋</span>
-                        <span class="menu-title">Menu</span>
+                        <span class="menu-title">View Menu</span>
                     </div>
                     <span class="menu-arrow">▼</span>
                 </div>
@@ -129,13 +397,18 @@
             <div id="chatContainer" class="chat-container">
                 <!-- Chat bubbles will be added here -->
             </div>
+            
+            <!-- Live Transcript -->
+            <div id="liveTranscript" class="live-transcript hidden">
+                <span class="transcript-label">🎤 Hearing:</span>
+                <span class="transcript-text" id="transcriptText"></span>
+            </div>
 
             <div class="input-area">
                 <div class="input-wrapper">
                     <input type="text" id="userInput" placeholder="Speak or type your order..." autocomplete="off" />
                     <button id="voiceBtn" class="voice-button" title="Voice input">
                         <span class="mic-icon">🎤</span>
-                        <div class="voice-ripple"></div>
                     </button>
                 </div>
                 <button id="sendBtn" class="send-button" title="Send message">
@@ -147,109 +420,119 @@
         </div>
     </div>
 
-    <!-- Order Saved Section -->
+    <!-- ============================================
+         ORDER CONFIRMED SECTION
+         ============================================ -->
     <div id="orderSaved" class="section hidden">
-        <div class="success-header">
-            <div class="success-icon">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M20 6L9 17l-5-5"/>
-                </svg>
-                <div class="success-ring"></div>
-                <div class="success-ring delay"></div>
+        <div class="success-wrapper">
+            <div class="success-header">
+                <div class="success-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
+                    <div class="success-ring"></div>
+                    <div class="success-ring delay"></div>
+                </div>
+                <h2>Order Confirmed!</h2>
+                <p class="success-subtitle">This is what happens automatically behind the scenes:</p>
             </div>
-            <h2>Order Confirmed!</h2>
-            <p class="success-subtitle">Here's what happens automatically:</p>
-        </div>
-        
-        <div class="confirmation-container">
-            <!-- Order Summary Card -->
-            <div class="confirmation-card order-summary-card">
-                <div class="card-header">
-                    <div class="card-header-left">
-                        <span class="card-icon">📝</span>
-                        <span class="card-title">Order Summary</span>
+            
+            <div class="confirmation-container">
+                <!-- Order Summary Card -->
+                <div class="confirmation-card order-summary-card">
+                    <div class="card-header">
+                        <div class="card-header-left">
+                            <span class="card-icon">📝</span>
+                            <span class="card-title">Order Saved</span>
+                        </div>
+                        <span class="card-badge">✓ In System</span>
+                    </div>
+                    <div id="orderCard" class="order-card-content">
+                        <!-- Order details will be shown here -->
                     </div>
                 </div>
-                <div id="orderCard" class="order-card-content">
-                    <!-- Order details will be shown here -->
+                
+                <!-- SMS Preview -->
+                <div class="confirmation-card sms-card">
+                    <div class="card-header">
+                        <div class="card-header-left">
+                            <span class="card-icon">📱</span>
+                            <span class="card-title">Customer SMS</span>
+                        </div>
+                        <span class="card-badge sent">✓ Sent</span>
+                    </div>
+                    <div class="phone-mockup">
+                        <div class="phone-speaker"></div>
+                        <div class="phone-screen">
+                            <div class="sms-header">
+                                <span class="sms-sender">Restaurant Demo</span>
+                                <span class="sms-time">Just now</span>
+                            </div>
+                            <div class="sms-bubble" id="smsBubble">
+                                <!-- SMS content will be inserted here -->
+                            </div>
+                        </div>
+                        <div class="phone-home-bar"></div>
+                    </div>
+                </div>
+                
+                <!-- Kitchen Ticket Preview -->
+                <div class="confirmation-card kitchen-card">
+                    <div class="card-header">
+                        <div class="card-header-left">
+                            <span class="card-icon">🖨️</span>
+                            <span class="card-title">Kitchen Ticket</span>
+                        </div>
+                        <span class="card-badge printed">✓ Printed</span>
+                    </div>
+                    <div class="kitchen-ticket" id="kitchenTicket">
+                        <div class="ticket-tear top"></div>
+                        <div class="ticket-content">
+                            <div class="ticket-header">
+                                <div class="ticket-logo">🍽️ KITCHEN ORDER</div>
+                                <div class="ticket-order-num">#<span id="ticketOrderNum">001</span></div>
+                            </div>
+                            <div class="ticket-divider"></div>
+                            <div class="ticket-type">━━━ PICKUP ━━━</div>
+                            <div class="ticket-time-section">
+                                <div class="ticket-label">PICKUP TIME</div>
+                                <div class="ticket-pickup-time" id="ticketPickupTime">12:30</div>
+                            </div>
+                            <div class="ticket-divider"></div>
+                            <div class="ticket-items-section">
+                                <div class="ticket-label">ITEMS</div>
+                                <div class="ticket-items" id="ticketItems">
+                                    <!-- Items will be inserted here -->
+                                </div>
+                            </div>
+                            <div class="ticket-divider"></div>
+                            <div class="ticket-customer">
+                                <div class="ticket-label">CUSTOMER</div>
+                                <div class="ticket-customer-info">
+                                    <span id="ticketCustomerName">Customer Name</span>
+                                    <span id="ticketCustomerPhone">04XX XXX XXX</span>
+                                </div>
+                            </div>
+                            <div class="ticket-footer">
+                                <div id="ticketDateTime">23/12/2025 - 11:45</div>
+                                <div class="ticket-auto">AUTO-PRINTED</div>
+                            </div>
+                        </div>
+                        <div class="ticket-tear bottom"></div>
+                    </div>
                 </div>
             </div>
             
-            <!-- SMS Preview -->
-            <div class="confirmation-card sms-card">
-                <div class="card-header">
-                    <div class="card-header-left">
-                        <span class="card-icon">📱</span>
-                        <span class="card-title">Customer SMS</span>
-                    </div>
-                    <span class="card-badge sent">✓ Sent</span>
-                </div>
-                <div class="phone-mockup">
-                    <div class="phone-speaker"></div>
-                    <div class="phone-screen">
-                        <div class="sms-header">
-                            <span class="sms-sender">Restaurant Demo</span>
-                            <span class="sms-time">Just now</span>
-                        </div>
-                        <div class="sms-bubble" id="smsBubble">
-                            <!-- SMS content will be inserted here -->
-                        </div>
-                    </div>
-                    <div class="phone-home-bar"></div>
-                </div>
-            </div>
-            
-            <!-- Kitchen Ticket Preview -->
-            <div class="confirmation-card kitchen-card">
-                <div class="card-header">
-                    <div class="card-header-left">
-                        <span class="card-icon">🖨️</span>
-                        <span class="card-title">Kitchen Ticket</span>
-                    </div>
-                    <span class="card-badge printed">✓ Printed</span>
-                </div>
-                <div class="kitchen-ticket" id="kitchenTicket">
-                    <div class="ticket-tear top"></div>
-                    <div class="ticket-content">
-                        <div class="ticket-header">
-                            <div class="ticket-logo">🍽️ KITCHEN ORDER</div>
-                            <div class="ticket-order-num">#<span id="ticketOrderNum">001</span></div>
-                        </div>
-                        <div class="ticket-divider"></div>
-                        <div class="ticket-type">━━━ PICKUP ━━━</div>
-                        <div class="ticket-time-section">
-                            <div class="ticket-label">PICKUP TIME</div>
-                            <div class="ticket-pickup-time" id="ticketPickupTime">12:30</div>
-                        </div>
-                        <div class="ticket-divider"></div>
-                        <div class="ticket-items-section">
-                            <div class="ticket-label">ITEMS</div>
-                            <div class="ticket-items" id="ticketItems">
-                                <!-- Items will be inserted here -->
-                            </div>
-                        </div>
-                        <div class="ticket-divider"></div>
-                        <div class="ticket-customer">
-                            <div class="ticket-label">CUSTOMER</div>
-                            <div class="ticket-customer-info">
-                                <span id="ticketCustomerName">Customer Name</span>
-                                <span id="ticketCustomerPhone">04XX XXX XXX</span>
-                            </div>
-                        </div>
-                        <div class="ticket-footer">
-                            <div id="ticketDateTime">23/12/2025 - 11:45</div>
-                            <div class="ticket-auto">AUTO-PRINTED</div>
-                        </div>
-                    </div>
-                    <div class="ticket-tear bottom"></div>
-                </div>
+            <div class="success-actions">
+                <button id="newOrderBtn" class="big-button secondary">
+                    <span class="btn-icon">+</span>
+                    <span class="btn-text">Try Another Order</span>
+                </button>
+                <button id="backToHomeBtn" class="big-button outline">
+                    <span class="btn-text">Back to Home</span>
+                </button>
             </div>
         </div>
-        
-        <button id="newOrderBtn" class="big-button secondary">
-            <span class="btn-icon">+</span>
-            <span class="btn-text">New Order</span>
-        </button>
     </div>
 
     <script src="script.js"></script>
