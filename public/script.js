@@ -1,26 +1,36 @@
 // ============================================
-// AI Receptionist Demo - Main JavaScript
+// AI Receptionist Demo - JavaScript
 // ============================================
 
-// Session ID for conversation
 const sessionId = 'session_' + Date.now();
 
-// DOM elements
-const messagesContainer = document.getElementById('messages');
-const messageInput = document.getElementById('message-input');
-const sendBtn = document.querySelector('.btn-send');
-const voiceBtn = document.querySelector('.btn-voice');
-const resetBtn = document.querySelector('.btn-reset');
-const transcriptContent = document.querySelector('.transcript-content');
-const confirmationSection = document.querySelector('.confirmation-section');
+// DOM Elements
+const landing = document.getElementById('landing');
+const chatSection = document.getElementById('chatSection');
+const orderSaved = document.getElementById('orderSaved');
+const chatContainer = document.getElementById('chatContainer');
+const userInput = document.getElementById('userInput');
+const voiceBtn = document.getElementById('voiceBtn');
+const sendBtn = document.getElementById('sendBtn');
+const startBtn = document.getElementById('startBtn');
+const startBtn2 = document.getElementById('startBtn2');
+const resetBtn = document.getElementById('resetBtn');
+const backBtn = document.getElementById('backBtn');
+const newOrderBtn = document.getElementById('newOrderBtn');
+const backToHomeBtn = document.getElementById('backToHomeBtn');
+const listeningIndicator = document.getElementById('listeningIndicator');
+const listeningText = listeningIndicator?.querySelector('.listening-text');
+const liveTranscript = document.getElementById('liveTranscript');
+const transcriptText = document.getElementById('transcriptText');
+const notificationSound = document.getElementById('notificationSound');
 
-// TTS and Audio
+// ROI Calculator Elements
+const missedCallsSlider = document.getElementById('missedCalls');
+const avgOrderSlider = document.getElementById('avgOrder');
+
+// Audio & TTS
 let currentAudio = null;
 let isSpeaking = false;
-
-// ============================================
-// AUDIO & TTS
-// ============================================
 
 function playAIAudio(audioBase64) {
     if (!audioBase64) return;
@@ -34,17 +44,17 @@ function playAIAudio(audioBase64) {
     currentAudio = audio;
     
     audio.onplay = () => { 
-        isSpeaking = true; 
-        updateVoiceButtonState();
+        isSpeaking = true;
+        updateListeningUI('speaking');
     };
     audio.onended = () => { 
-        isSpeaking = false; 
-        currentAudio = null; 
+        isSpeaking = false;
+        currentAudio = null;
         onAISpeakingEnd();
     };
     audio.onerror = () => { 
-        isSpeaking = false; 
-        currentAudio = null; 
+        isSpeaking = false;
+        currentAudio = null;
         onAISpeakingEnd();
     };
     
@@ -63,33 +73,31 @@ function speakTextFallback(text) {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'en-AU';
     utterance.rate = 1.0;
-    utterance.pitch = 1.0;
-    utterance.volume = 1.0;
     
     const voices = synthesis.getVoices();
     const ausVoice = voices.find(v => v.lang === 'en-AU') || voices.find(v => v.lang.startsWith('en'));
     if (ausVoice) utterance.voice = ausVoice;
     
     utterance.onstart = () => { 
-        isSpeaking = true; 
-        updateVoiceButtonState();
+        isSpeaking = true;
+        updateListeningUI('speaking');
     };
     utterance.onend = () => { 
-        isSpeaking = false; 
-        onAISpeakingEnd();
-    };
-    utterance.onerror = () => { 
-        isSpeaking = false; 
+        isSpeaking = false;
         onAISpeakingEnd();
     };
     
     synthesis.speak(utterance);
 }
 
-// ============================================
-// SPEECH RECOGNITION
-// ============================================
+function playNotificationSound() {
+    if (notificationSound) {
+        notificationSound.currentTime = 0;
+        notificationSound.play().catch(() => {});
+    }
+}
 
+// Speech Recognition
 let recognition = null;
 let isListening = false;
 let autoListenEnabled = false;
@@ -117,8 +125,11 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
             }
         }
         
-        if (messageInput) {
-            messageInput.value = finalTranscript + interimTranscript;
+        // Update input and live transcript
+        if (userInput) userInput.value = finalTranscript + interimTranscript;
+        if (transcriptText) transcriptText.textContent = finalTranscript + interimTranscript;
+        if (liveTranscript && (finalTranscript || interimTranscript)) {
+            liveTranscript.classList.remove('hidden');
         }
         
         clearTimeout(silenceTimeout);
@@ -129,10 +140,11 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
                     const message = finalTranscript.trim();
                     finalTranscript = '';
                     interimTranscript = '';
-                    if (messageInput) messageInput.value = '';
+                    if (userInput) userInput.value = '';
+                    if (liveTranscript) liveTranscript.classList.add('hidden');
                     
                     pauseListening();
-                    addMessage(message, false);
+                    addBubble(message, false);
                     sendToAI(message);
                 }
             }, 1500);
@@ -140,7 +152,7 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
     };
 
     recognition.onerror = (event) => {
-        console.log('Speech recognition error:', event.error);
+        console.log('Speech error:', event.error);
         if (event.error === 'no-speech' && autoListenEnabled) {
             restartListening();
         }
@@ -148,7 +160,7 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
 
     recognition.onend = () => {
         isListening = false;
-        updateVoiceButtonState();
+        updateListeningUI('ready');
         
         if (autoListenEnabled && !isSpeaking) {
             setTimeout(() => {
@@ -165,7 +177,7 @@ function startListening() {
         try {
             isListening = true;
             recognition.start();
-            updateVoiceButtonState();
+            updateListeningUI('listening');
         } catch (e) {
             console.log('Recognition start error:', e);
         }
@@ -175,124 +187,93 @@ function startListening() {
 function pauseListening() {
     if (recognition && isListening) {
         isListening = false;
-        try {
-            recognition.stop();
-        } catch (e) {}
-        updateVoiceButtonState();
+        try { recognition.stop(); } catch (e) {}
+        updateListeningUI('ready');
     }
-}
-
-function stopListening() {
-    autoListenEnabled = false;
-    pauseListening();
 }
 
 function restartListening() {
-    if (recognition && autoListenEnabled) {
-        pauseListening();
-        setTimeout(() => {
-            if (autoListenEnabled && !isSpeaking) {
-                startListening();
-            }
-        }, 300);
-    }
-}
-
-function updateVoiceButtonState() {
-    if (!voiceBtn) return;
-    
-    if (isListening) {
-        voiceBtn.classList.add('listening');
-        voiceBtn.innerHTML = '🔴 Listening...';
-    } else if (isSpeaking) {
-        voiceBtn.classList.remove('listening');
-        voiceBtn.innerHTML = '🔊 AI Speaking';
-    } else {
-        voiceBtn.classList.remove('listening');
-        voiceBtn.innerHTML = '🎤 Voice';
-    }
+    pauseListening();
+    setTimeout(() => {
+        if (autoListenEnabled && !isSpeaking) {
+            startListening();
+        }
+    }, 300);
 }
 
 function onAISpeakingEnd() {
     isSpeaking = false;
-    updateVoiceButtonState();
+    updateListeningUI('ready');
     if (autoListenEnabled) {
-        setTimeout(() => {
-            startListening();
-        }, 500);
+        setTimeout(startListening, 500);
     }
 }
 
-// ============================================
-// MESSAGES & CHAT
-// ============================================
-
-function addMessage(text, isAI = true) {
-    if (!messagesContainer) return;
+function updateListeningUI(state) {
+    if (!listeningIndicator) return;
     
-    const message = document.createElement('div');
-    message.className = `message ${isAI ? 'ai' : 'user'}`;
-    message.textContent = text;
-    messagesContainer.appendChild(message);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    listeningIndicator.classList.remove('active', 'speaking');
     
-    // Add to transcript
-    addToTranscript(text, isAI);
-}
-
-function addTypingIndicator() {
-    if (!messagesContainer) return;
-    
-    const indicator = document.createElement('div');
-    indicator.className = 'typing-indicator';
-    indicator.id = 'typingIndicator';
-    indicator.innerHTML = '<span></span><span></span><span></span>';
-    messagesContainer.appendChild(indicator);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-}
-
-function removeTypingIndicator() {
-    const indicator = document.getElementById('typingIndicator');
-    if (indicator) indicator.remove();
-}
-
-// ============================================
-// TRANSCRIPT
-// ============================================
-
-function addToTranscript(text, isAI = true) {
-    if (!transcriptContent) return;
-    
-    const now = new Date();
-    const time = now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    
-    const entry = document.createElement('div');
-    entry.className = 'transcript-entry';
-    entry.innerHTML = `
-        <span class="transcript-time">${time}</span>
-        <div class="transcript-speaker ${isAI ? 'ai' : 'customer'}">
-            <strong>${isAI ? '🤖 AI Receptionist' : '👤 Customer'}</strong>
-            ${text}
-        </div>
-    `;
-    
-    transcriptContent.appendChild(entry);
-    transcriptContent.scrollTop = transcriptContent.scrollHeight;
-}
-
-function clearTranscript() {
-    if (transcriptContent) {
-        transcriptContent.innerHTML = '';
+    if (state === 'listening') {
+        listeningIndicator.classList.add('active');
+        if (listeningText) listeningText.textContent = 'Listening...';
+        if (voiceBtn) {
+            voiceBtn.classList.add('listening');
+            voiceBtn.querySelector('.mic-icon').textContent = '🔴';
+        }
+    } else if (state === 'speaking') {
+        listeningIndicator.classList.add('speaking');
+        if (listeningText) listeningText.textContent = 'AI speaking...';
+        if (voiceBtn) {
+            voiceBtn.classList.remove('listening');
+            voiceBtn.querySelector('.mic-icon').textContent = '🔊';
+        }
+    } else {
+        if (listeningText) listeningText.textContent = autoListenEnabled ? 'Ready to listen' : 'Click mic to speak';
+        if (voiceBtn) {
+            voiceBtn.classList.remove('listening');
+            voiceBtn.querySelector('.mic-icon').textContent = '🎤';
+        }
     }
 }
 
-// ============================================
-// API COMMUNICATION
-// ============================================
+// Chat Functions
+function addBubble(text, isAI = true) {
+    if (!chatContainer) return;
+    
+    const bubble = document.createElement('div');
+    bubble.className = `chat-bubble ${isAI ? 'ai' : 'user'}`;
+    bubble.textContent = text;
+    chatContainer.appendChild(bubble);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+    
+    // Hide quick scenarios after first message
+    const quickScenarios = document.getElementById('quickScenarios');
+    if (quickScenarios && !isAI) {
+        quickScenarios.style.display = 'none';
+    }
+}
 
+function addLoadingBubble() {
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-bubble ai loading';
+    bubble.id = 'loadingBubble';
+    bubble.innerHTML = '<span></span><span></span><span></span>';
+    chatContainer.appendChild(bubble);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+function removeLoadingBubble() {
+    const loading = document.getElementById('loadingBubble');
+    if (loading) loading.remove();
+}
+
+// API Communication
 async function sendToAI(message = null) {
+    if (listeningText) listeningText.textContent = 'AI thinking...';
+    
     try {
-        addTypingIndicator();
+        addLoadingBubble();
         
         const response = await fetch('/api/chat', {
             method: 'POST',
@@ -301,14 +282,14 @@ async function sendToAI(message = null) {
         });
         
         const data = await response.json();
-        removeTypingIndicator();
+        removeLoadingBubble();
         
         if (data.error) {
-            addMessage('Error: ' + data.error, true);
+            addBubble('Error: ' + data.error, true);
             return;
         }
         
-        addMessage(data.response, true);
+        addBubble(data.response, true);
         
         if (data.audio) {
             playAIAudio(data.audio);
@@ -317,14 +298,13 @@ async function sendToAI(message = null) {
         }
         
         if (data.isConfirmed) {
-            setTimeout(() => {
-                showOrderConfirmed();
-            }, 2000);
+            playNotificationSound();
+            setTimeout(showOrderConfirmed, 2000);
         }
         
     } catch (error) {
-        removeTypingIndicator();
-        addMessage('Connection error. Please try again.', true);
+        removeLoadingBubble();
+        addBubble('Connection error. Please try again.', true);
         console.error('Error:', error);
     }
 }
@@ -336,195 +316,31 @@ async function resetConversation() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ sessionId })
         });
-    } catch (e) {
-        console.log('Reset error:', e);
-    }
+    } catch (e) {}
 }
 
-// ============================================
-// DEMO SCENARIOS
-// ============================================
-
-const scenarios = {
-    quick: {
-        title: 'Quick Order',
-        messages: [
-            { delay: 500, text: "Hi, I'd like to place a quick order for pickup" },
-            { delay: 3000, text: "One Grilled Halloumi Salad please" },
-            { delay: 3000, text: "That's all, thanks" },
-            { delay: 2000, text: "In about 20 minutes" },
-            { delay: 2000, text: "Sarah" },
-            { delay: 2000, text: "0412 345 678" }
-        ]
-    },
-    full: {
-        title: 'Full Conversation',
-        messages: [
-            { delay: 500, text: "G'day! I'd like to order some food for pickup" },
-            { delay: 4000, text: "What do you recommend?" },
-            { delay: 4000, text: "The Halloumi Salad sounds great, I'll take that" },
-            { delay: 3000, text: "Can I add some Onion Rings as well?" },
-            { delay: 3000, text: "And a Lemon Iced Tea" },
-            { delay: 3000, text: "That's everything" },
-            { delay: 2500, text: "12:30 would be perfect" },
-            { delay: 2500, text: "Michael" },
-            { delay: 2500, text: "0498 765 432" }
-        ]
-    },
-    menu: {
-        title: 'Menu Query',
-        messages: [
-            { delay: 500, text: "Hi there, can you tell me what's on the menu?" },
-            { delay: 4000, text: "Do you have any vegetarian options?" },
-            { delay: 3500, text: "What's in the Halloumi Salad?" },
-            { delay: 3500, text: "Sounds delicious! I'll order that" },
-            { delay: 2500, text: "Plus a Chocolate Brownie for dessert" },
-            { delay: 2500, text: "That's all for me" },
-            { delay: 2500, text: "1pm please" },
-            { delay: 2000, text: "Emma" },
-            { delay: 2000, text: "0423 111 222" }
-        ]
-    }
-};
-
-let scenarioRunning = false;
-
-async function runScenario(scenarioKey) {
-    if (scenarioRunning) return;
-    scenarioRunning = true;
-    
-    const scenario = scenarios[scenarioKey];
-    if (!scenario) return;
-    
-    // Clear and reset
-    if (messagesContainer) messagesContainer.innerHTML = '';
-    clearTranscript();
-    await resetConversation();
-    
-    // Scroll to demo section
-    document.querySelector('.demo-section')?.scrollIntoView({ behavior: 'smooth' });
-    
-    // Get initial AI greeting
-    await sendToAI(null);
-    
-    // Run through scenario messages
-    for (const msg of scenario.messages) {
-        await new Promise(resolve => setTimeout(resolve, msg.delay));
-        if (!scenarioRunning) break;
-        
-        addMessage(msg.text, false);
-        await sendToAI(msg.text);
-        
-        // Wait for audio to finish
-        await new Promise(resolve => {
-            const checkAudio = setInterval(() => {
-                if (!isSpeaking) {
-                    clearInterval(checkAudio);
-                    resolve();
-                }
-            }, 200);
-        });
-    }
-    
-    scenarioRunning = false;
-}
-
-function stopScenario() {
-    scenarioRunning = false;
-}
-
-// ============================================
-// ROI CALCULATOR
-// ============================================
-
-function calculateROI() {
-    const employees = parseFloat(document.getElementById('roiEmployees')?.value) || 2;
-    const calls = parseFloat(document.getElementById('roiCalls')?.value) || 50;
-    const hourlyRate = parseFloat(document.getElementById('roiRate')?.value) || 25;
-    
-    // Assumptions:
-    // - Average call duration: 3 minutes = 0.05 hours
-    // - AI handles 100% of calls
-    // - Monthly calculation
-    
-    const hoursPerMonth = calls * 30 * 0.05; // 3 min per call * 30 days
-    const monthlySavings = hoursPerMonth * hourlyRate;
-    const yearlySavings = monthlySavings * 12;
-    
-    const savingsElement = document.getElementById('savingsAmount');
-    if (savingsElement) {
-        savingsElement.textContent = '$' + Math.round(yearlySavings).toLocaleString();
-    }
-}
-
-// ============================================
-// ORDER CONFIRMATION
-// ============================================
-
+// Order Confirmation
 function showOrderConfirmed() {
-    if (confirmationSection) {
-        confirmationSection.classList.add('visible');
-        confirmationSection.scrollIntoView({ behavior: 'smooth' });
-        
-        // Update confirmation details
-        updateConfirmationDetails();
-    }
-}
-
-function updateConfirmationDetails() {
+    if (!chatSection || !orderSaved) return;
+    
+    chatSection.classList.add('hidden');
+    orderSaved.classList.remove('hidden');
+    
     const orderInfo = extractOrderFromChat();
-    
-    // Update SMS
-    const smsBubble = document.querySelector('.sms-bubble');
-    if (smsBubble) {
-        smsBubble.innerHTML = `
-            G'day ${orderInfo.name}! 🎉<br><br>
-            Your order is confirmed:<br>
-            ${orderInfo.items.map(item => `• ${item}`).join('<br>')}<br><br>
-            Total: ${orderInfo.total}<br>
-            📍 Pickup: ${orderInfo.pickupTime}<br><br>
-            Thanks mate! See you soon 🙏
-        `;
-    }
-    
-    // Update Kitchen Ticket
-    const orderNum = String(Math.floor(Math.random() * 900) + 100);
-    
-    const ticketOrderNum = document.querySelector('.order-number');
-    if (ticketOrderNum) ticketOrderNum.textContent = '#' + orderNum;
-    
-    const pickupTime = document.querySelector('.pickup-time');
-    if (pickupTime) pickupTime.textContent = orderInfo.pickupTime;
-    
-    const customerName = document.querySelector('.customer-name');
-    if (customerName) customerName.textContent = orderInfo.name + ' • ' + orderInfo.phone;
-    
-    const ticketItems = document.querySelector('.ticket-items');
-    if (ticketItems) {
-        ticketItems.innerHTML = orderInfo.items.map(item => `
-            <div class="ticket-item">
-                <span class="qty">1x</span>
-                <span class="name">${item}</span>
-            </div>
-        `).join('');
-    }
+    updateConfirmationUI(orderInfo);
 }
 
 function extractOrderFromChat() {
-    if (!messagesContainer) {
-        return { name: 'Customer', phone: '04XX XXX XXX', pickupTime: '12:30pm', items: ['Grilled Halloumi Salad'], total: '$17' };
-    }
-    
-    const messages = messagesContainer.querySelectorAll('.message');
+    const bubbles = chatContainer?.querySelectorAll('.chat-bubble') || [];
     let lastAIMessage = '';
     
-    messages.forEach(msg => {
-        if (msg.classList.contains('ai')) {
-            lastAIMessage = msg.textContent;
+    bubbles.forEach(bubble => {
+        if (bubble.classList.contains('ai')) {
+            lastAIMessage = bubble.textContent;
         }
     });
     
-    const userMessages = Array.from(messagesContainer.querySelectorAll('.message.user'));
+    const userBubbles = Array.from(chatContainer?.querySelectorAll('.chat-bubble.user') || []);
     
     let name = 'Customer';
     let phone = '04XX XXX XXX';
@@ -532,8 +348,8 @@ function extractOrderFromChat() {
     let items = ['Grilled Halloumi Salad'];
     let total = '$17';
     
-    userMessages.forEach((msg, index) => {
-        const text = msg.textContent;
+    userBubbles.forEach((bubble, index) => {
+        const text = bubble.textContent;
         
         if (text.match(/04\d{2}[\s.-]?\d{3}[\s.-]?\d{3}/) || text.match(/\d{10}/)) {
             phone = text.trim();
@@ -564,116 +380,201 @@ function extractOrderFromChat() {
     return { name, phone, pickupTime, items, total };
 }
 
-// ============================================
-// SMOOTH SCROLL
-// ============================================
-
-function scrollToDemo() {
-    document.querySelector('.demo-section')?.scrollIntoView({ behavior: 'smooth' });
+function updateConfirmationUI(info) {
+    // Order Card
+    const orderCard = document.getElementById('orderCard');
+    if (orderCard) {
+        orderCard.innerHTML = `
+            <p><strong>Name:</strong> ${info.name}</p>
+            <p><strong>Mobile:</strong> ${info.phone}</p>
+            <p><strong>Pickup:</strong> ${info.pickupTime}</p>
+            <p><strong>Items:</strong></p>
+            <ul class="items-list">
+                ${info.items.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+            <p class="total">Total: ${info.total}</p>
+        `;
+    }
     
-    // Start conversation mode
-    if (messagesContainer && messagesContainer.children.length === 0) {
-        autoListenEnabled = true;
-        resetConversation().then(() => sendToAI(null));
+    // SMS Bubble
+    const smsBubble = document.getElementById('smsBubble');
+    if (smsBubble) {
+        smsBubble.innerHTML = `
+            G'day ${info.name}! 🎉<br><br>
+            Your order is confirmed:<br>
+            ${info.items.map(item => `• ${item}`).join('<br>')}<br><br>
+            Total: ${info.total}<br>
+            📍 Pickup: ${info.pickupTime}<br><br>
+            Thanks mate! 🙏
+        `;
+    }
+    
+    // Kitchen Ticket
+    const orderNum = Math.floor(Math.random() * 900) + 100;
+    const now = new Date();
+    
+    if (document.getElementById('ticketOrderNum')) {
+        document.getElementById('ticketOrderNum').textContent = orderNum;
+    }
+    if (document.getElementById('ticketPickupTime')) {
+        document.getElementById('ticketPickupTime').textContent = info.pickupTime;
+    }
+    if (document.getElementById('ticketCustomerName')) {
+        document.getElementById('ticketCustomerName').textContent = info.name;
+    }
+    if (document.getElementById('ticketCustomerPhone')) {
+        document.getElementById('ticketCustomerPhone').textContent = info.phone;
+    }
+    if (document.getElementById('ticketDateTime')) {
+        document.getElementById('ticketDateTime').textContent = 
+            `${now.toLocaleDateString('en-AU')} - ${now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' })}`;
+    }
+    
+    const ticketItems = document.getElementById('ticketItems');
+    if (ticketItems) {
+        ticketItems.innerHTML = info.items.map(item => `
+            <div class="ticket-item">
+                <span class="ticket-item-qty">1x</span>${item}
+            </div>
+        `).join('');
     }
 }
 
-// ============================================
-// EVENT LISTENERS
-// ============================================
+// ROI Calculator
+function updateROI() {
+    if (!missedCallsSlider || !avgOrderSlider) return;
+    
+    const missedCalls = parseInt(missedCallsSlider.value);
+    const avgOrder = parseInt(avgOrderSlider.value);
+    
+    // Update displayed values
+    const missedCallsValue = document.getElementById('missedCallsValue');
+    const avgOrderValue = document.getElementById('avgOrderValue');
+    
+    if (missedCallsValue) missedCallsValue.textContent = missedCalls;
+    if (avgOrderValue) avgOrderValue.textContent = '$' + avgOrder;
+    
+    // Calculate monthly lost revenue
+    const monthlyLost = missedCalls * avgOrder * 30;
+    
+    const lostRevenue = document.getElementById('lostRevenue');
+    const recoveredRevenue = document.getElementById('recoveredRevenue');
+    
+    if (lostRevenue) lostRevenue.textContent = '$' + monthlyLost.toLocaleString();
+    if (recoveredRevenue) recoveredRevenue.textContent = '$' + monthlyLost.toLocaleString() + '/month';
+}
 
+// Navigation
+async function startDemo() {
+    if (!landing || !chatSection) return;
+    
+    landing.classList.add('hidden');
+    chatSection.classList.remove('hidden');
+    
+    if (chatContainer) chatContainer.innerHTML = '';
+    
+    const quickScenarios = document.getElementById('quickScenarios');
+    if (quickScenarios) quickScenarios.style.display = 'block';
+    
+    autoListenEnabled = true;
+    
+    await resetConversation();
+    await sendToAI(null);
+}
+
+function backToLanding() {
+    autoListenEnabled = false;
+    pauseListening();
+    
+    chatSection?.classList.add('hidden');
+    orderSaved?.classList.add('hidden');
+    landing?.classList.remove('hidden');
+}
+
+// Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
-    // Send button
-    if (sendBtn) {
-        sendBtn.addEventListener('click', () => {
-            const message = messageInput?.value?.trim();
-            if (!message) return;
-            
-            addMessage(message, false);
-            messageInput.value = '';
-            sendToAI(message);
-        });
-    }
+    // Start buttons
+    startBtn?.addEventListener('click', startDemo);
+    startBtn2?.addEventListener('click', startDemo);
     
-    // Enter key
-    if (messageInput) {
-        messageInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                const message = messageInput.value.trim();
-                if (!message) return;
-                
-                addMessage(message, false);
-                messageInput.value = '';
-                sendToAI(message);
-            }
-        });
-    }
-    
-    // Voice button
-    if (voiceBtn) {
-        voiceBtn.addEventListener('click', () => {
-            if (autoListenEnabled) {
-                autoListenEnabled = false;
-                pauseListening();
-            } else {
-                autoListenEnabled = true;
-                if (!isSpeaking) {
-                    startListening();
-                }
-            }
-            updateVoiceButtonState();
-        });
-    }
+    // Back buttons
+    backBtn?.addEventListener('click', backToLanding);
+    backToHomeBtn?.addEventListener('click', backToLanding);
     
     // Reset button
-    if (resetBtn) {
-        resetBtn.addEventListener('click', async () => {
-            if (messagesContainer) messagesContainer.innerHTML = '';
-            clearTranscript();
-            stopScenario();
-            await resetConversation();
-            await sendToAI(null);
-        });
-    }
+    resetBtn?.addEventListener('click', async () => {
+        if (chatContainer) chatContainer.innerHTML = '';
+        const quickScenarios = document.getElementById('quickScenarios');
+        if (quickScenarios) quickScenarios.style.display = 'block';
+        
+        autoListenEnabled = true;
+        await resetConversation();
+        await sendToAI(null);
+    });
+    
+    // New order button
+    newOrderBtn?.addEventListener('click', () => {
+        orderSaved?.classList.add('hidden');
+        startDemo();
+    });
+    
+    // Send button
+    sendBtn?.addEventListener('click', () => {
+        const message = userInput?.value?.trim();
+        if (!message) return;
+        
+        addBubble(message, false);
+        userInput.value = '';
+        sendToAI(message);
+    });
+    
+    // Enter key
+    userInput?.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            const message = userInput.value.trim();
+            if (!message) return;
+            
+            addBubble(message, false);
+            userInput.value = '';
+            sendToAI(message);
+        }
+    });
+    
+    // Voice button
+    voiceBtn?.addEventListener('click', () => {
+        if (autoListenEnabled && isListening) {
+            autoListenEnabled = false;
+            pauseListening();
+        } else {
+            autoListenEnabled = true;
+            if (!isSpeaking) startListening();
+        }
+        updateListeningUI(isListening ? 'listening' : 'ready');
+    });
     
     // Scenario buttons
     document.querySelectorAll('.scenario-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-            const scenario = btn.dataset.scenario;
-            if (scenario) {
-                runScenario(scenario);
+            const text = btn.dataset.text;
+            if (text) {
+                addBubble(text, false);
+                sendToAI(text);
             }
         });
     });
     
-    // ROI Calculator inputs
-    ['roiEmployees', 'roiCalls', 'roiRate'].forEach(id => {
-        const input = document.getElementById(id);
-        if (input) {
-            input.addEventListener('input', calculateROI);
-        }
+    // Menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const menuCard = document.getElementById('menuCard');
+    
+    menuToggle?.addEventListener('click', () => {
+        menuCard?.classList.toggle('collapsed');
     });
+    
+    // ROI Calculator sliders
+    missedCallsSlider?.addEventListener('input', updateROI);
+    avgOrderSlider?.addEventListener('input', updateROI);
     
     // Initial ROI calculation
-    calculateROI();
-    
-    // Try Demo button
-    document.querySelectorAll('[onclick*="scrollToDemo"]').forEach(btn => {
-        btn.removeAttribute('onclick');
-        btn.addEventListener('click', scrollToDemo);
-    });
-    
-    // CTA buttons
-    const tryDemoBtn = document.querySelector('.btn-primary');
-    if (tryDemoBtn && tryDemoBtn.textContent.includes('Try')) {
-        tryDemoBtn.addEventListener('click', scrollToDemo);
-    }
+    updateROI();
 });
-
-// ============================================
-// EXPORTS FOR INLINE HANDLERS
-// ============================================
-
-window.scrollToDemo = scrollToDemo;
-window.runScenario = runScenario;
-window.calculateROI = calculateROI;
