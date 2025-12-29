@@ -57,9 +57,11 @@ const industryConfig = {
         aiName: 'Emma',
         aiAvatar: '👩‍🍳',
         customerAvatar: '👤',
+        aiVoice: 'shimmer',
         stepLabels: ['Call', 'Order', 'Confirm', 'Done'],
         totalLabel: 'Order Total',
         confirmCard: 'Kitchen Ticket',
+        color: '#ef4444',
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'orderItem' },
@@ -86,9 +88,11 @@ const industryConfig = {
         aiName: 'Sophie',
         aiAvatar: '💇‍♀️',
         customerAvatar: '👤',
+        aiVoice: 'nova',
         stepLabels: ['Call', 'Book', 'Confirm', 'Done'],
         totalLabel: 'Service',
         confirmCard: 'Appointment',
+        color: '#ec4899',
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'service' },
@@ -113,9 +117,11 @@ const industryConfig = {
         aiName: 'Rachel',
         aiAvatar: '👩‍⚕️',
         customerAvatar: '👤',
+        aiVoice: 'alloy',
         stepLabels: ['Call', 'Book', 'Confirm', 'Done'],
         totalLabel: 'Consult',
         confirmCard: 'Appointment',
+        color: '#06b6d4',
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'service' },
@@ -142,9 +148,11 @@ const industryConfig = {
         aiName: 'Mike',
         aiAvatar: '🔧',
         customerAvatar: '👤',
+        aiVoice: 'onyx',
         stepLabels: ['Call', 'Service', 'Confirm', 'Done'],
         totalLabel: 'Service',
         confirmCard: 'Job Card',
+        color: '#f59e0b',
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'service' },
@@ -163,12 +171,339 @@ const industryConfig = {
             phone: ["0445 678 901"],
             confirm: ["Yeah, all good mate!"]
         }
+    },
+    hotel: {
+        name: 'Harbour View Hotel',
+        aiName: 'Claire',
+        aiAvatar: '🏨',
+        customerAvatar: '👤',
+        aiVoice: 'shimmer',
+        stepLabels: ['Call', 'Book', 'Confirm', 'Done'],
+        totalLabel: 'Booking',
+        confirmCard: 'Reservation',
+        color: '#8b5cf6',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'roomType' },
+            { delay: 2500, type: 'dates' },
+            { delay: 2500, type: 'guests' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        responses: {
+            greeting: ["Hi, I'd like to book a room please"],
+            roomType: ["A double room with ocean view if available"],
+            dates: ["From the 15th to the 18th of January"],
+            guests: ["Just two adults"],
+            name: ["Robert Chen"],
+            phone: ["0456 789 012"],
+            confirm: ["That's perfect, thank you!"]
+        }
+    },
+    pizza: {
+        name: 'Mario\'s Pizzeria',
+        aiName: 'Tony',
+        aiAvatar: '🍕',
+        customerAvatar: '👤',
+        aiVoice: 'echo',
+        stepLabels: ['Call', 'Order', 'Confirm', 'Done'],
+        totalLabel: 'Order Total',
+        confirmCard: 'Kitchen Order',
+        color: '#dc2626',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'orderItem' },
+            { delay: 2500, type: 'moreItems' },
+            { delay: 2000, type: 'noMore' },
+            { delay: 2500, type: 'delivery' },
+            { delay: 2000, type: 'address' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        responses: {
+            greeting: ["Hey, I'd like to order some pizza for delivery"],
+            orderItem: ["Can I get a large Margherita"],
+            moreItems: ["And a garlic bread too"],
+            noMore: ["That's everything"],
+            delivery: ["Delivery please"],
+            address: ["42 Smith Street, Richmond"],
+            phone: ["0467 890 123"],
+            confirm: ["Yep, all good!"]
+        }
+    },
+    gym: {
+        name: 'FitLife Gym',
+        aiName: 'Jake',
+        aiAvatar: '🏋️',
+        customerAvatar: '👤',
+        aiVoice: 'onyx',
+        stepLabels: ['Call', 'Enquire', 'Confirm', 'Done'],
+        totalLabel: 'Membership',
+        confirmCard: 'Trial Pass',
+        color: '#22c55e',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'interest' },
+            { delay: 2500, type: 'experience' },
+            { delay: 2500, type: 'trialTime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        responses: {
+            greeting: ["Hi, I'm interested in joining the gym"],
+            interest: ["I'm looking to get fit and maybe do some weights"],
+            experience: ["I've been to gyms before, intermediate level"],
+            trialTime: ["This weekend would be great"],
+            name: ["Alex Murphy"],
+            phone: ["0478 901 234"],
+            confirm: ["Sounds great, see you then!"]
+        }
+    },
+    vet: {
+        name: 'Happy Paws Vet Clinic',
+        aiName: 'Dr. Sarah',
+        aiAvatar: '🐕',
+        customerAvatar: '👤',
+        aiVoice: 'nova',
+        stepLabels: ['Call', 'Book', 'Confirm', 'Done'],
+        totalLabel: 'Consult',
+        confirmCard: 'Appointment',
+        color: '#14b8a6',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'petType' },
+            { delay: 2500, type: 'reason' },
+            { delay: 2500, type: 'datetime' },
+            { delay: 2000, type: 'petName' },
+            { delay: 2000, type: 'ownerName' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        responses: {
+            greeting: ["Hi, I need to book an appointment for my pet"],
+            petType: ["It's a dog, a golden retriever"],
+            reason: ["Just the annual checkup and vaccinations"],
+            datetime: ["Thursday afternoon if possible"],
+            petName: ["His name is Max"],
+            ownerName: ["I'm Emma Wilson"],
+            phone: ["0489 012 345"],
+            confirm: ["Perfect, we'll be there!"]
+        }
+    },
+    dental: {
+        name: 'Smile Bright Dental',
+        aiName: 'Grace',
+        aiAvatar: '🦷',
+        customerAvatar: '👤',
+        aiVoice: 'nova',
+        stepLabels: ['Call', 'Book', 'Confirm', 'Done'],
+        totalLabel: 'Treatment',
+        confirmCard: 'Appointment',
+        color: '#0ea5e9',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'reason' },
+            { delay: 2500, type: 'dentist' },
+            { delay: 2500, type: 'datetime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'insurance' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        responses: {
+            greeting: ["Hi, I'd like to book a dental appointment"],
+            reason: ["Just a regular checkup and clean"],
+            dentist: ["Anyone available is fine"],
+            datetime: ["Next Tuesday morning"],
+            name: ["Jennifer Brown"],
+            insurance: ["Yes, I have Medibank"],
+            phone: ["0490 123 456"],
+            confirm: ["That's all correct, thanks!"]
+        }
+    },
+    lawyer: {
+        name: 'Harper & Associates',
+        aiName: 'Victoria',
+        aiAvatar: '⚖️',
+        customerAvatar: '👤',
+        aiVoice: 'onyx',
+        stepLabels: ['Call', 'Consult', 'Confirm', 'Done'],
+        totalLabel: 'Consultation',
+        confirmCard: 'Appointment',
+        color: '#64748b',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'matter' },
+            { delay: 2500, type: 'lawyer' },
+            { delay: 2500, type: 'datetime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        responses: {
+            greeting: ["Hi, I need to speak with a lawyer about a property matter"],
+            matter: ["It's regarding a property settlement"],
+            lawyer: ["Whoever is available for this type of case"],
+            datetime: ["Early next week if possible"],
+            name: ["David Richardson"],
+            phone: ["0401 234 567"],
+            confirm: ["Yes, that's confirmed, thank you"]
+        }
+    },
+    realestate: {
+        name: 'Prestige Properties',
+        aiName: 'Marcus',
+        aiAvatar: '🏠',
+        customerAvatar: '👤',
+        aiVoice: 'echo',
+        stepLabels: ['Call', 'Enquire', 'Confirm', 'Done'],
+        totalLabel: 'Inspection',
+        confirmCard: 'Viewing Booked',
+        color: '#059669',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'interest' },
+            { delay: 2500, type: 'requirements' },
+            { delay: 2500, type: 'budget' },
+            { delay: 2000, type: 'datetime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        responses: {
+            greeting: ["Hi, I'm looking to buy a property in the area"],
+            interest: ["Looking to buy, a family home"],
+            requirements: ["3 bedrooms, ideally with a backyard"],
+            budget: ["Around 800k to 950k"],
+            datetime: ["Saturday afternoon would be great"],
+            name: ["Sophie Anderson"],
+            phone: ["0412 345 678"],
+            confirm: ["Perfect, I'll be there!"]
+        }
+    },
+    spa: {
+        name: 'Tranquil Waters Spa',
+        aiName: 'Serena',
+        aiAvatar: '🧘',
+        customerAvatar: '👤',
+        aiVoice: 'shimmer',
+        stepLabels: ['Call', 'Book', 'Confirm', 'Done'],
+        totalLabel: 'Treatment',
+        confirmCard: 'Spa Booking',
+        color: '#a855f7',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'treatment' },
+            { delay: 2500, type: 'duration' },
+            { delay: 2500, type: 'datetime' },
+            { delay: 2000, type: 'therapist' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        responses: {
+            greeting: ["Hi, I'd like to book a spa treatment"],
+            treatment: ["A Swedish massage please"],
+            duration: ["90 minutes would be lovely"],
+            datetime: ["This Sunday morning if possible"],
+            therapist: ["Female therapist please"],
+            name: ["Michelle Taylor"],
+            phone: ["0423 456 789"],
+            confirm: ["Wonderful, thank you so much!"]
+        }
     }
 };
+
+// Current language
+let currentLanguage = 'en';
+
+// Translations
+const translations = {
+    en: {
+        title: 'AI Receptionist',
+        subtitle: 'Experience how our AI receptionist handles calls naturally - with voice, personality, and zero wait times.',
+        tryIt: 'Try It Yourself',
+        watchDemo: 'Watch Demo',
+        call: 'Call',
+        confirm: 'Confirm',
+        done: 'Done',
+        messages: 'Messages',
+        callTime: 'Call Time',
+        customerSMS: 'Customer SMS',
+        pending: 'Pending',
+        sent: 'Sent',
+        incomingCall: 'Incoming Call...',
+        onCall: 'On Call',
+        callEnded: 'Call Ended',
+        typeOrSpeak: 'Type or speak...',
+        whatHappening: "What's Happening",
+        stepInfo: 'The AI is ready to answer the call and greet the customer naturally.'
+    },
+    fr: {
+        title: 'Réceptionniste IA',
+        subtitle: 'Découvrez comment notre réceptionniste IA gère les appels naturellement - avec voix, personnalité et zéro attente.',
+        tryIt: 'Essayez vous-même',
+        watchDemo: 'Voir la démo',
+        call: 'Appel',
+        confirm: 'Confirmer',
+        done: 'Terminé',
+        messages: 'Messages',
+        callTime: 'Durée',
+        customerSMS: 'SMS Client',
+        pending: 'En attente',
+        sent: 'Envoyé',
+        incomingCall: 'Appel entrant...',
+        onCall: 'En ligne',
+        callEnded: 'Appel terminé',
+        typeOrSpeak: 'Tapez ou parlez...',
+        whatHappening: 'Ce qui se passe',
+        stepInfo: "L'IA est prête à répondre et accueillir le client naturellement."
+    }
+};
+
+// Get translation
+function t(key) {
+    return translations[currentLanguage]?.[key] || translations.en[key] || key;
+}
+
+// Theme
+let isDarkMode = true;
 
 // Get current industry config
 function getConfig() {
     return industryConfig[currentIndustry] || industryConfig.restaurant;
+}
+
+// Update card titles based on industry
+function updateCardTitles() {
+    const config = getConfig();
+    const ticketTitle = document.getElementById('ticketCardTitle');
+    const ticketIcon = document.getElementById('ticketCardIcon');
+    
+    // Card titles per industry
+    const cardTitles = {
+        restaurant: { title: 'Kitchen Ticket', icon: 'fa-receipt' },
+        pizza: { title: 'Kitchen Order', icon: 'fa-pizza-slice' },
+        salon: { title: 'Appointment Card', icon: 'fa-calendar-check' },
+        medical: { title: 'Booking Slip', icon: 'fa-notes-medical' },
+        dental: { title: 'Dental Appointment', icon: 'fa-tooth' },
+        vet: { title: 'Pet Visit Card', icon: 'fa-paw' },
+        garage: { title: 'Job Card', icon: 'fa-car' },
+        hotel: { title: 'Reservation', icon: 'fa-bed' },
+        gym: { title: 'Membership Card', icon: 'fa-dumbbell' },
+        spa: { title: 'Spa Booking', icon: 'fa-spa' },
+        lawyer: { title: 'Consultation', icon: 'fa-gavel' },
+        realestate: { title: 'Viewing Booked', icon: 'fa-home' }
+    };
+    
+    const cardInfo = cardTitles[currentIndustry] || cardTitles.restaurant;
+    
+    if (ticketTitle) ticketTitle.textContent = cardInfo.title;
+    if (ticketIcon) {
+        ticketIcon.className = `fas ${cardInfo.icon}`;
+    }
 }
 
 // ============================================
@@ -612,6 +947,14 @@ function handleOrderConfirmed() {
                 Thanks mate! See you soon! 🙏
             </div>
         `,
+        pizza: `
+            <div class="sms-content">
+                Bellissimo! 🍕<br><br>
+                Your pizza order from <strong>${config.name}</strong> is confirmed!<br><br>
+                <strong>Total:</strong> $${orderTotal}<br><br>
+                Your delicious pizza is on its way! 🛵
+            </div>
+        `,
         salon: `
             <div class="sms-content">
                 Hey gorgeous! 💇‍♀️<br><br>
@@ -628,12 +971,68 @@ function handleOrderConfirmed() {
                 See you soon! 🏥
             </div>
         `,
+        dental: `
+            <div class="sms-content">
+                Hello! 🦷<br><br>
+                Your dental appointment at <strong>${config.name}</strong> is confirmed!<br><br>
+                Remember to brush before your visit! 😊<br><br>
+                See you soon!
+            </div>
+        `,
+        vet: `
+            <div class="sms-content">
+                Hello! 🐾<br><br>
+                Your pet's appointment at <strong>${config.name}</strong> is confirmed!<br><br>
+                We can't wait to meet your furry friend! 🐕<br><br>
+                See you soon!
+            </div>
+        `,
         garage: `
             <div class="sms-content">
                 G'day mate! 🔧<br><br>
                 Your service booking at <strong>${config.name}</strong> is confirmed!<br><br>
                 Bring the car in at your scheduled time.<br><br>
                 She'll be right! 🚗
+            </div>
+        `,
+        hotel: `
+            <div class="sms-content">
+                Welcome! 🏨<br><br>
+                Your reservation at <strong>${config.name}</strong> is confirmed!<br><br>
+                Check-in from 2PM. We look forward to hosting you!<br><br>
+                Safe travels! ✨
+            </div>
+        `,
+        gym: `
+            <div class="sms-content">
+                Let's go! 💪<br><br>
+                You're all set at <strong>${config.name}</strong>!<br><br>
+                Get ready to crush your fitness goals!<br><br>
+                See you at the gym! 🏋️
+            </div>
+        `,
+        spa: `
+            <div class="sms-content">
+                Namaste 🧘<br><br>
+                Your relaxation awaits at <strong>${config.name}</strong>!<br><br>
+                Please arrive 15 minutes early to unwind.<br><br>
+                Pure bliss awaits... ✨
+            </div>
+        `,
+        lawyer: `
+            <div class="sms-content">
+                Good day,<br><br>
+                Your consultation at <strong>${config.name}</strong> is confirmed.<br><br>
+                Please bring any relevant documents.<br><br>
+                Regards ⚖️
+            </div>
+        `,
+        realestate: `
+            <div class="sms-content">
+                Exciting news! 🏠<br><br>
+                Your property viewing with <strong>${config.name}</strong> is confirmed!<br><br>
+                We can't wait to show you around!<br><br>
+                See you there! 🔑
             </div>
         `
     };
@@ -647,38 +1046,110 @@ function handleOrderConfirmed() {
     const ticketTemplates = {
         restaurant: `
             <div class="ticket-content">
-                <h4>ORDER #${orderNum}</h4>
+                <h4>🍽️ ORDER #${orderNum}</h4>
                 <p style="text-align:center;color:#666;font-size:0.75rem;">${now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' })}</p>
                 <div class="ticket-item"><span>Items:</span><span>As ordered</span></div>
                 <div class="ticket-item"><span>Total:</span><span>$${orderTotal}</span></div>
                 <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** PICKUP ***</p>
             </div>
         `,
+        pizza: `
+            <div class="ticket-content">
+                <h4>🍕 PIZZA ORDER #${orderNum}</h4>
+                <p style="text-align:center;color:#666;font-size:0.75rem;">${now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' })}</p>
+                <div class="ticket-item"><span>Pizzas:</span><span>As ordered</span></div>
+                <div class="ticket-item"><span>Total:</span><span>$${orderTotal}</span></div>
+                <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** DELIVERY ***</p>
+            </div>
+        `,
         salon: `
             <div class="ticket-content">
-                <h4>APPOINTMENT #${orderNum}</h4>
+                <h4>💇 APPOINTMENT #${orderNum}</h4>
                 <p style="text-align:center;color:#666;font-size:0.75rem;">${now.toLocaleDateString('en-AU')}</p>
-                <div class="ticket-item"><span>Service:</span><span>As booked</span></div>
+                <div class="ticket-item"><span>Service:</span><span>Cut & Style</span></div>
                 <div class="ticket-item"><span>Stylist:</span><span>Assigned</span></div>
                 <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** CONFIRMED ***</p>
             </div>
         `,
         medical: `
             <div class="ticket-content">
-                <h4>BOOKING #${orderNum}</h4>
+                <h4>🏥 BOOKING #${orderNum}</h4>
                 <p style="text-align:center;color:#666;font-size:0.75rem;">${now.toLocaleDateString('en-AU')}</p>
                 <div class="ticket-item"><span>Type:</span><span>GP Consult</span></div>
                 <div class="ticket-item"><span>Doctor:</span><span>Assigned</span></div>
                 <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** CONFIRMED ***</p>
             </div>
         `,
+        dental: `
+            <div class="ticket-content">
+                <h4>🦷 DENTAL APPT #${orderNum}</h4>
+                <p style="text-align:center;color:#666;font-size:0.75rem;">${now.toLocaleDateString('en-AU')}</p>
+                <div class="ticket-item"><span>Treatment:</span><span>Check-up</span></div>
+                <div class="ticket-item"><span>Dentist:</span><span>Assigned</span></div>
+                <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** CONFIRMED ***</p>
+            </div>
+        `,
+        vet: `
+            <div class="ticket-content">
+                <h4>🐾 VET VISIT #${orderNum}</h4>
+                <p style="text-align:center;color:#666;font-size:0.75rem;">${now.toLocaleDateString('en-AU')}</p>
+                <div class="ticket-item"><span>Pet:</span><span>Registered</span></div>
+                <div class="ticket-item"><span>Reason:</span><span>Check-up</span></div>
+                <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** CONFIRMED ***</p>
+            </div>
+        `,
         garage: `
             <div class="ticket-content">
-                <h4>JOB CARD #${orderNum}</h4>
+                <h4>🔧 JOB CARD #${orderNum}</h4>
                 <p style="text-align:center;color:#666;font-size:0.75rem;">${now.toLocaleDateString('en-AU')}</p>
                 <div class="ticket-item"><span>Service:</span><span>As discussed</span></div>
                 <div class="ticket-item"><span>Vehicle:</span><span>Booked in</span></div>
                 <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** SERVICE BOOKED ***</p>
+            </div>
+        `,
+        hotel: `
+            <div class="ticket-content">
+                <h4>🏨 RESERVATION #${orderNum}</h4>
+                <p style="text-align:center;color:#666;font-size:0.75rem;">${now.toLocaleDateString('en-AU')}</p>
+                <div class="ticket-item"><span>Room:</span><span>Reserved</span></div>
+                <div class="ticket-item"><span>Guests:</span><span>As booked</span></div>
+                <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** CONFIRMED ***</p>
+            </div>
+        `,
+        gym: `
+            <div class="ticket-content">
+                <h4>🏋️ MEMBERSHIP #${orderNum}</h4>
+                <p style="text-align:center;color:#666;font-size:0.75rem;">${now.toLocaleDateString('en-AU')}</p>
+                <div class="ticket-item"><span>Type:</span><span>Trial Pass</span></div>
+                <div class="ticket-item"><span>Access:</span><span>Full Gym</span></div>
+                <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** LET'S GO! ***</p>
+            </div>
+        `,
+        spa: `
+            <div class="ticket-content">
+                <h4>🧘 SPA BOOKING #${orderNum}</h4>
+                <p style="text-align:center;color:#666;font-size:0.75rem;">${now.toLocaleDateString('en-AU')}</p>
+                <div class="ticket-item"><span>Treatment:</span><span>Massage</span></div>
+                <div class="ticket-item"><span>Duration:</span><span>As booked</span></div>
+                <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** RELAX & ENJOY ***</p>
+            </div>
+        `,
+        lawyer: `
+            <div class="ticket-content">
+                <h4>⚖️ CONSULT #${orderNum}</h4>
+                <p style="text-align:center;color:#666;font-size:0.75rem;">${now.toLocaleDateString('en-AU')}</p>
+                <div class="ticket-item"><span>Matter:</span><span>As discussed</span></div>
+                <div class="ticket-item"><span>Solicitor:</span><span>Assigned</span></div>
+                <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** CONFIRMED ***</p>
+            </div>
+        `,
+        realestate: `
+            <div class="ticket-content">
+                <h4>🏠 VIEWING #${orderNum}</h4>
+                <p style="text-align:center;color:#666;font-size:0.75rem;">${now.toLocaleDateString('en-AU')}</p>
+                <div class="ticket-item"><span>Property:</span><span>Scheduled</span></div>
+                <div class="ticket-item"><span>Agent:</span><span>Assigned</span></div>
+                <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** SEE YOU THERE ***</p>
             </div>
         `
     };
@@ -849,8 +1320,17 @@ document.addEventListener('DOMContentLoaded', () => {
             // Update UI for selected industry
             const config = getConfig();
             console.log(`Switched to ${config.name} (${currentIndustry})`);
+            
+            // Update card titles based on industry
+            updateCardTitles();
+            
+            // Update stats
+            sessionStats.industries[currentIndustry] = (sessionStats.industries[currentIndustry] || 0) + 1;
         });
     });
+    
+    // Initialize card titles
+    updateCardTitles();
     
     // Demo buttons
     document.getElementById('startInteractive')?.addEventListener('click', startInteractiveMode);
@@ -909,6 +1389,183 @@ document.addEventListener('DOMContentLoaded', () => {
     
     document.getElementById('calculateROI')?.addEventListener('click', calculateROI);
     
+    // ============================================
+    // NEW FEATURES EVENT LISTENERS
+    // ============================================
+    
+    // Theme Toggle
+    document.getElementById('themeToggle')?.addEventListener('click', () => {
+        isDarkMode = !isDarkMode;
+        document.body.classList.toggle('dark-mode', isDarkMode);
+        document.body.classList.toggle('light-mode', !isDarkMode);
+        const icon = document.querySelector('#themeToggle i');
+        if (icon) icon.className = isDarkMode ? 'fas fa-moon' : 'fas fa-sun';
+    });
+    
+    // Language Toggle
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentLanguage = btn.dataset.lang;
+            updateLanguage();
+        });
+    });
+    
+    // Fullscreen Toggle
+    document.getElementById('fullscreenBtn')?.addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+            document.body.classList.add('fullscreen-mode');
+        } else {
+            document.exitFullscreen();
+            document.body.classList.remove('fullscreen-mode');
+        }
+    });
+    
+    // Stats Modal
+    document.getElementById('statsBtn')?.addEventListener('click', () => {
+        updateStatsDisplay();
+        document.getElementById('statsModal')?.classList.add('visible');
+    });
+    
+    document.getElementById('closeStatsModal')?.addEventListener('click', () => {
+        document.getElementById('statsModal')?.classList.remove('visible');
+    });
+    
+    document.getElementById('statsModal')?.addEventListener('click', (e) => {
+        if (e.target.id === 'statsModal') {
+            e.target.classList.remove('visible');
+        }
+    });
+    
+    // Scenario Selector
+    document.querySelectorAll('.scenario-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentScenario = btn.dataset.scenario;
+            console.log(`Scenario: ${currentScenario}`);
+        });
+    });
+    
+    // Export Button
+    document.getElementById('exportBtn')?.addEventListener('click', exportConversation);
+    
     // Initialize
     updateProcessStep(0);
 });
+
+// ============================================
+// SESSION STATISTICS
+// ============================================
+const sessionStats = {
+    totalCalls: 0,
+    completedCalls: 0,
+    totalMessages: 0,
+    totalCallTime: 0,
+    industries: {}
+};
+
+function updateStats() {
+    sessionStats.totalMessages = messageCount;
+}
+
+function updateStatsDisplay() {
+    document.getElementById('totalCalls').textContent = sessionStats.totalCalls;
+    document.getElementById('completedCalls').textContent = sessionStats.completedCalls;
+    document.getElementById('totalMessages').textContent = sessionStats.totalMessages;
+    
+    // Calculate average time
+    if (sessionStats.completedCalls > 0) {
+        const avgSeconds = Math.floor(sessionStats.totalCallTime / sessionStats.completedCalls);
+        const mins = Math.floor(avgSeconds / 60);
+        const secs = avgSeconds % 60;
+        document.getElementById('avgCallTime').textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+    
+    // Industry breakdown
+    const industryStatsEl = document.getElementById('industryStats');
+    if (industryStatsEl) {
+        industryStatsEl.innerHTML = Object.entries(sessionStats.industries)
+            .map(([ind, count]) => {
+                const config = industryConfig[ind];
+                return `<div class="industry-stat-item">${config?.aiAvatar || '📞'} ${config?.name || ind}: ${count}</div>`;
+            }).join('');
+    }
+}
+
+// ============================================
+// SCENARIO HANDLING
+// ============================================
+let currentScenario = 'normal';
+
+// ============================================
+// LANGUAGE UPDATE
+// ============================================
+function updateLanguage() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (translations[currentLanguage]?.[key]) {
+            el.textContent = translations[currentLanguage][key];
+        }
+    });
+}
+
+// ============================================
+// WAVEFORM ANIMATION
+// ============================================
+const waveformOverlay = document.getElementById('waveformOverlay');
+const waveformLabel = document.getElementById('waveformLabel');
+
+function showWaveform(label = 'AI Speaking...') {
+    if (waveformOverlay) {
+        waveformLabel.textContent = label;
+        waveformOverlay.classList.add('active');
+    }
+}
+
+function hideWaveform() {
+    waveformOverlay?.classList.remove('active');
+}
+
+// ============================================
+// EXPORT CONVERSATION
+// ============================================
+function exportConversation() {
+    const messages = conversation.querySelectorAll('.message');
+    if (messages.length === 0) {
+        alert('No conversation to export. Start a demo first!');
+        return;
+    }
+    
+    const config = getConfig();
+    let transcript = `AI RECEPTIONIST CONVERSATION TRANSCRIPT\n`;
+    transcript += `========================================\n`;
+    transcript += `Industry: ${config.name}\n`;
+    transcript += `AI: ${config.aiName}\n`;
+    transcript += `Date: ${new Date().toLocaleString()}\n`;
+    transcript += `========================================\n\n`;
+    
+    messages.forEach(msg => {
+        const isAI = msg.classList.contains('ai');
+        const text = msg.querySelector('.msg-bubble')?.textContent || '';
+        const speaker = isAI ? config.aiName : 'Customer';
+        transcript += `${speaker}: ${text}\n\n`;
+    });
+    
+    transcript += `========================================\n`;
+    transcript += `Total Messages: ${messageCount}\n`;
+    transcript += `Order Total: $${orderTotal}\n`;
+    
+    // Download as text file
+    const blob = new Blob([transcript], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `conversation-${currentIndustry}-${Date.now()}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
