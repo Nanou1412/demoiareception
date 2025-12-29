@@ -1,34 +1,46 @@
 // ============================================
-// AI Receptionist Demo - JavaScript
+// AI RECEPTIONIST - CLIENT PRESENTATION DEMO
+// Version avec mode auto-démo et processus visuel
 // ============================================
 
 const sessionId = 'session_' + Date.now();
 
+// ============================================
 // DOM Elements
-const landing = document.getElementById('landing');
-const chatSection = document.getElementById('chatSection');
-const orderSaved = document.getElementById('orderSaved');
-const chatContainer = document.getElementById('chatContainer');
+// ============================================
+const chatMessages = document.getElementById('chatMessages');
 const userInput = document.getElementById('userInput');
 const voiceBtn = document.getElementById('voiceBtn');
 const sendBtn = document.getElementById('sendBtn');
-const startBtn = document.getElementById('startBtn');
-const startBtn2 = document.getElementById('startBtn2');
-const resetBtn = document.getElementById('resetBtn');
-const backBtn = document.getElementById('backBtn');
-const newOrderBtn = document.getElementById('newOrderBtn');
-const backToHomeBtn = document.getElementById('backToHomeBtn');
-const listeningIndicator = document.getElementById('listeningIndicator');
-const listeningText = listeningIndicator?.querySelector('.listening-text');
-const liveTranscript = document.getElementById('liveTranscript');
-const transcriptText = document.getElementById('transcriptText');
-const notificationSound = document.getElementById('notificationSound');
+const typingIndicator = document.querySelector('.typing-indicator');
+const listeningIndicator = document.querySelector('.listening-indicator');
 
-// ROI Calculator Elements
-const missedCallsSlider = document.getElementById('missedCalls');
-const avgOrderSlider = document.getElementById('avgOrder');
+// Process bar elements
+const processSteps = document.querySelectorAll('.process-step');
+const stepLines = document.querySelectorAll('.step-line');
 
+// Workflow steps
+const workflowSteps = document.querySelectorAll('.workflow-step');
+
+// Info panels
+const processInfo = document.querySelector('.process-info');
+const processInfoContent = document.querySelector('.process-info-content');
+
+// Confirmation elements
+const smsCard = document.getElementById('smsCard');
+const kitchenCard = document.getElementById('kitchenCard');
+const smsContent = document.getElementById('smsContent');
+const ticketContent = document.getElementById('ticketContent');
+
+// State
+let currentProcessStep = 0;
+let currentWorkflowStep = 0;
+let isAutoDemoMode = false;
+let autoDemoInterval = null;
+
+// ============================================
 // Audio & TTS
+// ============================================
 let currentAudio = null;
 let isSpeaking = false;
 
@@ -90,14 +102,9 @@ function speakTextFallback(text) {
     synthesis.speak(utterance);
 }
 
-function playNotificationSound() {
-    if (notificationSound) {
-        notificationSound.currentTime = 0;
-        notificationSound.play().catch(() => {});
-    }
-}
-
+// ============================================
 // Speech Recognition
+// ============================================
 let recognition = null;
 let isListening = false;
 let autoListenEnabled = false;
@@ -125,12 +132,7 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
             }
         }
         
-        // Update input and live transcript
         if (userInput) userInput.value = finalTranscript + interimTranscript;
-        if (transcriptText) transcriptText.textContent = finalTranscript + interimTranscript;
-        if (liveTranscript && (finalTranscript || interimTranscript)) {
-            liveTranscript.classList.remove('hidden');
-        }
         
         clearTimeout(silenceTimeout);
         
@@ -141,11 +143,9 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
                     finalTranscript = '';
                     interimTranscript = '';
                     if (userInput) userInput.value = '';
-                    if (liveTranscript) liveTranscript.classList.add('hidden');
                     
                     pauseListening();
-                    addBubble(message, false);
-                    sendToAI(message);
+                    handleSend(message);
                 }
             }, 1500);
         }
@@ -204,7 +204,7 @@ function restartListening() {
 function onAISpeakingEnd() {
     isSpeaking = false;
     updateListeningUI('ready');
-    if (autoListenEnabled) {
+    if (autoListenEnabled && !isAutoDemoMode) {
         setTimeout(startListening, 500);
     }
 }
@@ -212,69 +212,124 @@ function onAISpeakingEnd() {
 function updateListeningUI(state) {
     if (!listeningIndicator) return;
     
-    listeningIndicator.classList.remove('active', 'speaking');
-    
     if (state === 'listening') {
-        listeningIndicator.classList.add('active');
-        if (listeningText) listeningText.textContent = 'Listening...';
-        if (voiceBtn) {
-            voiceBtn.classList.add('listening');
-            voiceBtn.querySelector('.mic-icon').textContent = '🔴';
-        }
+        listeningIndicator.classList.add('visible');
+        if (voiceBtn) voiceBtn.classList.add('listening');
     } else if (state === 'speaking') {
-        listeningIndicator.classList.add('speaking');
-        if (listeningText) listeningText.textContent = 'AI speaking...';
-        if (voiceBtn) {
-            voiceBtn.classList.remove('listening');
-            voiceBtn.querySelector('.mic-icon').textContent = '🔊';
-        }
+        listeningIndicator.classList.remove('visible');
+        if (voiceBtn) voiceBtn.classList.remove('listening');
     } else {
-        if (listeningText) listeningText.textContent = autoListenEnabled ? 'Ready to listen' : 'Click mic to speak';
-        if (voiceBtn) {
-            voiceBtn.classList.remove('listening');
-            voiceBtn.querySelector('.mic-icon').textContent = '🎤';
+        listeningIndicator.classList.remove('visible');
+        if (voiceBtn) voiceBtn.classList.remove('listening');
+    }
+}
+
+// ============================================
+// Process Bar Management
+// ============================================
+function updateProcessStep(step) {
+    currentProcessStep = step;
+    
+    processSteps.forEach((ps, index) => {
+        ps.classList.remove('active', 'completed');
+        
+        if (index < step) {
+            ps.classList.add('completed');
+        } else if (index === step) {
+            ps.classList.add('active');
         }
-    }
+    });
+    
+    stepLines.forEach((line, index) => {
+        line.classList.remove('active', 'completed');
+        
+        if (index < step) {
+            line.classList.add('completed');
+        } else if (index === step) {
+            line.classList.add('active');
+        }
+    });
+    
+    // Update process info content
+    updateProcessInfo(step);
 }
 
+function updateProcessInfo(step) {
+    if (!processInfoContent) return;
+    
+    const infos = [
+        "📞 L'IA décroche automatiquement l'appel et accueille le client avec un ton naturel et chaleureux.",
+        "💬 L'IA comprend les demandes du client, pose les bonnes questions et construit la commande étape par étape.",
+        "✅ L'IA résume la commande, confirme les détails et génère les notifications automatiquement.",
+        "🎉 Le processus est terminé ! SMS envoyé au client, ticket imprimé en cuisine."
+    ];
+    
+    processInfoContent.textContent = infos[step] || infos[0];
+}
+
+// ============================================
+// Workflow Steps Management
+// ============================================
+function updateWorkflowStep(step) {
+    currentWorkflowStep = step;
+    
+    workflowSteps.forEach((ws, index) => {
+        ws.classList.remove('active', 'completed');
+        
+        if (index < step) {
+            ws.classList.add('completed');
+        } else if (index === step) {
+            ws.classList.add('active');
+        }
+    });
+}
+
+// ============================================
 // Chat Functions
-function addBubble(text, isAI = true) {
-    if (!chatContainer) return;
+// ============================================
+function addMessage(text, isAI = true) {
+    if (!chatMessages) return;
     
-    const bubble = document.createElement('div');
-    bubble.className = `chat-bubble ${isAI ? 'ai' : 'user'}`;
-    bubble.textContent = text;
-    chatContainer.appendChild(bubble);
-    chatContainer.scrollTop = chatContainer.scrollHeight;
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${isAI ? 'ai' : 'user'}`;
     
-    // Hide quick scenarios after first message
-    const quickScenarios = document.getElementById('quickScenarios');
-    if (quickScenarios && !isAI) {
-        quickScenarios.style.display = 'none';
+    messageDiv.innerHTML = `
+        <div class="message-avatar">
+            ${isAI ? '🤖' : '👤'}
+        </div>
+        <div class="message-content">${text}</div>
+    `;
+    
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    
+    // Update workflow based on message content
+    if (!isAI) {
+        // User is responding
+        updateWorkflowStep(Math.min(currentWorkflowStep + 1, 4));
     }
 }
 
-function addLoadingBubble() {
-    const bubble = document.createElement('div');
-    bubble.className = 'chat-bubble ai loading';
-    bubble.id = 'loadingBubble';
-    bubble.innerHTML = '<span></span><span></span><span></span>';
-    chatContainer.appendChild(bubble);
-    chatContainer.scrollTop = chatContainer.scrollHeight;
+function showTyping() {
+    if (typingIndicator) {
+        typingIndicator.classList.add('visible');
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
 }
 
-function removeLoadingBubble() {
-    const loading = document.getElementById('loadingBubble');
-    if (loading) loading.remove();
+function hideTyping() {
+    if (typingIndicator) {
+        typingIndicator.classList.remove('visible');
+    }
 }
 
+// ============================================
 // API Communication
+// ============================================
 async function sendToAI(message = null) {
-    if (listeningText) listeningText.textContent = 'AI thinking...';
+    showTyping();
     
     try {
-        addLoadingBubble();
-        
         const response = await fetch('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -282,14 +337,19 @@ async function sendToAI(message = null) {
         });
         
         const data = await response.json();
-        removeLoadingBubble();
+        hideTyping();
         
         if (data.error) {
-            addBubble('Error: ' + data.error, true);
+            addMessage('Error: ' + data.error, true);
             return;
         }
         
-        addBubble(data.response, true);
+        addMessage(data.response, true);
+        
+        // Progress the process based on conversation
+        if (currentProcessStep === 0) {
+            updateProcessStep(1);
+        }
         
         if (data.audio) {
             playAIAudio(data.audio);
@@ -298,13 +358,12 @@ async function sendToAI(message = null) {
         }
         
         if (data.isConfirmed) {
-            playNotificationSound();
-            setTimeout(showOrderConfirmed, 2000);
+            showOrderConfirmation(data.response);
         }
         
     } catch (error) {
-        removeLoadingBubble();
-        addBubble('Connection error. Please try again.', true);
+        hideTyping();
+        addMessage('Connection error. Please try again.', true);
         console.error('Error:', error);
     }
 }
@@ -319,225 +378,263 @@ async function resetConversation() {
     } catch (e) {}
 }
 
+// ============================================
 // Order Confirmation
-function showOrderConfirmed() {
-    if (!chatSection || !orderSaved) return;
+// ============================================
+function showOrderConfirmation(aiResponse) {
+    // Update process to final step
+    updateProcessStep(3);
+    updateWorkflowStep(5);
     
-    chatSection.classList.add('hidden');
-    orderSaved.classList.remove('hidden');
+    // Activate confirmation cards
+    smsCard?.classList.add('active');
+    kitchenCard?.classList.add('active');
     
-    const orderInfo = extractOrderFromChat();
-    updateConfirmationUI(orderInfo);
-}
-
-function extractOrderFromChat() {
-    const bubbles = chatContainer?.querySelectorAll('.chat-bubble') || [];
-    let lastAIMessage = '';
+    const cardStatuses = document.querySelectorAll('.card-status');
+    cardStatuses.forEach(status => status.classList.add('ready'));
     
-    bubbles.forEach(bubble => {
-        if (bubble.classList.contains('ai')) {
-            lastAIMessage = bubble.textContent;
-        }
-    });
-    
-    const userBubbles = Array.from(chatContainer?.querySelectorAll('.chat-bubble.user') || []);
-    
-    let name = 'Customer';
-    let phone = '04XX XXX XXX';
-    let pickupTime = '12:30pm';
-    let items = ['Grilled Halloumi Salad'];
-    let total = '$17';
-    
-    userBubbles.forEach((bubble, index) => {
-        const text = bubble.textContent;
-        
-        if (text.match(/04\d{2}[\s.-]?\d{3}[\s.-]?\d{3}/) || text.match(/\d{10}/)) {
-            phone = text.trim();
-        } else if (text.match(/\d{1,2}[:.]\d{2}\s*(am|pm)?/i) || text.match(/\d{1,2}\s*(am|pm|o'clock)/i)) {
-            pickupTime = text.trim();
-        } else if (text.length < 30 && !text.match(/\d/) && index > 2) {
-            name = text.trim();
-        }
-    });
-    
-    const menuItems = ['Grilled Halloumi Salad', 'Onion Rings', 'Chocolate Brownie', 'Lemon Iced Tea'];
-    const prices = { 'Grilled Halloumi Salad': 17, 'Onion Rings': 6, 'Chocolate Brownie': 8, 'Lemon Iced Tea': 5 };
-    const foundItems = [];
-    
-    menuItems.forEach(item => {
-        if (lastAIMessage.toLowerCase().includes(item.toLowerCase())) {
-            foundItems.push(item);
-        }
-    });
-    
-    if (foundItems.length > 0) {
-        items = foundItems;
-        let totalNum = 0;
-        foundItems.forEach(item => { totalNum += prices[item] || 0; });
-        total = '$' + totalNum;
-    }
-    
-    return { name, phone, pickupTime, items, total };
-}
-
-function updateConfirmationUI(info) {
-    // Order Card
-    const orderCard = document.getElementById('orderCard');
-    if (orderCard) {
-        orderCard.innerHTML = `
-            <p><strong>Name:</strong> ${info.name}</p>
-            <p><strong>Mobile:</strong> ${info.phone}</p>
-            <p><strong>Pickup:</strong> ${info.pickupTime}</p>
-            <p><strong>Items:</strong></p>
-            <ul class="items-list">
-                ${info.items.map(item => `<li>${item}</li>`).join('')}
-            </ul>
-            <p class="total">Total: ${info.total}</p>
-        `;
-    }
-    
-    // SMS Bubble
-    const smsBubble = document.getElementById('smsBubble');
-    if (smsBubble) {
-        smsBubble.innerHTML = `
-            G'day ${info.name}! 🎉<br><br>
-            Your order is confirmed:<br>
-            ${info.items.map(item => `• ${item}`).join('<br>')}<br><br>
-            Total: ${info.total}<br>
-            📍 Pickup: ${info.pickupTime}<br><br>
-            Thanks mate! 🙏
-        `;
-    }
-    
-    // Kitchen Ticket
-    const orderNum = Math.floor(Math.random() * 900) + 100;
-    const now = new Date();
-    
-    if (document.getElementById('ticketOrderNum')) {
-        document.getElementById('ticketOrderNum').textContent = orderNum;
-    }
-    if (document.getElementById('ticketPickupTime')) {
-        document.getElementById('ticketPickupTime').textContent = info.pickupTime;
-    }
-    if (document.getElementById('ticketCustomerName')) {
-        document.getElementById('ticketCustomerName').textContent = info.name;
-    }
-    if (document.getElementById('ticketCustomerPhone')) {
-        document.getElementById('ticketCustomerPhone').textContent = info.phone;
-    }
-    if (document.getElementById('ticketDateTime')) {
-        document.getElementById('ticketDateTime').textContent = 
-            `${now.toLocaleDateString('en-AU')} - ${now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' })}`;
-    }
-    
-    const ticketItems = document.getElementById('ticketItems');
-    if (ticketItems) {
-        ticketItems.innerHTML = info.items.map(item => `
-            <div class="ticket-item">
-                <span class="ticket-item-qty">1x</span>${item}
+    // Generate SMS content
+    if (smsContent) {
+        smsContent.classList.remove('placeholder');
+        smsContent.innerHTML = `
+            <div class="sms-header">
+                <i class="fas fa-check-circle"></i>
+                <span>Aussie Bites Cafe</span>
             </div>
-        `).join('');
+            G'day! 🎉<br><br>
+            Your order is confirmed!<br><br>
+            📍 Ready for pickup soon<br><br>
+            Thanks mate! See you soon! 🙏
+        `;
+    }
+    
+    // Generate kitchen ticket
+    if (ticketContent) {
+        ticketContent.classList.remove('placeholder');
+        const orderNum = Math.floor(Math.random() * 900) + 100;
+        const now = new Date();
+        
+        ticketContent.innerHTML = `
+            <div class="ticket-header">
+                <h4>ORDER #${orderNum}</h4>
+                <div class="order-number">${now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' })}</div>
+            </div>
+            <div class="ticket-items">
+                <div class="ticket-item"><span>1x</span> Order Item</div>
+            </div>
+            <div class="ticket-time">
+                <strong>PICKUP</strong>
+                As requested
+            </div>
+        `;
     }
 }
 
-// ROI Calculator
-function updateROI() {
-    if (!missedCallsSlider || !avgOrderSlider) return;
+// ============================================
+// Handle Send
+// ============================================
+function handleSend(message = null) {
+    const text = message || userInput?.value?.trim();
+    if (!text) return;
     
-    const missedCalls = parseInt(missedCallsSlider.value);
-    const avgOrder = parseInt(avgOrderSlider.value);
+    addMessage(text, false);
+    if (userInput) userInput.value = '';
     
-    // Update displayed values
-    const missedCallsValue = document.getElementById('missedCallsValue');
-    const avgOrderValue = document.getElementById('avgOrderValue');
+    // Update process step
+    if (currentProcessStep < 2) {
+        updateProcessStep(2);
+    }
     
-    if (missedCallsValue) missedCallsValue.textContent = missedCalls;
-    if (avgOrderValue) avgOrderValue.textContent = '$' + avgOrder;
-    
-    // Calculate monthly lost revenue
-    const monthlyLost = missedCalls * avgOrder * 30;
-    
-    const lostRevenue = document.getElementById('lostRevenue');
-    const recoveredRevenue = document.getElementById('recoveredRevenue');
-    
-    if (lostRevenue) lostRevenue.textContent = '$' + monthlyLost.toLocaleString();
-    if (recoveredRevenue) recoveredRevenue.textContent = '$' + monthlyLost.toLocaleString() + '/month';
+    sendToAI(text);
 }
 
-// Navigation
-async function startDemo() {
-    if (!landing || !chatSection) return;
+// ============================================
+// Auto-Demo Mode
+// ============================================
+const autodemoPhrases = [
+    "Hi, I'd like to place an order for pickup please",
+    "Can I get a Grilled Halloumi Salad",
+    "And also some Onion Rings please",
+    "12:30pm would be great",
+    "My number is 0412 345 678",
+    "Sarah",
+    "Yes that's correct, thanks!"
+];
+
+let autodemoIndex = 0;
+
+async function startAutoDemo() {
+    isAutoDemoMode = true;
+    autodemoIndex = 0;
+    document.body.classList.add('auto-demo-active');
     
-    landing.classList.add('hidden');
-    chatSection.classList.remove('hidden');
+    // Reset conversation
+    await resetConversation();
+    if (chatMessages) chatMessages.innerHTML = '';
     
-    if (chatContainer) chatContainer.innerHTML = '';
+    // Reset process
+    updateProcessStep(0);
+    updateWorkflowStep(0);
     
-    const quickScenarios = document.getElementById('quickScenarios');
-    if (quickScenarios) quickScenarios.style.display = 'block';
+    // Reset confirmation cards
+    smsCard?.classList.remove('active');
+    kitchenCard?.classList.remove('active');
     
+    if (smsContent) {
+        smsContent.classList.add('placeholder');
+        smsContent.innerHTML = '<p class="sms-content placeholder">SMS will appear here when order is confirmed</p>';
+    }
+    if (ticketContent) {
+        ticketContent.classList.add('placeholder');
+        ticketContent.innerHTML = '<div class="ticket placeholder">Kitchen ticket will appear here when order is confirmed</div>';
+    }
+    
+    // Start with AI greeting
+    await sendToAI(null);
+    
+    // Schedule auto responses
+    scheduleNextAutoResponse();
+}
+
+function scheduleNextAutoResponse() {
+    if (!isAutoDemoMode || autodemoIndex >= autodemoPhrases.length) {
+        isAutoDemoMode = false;
+        document.body.classList.remove('auto-demo-active');
+        return;
+    }
+    
+    // Wait for AI to finish speaking, then respond
+    const checkAndRespond = () => {
+        if (!isSpeaking && !typingIndicator?.classList.contains('visible')) {
+            setTimeout(() => {
+                if (autodemoIndex < autodemoPhrases.length) {
+                    handleSend(autodemoPhrases[autodemoIndex]);
+                    autodemoIndex++;
+                    
+                    // Schedule next response after AI replies
+                    setTimeout(scheduleNextAutoResponse, 3000);
+                }
+            }, 1500);
+        } else {
+            setTimeout(checkAndRespond, 500);
+        }
+    };
+    
+    setTimeout(checkAndRespond, 2000);
+}
+
+function stopAutoDemo() {
+    isAutoDemoMode = false;
+    document.body.classList.remove('auto-demo-active');
+    if (autoDemoInterval) {
+        clearInterval(autoDemoInterval);
+        autoDemoInterval = null;
+    }
+}
+
+// ============================================
+// Interactive Mode
+// ============================================
+async function startInteractiveMode() {
+    stopAutoDemo();
     autoListenEnabled = true;
     
+    // Reset conversation
     await resetConversation();
+    if (chatMessages) chatMessages.innerHTML = '';
+    
+    // Reset process
+    updateProcessStep(0);
+    updateWorkflowStep(0);
+    
+    // Reset confirmation cards
+    smsCard?.classList.remove('active');
+    kitchenCard?.classList.remove('active');
+    
+    if (smsContent) {
+        smsContent.classList.add('placeholder');
+        smsContent.innerHTML = '<p class="sms-content placeholder">SMS will appear here when order is confirmed</p>';
+    }
+    if (ticketContent) {
+        ticketContent.classList.add('placeholder');
+        ticketContent.innerHTML = '<div class="ticket placeholder">Kitchen ticket will appear here when order is confirmed</div>';
+    }
+    
+    // Start with AI greeting
     await sendToAI(null);
-}
-
-function backToLanding() {
-    autoListenEnabled = false;
-    pauseListening();
     
-    chatSection?.classList.add('hidden');
-    orderSaved?.classList.add('hidden');
-    landing?.classList.remove('hidden');
+    // Scroll to demo section
+    document.querySelector('.demo-grid')?.scrollIntoView({ behavior: 'smooth' });
 }
 
+// ============================================
+// ROI Calculator
+// ============================================
+function calculateROI() {
+    const missedCalls = parseInt(document.getElementById('roiMissedCalls')?.value) || 0;
+    const avgOrder = parseInt(document.getElementById('roiAvgOrder')?.value) || 0;
+    const hourlyWage = parseInt(document.getElementById('roiHourlyWage')?.value) || 0;
+    
+    const monthlyRevenueLost = missedCalls * avgOrder * 30;
+    const monthlyLaborSaved = hourlyWage * 4 * 30; // 4 hours/day saved
+    const totalMonthlySavings = monthlyRevenueLost + monthlyLaborSaved;
+    
+    const results = document.getElementById('roiResults');
+    if (results) {
+        results.classList.add('visible');
+        results.innerHTML = `
+            <h3><i class="fas fa-chart-line"></i> Potential Monthly Impact</h3>
+            <div class="roi-stat">
+                <span>Recovered Revenue</span>
+                <span>$${monthlyRevenueLost.toLocaleString()}</span>
+            </div>
+            <div class="roi-stat">
+                <span>Labour Savings</span>
+                <span>$${monthlyLaborSaved.toLocaleString()}</span>
+            </div>
+            <div class="roi-stat">
+                <span><strong>Total Savings</strong></span>
+                <span><strong>$${totalMonthlySavings.toLocaleString()}/mo</strong></span>
+            </div>
+        `;
+    }
+}
+
+// ============================================
+// Menu Toggle
+// ============================================
+function toggleMenu() {
+    const menuSection = document.querySelector('.menu-section');
+    menuSection?.classList.toggle('hidden');
+}
+
+// ============================================
+// Modal Management
+// ============================================
+function openROIModal() {
+    const modal = document.getElementById('roiModal');
+    modal?.classList.add('visible');
+}
+
+function closeROIModal() {
+    const modal = document.getElementById('roiModal');
+    modal?.classList.remove('visible');
+}
+
+// ============================================
 // Event Listeners
+// ============================================
 document.addEventListener('DOMContentLoaded', () => {
-    // Start buttons
-    startBtn?.addEventListener('click', startDemo);
-    startBtn2?.addEventListener('click', startDemo);
-    
-    // Back buttons
-    backBtn?.addEventListener('click', backToLanding);
-    backToHomeBtn?.addEventListener('click', backToLanding);
-    
-    // Reset button
-    resetBtn?.addEventListener('click', async () => {
-        if (chatContainer) chatContainer.innerHTML = '';
-        const quickScenarios = document.getElementById('quickScenarios');
-        if (quickScenarios) quickScenarios.style.display = 'block';
-        
-        autoListenEnabled = true;
-        await resetConversation();
-        await sendToAI(null);
-    });
-    
-    // New order button
-    newOrderBtn?.addEventListener('click', () => {
-        orderSaved?.classList.add('hidden');
-        startDemo();
-    });
+    // Demo mode buttons
+    document.querySelector('.demo-mode-btn.interactive')?.addEventListener('click', startInteractiveMode);
+    document.querySelector('.demo-mode-btn.auto-demo')?.addEventListener('click', startAutoDemo);
     
     // Send button
-    sendBtn?.addEventListener('click', () => {
-        const message = userInput?.value?.trim();
-        if (!message) return;
-        
-        addBubble(message, false);
-        userInput.value = '';
-        sendToAI(message);
-    });
+    sendBtn?.addEventListener('click', () => handleSend());
     
     // Enter key
     userInput?.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            const message = userInput.value.trim();
-            if (!message) return;
-            
-            addBubble(message, false);
-            userInput.value = '';
-            sendToAI(message);
-        }
+        if (e.key === 'Enter') handleSend();
     });
     
     // Voice button
@@ -549,32 +646,33 @@ document.addEventListener('DOMContentLoaded', () => {
             autoListenEnabled = true;
             if (!isSpeaking) startListening();
         }
-        updateListeningUI(isListening ? 'listening' : 'ready');
     });
     
     // Scenario buttons
     document.querySelectorAll('.scenario-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const text = btn.dataset.text;
-            if (text) {
-                addBubble(text, false);
-                sendToAI(text);
-            }
+            if (text) handleSend(text);
         });
     });
     
     // Menu toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const menuCard = document.getElementById('menuCard');
+    document.querySelector('.menu-toggle-btn')?.addEventListener('click', toggleMenu);
     
-    menuToggle?.addEventListener('click', () => {
-        menuCard?.classList.toggle('collapsed');
+    // ROI Modal
+    document.querySelector('.btn-roi')?.addEventListener('click', openROIModal);
+    document.querySelector('.modal-close')?.addEventListener('click', closeROIModal);
+    document.querySelector('.modal-overlay')?.addEventListener('click', (e) => {
+        if (e.target.classList.contains('modal-overlay')) closeROIModal();
     });
     
-    // ROI Calculator sliders
-    missedCallsSlider?.addEventListener('input', updateROI);
-    avgOrderSlider?.addEventListener('input', updateROI);
+    // ROI Calculator
+    document.querySelector('.btn-calculate')?.addEventListener('click', calculateROI);
     
-    // Initial ROI calculation
-    updateROI();
+    // Initialize process bar
+    updateProcessStep(0);
+    updateWorkflowStep(0);
+    
+    // Initial info
+    updateProcessInfo(0);
 });
