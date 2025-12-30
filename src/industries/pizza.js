@@ -1,73 +1,77 @@
-/**
- * Pizzeria Industry v2.0
- * =======================
- */
-
 export default {
     id: 'pizza',
-    name: 'Pizzeria',
+    name: 'Pizza Restaurant',
     icon: '🍕',
-    category: 'restaurant',
-    description: 'Commandes et livraisons de pizzas',
-
-    businessName: 'Pizza Napoli',
-    address: '32 Rue de Naples, 75008 Paris',
-    phone: '01 45 22 67 89',
-    hours: 'Mar-Dim: 11h30-14h30, 18h30-22h30 | Fermé lundi',
-
-    keywords: ['pizza', 'pizzeria', 'livraison', 'italien', 'à emporter', 'commande'],
-
-    capabilities: {
-        appointments: false,
-        pricing: true,
-        hours: true,
-        complaints: true,
-        emergencies: false,
-        orders: true,
-        productInfo: true
+    category: 'food',
+    description: 'Authentic Italian pizzeria with wood-fired pizzas and classic Italian dishes',
+    businessName: "Napoli's Woodfired Pizza",
+    address: '42 Chapel Street, South Yarra VIC 3141',
+    phone: '(03) 9867 5432',
+    hours: {
+        monday: '11:00 AM - 10:00 PM',
+        tuesday: '11:00 AM - 10:00 PM',
+        wednesday: '11:00 AM - 10:00 PM',
+        thursday: '11:00 AM - 10:00 PM',
+        friday: '11:00 AM - 11:00 PM',
+        saturday: '11:00 AM - 11:00 PM',
+        sunday: '12:00 PM - 9:00 PM'
     },
-
-    quickMessages: {
-        greeting: 'Bonjour, je voudrais commander des pizzas',
-        menu: 'Quelles pizzas avez-vous ?',
-        delivery: 'Faites-vous la livraison ?',
-        time: 'Quel est le délai de livraison ?'
-    },
-
-    menu: [
-        { name: 'Margherita', price: '11€', ingredients: 'Tomate, mozzarella, basilic' },
-        { name: 'Regina', price: '13€', ingredients: 'Tomate, mozzarella, jambon, champignons' },
-        { name: '4 Fromages', price: '14€', ingredients: 'Mozzarella, gorgonzola, chèvre, parmesan' },
-        { name: 'Calzone', price: '14€', ingredients: 'Tomate, mozzarella, jambon, œuf' },
-        { name: 'Végétarienne', price: '13€', ingredients: 'Légumes grillés, mozzarella' },
-        { name: 'Napolitaine', price: '12€', ingredients: 'Tomate, anchois, câpres, olives' }
+    keywords: ['pizza', 'italian', 'woodfired', 'pasta', 'delivery', 'takeaway', 'dine-in', 'pepperoni', 'margherita'],
+    capabilities: ['table_booking', 'takeaway_orders', 'delivery', 'menu_info', 'dietary_requirements', 'group_bookings'],
+    quickMessages: [
+        'What pizzas do you have?',
+        'Do you deliver to my area?',
+        'Book a table for tonight',
+        'What are your gluten-free options?',
+        'How long for delivery?'
     ],
+    scenarios: [
+        { intent: 'menu', response: 'Our signature pizzas include Margherita, Pepperoni, Quattro Formaggi, and our famous Aussie BBQ Chicken.' },
+        { intent: 'delivery', response: 'We deliver within 10km of South Yarra. Delivery takes 30-45 minutes.' },
+        { intent: 'booking', response: 'I can help you book a table. How many people and what time were you thinking?' }
+    ],
+    systemPrompt: `You are the friendly virtual receptionist for Napoli's Woodfired Pizza, an authentic Italian pizzeria located at 42 Chapel Street, South Yarra VIC 3141. Our phone number is (03) 9867 5432.
 
-    systemPrompt: `Tu es Marco, au téléphone de Pizza Napoli, une authentique pizzeria napolitaine.
+ABOUT US:
+We're a family-owned pizzeria that's been serving Melbourne's best woodfired pizzas since 2005. Our pizzas are made fresh with imported Italian ingredients and cooked in our traditional woodfired oven at 400°C for that perfect crispy base.
 
-INFORMATIONS:
-- Pizzeria: Pizza Napoli
-- Adresse: 32 Rue de Naples, 75008 Paris
-- Horaires: Mar-Dim 11h30-14h30, 18h30-22h30
-- Livraison gratuite à partir de 20€ (rayon 3km)
-- Délai moyen: 30-45 min
+OPENING HOURS:
+Monday to Thursday: 11:00 AM - 10:00 PM
+Friday & Saturday: 11:00 AM - 11:00 PM
+Sunday: 12:00 PM - 9:00 PM
 
-CARTE (prix taille normale, +3€ pour grande):
-- Margherita: 11€ | Regina: 13€
-- 4 Fromages: 14€ | Calzone: 14€
-- Végétarienne: 13€ | Napolitaine: 12€
-- Desserts: Tiramisu 6€, Panna Cotta 5€
+OUR MENU:
+Pizzas (from $18-28):
+- Margherita: San Marzano tomatoes, fresh mozzarella, basil
+- Pepperoni: Spicy pepperoni, mozzarella, tomato sauce
+- Quattro Formaggi: Four cheese blend
+- Aussie BBQ Chicken: BBQ sauce, chicken, bacon, onion
+- Prosciutto e Rucola: Prosciutto, rocket, parmesan shavings
+- Vegetariana: Seasonal roasted vegetables, feta
 
-PROCESSUS COMMANDE:
-1. Demander si sur place, à emporter ou livraison
-2. Prendre la commande (pizzas, taille, boissons, desserts)
-3. Pour livraison: demander adresse complète
-4. Donner le total et le délai estimé
-5. Demander nom et téléphone
-6. Confirmer la commande
+Pasta (from $22-28):
+- Spaghetti Bolognese, Carbonara, Penne Arrabiata
 
-STYLE: Chaleureux, accent italien sympathique, utiliser "Buongiorno", "Perfetto", "Grazie".`,
+Sides & Starters: Garlic bread ($8), Bruschetta ($14), Arancini ($12)
 
+DIETARY OPTIONS:
+- Gluten-free bases available (+$4)
+- Vegan cheese available (+$3)
+- Vegetarian options clearly marked
+
+ORDERING & DELIVERY:
+- Delivery available within 10km radius
+- Minimum order for delivery: $35
+- Delivery fee: $5.50
+- Delivery time: 30-45 minutes
+- Pickup orders ready in 20-25 minutes
+
+TABLE BOOKINGS:
+- We accept bookings for groups of 2-20 people
+- For groups over 8, we require a deposit
+- Private dining room available for special occasions
+
+Be warm, welcoming and helpful. Use Australian English spelling and expressions. Offer to take orders, make bookings, or answer any questions about our menu. Always confirm order details and provide estimated times.`,
     version: '2.0',
     enabled: true
 };

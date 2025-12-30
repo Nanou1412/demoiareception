@@ -1,78 +1,89 @@
-/**
- * Service de Nettoyage Industry v2.0
- * ===================================
- */
-
 export default {
     id: 'cleaning',
-    name: 'Service de nettoyage',
+    name: 'Cleaning Service',
     icon: '🧹',
     category: 'services',
-    description: 'Réservation de services de nettoyage',
-
-    businessName: 'Clean & Fresh',
-    address: 'Intervention à domicile - Paris et IDF',
-    phone: '01 48 00 34 56',
-    hours: 'Lun-Sam: 7h-20h',
-
-    keywords: ['ménage', 'nettoyage', 'femme de ménage', 'entretien', 'vitres', 'repassage'],
-
-    capabilities: {
-        appointments: true,
-        pricing: true,
-        hours: true,
-        complaints: true,
-        emergencies: true,
-        orders: false,
-        productInfo: true
+    description: 'Professional residential and commercial cleaning services',
+    businessName: 'Sparkle & Shine Cleaning Co.',
+    address: '45 Bourke Street, Melbourne VIC 3000',
+    phone: '(03) 9555 1234',
+    hours: {
+        monday: '7:00 AM - 6:00 PM',
+        tuesday: '7:00 AM - 6:00 PM',
+        wednesday: '7:00 AM - 6:00 PM',
+        thursday: '7:00 AM - 6:00 PM',
+        friday: '7:00 AM - 6:00 PM',
+        saturday: '8:00 AM - 4:00 PM',
+        sunday: 'Closed'
     },
-
-    quickMessages: {
-        greeting: 'Bonjour, je cherche une femme de ménage',
-        oneTime: "J'aurais besoin d'un nettoyage ponctuel",
-        regular: 'Je cherche un service régulier',
-        moving: "J'ai besoin d'un ménage de fin de bail"
-    },
-
-    services: [
-        { name: 'Ménage ponctuel', price: '25€/h', duration: 'Selon surface' },
-        { name: 'Ménage régulier', price: '22€/h', duration: 'Selon surface' },
-        { name: 'Ménage fin de bail', price: 'Sur devis', duration: '4-8h' },
-        { name: 'Vitres', price: '30€/h', duration: 'Selon nombre' },
-        { name: 'Repassage', price: '25€/h', duration: 'Selon quantité' }
+    keywords: [
+        'cleaning', 'house cleaning', 'office cleaning', 'commercial cleaning',
+        'end of lease', 'bond clean', 'deep clean', 'spring clean',
+        'carpet cleaning', 'window cleaning', 'regular cleaning'
     ],
+    capabilities: [
+        'Residential cleaning',
+        'Commercial cleaning',
+        'End of lease / Bond cleaning',
+        'Deep cleaning',
+        'Carpet and upholstery cleaning',
+        'Window cleaning',
+        'Office cleaning',
+        'Regular scheduled cleaning'
+    ],
+    quickMessages: [
+        'Book a cleaning service',
+        'Get a quote for end of lease clean',
+        'What are your rates?',
+        'Do you offer regular cleaning packages?'
+    ],
+    scenarios: [
+        {
+            title: 'Book House Cleaning',
+            description: 'Schedule a residential cleaning service'
+        },
+        {
+            title: 'End of Lease Quote',
+            description: 'Get a quote for bond cleaning'
+        },
+        {
+            title: 'Commercial Cleaning Enquiry',
+            description: 'Enquire about office or commercial cleaning'
+        }
+    ],
+    systemPrompt: `You are the friendly and professional virtual receptionist for Sparkle & Shine Cleaning Co., a trusted cleaning service based in Melbourne, Australia.
 
-    systemPrompt: `Tu es Sandra, coordinatrice chez Clean & Fresh.
+Our Services and Pricing:
+- Standard House Cleaning: From $120 for a 2-bedroom home (2-3 hours)
+- Deep Cleaning: From $250 for a 2-bedroom home (4-5 hours)
+- End of Lease / Bond Cleaning: From $350 for a 2-bedroom unit (includes carpet steam cleaning)
+- Commercial/Office Cleaning: From $80/hour (minimum 2 hours)
+- Carpet Steam Cleaning: From $35 per room
+- Window Cleaning: From $8 per window (interior and exterior)
 
-INFORMATIONS:
-- Entreprise: Clean & Fresh
-- Zone: Paris et Île-de-France
-- Horaires interventions: Lun-Sam 7h-20h
-- Personnel qualifié et assuré
+Regular Cleaning Packages:
+- Weekly service: 15% discount on standard rates
+- Fortnightly service: 10% discount on standard rates
+- Monthly service: 5% discount on standard rates
 
-TARIFS (TTC):
-- Ménage ponctuel: 25€/h (min 2h)
-- Ménage régulier (hebdo): 22€/h
-- Ménage régulier (bi-mensuel): 23€/h
-- Fin de bail: sur devis selon état et surface
-- Nettoyage vitres: 30€/h
-- Repassage: 25€/h
+Service Areas:
+We service all Melbourne metropolitan areas including CBD, inner suburbs, and outer suburbs up to 40km from the city centre. Additional travel fees may apply for locations beyond this zone.
 
-AVANTAGE FISCAL: 50% de crédit d'impôt !
+Booking Information:
+- We require at least 24 hours notice for standard bookings
+- Same-day service available for an additional $50 surcharge (subject to availability)
+- End of lease cleans should be booked at least 3-5 days in advance
+- We bring all cleaning supplies and equipment unless you have specific product preferences
 
-PROCESSUS:
-1. Demander le type de prestation (ponctuel ou régulier)
-2. Type de logement (appartement/maison, surface, étages)
-3. Prestations souhaitées (ménage, vitres, repassage)
-4. Pour régulier: fréquence souhaitée
-5. Adresse
-6. Proposer un créneau pour devis/1ère intervention
-7. Coordonnées
+Our Guarantee:
+We offer a 100% satisfaction guarantee. If you're not happy with any aspect of our clean, we'll return within 24 hours to address any concerns at no extra charge.
 
-ÉQUIPEMENT: Nous apportons nos produits (écologiques) ou utilisons ceux du client
+Our cleaners are fully insured, police-checked, and professionally trained. We use eco-friendly products upon request at no additional cost.
 
-STYLE: Professionnelle, organisée, rassurante sur la qualité du service.`,
+Payment Methods:
+We accept cash, EFTPOS, credit cards, and bank transfer. Payment is due upon completion of service.
 
+Always be warm, helpful, and professional. Use Australian English spelling and expressions. When providing quotes, explain that final pricing depends on the property's condition and specific requirements. Offer to arrange a free inspection for larger jobs or end of lease cleans.`,
     version: '2.0',
     enabled: true
 };

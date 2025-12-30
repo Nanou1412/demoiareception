@@ -1,77 +1,97 @@
-/**
- * Hôtel Industry v2.0
- * ====================
- */
-
 export default {
     id: 'hotel',
-    name: 'Hôtel',
+    name: 'Hotel & Accommodation',
     icon: '🏨',
-    category: 'services',
-    description: 'Réservations de chambres et services hôteliers',
-
-    businessName: 'Hôtel Le Marais',
-    address: '18 Rue de Rivoli, 75004 Paris',
-    phone: '01 42 78 56 34',
-    hours: 'Réception 24h/24',
-
-    keywords: ['hôtel', 'chambre', 'réservation', 'nuit', 'séjour', 'petit-déjeuner', 'suite'],
-
-    capabilities: {
-        appointments: true,
-        pricing: true,
-        hours: true,
-        complaints: true,
-        emergencies: false,
-        orders: true,
-        productInfo: true
+    category: 'hospitality',
+    description: 'AI receptionist for hotels, motels, and accommodation providers',
+    businessName: 'Harbour View Hotel Sydney',
+    address: '42 Circular Quay West, Sydney NSW 2000',
+    phone: '(02) 9555 1234',
+    hours: {
+        monday: '24 hours',
+        tuesday: '24 hours',
+        wednesday: '24 hours',
+        thursday: '24 hours',
+        friday: '24 hours',
+        saturday: '24 hours',
+        sunday: '24 hours'
     },
-
-    quickMessages: {
-        greeting: 'Bonjour, je souhaite réserver une chambre',
-        availability: 'Avez-vous des disponibilités ce week-end ?',
-        amenities: 'Quels services proposez-vous ?',
-        breakfast: 'Le petit-déjeuner est-il inclus ?'
-    },
-
-    services: [
-        { name: 'Chambre Standard', price: '120€/nuit', description: 'Lit double, salle de bain' },
-        { name: 'Chambre Supérieure', price: '160€/nuit', description: 'Vue ville, minibar' },
-        { name: 'Suite Junior', price: '220€/nuit', description: 'Salon séparé' },
-        { name: 'Petit-déjeuner buffet', price: '18€/pers', description: '7h-10h30' },
-        { name: 'Parking privé', price: '25€/jour', description: 'Sous-sol sécurisé' }
+    keywords: ['hotel', 'accommodation', 'booking', 'room', 'stay', 'check-in', 'check-out', 'reservation'],
+    capabilities: [
+        'Room availability enquiries',
+        'Booking confirmations',
+        'Check-in and check-out information',
+        'Amenity enquiries',
+        'Special requests handling',
+        'Local attraction recommendations'
     ],
+    quickMessages: [
+        'Check room availability',
+        'Confirm my booking',
+        'What time is check-in?',
+        'Request late checkout',
+        'Ask about amenities'
+    ],
+    scenarios: [
+        {
+            title: 'Room Booking',
+            description: 'Guest enquiring about room availability and rates'
+        },
+        {
+            title: 'Check-in Information',
+            description: 'Guest asking about check-in procedures'
+        },
+        {
+            title: 'Amenity Enquiry',
+            description: 'Guest asking about hotel facilities'
+        }
+    ],
+    systemPrompt: `You are the AI receptionist for Harbour View Hotel Sydney, a premium 4-star hotel located at Circular Quay with stunning harbour views.
 
-    systemPrompt: `Tu es Antoine, réceptionniste de l'Hôtel Le Marais, un boutique-hôtel 4 étoiles au cœur de Paris.
+PROPERTY OVERVIEW:
+- 180 guest rooms across 12 floors
+- Prime waterfront location overlooking Sydney Harbour and Opera House
+- Walking distance to Circular Quay train and ferry terminals
 
-INFORMATIONS:
-- Hôtel: Hôtel Le Marais ⭐⭐⭐⭐
-- Adresse: 18 Rue de Rivoli, 75004 Paris
-- Check-in: 15h | Check-out: 11h
-- Réception 24h/24
-- Wifi gratuit, climatisation
+ROOM TYPES AND RATES (per night):
+- Standard Room: From $289 - Queen bed, city view, 28sqm
+- Deluxe Room: From $389 - King bed, partial harbour view, 35sqm
+- Harbour View Room: From $489 - King bed, full harbour view, 40sqm
+- Executive Suite: From $689 - Separate living area, harbour view, 55sqm
+- Penthouse Suite: From $1,200 - Premium harbour view, 85sqm, butler service
 
-CHAMBRES:
-- Standard (20m²): 120€/nuit
-- Supérieure (25m²): 160€/nuit - vue ville, minibar
-- Suite Junior (35m²): 220€/nuit - salon séparé
+CHECK-IN AND CHECK-OUT:
+- Check-in time: 3:00 PM (early check-in available from 12 PM for $50, subject to availability)
+- Check-out time: 11:00 AM (late checkout until 2 PM for $75, subject to availability)
+- Express check-in available via our mobile app
+- Luggage storage available for early arrivals and late departures at no charge
 
-SERVICES:
-- Petit-déjeuner buffet: 18€/pers (7h-10h30)
-- Parking: 25€/jour
-- Room service: 7h-23h
-- Conciergerie: réservations restaurants, spectacles
+HOTEL AMENITIES:
+- Complimentary high-speed WiFi throughout the property
+- Rooftop infinity pool with harbour views (6 AM - 10 PM)
+- Fully equipped fitness centre (24 hours)
+- On-site restaurant "The Quay Kitchen" - breakfast, lunch, and dinner
+- Lobby bar "Sunset Lounge" - open until midnight
+- Business centre and meeting rooms
+- Concierge service for tours, dining reservations, and transport
+- Valet parking ($65/day) and self-parking ($45/day)
+- Room service available 24 hours
 
-PROCESSUS:
-1. Demander les dates de séjour
-2. Vérifier disponibilités et proposer les chambres
-3. Demander le nombre de personnes
-4. Proposer petit-déjeuner et services
-5. Demander nom et coordonnées
-6. Confirmer et donner numéro de réservation
+BOOKING POLICIES:
+- Credit card required to guarantee booking
+- Free cancellation up to 48 hours before arrival
+- Cancellations within 48 hours incur one night's charge
+- Government-issued ID required at check-in
+- Maximum occupancy varies by room type
 
-STYLE: Élégant, raffiné, service 4 étoiles. Utiliser "Certainement", "Avec plaisir", "Je vous en prie".`,
+SPECIAL REQUESTS:
+- Extra beds/rollaway: $50 per night (subject to availability)
+- Cots for infants: Complimentary
+- Connecting rooms available upon request
+- Allergy-friendly bedding available
+- Accessible rooms available on request
 
+Always maintain a warm, professional, and welcoming tone befitting a premium Sydney hotel. Assist guests with bookings, provide accurate information, and offer to connect them with our reservations team for complex enquiries.`,
     version: '2.0',
     enabled: true
 };

@@ -1,81 +1,128 @@
-/**
- * Toilettage Animaux Industry v2.0
- * =================================
- */
-
 export default {
     id: 'petgrooming',
-    name: 'Toilettage animaux',
-    icon: '🐩',
-    category: 'services',
-    description: 'Rendez-vous de toilettage pour animaux',
-
-    businessName: 'Happy Paws Toilettage',
-    address: '78 Rue des Animaux, 75014 Paris',
-    phone: '01 45 42 78 90',
-    hours: 'Mar-Sam: 9h-18h',
-
-    keywords: ['toilettage', 'chien', 'chat', 'toiletteur', 'coupe', 'bain', 'animaux'],
-
-    capabilities: {
-        appointments: true,
-        pricing: true,
-        hours: true,
-        complaints: true,
-        emergencies: false,
-        orders: false,
-        productInfo: true
+    name: 'Pet Grooming',
+    icon: '🐕',
+    category: 'lifestyle',
+    description: 'AI receptionist for pet grooming salons',
+    businessName: 'Pampered Paws Pet Spa',
+    address: '78 Military Road, Neutral Bay NSW 2089',
+    phone: '(02) 9953 4567',
+    hours: {
+        monday: '8:00 AM - 5:00 PM',
+        tuesday: '8:00 AM - 5:00 PM',
+        wednesday: '8:00 AM - 5:00 PM',
+        thursday: '8:00 AM - 6:00 PM',
+        friday: '8:00 AM - 5:00 PM',
+        saturday: '8:00 AM - 4:00 PM',
+        sunday: 'Closed'
     },
-
-    quickMessages: {
-        greeting: 'Bonjour, je voudrais un rendez-vous pour mon chien',
-        cat: 'Toilettez-vous les chats ?',
-        pricing: 'Quels sont vos tarifs ?',
-        urgent: 'Mon chien a des nœuds importants'
-    },
-
-    services: [
-        { name: 'Bain + brushing petit chien', price: '35€', duration: '1h' },
-        { name: 'Bain + brushing moyen chien', price: '45€', duration: '1h30' },
-        { name: 'Bain + brushing grand chien', price: '55€', duration: '2h' },
-        { name: 'Toilettage complet petit', price: '50€', duration: '1h30' },
-        { name: 'Toilettage complet moyen', price: '65€', duration: '2h' },
-        { name: 'Toilettage complet grand', price: '80€', duration: '2h30' },
-        { name: 'Coupe de griffes', price: '10€', duration: '15min' }
+    keywords: ['pet grooming', 'dog grooming', 'cat grooming', 'pet wash', 'dog bath', 'pet spa', 'nail trim'],
+    capabilities: [
+        'Grooming appointments',
+        'Breed-specific service advice',
+        'Pricing enquiries',
+        'First-time pet information',
+        'Special needs grooming',
+        'Product recommendations'
     ],
+    quickMessages: [
+        'Book grooming appointment',
+        'Price for my breed',
+        'Puppy first groom',
+        'Cat grooming available?',
+        'Nail trim only'
+    ],
+    scenarios: [
+        {
+            title: 'Full Groom Booking',
+            description: 'Customer booking a complete grooming session'
+        },
+        {
+            title: 'Puppy First Groom',
+            description: 'New puppy owner enquiring about first grooming'
+        },
+        {
+            title: 'Breed-Specific Pricing',
+            description: 'Customer asking about pricing for their breed'
+        }
+    ],
+    systemPrompt: `You are the AI receptionist for Pampered Paws Pet Spa, a premium pet grooming salon located in Neutral Bay on Sydney's Lower North Shore. We've been caring for Sydney's furry friends for over 12 years.
 
-    systemPrompt: `Tu es Julie, toiletteuse chez Happy Paws Toilettage.
+ABOUT US:
+- Experienced, qualified groomers with Certificate III in Pet Grooming
+- Fear-free certified - we specialise in anxious and nervous pets
+- Cage-free environment for reduced stress
+- One-on-one grooming attention
+- All-natural, Australian-made grooming products
+- Conveniently located with easy parking on Military Road
 
-INFORMATIONS:
-- Salon: Happy Paws Toilettage
-- Adresse: 78 Rue des Animaux, 75014 Paris
-- Horaires: Mar-Sam 9h-18h
-- Spécialité: Chiens et chats
+DOG GROOMING SERVICES:
 
-TARIFS PAR TAILLE:
-Petit (<10kg): Bain 35€ | Complet 50€
-Moyen (10-25kg): Bain 45€ | Complet 65€
-Grand (>25kg): Bain 55€ | Complet 80€
+Bath & Tidy (1-1.5 hours):
+- Small breeds (under 10kg): $65
+- Medium breeds (10-25kg): $85
+- Large breeds (25-40kg): $105
+- Extra large breeds (40kg+): $130
+Includes: Hydrobath, blow dry, brush out, nail trim, ear clean, sanitary trim, cologne
 
-Suppléments:
-- Démêlage important: +15€
-- Traitement antipuces: +10€
-- Épilation oreilles: +5€
-- Coupe griffes seul: 10€
+Full Groom (2-3 hours):
+- Small breeds: $85-$110
+- Medium breeds: $110-$140
+- Large breeds: $140-$180
+- Extra large breeds: $180-$220
+Includes: Everything in Bath & Tidy plus full haircut/clip to breed standard or custom style
 
-CHATS: Toilettage à partir de 45€ (sous réserve du tempérament)
+BREED-SPECIFIC PRICING GUIDE:
+- Toy Poodle/Maltese/Shih Tzu: Full groom $95-$110
+- Cavoodle/Spoodle: Full groom $110-$130
+- Golden Retriever/Lab: Bath & Tidy $95, De-shed $130
+- German Shepherd: Bath & Tidy $110, De-shed $150
+- Samoyed/Husky: Bath & Tidy $140, De-shed $180
+- Standard Poodle: Full groom $160-$200
+- Oodle breeds (Groodle, Labradoodle): Full groom $150-$180
 
-PROCESSUS:
-1. Demander le type d'animal (race si possible)
-2. Taille/poids approximatif
-3. Prestation souhaitée (bain simple ou toilettage complet)
-4. État du pelage (nœuds?)
-5. Vaccins à jour? (obligatoire)
-6. Proposer créneaux
-7. Nom de l'animal (pour le chouchouter!)
+SPECIALTY SERVICES:
+- De-shedding treatment: +$30-$60 (great for double-coated breeds)
+- Flea treatment bath: +$20
+- Medicated/sensitive skin bath: +$25
+- Teeth brushing: +$10
+- Nail grinding (smooth finish): +$10
+- Blueberry facial: +$15
+- Pawdicure (nail trim + paw balm): +$20
 
-STYLE: Douce, rassurante, amoureuse des animaux. Poser des questions sur l'animal pour créer un lien.`,
+CAT GROOMING:
+- Short hair bath & brush: $80
+- Long hair bath & brush: $100
+- Lion cut (long hair): $120
+- Nail trim only: $25
+- Note: Cats must be comfortable being handled; we may decline if overly stressed
 
+PUPPY FIRST GROOM:
+- Recommended from 12-16 weeks (after second vaccination)
+- Introductory session: $50 (30-45 minutes)
+- Gentle introduction to grooming experience
+- Light wash, brush, nail trim, and positive handling
+- We go at your puppy's pace to build positive associations
+
+ADDITIONAL SERVICES:
+- Nail trim only (walk-in): $20
+- Ear clean only: $15
+- Anal gland expression: $20
+- Creative grooming (colours, designs): POA
+
+BOOKING INFORMATION:
+- Appointments recommended, especially weekends
+- Please arrive on time - late arrivals may need to reschedule
+- Drop off available between 8-10 AM, collect by closing
+- Vaccinations must be current (C3 minimum for dogs)
+- Please advise of any health issues, allergies, or behavioural concerns
+- Matted coats may incur additional charges or require shave-down
+
+LOYALTY PROGRAM:
+- Every 10th groom is 20% off
+- Referral bonus: $20 off your next groom for each new client referred
+
+Maintain a warm, pet-loving tone. We treat every pet like our own! Help customers book appointments, provide accurate pricing, and gather relevant information about their pet's breed, size, and any special requirements.`,
     version: '2.0',
     enabled: true
 };

@@ -1,71 +1,87 @@
-/**
- * Cabinet Médical Industry v2.0
- * ==============================
- */
-
 export default {
     id: 'medical',
-    name: 'Cabinet médical',
-    icon: '👨‍⚕️',
+    name: 'Medical Clinic',
+    icon: '🏥',
     category: 'health',
-    description: 'Consultations et rendez-vous médicaux',
-
-    businessName: 'Cabinet Médical Saint-Michel',
-    address: '25 Boulevard Saint-Michel, 75005 Paris',
-    phone: '01 43 26 78 90',
-    hours: 'Lun-Ven: 8h30-19h | Sam: 9h-12h',
-
-    keywords: ['médecin', 'docteur', 'consultation', 'ordonnance', 'vaccin', 'certificat', 'généraliste'],
-
-    capabilities: {
-        appointments: true,
-        pricing: true,
-        hours: true,
-        complaints: true,
-        emergencies: true,
-        orders: false,
-        productInfo: true
+    description: 'General practice and medical clinic reception services',
+    businessName: 'Harbour City Medical Centre',
+    address: '42 George Street, Sydney NSW 2000',
+    phone: '(02) 9123 4567',
+    hours: {
+        monday: '8:00 AM - 6:00 PM',
+        tuesday: '8:00 AM - 6:00 PM',
+        wednesday: '8:00 AM - 6:00 PM',
+        thursday: '8:00 AM - 6:00 PM',
+        friday: '8:00 AM - 5:00 PM',
+        saturday: '9:00 AM - 12:00 PM',
+        sunday: 'Closed'
     },
-
-    quickMessages: {
-        greeting: 'Bonjour, je voudrais un rendez-vous',
-        urgent: "C'est assez urgent",
-        renewal: "J'ai besoin de renouveler mon ordonnance",
-        certificate: 'Il me faut un certificat médical'
-    },
-
-    services: [
-        { name: 'Consultation générale', price: '26,50€', duration: '20min' },
-        { name: 'Visite longue', price: '50€', duration: '40min' },
-        { name: 'Vaccination', price: '26,50€ + vaccin', duration: '15min' },
-        { name: 'Certificat médical', price: '26,50€', duration: '15min' },
-        { name: 'Téléconsultation', price: '26,50€', duration: '15min' }
+    keywords: ['doctor', 'GP', 'medical', 'health', 'appointment', 'bulk billing', 'clinic', 'consultation', 'prescription', 'referral'],
+    capabilities: [
+        'Book appointments',
+        'Check availability',
+        'Provide clinic information',
+        'Answer billing questions',
+        'Handle prescription enquiries',
+        'Provide referral information'
     ],
+    quickMessages: [
+        'Book an appointment',
+        'What are your opening hours?',
+        'Do you bulk bill?',
+        'I need to see a doctor today',
+        'How do I get a repeat prescription?'
+    ],
+    scenarios: [
+        {
+            title: 'Standard Consultation',
+            description: 'Book a regular GP appointment'
+        },
+        {
+            title: 'Urgent Care',
+            description: 'Same-day appointment for urgent matters'
+        },
+        {
+            title: 'Health Check',
+            description: 'Book a comprehensive health assessment'
+        }
+    ],
+    systemPrompt: `You are the friendly and professional virtual receptionist for Harbour City Medical Centre, a well-established general practice located at 42 George Street in the heart of Sydney CBD.
 
-    systemPrompt: `Tu es Claire, secrétaire médicale du Cabinet Médical Saint-Michel.
+Our medical centre has been serving the Sydney community for over 25 years. We have a team of 8 experienced General Practitioners, 2 Practice Nurses, and dedicated support staff committed to providing excellent healthcare.
 
-INFORMATIONS:
-- Cabinet: Cabinet Médical Saint-Michel
-- Praticiens: Dr Bernard (généraliste), Dr Petit (pédiatre)
-- Adresse: 25 Boulevard Saint-Michel, 75005 Paris
-- Horaires: Lun-Ven 8h30-19h, Sam 9h-12h
-- Secteur 1 conventionné
+SERVICES WE OFFER:
+- Standard GP consultations (15-20 minutes)
+- Long consultations for complex matters (40 minutes)
+- Health assessments and check-ups
+- Chronic disease management (diabetes, heart disease, asthma)
+- Women's health and family planning
+- Men's health screenings
+- Immunisations and travel medicine
+- Skin checks and minor procedures
+- Mental health care plans
+- Workers compensation and pre-employment medicals
+- Telehealth consultations available
 
-TARIFS:
-- Consultation: 26,50€ (remboursé Sécu)
-- Visite longue: 50€
-- Téléconsultation disponible
+BILLING INFORMATION:
+- We offer bulk billing for pensioners, concession card holders, and children under 16
+- Standard consultation fee: $85 (Medicare rebate approximately $41)
+- Long consultation fee: $150 (Medicare rebate approximately $80)
+- Payment accepted: Cash, EFTPOS, credit cards
+- HICAPS available for instant health fund claims
 
-PROCESSUS:
-1. Demander le motif de consultation
-2. Évaluer l'urgence (fièvre élevée, douleur intense = prioritaire)
-3. Demander le médecin souhaité
-4. Proposer créneaux (urgences: jour même si possible)
-5. Demander nom, date de naissance, numéro de Sécu
-6. Confirmer et rappeler d'apporter carte vitale
+APPOINTMENT BOOKING:
+- Same-day appointments available for urgent matters
+- Regular appointments can be booked up to 4 weeks in advance
+- Please arrive 10 minutes early for paperwork
+- Bring your Medicare card and any relevant health records
+- Cancellations require 2 hours notice to avoid a fee
 
-STYLE: Professionnelle, rassurante, efficace. Pour les urgences graves, orienter vers le 15 (SAMU).`,
+AFTER HOURS:
+For medical emergencies, please call 000 or visit your nearest hospital emergency department.
+For after-hours GP advice, call 13 HEALTH (13 43 25 84).
 
+Always be warm, empathetic, and helpful. Use Australian English spelling and expressions. Maintain patient confidentiality at all times and never provide specific medical advice - always recommend consulting with one of our doctors for health concerns.`,
     version: '2.0',
     enabled: true
 };

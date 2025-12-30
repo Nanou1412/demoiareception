@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en-AU">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Démonstration interactive de l'IA Réceptionniste - Testez la conversation en temps réel">
+    <meta name="description" content="Interactive AI Receptionist Demo - Test the conversation in real-time">
     <meta name="theme-color" content="#6366f1">
     
     <!-- Favicon -->
@@ -14,15 +14,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <title>Démo - IA Réceptionniste</title>
+    <title>Demo - AI Receptionist</title>
 </head>
-<body>
+<body class="dark-mode">
     <!-- Header -->
-    <header class="header">
+    <header class="header demo-header">
         <div class="container">
             <a href="/" class="logo">
                 <span class="logo-icon">📞</span>
-                <span class="logo-text">IA Réceptionniste</span>
+                <span class="logo-text">AI Receptionist</span>
             </a>
             
             <div class="current-industry" id="currentIndustry">
@@ -32,9 +32,9 @@
             
             <div class="header-actions">
                 <button class="btn btn-outline btn-sm" id="changeIndustry">
-                    🔄 Changer
+                    🔄 Change
                 </button>
-                <button class="btn btn-outline btn-sm" id="themeToggle" aria-label="Changer le thème">
+                <button class="btn btn-outline btn-sm" id="themeToggle" aria-label="Toggle theme">
                     🌙
                 </button>
             </div>
@@ -44,85 +44,129 @@
     <!-- Demo Section -->
     <main class="demo-page">
         <div class="container">
-            <div class="demo-layout">
+            <div class="demo-grid">
                 <!-- Left: Phone Simulator -->
-                <div class="demo-phone-column">
-                    <div class="demo-phone-container" id="phoneContainer">
-                        <!-- Phone UI will be rendered here by JS -->
+                <div class="phone-container">
+                    <div class="phone-frame" id="phoneContainer">
+                        <!-- Phone Header -->
+                        <div class="phone-header">
+                            <div class="phone-notch"></div>
+                            <div class="call-status">
+                                <span class="call-pulse"></span>
+                                <span>Call in progress</span>
+                            </div>
+                            <div class="call-timer" id="callTimer">00:00</div>
+                        </div>
+                        
+                        <!-- Phone Screen -->
+                        <div class="phone-screen">
+                            <div class="caller-info">
+                                <div class="caller-avatar" id="callerAvatar">🤖</div>
+                                <div class="caller-name" id="callerName">AI Receptionist</div>
+                                <div class="caller-number" id="callerNumber">Business Line</div>
+                            </div>
+                            
+                            <div class="conversation" id="conversation">
+                                <!-- Messages will be added here -->
+                            </div>
+                            
+                            <div class="typing-indicator" id="typingIndicator">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        
+                        <!-- Phone Controls -->
+                        <div class="phone-controls">
+                            <div class="input-area">
+                                <input type="text" 
+                                       id="messageInput" 
+                                       placeholder="Type your message..."
+                                       autocomplete="off">
+                                <button class="control-btn voice" id="voiceBtn" aria-label="Voice input">
+                                    🎤
+                                </button>
+                                <button class="control-btn send" id="sendBtn" aria-label="Send">
+                                    ➤
+                                </button>
+                            </div>
+                            
+                            <div class="quick-actions" id="quickActions">
+                                <button class="quick-btn" data-message="I'd like to make a booking">📅 Book</button>
+                                <button class="quick-btn" data-message="What are your hours?">🕐 Hours</button>
+                                <button class="quick-btn" data-message="What's on the menu?">📋 Menu</button>
+                                <button class="quick-btn" data-message="I need to cancel">❌ Cancel</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Right: Info & Controls -->
-                <div class="demo-info-column">
+                <div class="results-panel">
                     <!-- Scenario Selector -->
-                    <div class="demo-card">
-                        <h3 class="demo-card-title">📋 Scénario</h3>
+                    <div class="result-card">
+                        <h3>📋 Scenario</h3>
                         <div class="scenario-selector" id="scenarioSelector">
                             <button class="scenario-btn active" data-scenario="reservation">
-                                <span class="scenario-icon">📅</span>
-                                <span class="scenario-name">Réservation</span>
+                                📅 Booking
                             </button>
                             <button class="scenario-btn" data-scenario="information">
-                                <span class="scenario-icon">ℹ️</span>
-                                <span class="scenario-name">Information</span>
+                                ℹ️ Info
                             </button>
                             <button class="scenario-btn" data-scenario="complaint">
-                                <span class="scenario-icon">😤</span>
-                                <span class="scenario-name">Réclamation</span>
+                                😤 Complaint
                             </button>
                             <button class="scenario-btn" data-scenario="emergency">
-                                <span class="scenario-icon">🚨</span>
-                                <span class="scenario-name">Urgence</span>
+                                🚨 Urgent
                             </button>
                         </div>
                     </div>
 
                     <!-- Quick Actions -->
-                    <div class="demo-card">
-                        <h3 class="demo-card-title">⚡ Actions rapides</h3>
-                        <div class="quick-actions">
-                            <button class="btn btn-outline btn-block" id="resetConversation">
-                                🔄 Nouvelle conversation
+                    <div class="result-card">
+                        <h3>⚡ Quick Actions</h3>
+                        <div class="flex flex-col gap-2">
+                            <button class="btn btn-outline w-full" id="resetConversation">
+                                🔄 New Conversation
                             </button>
-                            <button class="btn btn-outline btn-block" id="toggleAutoSpeak">
-                                🔊 Lecture automatique: ON
+                            <button class="btn btn-outline w-full" id="toggleAutoSpeak">
+                                🔊 Auto-play: ON
                             </button>
                         </div>
                     </div>
 
                     <!-- Stats -->
-                    <div class="demo-card">
-                        <h3 class="demo-card-title">📊 Statistiques</h3>
-                        <div class="demo-stats">
-                            <div class="demo-stat">
+                    <div class="result-card">
+                        <h3>📊 Statistics</h3>
+                        <div class="stats-row" style="grid-template-columns: repeat(3, 1fr);">
+                            <div class="stat-item">
                                 <span class="stat-value" id="messageCount">0</span>
                                 <span class="stat-label">Messages</span>
                             </div>
-                            <div class="demo-stat">
+                            <div class="stat-item">
                                 <span class="stat-value" id="responseTime">-</span>
-                                <span class="stat-label">Temps de réponse</span>
+                                <span class="stat-label">Response</span>
                             </div>
-                            <div class="demo-stat">
+                            <div class="stat-item">
                                 <span class="stat-value" id="satisfaction">-%</span>
-                                <span class="stat-label">Satisfaction</span>
+                                <span class="stat-label">Rating</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Industry Info -->
-                    <div class="demo-card" id="industryInfo">
-                        <h3 class="demo-card-title">ℹ️ À propos de cette démo</h3>
-                        <div class="industry-details">
-                            <p class="industry-description">
-                                Cette IA est configurée pour simuler un réceptionniste 
-                                professionnel dans le secteur de la restauration.
-                            </p>
-                            <div class="industry-features">
-                                <span class="feature-tag">Réservations</span>
-                                <span class="feature-tag">Menu</span>
-                                <span class="feature-tag">Horaires</span>
-                                <span class="feature-tag">Allergènes</span>
-                            </div>
+                    <div class="result-card" id="industryInfo">
+                        <h3>ℹ️ About This Demo</h3>
+                        <p class="text-muted mb-4">
+                            This AI is configured to simulate a professional receptionist 
+                            in the restaurant industry.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="category-btn">Bookings</span>
+                            <span class="category-btn">Menu</span>
+                            <span class="category-btn">Hours</span>
+                            <span class="category-btn">Allergies</span>
                         </div>
                     </div>
                 </div>
@@ -134,21 +178,40 @@
     <div class="modal-backdrop" id="industryModal" aria-hidden="true">
         <div class="modal modal-large">
             <div class="modal-header">
-                <h2 class="modal-title">Choisir une industrie</h2>
+                <h2 class="modal-title">Choose an Industry</h2>
                 <button class="modal-close" data-close-modal>&times;</button>
             </div>
             <div class="modal-body">
-                <div class="search-bar">
-                    <span class="search-icon">🔍</span>
+                <div class="search-input mb-4">
+                    <span>🔍</span>
                     <input type="search" 
                            id="modalIndustrySearch" 
-                           placeholder="Rechercher..."
+                           placeholder="Search..."
                            autocomplete="off">
                 </div>
-                <div class="industry-grid modal-grid" id="modalIndustryGrid">
+                <div class="industry-grid" id="modalIndustryGrid">
                     <!-- Populated by JS -->
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Waveform Overlay -->
+    <div class="waveform-overlay" id="waveformOverlay">
+        <div class="waveform-container">
+            <div class="waveform-bars">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+            </div>
+            <span class="waveform-label">AI Speaking...</span>
         </div>
     </div>
 

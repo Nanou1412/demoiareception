@@ -1,240 +1,192 @@
 /**
- * Industries Index v2.0
- * ======================
- * Exports all available industries for the AI receptionist demo
+ * Industries Index
+ * =================
+ *
+ * Central registry for all industries
  */
 
-// Restaurant & Food
+// Food & Beverage
 import restaurant from './restaurant.js';
 import pizza from './pizza.js';
 import sushi from './sushi.js';
+import bakery from './bakery.js';
 import coffeeshop from './coffeeshop.js';
 import fastfood from './fastfood.js';
 import icecream from './icecream.js';
-import bakery from './bakery.js';
 
-// Beauty & Wellness
+// Health & Wellness
+import medical from './medical.js';
+import dental from './dental.js';
 import salon from './salon.js';
 import spa from './spa.js';
 import massage from './massage.js';
 import nailsalon from './nailsalon.js';
-import tattoo from './tattoo.js';
-
-// Health & Medical
-import dental from './dental.js';
-import medical from './medical.js';
-import vet from './vet.js';
-import pharmacy from './pharmacy.js';
 import optician from './optician.js';
 import podiatrist from './podiatrist.js';
-
-// Services & Trades
-import hotel from './hotel.js';
-import garage from './garage.js';
+import pharmacy from './pharmacy.js';
+import vet from './vet.js';
 import gym from './gym.js';
-import plumber from './plumber.js';
-import electrician from './electrician.js';
+
+// Services
 import cleaning from './cleaning.js';
+import electrician from './electrician.js';
+import plumber from './plumber.js';
 import landscaping from './landscaping.js';
 import locksmith from './locksmith.js';
 import moving from './moving.js';
+import garage from './garage.js';
 
-// Professional Services
+// Professional
 import lawyer from './lawyer.js';
 import realestate from './realestate.js';
-import drivingschool from './drivingschool.js';
 import tutoring from './tutoring.js';
-import photography from './photography.js';
+import drivingschool from './drivingschool.js';
 
-// Pet Services
+// Lifestyle
+import hotel from './hotel.js';
+import florist from './florist.js';
+import photography from './photography.js';
+import tattoo from './tattoo.js';
 import petgrooming from './petgrooming.js';
 import petboarding from './petboarding.js';
-
-// Family & Events
 import daycare from './daycare.js';
 import wedding from './wedding.js';
 import eventvenue from './eventvenue.js';
 
-// Commerce
-import florist from './florist.js';
+// ============================================
+// INDUSTRIES REGISTRY
+// ============================================
 
-/**
- * All industries organized by category
- */
-export const industriesByCategory = {
-    restaurant: [
-        restaurant,
-        pizza,
-        sushi,
-        coffeeshop,
-        fastfood,
-        icecream
-    ],
-    commerce: [
-        bakery,
-        florist
-    ],
-    beauty: [
-        salon,
-        spa,
-        massage,
-        nailsalon,
-        tattoo
-    ],
-    health: [
-        dental,
-        medical,
-        vet,
-        pharmacy,
-        optician,
-        podiatrist
-    ],
-    services: [
-        hotel,
-        garage,
-        gym,
-        plumber,
-        electrician,
-        cleaning,
-        landscaping,
-        locksmith,
-        moving,
-        lawyer,
-        realestate,
-        drivingschool,
-        tutoring,
-        photography,
-        petgrooming,
-        petboarding,
-        daycare,
-        wedding,
-        eventvenue
-    ]
-};
-
-/**
- * All industries as a flat array
- */
-export const industries = [
-    // Restaurant & Food
+export const industries = {
+    // Food & Beverage
     restaurant,
     pizza,
     sushi,
+    bakery,
     coffeeshop,
     fastfood,
     icecream,
-    bakery,
 
-    // Beauty & Wellness
+    // Health & Wellness
+    medical,
+    dental,
     salon,
     spa,
     massage,
     nailsalon,
-    tattoo,
-
-    // Health & Medical
-    dental,
-    medical,
-    vet,
-    pharmacy,
     optician,
     podiatrist,
-
-    // Services & Trades
-    hotel,
-    garage,
+    pharmacy,
+    vet,
     gym,
-    plumber,
-    electrician,
+
+    // Services
     cleaning,
+    electrician,
+    plumber,
     landscaping,
     locksmith,
     moving,
+    garage,
 
-    // Professional Services
+    // Professional
     lawyer,
     realestate,
-    drivingschool,
     tutoring,
-    photography,
+    drivingschool,
 
-    // Pet Services
+    // Lifestyle
+    hotel,
+    florist,
+    photography,
+    tattoo,
     petgrooming,
     petboarding,
-
-    // Family & Events
     daycare,
     wedding,
-    eventvenue,
+    eventvenue
+};
 
-    // Commerce
-    florist
-];
+// ============================================
+// CATEGORIES
+// ============================================
 
-/**
- * Get industry by ID
- * @param {string} id - Industry ID
- * @returns {Object|undefined} Industry object or undefined
- */
-export function getIndustryById(id) {
-    return industries.find(industry => industry.id === id);
+export const categories = {
+    all: {
+        id: 'all',
+        name: 'All',
+        icon: '🏢',
+        industries: Object.keys(industries)
+    },
+    food: {
+        id: 'food',
+        name: 'Food & Drink',
+        icon: '🍽️',
+        industries: ['restaurant', 'pizza', 'sushi', 'bakery', 'coffeeshop', 'fastfood', 'icecream']
+    },
+    health: {
+        id: 'health',
+        name: 'Health & Wellness',
+        icon: '💆',
+        industries: ['medical', 'dental', 'salon', 'spa', 'massage', 'nailsalon', 'optician', 'podiatrist', 'pharmacy', 'vet', 'gym']
+    },
+    services: {
+        id: 'services',
+        name: 'Services',
+        icon: '🔧',
+        industries: ['cleaning', 'electrician', 'plumber', 'landscaping', 'locksmith', 'moving', 'garage']
+    },
+    professional: {
+        id: 'professional',
+        name: 'Professional',
+        icon: '💼',
+        industries: ['lawyer', 'realestate', 'tutoring', 'drivingschool']
+    },
+    lifestyle: {
+        id: 'lifestyle',
+        name: 'Lifestyle',
+        icon: '🎉',
+        industries: ['hotel', 'florist', 'photography', 'tattoo', 'petgrooming', 'petboarding', 'daycare', 'wedding', 'eventvenue']
+    }
+};
+
+// ============================================
+// HELPER FUNCTIONS
+// ============================================
+
+export function getIndustry(id) {
+    return industries[id] || null;
 }
 
-/**
- * Get industries by category
- * @param {string} category - Category name
- * @returns {Array} Array of industries in that category
- */
-export function getIndustriesByCategory(category) {
-    return industriesByCategory[category] || [];
+export function getIndustryList() {
+    return Object.values(industries);
 }
 
-/**
- * Get all category names
- * @returns {Array} Array of category names
- */
-export function getCategories() {
-    return Object.keys(industriesByCategory);
+export function getCategory(id) {
+    return categories[id] || null;
 }
 
-/**
- * Search industries by keyword
- * @param {string} keyword - Search keyword
- * @returns {Array} Matching industries
- */
-export function searchIndustries(keyword) {
-    const term = keyword.toLowerCase();
-    return industries.filter(industry =>
-        industry.name.toLowerCase().includes(term) ||
-        industry.keywords?.some(k => k.toLowerCase().includes(term)) ||
-        industry.description?.toLowerCase().includes(term)
+export function getCategoryList() {
+    return Object.values(categories);
+}
+
+export function searchIndustries(query) {
+    const q = query.toLowerCase().trim();
+    if (!q) return getIndustryList();
+
+    return getIndustryList().filter(ind =>
+        ind.name.toLowerCase().includes(q) ||
+        ind.id.toLowerCase().includes(q) ||
+        ind.description?.toLowerCase().includes(q) ||
+        ind.keywords?.some(k => k.toLowerCase().includes(q))
     );
 }
 
-/**
- * Get random industry
- * @returns {Object} Random industry
- */
-export function getRandomIndustry() {
-    return industries[Math.floor(Math.random() * industries.length)];
+export function getIndustriesByCategory(categoryId) {
+    if (categoryId === 'all') return getIndustryList();
+    const category = categories[categoryId];
+    if (!category) return [];
+    return category.industries.map(id => industries[id]).filter(Boolean);
 }
 
-/**
- * Get industry count
- * @returns {number} Total number of industries
- */
-export function getIndustryCount() {
-    return industries.length;
-}
-
-// Default export
-export default {
-    industries,
-    industriesByCategory,
-    getIndustryById,
-    getIndustriesByCategory,
-    getCategories,
-    searchIndustries,
-    getRandomIndustry,
-    getIndustryCount
-};
+export default industries;
