@@ -203,6 +203,251 @@
             </div>
         </section>
 
+        <!-- HOW IT WORKS Section -->
+        <section class="how-it-works-section">
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Get up and running in 3 simple steps</p>
+                
+                <div class="steps-container">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">🔌</div>
+                        <h3>Connect</h3>
+                        <p>Forward your business phone to our AI. Works with any phone system - no hardware needed.</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">⚙️</div>
+                        <h3>Customize</h3>
+                        <p>Set your business hours, menu, services, and responses. We train the AI on YOUR business.</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">🚀</div>
+                        <h3>Go Live</h3>
+                        <p>Start taking calls immediately. Monitor everything from your dashboard in real-time.</p>
+                    </div>
+                </div>
+                
+                <p class="setup-time"><i class="fas fa-clock"></i> Average setup time: <strong>24 hours</strong></p>
+            </div>
+        </section>
+
+        <!-- COMPARISON TABLE Section -->
+        <section class="comparison-section">
+            <div class="container">
+                <h2 class="section-title">AI Receptionist vs Human Staff</h2>
+                <p class="section-subtitle">See why businesses are making the switch</p>
+                
+                <div class="comparison-table">
+                    <div class="comparison-header">
+                        <div class="comparison-feature">Feature</div>
+                        <div class="comparison-human"><i class="fas fa-user"></i> Human Receptionist</div>
+                        <div class="comparison-ai"><i class="fas fa-robot"></i> AI Receptionist</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-feature">Availability</div>
+                        <div class="comparison-human bad">8-10 hours/day</div>
+                        <div class="comparison-ai good">24/7/365</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-feature">Monthly Cost</div>
+                        <div class="comparison-human bad">$3,500 - $5,000</div>
+                        <div class="comparison-ai good">$299 - $599</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-feature">Sick Days / Vacation</div>
+                        <div class="comparison-human bad">15-20 days/year</div>
+                        <div class="comparison-ai good">Never</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-feature">Simultaneous Calls</div>
+                        <div class="comparison-human bad">1 at a time</div>
+                        <div class="comparison-ai good">Unlimited</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-feature">Response Time</div>
+                        <div class="comparison-human bad">May put on hold</div>
+                        <div class="comparison-ai good">Instant (< 1 sec)</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-feature">Accuracy</div>
+                        <div class="comparison-human bad">Human error possible</div>
+                        <div class="comparison-ai good">99.9% accurate</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-feature">Training Required</div>
+                        <div class="comparison-human bad">Weeks</div>
+                        <div class="comparison-ai good">24 hours</div>
+                    </div>
+                    <div class="comparison-row highlight">
+                        <div class="comparison-feature"><strong>Annual Savings</strong></div>
+                        <div class="comparison-human">—</div>
+                        <div class="comparison-ai good"><strong>$35,000+</strong></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROI CALCULATOR Section -->
+        <section class="roi-section">
+            <div class="container">
+                <h2 class="section-title">Calculate Your Savings</h2>
+                <p class="section-subtitle">See how much you could save with AI Receptionist</p>
+                
+                <div class="roi-calculator">
+                    <div class="roi-inputs">
+                        <div class="roi-input-group">
+                            <label>Calls per day</label>
+                            <input type="range" id="callsPerDay" min="10" max="200" value="50">
+                            <span class="roi-value" id="callsValue">50</span>
+                        </div>
+                        <div class="roi-input-group">
+                            <label>Current receptionist hourly rate ($)</label>
+                            <input type="range" id="hourlyRate" min="15" max="35" value="22">
+                            <span class="roi-value">$<span id="rateValue">22</span>/hr</span>
+                        </div>
+                        <div class="roi-input-group">
+                            <label>Hours per day staffed</label>
+                            <input type="range" id="hoursPerDay" min="4" max="12" value="8">
+                            <span class="roi-value" id="hoursValue">8</span>
+                        </div>
+                    </div>
+                    
+                    <div class="roi-results">
+                        <div class="roi-result-card">
+                            <span class="roi-label">Your Current Annual Cost</span>
+                            <span class="roi-amount negative" id="currentCost">$45,760</span>
+                        </div>
+                        <div class="roi-result-card">
+                            <span class="roi-label">AI Receptionist Annual Cost</span>
+                            <span class="roi-amount" id="aiCost">$4,788</span>
+                        </div>
+                        <div class="roi-result-card highlight">
+                            <span class="roi-label">Your Annual Savings</span>
+                            <span class="roi-amount positive" id="savings">$40,972</span>
+                        </div>
+                        <div class="roi-percentage">
+                            <span>ROI: <strong id="roiPercent">856%</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- USE CASES Section -->
+        <section class="use-cases-section">
+            <div class="container">
+                <h2 class="section-title">Real Results From Real Businesses</h2>
+                <p class="section-subtitle">See how AI Receptionist transformed these businesses</p>
+                
+                <div class="use-cases-grid">
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🍕</div>
+                        <h3>Mario's Pizzeria</h3>
+                        <p class="use-case-problem"><strong>Problem:</strong> Missing 35% of calls during dinner rush. Losing $2,400/week in orders.</p>
+                        <p class="use-case-solution"><strong>Solution:</strong> AI handles unlimited simultaneous calls during peak hours.</p>
+                        <div class="use-case-result">
+                            <span class="result-number">+$124,800</span>
+                            <span class="result-label">Annual revenue recovered</span>
+                        </div>
+                    </div>
+                    
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🏥</div>
+                        <h3>Wellness Medical Centre</h3>
+                        <p class="use-case-problem"><strong>Problem:</strong> Patients couldn't book after-hours. Losing to competitors with online booking.</p>
+                        <p class="use-case-solution"><strong>Solution:</strong> 24/7 appointment booking, even at 2 AM.</p>
+                        <div class="use-case-result">
+                            <span class="result-number">+32%</span>
+                            <span class="result-label">Increase in appointments</span>
+                        </div>
+                    </div>
+                    
+                    <div class="use-case-card">
+                        <div class="use-case-icon">💇</div>
+                        <h3>Luxe Hair Studio</h3>
+                        <p class="use-case-problem"><strong>Problem:</strong> Receptionist cost $48K/year. Stylists interrupted by phone calls.</p>
+                        <p class="use-case-solution"><strong>Solution:</strong> AI handles all bookings. Stylists focus on clients.</p>
+                        <div class="use-case-result">
+                            <span class="result-number">$41,000</span>
+                            <span class="result-label">Saved per year</span>
+                        </div>
+                    </div>
+                    
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🔧</div>
+                        <h3>Aussie Auto Care</h3>
+                        <p class="use-case-problem"><strong>Problem:</strong> Mechanics answering phones with greasy hands. Unprofessional experience.</p>
+                        <p class="use-case-solution"><strong>Solution:</strong> Professional AI handles every call perfectly.</p>
+                        <div class="use-case-result">
+                            <span class="result-number">4.9 ★</span>
+                            <span class="result-label">Google rating (was 3.8)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3><i class="fas fa-phone"></i> Does it work with my current phone system?</h3>
+                        <p>Yes! We work with any phone system - landline, VoIP, mobile. Simply forward calls to our number. No hardware or software installation required.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3><i class="fas fa-clock"></i> How long does setup take?</h3>
+                        <p>Most businesses are live within 24 hours. We handle everything - you just provide your business info, menu/services, and operating hours.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3><i class="fas fa-user"></i> What if a customer wants to speak to a human?</h3>
+                        <p>The AI can transfer calls to you or your staff anytime. You set the rules - urgent matters, complaints, or on-request transfers.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3><i class="fas fa-language"></i> Can it handle accents and different languages?</h3>
+                        <p>Our AI understands diverse accents perfectly and can operate in multiple languages. We currently support 15+ languages.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3><i class="fas fa-edit"></i> Can I customize what the AI says?</h3>
+                        <p>Absolutely! You control the greeting, responses, upsells, and personality. Want it casual and friendly? Professional and formal? You choose.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3><i class="fas fa-chart-line"></i> How do I track calls and orders?</h3>
+                        <p>Everything is logged in your real-time dashboard - call recordings, transcripts, orders, appointments, and analytics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="final-cta-section">
+            <div class="container">
+                <h2>Ready to Never Miss a Call Again?</h2>
+                <p>Join 500+ businesses already using AI Receptionist</p>
+                <div class="cta-buttons">
+                    <button class="cta-primary" id="ctaDemo">
+                        <i class="fas fa-play"></i> Try Live Demo Above
+                    </button>
+                    <button class="cta-secondary" id="ctaContact">
+                        <i class="fas fa-calendar"></i> Book a Free Consultation
+                    </button>
+                </div>
+                <p class="cta-note">No credit card required • Setup in 24 hours • Cancel anytime</p>
+            </div>
+        </section>
+
         <!-- Landing Footer -->
         <footer class="landing-footer">
             <p>AI Receptionist Demo • Powered by OpenAI GPT-4 & Neural TTS</p>

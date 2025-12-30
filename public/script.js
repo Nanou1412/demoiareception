@@ -1593,5 +1593,60 @@ Ready to see it in action? Pick your industry below and watch the magic happen!`
     
     // Export
     document.getElementById('exportBtn')?.addEventListener('click', () => Export.conversation());
+    
+    // ========== LANDING PAGE SECTIONS ==========
+    
+    // ROI Calculator on Landing Page (with sliders)
+    const callsPerDaySlider = document.getElementById('callsPerDay');
+    const hourlyRateSlider = document.getElementById('hourlyRate');
+    const hoursPerDaySlider = document.getElementById('hoursPerDay');
+    const callsValue = document.getElementById('callsValue');
+    const rateValue = document.getElementById('rateValue');
+    const hoursValue = document.getElementById('hoursValue');
+    const currentCostEl = document.getElementById('currentCost');
+    const aiCostEl = document.getElementById('aiCost');
+    const savingsEl = document.getElementById('savings');
+    const roiPercentEl = document.getElementById('roiPercent');
+    
+    const calculateLandingROI = () => {
+        const calls = parseInt(callsPerDaySlider?.value) || 50;
+        const rate = parseInt(hourlyRateSlider?.value) || 22;
+        const hours = parseInt(hoursPerDaySlider?.value) || 8;
+        
+        // Update display values
+        if (callsValue) callsValue.textContent = calls;
+        if (rateValue) rateValue.textContent = rate;
+        if (hoursValue) hoursValue.textContent = hours;
+        
+        const workingDays = 260; // Working days per year
+        const dailyHumanCost = rate * hours;
+        const annualHumanCost = dailyHumanCost * workingDays;
+        const annualAICost = 399 * 12; // $399/month AI plan
+        const annualSavings = annualHumanCost - annualAICost;
+        const roiPercent = Math.round((annualSavings / annualAICost) * 100);
+        
+        if (currentCostEl) currentCostEl.textContent = `$${annualHumanCost.toLocaleString()}`;
+        if (aiCostEl) aiCostEl.textContent = `$${annualAICost.toLocaleString()}`;
+        if (savingsEl) savingsEl.textContent = `$${annualSavings.toLocaleString()}`;
+        if (roiPercentEl) roiPercentEl.textContent = `${roiPercent}%`;
+    };
+    
+    // Add event listeners to sliders
+    callsPerDaySlider?.addEventListener('input', calculateLandingROI);
+    hourlyRateSlider?.addEventListener('input', calculateLandingROI);
+    hoursPerDaySlider?.addEventListener('input', calculateLandingROI);
+    
+    // Initial calculation
+    if (callsPerDaySlider) calculateLandingROI();
+    
+    // CTA Buttons
+    document.getElementById('ctaDemo')?.addEventListener('click', () => {
+        document.querySelector('.industry-section')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    
+    document.getElementById('ctaContact')?.addEventListener('click', () => {
+        // Open contact or calendar
+        window.open('mailto:contact@aireceptionist.com?subject=Free Consultation Request', '_blank');
+    });
 });
 
