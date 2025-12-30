@@ -671,6 +671,7 @@ const Translations = {
     en: {
         title: 'AI Receptionist',
         subtitle: 'Experience how our AI receptionist handles calls naturally - with voice, personality, and zero wait times.',
+        landingSubtitle: 'Select your industry to see how AI handles calls for your business',
         tryIt: 'Try It Yourself',
         watchDemo: 'Watch Demo',
         messages: 'Messages',
@@ -684,6 +685,8 @@ const Translations = {
         callEnded: 'Call Ended',
         typeOrSpeak: 'Type or speak...',
         whatHappening: "What's Happening",
+        change: 'Change',
+        clickToStart: 'Click any industry to start the demo',
         stepInfos: [
             "📞 The AI answers the call instantly and greets the customer naturally.",
             "🍽️ The AI is taking the order, asking questions and building the cart.",
@@ -692,11 +695,34 @@ const Translations = {
         ],
         smsPlaceholder: 'SMS appears after confirmation',
         ticketPlaceholder: 'Confirmation appears after booking',
-        noConversation: 'No conversation to export. Start a demo first!'
+        noConversation: 'No conversation to export. Start a demo first!',
+        // Industry descriptions
+        restaurantDesc: 'Take orders, handle reservations',
+        pizzaDesc: 'Orders & delivery management',
+        salonName: 'Hair Salon',
+        salonDesc: 'Book appointments, manage stylists',
+        medicalName: 'Medical Centre',
+        medicalDesc: 'Patient scheduling & inquiries',
+        dentalName: 'Dentist',
+        dentalDesc: 'Dental appointments & care',
+        vetName: 'Vet Clinic',
+        vetDesc: 'Pet appointments & emergencies',
+        garageName: 'Auto Shop',
+        garageDesc: 'Service bookings & quotes',
+        hotelName: 'Hotel',
+        hotelDesc: 'Room reservations & concierge',
+        gymName: 'Gym',
+        gymDesc: 'Memberships & class bookings',
+        spaDesc: 'Wellness appointments & packages',
+        lawyerName: 'Legal',
+        lawyerDesc: 'Consultations & case inquiries',
+        realestateName: 'Real Estate',
+        realestateDesc: 'Property viewings & inquiries'
     },
     fr: {
         title: 'Réceptionniste IA',
         subtitle: 'Découvrez comment notre réceptionniste IA gère les appels naturellement - avec voix, personnalité et zéro attente.',
+        landingSubtitle: 'Sélectionnez votre secteur pour voir comment l\'IA gère les appels',
         tryIt: 'Essayez vous-même',
         watchDemo: 'Voir la démo',
         messages: 'Messages',
@@ -710,6 +736,8 @@ const Translations = {
         callEnded: 'Appel terminé',
         typeOrSpeak: 'Tapez ou parlez...',
         whatHappening: 'Ce qui se passe',
+        change: 'Changer',
+        clickToStart: 'Cliquez sur un secteur pour lancer la démo',
         stepInfos: [
             "📞 L'IA répond à l'appel instantanément et accueille le client naturellement.",
             "🍽️ L'IA prend la commande, pose des questions et construit le panier.",
@@ -718,7 +746,29 @@ const Translations = {
         ],
         smsPlaceholder: 'SMS apparaît après confirmation',
         ticketPlaceholder: 'Confirmation apparaît après réservation',
-        noConversation: 'Aucune conversation à exporter. Lancez une démo !'
+        noConversation: 'Aucune conversation à exporter. Lancez une démo !',
+        // Industry descriptions
+        restaurantDesc: 'Commandes et réservations',
+        pizzaDesc: 'Commandes et livraisons',
+        salonName: 'Salon de Coiffure',
+        salonDesc: 'Rendez-vous et coiffeurs',
+        medicalName: 'Centre Médical',
+        medicalDesc: 'Rendez-vous patients',
+        dentalName: 'Dentiste',
+        dentalDesc: 'Soins dentaires',
+        vetName: 'Clinique Vétérinaire',
+        vetDesc: 'Animaux et urgences',
+        garageName: 'Garage Auto',
+        garageDesc: 'Réparations et devis',
+        hotelName: 'Hôtel',
+        hotelDesc: 'Réservations de chambres',
+        gymName: 'Salle de Sport',
+        gymDesc: 'Abonnements et cours',
+        spaDesc: 'Soins et bien-être',
+        lawyerName: 'Cabinet Juridique',
+        lawyerDesc: 'Consultations juridiques',
+        realestateName: 'Immobilier',
+        realestateDesc: 'Visites et estimations'
     }
 };
 
@@ -1340,6 +1390,60 @@ const Export = {
 };
 
 // ============================================
+// PAGE NAVIGATION
+// ============================================
+const Navigation = {
+    goToDemo(industry) {
+        State.currentIndustry = industry;
+        
+        // Update current industry badge
+        const indLang = getIndustryLang();
+        const ind = getIndustry();
+        document.getElementById('currentIndustryIcon').textContent = ind.icon;
+        document.getElementById('currentIndustryName').textContent = indLang.name;
+        
+        // Fade out landing, fade in demo
+        const landing = document.getElementById('landingPage');
+        const demo = document.getElementById('demoPage');
+        
+        landing.classList.add('fade-out');
+        
+        setTimeout(() => {
+            landing.classList.remove('active');
+            landing.classList.remove('fade-out');
+            demo.classList.add('active');
+            
+            // Initialize demo page
+            UI.updateCardTitles();
+            UI.updateProcessStep(0);
+            UI.resetUI();
+            API.resetConversation();
+            
+            State.sessionStats.totalCalls++;
+            State.sessionStats.industries[industry] = (State.sessionStats.industries[industry] || 0) + 1;
+        }, 300);
+    },
+    
+    goToLanding() {
+        const landing = document.getElementById('landingPage');
+        const demo = document.getElementById('demoPage');
+        
+        // Stop any ongoing demo
+        Timer.stop();
+        State.isAutoDemoMode = false;
+        AudioManager.stopCurrent();
+        
+        demo.classList.add('fade-out');
+        
+        setTimeout(() => {
+            demo.classList.remove('active');
+            demo.classList.remove('fade-out');
+            landing.classList.add('active');
+        }, 300);
+    }
+};
+
+// ============================================
 // EVENT LISTENERS
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -1349,7 +1453,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // Init speech recognition
     SpeechManager.init();
     
-    // Industry selector
+    // ========== LANDING PAGE ==========
+    // Industry cards on landing page
+    document.querySelectorAll('.industry-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const industry = card.dataset.industry;
+            Navigation.goToDemo(industry);
+        });
+    });
+    
+    // ========== DEMO PAGE ==========
+    // Back to landing
+    document.getElementById('backToLanding')?.addEventListener('click', () => {
+        Navigation.goToLanding();
+    });
+    
+    // Change industry button
+    document.getElementById('changeIndustryBtn')?.addEventListener('click', () => {
+        Navigation.goToLanding();
+    });
+    
+    // Industry selector (old - keep for compatibility)
     DOM.industryBtns?.forEach(btn => {
         btn.addEventListener('click', () => {
             DOM.industryBtns.forEach(b => b.classList.remove('active'));
@@ -1362,9 +1486,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Initialize
-    UI.updateCardTitles();
-    UI.updateProcessStep(0);
+    // Initialize (for landing page)
+    UI.updateLanguage();
     
     // Demo buttons
     document.getElementById('startInteractive')?.addEventListener('click', () => Demo.startInteractive());
@@ -1418,14 +1541,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     document.getElementById('calculateROI')?.addEventListener('click', () => ROI.calculate());
     
-    // Theme Toggle
-    document.getElementById('themeToggle')?.addEventListener('click', () => {
+    // Theme Toggle (both pages)
+    const toggleTheme = () => {
         State.isDarkMode = !State.isDarkMode;
         document.body.classList.toggle('dark-mode', State.isDarkMode);
         document.body.classList.toggle('light-mode', !State.isDarkMode);
-        const icon = document.querySelector('#themeToggle i');
-        if (icon) icon.className = State.isDarkMode ? 'fas fa-moon' : 'fas fa-sun';
-    });
+        document.querySelectorAll('#themeToggle i, #themeToggle2 i').forEach(icon => {
+            icon.className = State.isDarkMode ? 'fas fa-moon' : 'fas fa-sun';
+        });
+    };
+    document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
+    document.getElementById('themeToggle2')?.addEventListener('click', toggleTheme);
     
     // Language Toggle
     document.querySelectorAll('.lang-btn').forEach(btn => {

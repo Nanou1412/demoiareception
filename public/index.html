@@ -12,317 +12,381 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-mode">
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <div class="logo-icon">📞</div>
-                <span>AI Receptionist</span>
-            </div>
-            <div class="header-actions">
-                <!-- Language Toggle -->
-                <div class="lang-toggle">
-                    <button class="lang-btn active" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="fr">FR</button>
+    <!-- ============================================ -->
+    <!-- PAGE 1: LANDING - Industry Selection -->
+    <!-- ============================================ -->
+    <div id="landingPage" class="page active">
+        <!-- Header -->
+        <header class="landing-header">
+            <div class="container">
+                <div class="logo">
+                    <div class="logo-icon">📞</div>
+                    <span>AI Receptionist</span>
                 </div>
-                <!-- Theme Toggle -->
-                <button class="icon-btn" id="themeToggle" title="Toggle theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <!-- Fullscreen -->
-                <button class="icon-btn" id="fullscreenBtn" title="Fullscreen">
-                    <i class="fas fa-expand"></i>
-                </button>
-                <!-- Menu -->
-                <button class="btn-secondary" id="menuToggle">
-                    <i class="fas fa-utensils"></i> <span data-i18n="menu">Menu</span>
-                </button>
-                <!-- Stats -->
-                <button class="btn-secondary" id="statsBtn">
-                    <i class="fas fa-chart-bar"></i> <span data-i18n="stats">Stats</span>
-                </button>
-                <!-- ROI -->
-                <button class="btn-primary" id="roiBtn">
-                    <i class="fas fa-calculator"></i> ROI
-                </button>
+                <div class="header-actions">
+                    <div class="lang-toggle">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="fr">FR</button>
+                    </div>
+                    <button class="icon-btn" id="themeToggle" title="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-badge">
-                <span class="pulse"></span>
-                Live AI Demo
-            </div>
-            <h1>Watch AI Handle a <span class="gradient-text">Real Phone Call</span></h1>
-            <p class="hero-subtitle" data-i18n="subtitle">Experience how our AI receptionist handles calls naturally - with voice, personality, and zero wait times.</p>
-            
-            <!-- Industry Selector - Row 1 -->
-            <div class="industry-selector">
-                <button class="industry-btn active" data-industry="restaurant">
-                    <span class="industry-icon">🍽️</span>
-                    <span class="industry-name">Restaurant</span>
-                </button>
-                <button class="industry-btn" data-industry="pizza">
-                    <span class="industry-icon">🍕</span>
-                    <span class="industry-name">Pizzeria</span>
-                </button>
-                <button class="industry-btn" data-industry="salon">
-                    <span class="industry-icon">💇</span>
-                    <span class="industry-name">Hair Salon</span>
-                </button>
-                <button class="industry-btn" data-industry="medical">
-                    <span class="industry-icon">🏥</span>
-                    <span class="industry-name">Medical</span>
-                </button>
-                <button class="industry-btn" data-industry="dental">
-                    <span class="industry-icon">🦷</span>
-                    <span class="industry-name">Dentist</span>
-                </button>
-                <button class="industry-btn" data-industry="vet">
-                    <span class="industry-icon">🐕</span>
-                    <span class="industry-name">Vet Clinic</span>
-                </button>
-            </div>
-            <!-- Industry Selector - Row 2 -->
-            <div class="industry-selector">
-                <button class="industry-btn" data-industry="garage">
-                    <span class="industry-icon">🔧</span>
-                    <span class="industry-name">Auto Shop</span>
-                </button>
-                <button class="industry-btn" data-industry="hotel">
-                    <span class="industry-icon">🏨</span>
-                    <span class="industry-name">Hotel</span>
-                </button>
-                <button class="industry-btn" data-industry="gym">
-                    <span class="industry-icon">🏋️</span>
-                    <span class="industry-name">Gym</span>
-                </button>
-                <button class="industry-btn" data-industry="spa">
-                    <span class="industry-icon">🧘</span>
-                    <span class="industry-name">Spa</span>
-                </button>
-                <button class="industry-btn" data-industry="lawyer">
-                    <span class="industry-icon">⚖️</span>
-                    <span class="industry-name">Legal</span>
-                </button>
-                <button class="industry-btn" data-industry="realestate">
-                    <span class="industry-icon">🏠</span>
-                    <span class="industry-name">Real Estate</span>
-                </button>
-            </div>
-            
-            <!-- Scenario Selector -->
-            <div class="scenario-selector" id="scenarioSelector">
-                <span class="scenario-label">Scenario:</span>
-                <button class="scenario-btn active" data-scenario="normal">😊 Normal</button>
-                <button class="scenario-btn" data-scenario="rushed">⚡ Rushed</button>
-                <button class="scenario-btn" data-scenario="undecided">🤔 Undecided</button>
-                <button class="scenario-btn" data-scenario="complaint">😤 Complaint</button>
-            </div>
-            
-            <div class="demo-buttons">
-                <button class="btn-demo primary" id="startInteractive">
-                    <i class="fas fa-microphone"></i>
-                    <span data-i18n="tryIt">Try It Yourself</span>
-                </button>
-                <button class="btn-demo secondary" id="startAutoDemo">
-                    <i class="fas fa-play"></i>
-                    <span data-i18n="watchDemo">Watch Demo</span>
-                </button>
-                <button class="btn-demo outline" id="exportBtn">
-                    <i class="fas fa-download"></i>
-                    <span>Export</span>
-                </button>
-            </div>
-        </div>
-    </section>
+        <!-- Landing Hero -->
+        <section class="landing-hero">
+            <div class="container">
+                <div class="hero-badge">
+                    <span class="pulse"></span>
+                    Live AI Demo
+                </div>
+                <h1>Your AI <span class="gradient-text">Receptionist</span></h1>
+                <p class="hero-subtitle" data-i18n="landingSubtitle">Select your industry to see how AI handles calls for your business</p>
+                
+                <!-- Industry Grid -->
+                <div class="industry-grid">
+                    <button class="industry-card" data-industry="restaurant">
+                        <div class="industry-card-icon">🍽️</div>
+                        <h3>Restaurant</h3>
+                        <p data-i18n="restaurantDesc">Take orders, handle reservations</p>
+                    </button>
+                    <button class="industry-card" data-industry="pizza">
+                        <div class="industry-card-icon">🍕</div>
+                        <h3>Pizzeria</h3>
+                        <p data-i18n="pizzaDesc">Orders & delivery management</p>
+                    </button>
+                    <button class="industry-card" data-industry="salon">
+                        <div class="industry-card-icon">💇</div>
+                        <h3 data-i18n="salonName">Hair Salon</h3>
+                        <p data-i18n="salonDesc">Book appointments, manage stylists</p>
+                    </button>
+                    <button class="industry-card" data-industry="medical">
+                        <div class="industry-card-icon">🏥</div>
+                        <h3 data-i18n="medicalName">Medical Centre</h3>
+                        <p data-i18n="medicalDesc">Patient scheduling & inquiries</p>
+                    </button>
+                    <button class="industry-card" data-industry="dental">
+                        <div class="industry-card-icon">🦷</div>
+                        <h3 data-i18n="dentalName">Dentist</h3>
+                        <p data-i18n="dentalDesc">Dental appointments & care</p>
+                    </button>
+                    <button class="industry-card" data-industry="vet">
+                        <div class="industry-card-icon">🐕</div>
+                        <h3 data-i18n="vetName">Vet Clinic</h3>
+                        <p data-i18n="vetDesc">Pet appointments & emergencies</p>
+                    </button>
+                    <button class="industry-card" data-industry="garage">
+                        <div class="industry-card-icon">🔧</div>
+                        <h3 data-i18n="garageName">Auto Shop</h3>
+                        <p data-i18n="garageDesc">Service bookings & quotes</p>
+                    </button>
+                    <button class="industry-card" data-industry="hotel">
+                        <div class="industry-card-icon">🏨</div>
+                        <h3 data-i18n="hotelName">Hotel</h3>
+                        <p data-i18n="hotelDesc">Room reservations & concierge</p>
+                    </button>
+                    <button class="industry-card" data-industry="gym">
+                        <div class="industry-card-icon">🏋️</div>
+                        <h3 data-i18n="gymName">Gym</h3>
+                        <p data-i18n="gymDesc">Memberships & class bookings</p>
+                    </button>
+                    <button class="industry-card" data-industry="spa">
+                        <div class="industry-card-icon">🧘</div>
+                        <h3>Spa</h3>
+                        <p data-i18n="spaDesc">Wellness appointments & packages</p>
+                    </button>
+                    <button class="industry-card" data-industry="lawyer">
+                        <div class="industry-card-icon">⚖️</div>
+                        <h3 data-i18n="lawyerName">Legal</h3>
+                        <p data-i18n="lawyerDesc">Consultations & case inquiries</p>
+                    </button>
+                    <button class="industry-card" data-industry="realestate">
+                        <div class="industry-card-icon">🏠</div>
+                        <h3 data-i18n="realestateName">Real Estate</h3>
+                        <p data-i18n="realestateDesc">Property viewings & inquiries</p>
+                    </button>
+                </div>
 
-    <!-- Process Steps -->
-    <section class="process-section">
-        <div class="container">
-            <div class="process-bar">
-                <div class="process-step active" data-step="0">
-                    <div class="step-dot"><i class="fas fa-phone"></i></div>
-                    <span>Call</span>
-                </div>
-                <div class="process-line" data-line="0"></div>
-                <div class="process-step" data-step="1">
-                    <div class="step-dot"><i class="fas fa-comments"></i></div>
-                    <span>Order</span>
-                </div>
-                <div class="process-line" data-line="1"></div>
-                <div class="process-step" data-step="2">
-                    <div class="step-dot"><i class="fas fa-check"></i></div>
-                    <span>Confirm</span>
-                </div>
-                <div class="process-line" data-line="2"></div>
-                <div class="process-step" data-step="3">
-                    <div class="step-dot"><i class="fas fa-bell"></i></div>
-                    <span>Done</span>
+                <div class="landing-cta">
+                    <p><i class="fas fa-hand-pointer"></i> <span data-i18n="clickToStart">Click any industry to start the demo</span></p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Main Demo -->
-    <main class="demo-section">
-        <div class="container">
-            <div class="demo-grid">
-                <!-- Phone Call Simulation -->
-                <div class="phone-container">
-                    <div class="phone-frame">
-                        <div class="phone-notch"></div>
-                        <div class="phone-header">
-                            <div class="call-status">
-                                <div class="call-pulse"></div>
-                                <span id="callStatus">Incoming Call...</span>
-                            </div>
-                            <div class="call-timer" id="callTimer">0:00</div>
-                        </div>
-                        
-                        <div class="phone-screen">
-                            <div class="caller-info">
-                                <div class="caller-avatar">👤</div>
-                                <div class="caller-name">Customer</div>
-                                <div class="caller-number">+61 4XX XXX XXX</div>
-                            </div>
-                            
-                            <div class="conversation" id="conversation">
-                                <!-- Messages appear here -->
-                            </div>
-                            
-                            <div class="typing-indicator" id="typingIndicator">
-                                <span></span><span></span><span></span>
-                            </div>
-                        </div>
-                        
-                        <div class="phone-controls">
-                            <div class="input-area">
-                                <input type="text" id="userInput" placeholder="Type or speak...">
-                                <button id="voiceBtn" class="control-btn voice">
-                                    <i class="fas fa-microphone"></i>
-                                </button>
-                                <button id="sendBtn" class="control-btn send">
-                                    <i class="fas fa-paper-plane"></i>
-                                </button>
-                            </div>
-                            <div class="quick-actions">
-                                <button class="quick-btn" data-text="I'd like to order please">🍽️ Order</button>
-                                <button class="quick-btn" data-text="What's on the menu?">📋 Menu</button>
-                                <button class="quick-btn" data-text="Can I pickup in 20 mins?">⏰ Time</button>
-                            </div>
-                        </div>
+        <!-- Landing Footer -->
+        <footer class="landing-footer">
+            <p>AI Receptionist Demo • Powered by OpenAI GPT-4 & Neural TTS</p>
+        </footer>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- PAGE 2: DEMO - Phone Simulation -->
+    <!-- ============================================ -->
+    <div id="demoPage" class="page">
+        <!-- Header -->
+        <header>
+            <div class="container">
+                <div class="logo" id="backToLanding" style="cursor: pointer;">
+                    <i class="fas fa-arrow-left" style="margin-right: 10px; font-size: 0.9em;"></i>
+                    <div class="logo-icon">📞</div>
+                    <span>AI Receptionist</span>
+                </div>
+                <div class="header-actions">
+                    <div class="lang-toggle">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="fr">FR</button>
+                    </div>
+                    <button class="icon-btn" id="themeToggle2" title="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="icon-btn" id="fullscreenBtn" title="Fullscreen">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                    <button class="btn-secondary" id="menuToggle">
+                        <i class="fas fa-utensils"></i> <span data-i18n="menu">Menu</span>
+                    </button>
+                    <button class="btn-secondary" id="statsBtn">
+                        <i class="fas fa-chart-bar"></i> <span data-i18n="stats">Stats</span>
+                    </button>
+                    <button class="btn-primary" id="roiBtn">
+                        <i class="fas fa-calculator"></i> ROI
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Demo Hero -->
+        <section class="hero demo-hero">
+            <div class="container">
+                <div class="current-industry" id="currentIndustryBadge">
+                    <span class="industry-icon" id="currentIndustryIcon">🍽️</span>
+                    <span class="industry-name" id="currentIndustryName">Restaurant</span>
+                    <button class="change-industry-btn" id="changeIndustryBtn">
+                        <i class="fas fa-exchange-alt"></i> <span data-i18n="change">Change</span>
+                    </button>
+                </div>
+                
+                <!-- Scenario Selector -->
+                <div class="scenario-selector" id="scenarioSelector">
+                    <span class="scenario-label">Scenario:</span>
+                    <button class="scenario-btn active" data-scenario="normal">😊 Normal</button>
+                    <button class="scenario-btn" data-scenario="rushed">⚡ Rushed</button>
+                    <button class="scenario-btn" data-scenario="undecided">🤔 Undecided</button>
+                    <button class="scenario-btn" data-scenario="complaint">😤 Complaint</button>
+                </div>
+                
+                <div class="demo-buttons">
+                    <button class="btn-demo primary" id="startInteractive">
+                        <i class="fas fa-microphone"></i>
+                        <span data-i18n="tryIt">Try It Yourself</span>
+                    </button>
+                    <button class="btn-demo secondary" id="startAutoDemo">
+                        <i class="fas fa-play"></i>
+                        <span data-i18n="watchDemo">Watch Demo</span>
+                    </button>
+                    <button class="btn-demo outline" id="exportBtn">
+                        <i class="fas fa-download"></i>
+                        <span>Export</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Steps -->
+        <section class="process-section">
+            <div class="container">
+                <div class="process-bar">
+                    <div class="process-step active" data-step="0">
+                        <div class="step-dot"><i class="fas fa-phone"></i></div>
+                        <span>Call</span>
+                    </div>
+                    <div class="process-line" data-line="0"></div>
+                    <div class="process-step" data-step="1">
+                        <div class="step-dot"><i class="fas fa-comments"></i></div>
+                        <span>Order</span>
+                    </div>
+                    <div class="process-line" data-line="1"></div>
+                    <div class="process-step" data-step="2">
+                        <div class="step-dot"><i class="fas fa-check"></i></div>
+                        <span>Confirm</span>
+                    </div>
+                    <div class="process-line" data-line="2"></div>
+                    <div class="process-step" data-step="3">
+                        <div class="step-dot"><i class="fas fa-bell"></i></div>
+                        <span>Done</span>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Live Results Panel -->
-                <div class="results-panel">
-                    <!-- Current Step Info -->
-                    <div class="info-card">
-                        <div class="card-icon"><i class="fas fa-info-circle"></i></div>
-                        <div class="card-content">
-                            <h3>What's Happening</h3>
-                            <p id="stepInfo">The AI is ready to answer the call and greet the customer naturally.</p>
-                        </div>
-                    </div>
-
-                    <!-- SMS Preview -->
-                    <div class="result-card" id="smsCard">
-                        <div class="card-header">
-                            <i class="fas fa-sms"></i>
-                            <span id="smsCardTitle">Customer SMS</span>
-                            <span class="status-badge" id="smsStatus">Pending</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="sms-preview" id="smsPreview">
-                                <div class="sms-placeholder">
-                                    <i class="fas fa-message"></i>
-                                    <span>SMS appears after confirmation</span>
+        <!-- Main Demo -->
+        <main class="demo-section">
+            <div class="container">
+                <div class="demo-grid">
+                    <!-- Phone Call Simulation -->
+                    <div class="phone-container">
+                        <div class="phone-frame">
+                            <div class="phone-notch"></div>
+                            <div class="phone-header">
+                                <div class="call-status">
+                                    <div class="call-pulse"></div>
+                                    <span id="callStatus">Incoming Call...</span>
+                                </div>
+                                <div class="call-timer" id="callTimer">0:00</div>
+                            </div>
+                            
+                            <div class="phone-screen">
+                                <div class="caller-info">
+                                    <div class="caller-avatar">👤</div>
+                                    <div class="caller-name">Customer</div>
+                                    <div class="caller-number">+61 4XX XXX XXX</div>
+                                </div>
+                                
+                                <div class="conversation" id="conversation">
+                                    <!-- Messages appear here -->
+                                </div>
+                                
+                                <div class="typing-indicator" id="typingIndicator">
+                                    <span></span><span></span><span></span>
+                                </div>
+                            </div>
+                            
+                            <div class="phone-controls">
+                                <div class="input-area">
+                                    <input type="text" id="userInput" placeholder="Type or speak...">
+                                    <button id="voiceBtn" class="control-btn voice">
+                                        <i class="fas fa-microphone"></i>
+                                    </button>
+                                    <button id="sendBtn" class="control-btn send">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                                <div class="quick-actions">
+                                    <button class="quick-btn" data-text="I'd like to order please">🍽️ Order</button>
+                                    <button class="quick-btn" data-text="What's on the menu?">📋 Menu</button>
+                                    <button class="quick-btn" data-text="Can I pickup in 20 mins?">⏰ Time</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Confirmation Card (dynamic per industry) -->
-                    <div class="result-card" id="ticketCard">
-                        <div class="card-header">
-                            <i class="fas fa-receipt" id="ticketCardIcon"></i>
-                            <span id="ticketCardTitle">Confirmation</span>
-                            <span class="status-badge" id="ticketStatus">Pending</span>
+                    <!-- Live Results Panel -->
+                    <div class="results-panel">
+                        <!-- Current Step Info -->
+                        <div class="info-card">
+                            <div class="card-icon"><i class="fas fa-info-circle"></i></div>
+                            <div class="card-content">
+                                <h3>What's Happening</h3>
+                                <p id="stepInfo">The AI is ready to answer the call and greet the customer naturally.</p>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <div class="ticket-preview" id="ticketPreview">
-                                <div class="ticket-placeholder">
-                                    <i class="fas fa-print"></i>
-                                    <span>Confirmation appears after booking</span>
+
+                        <!-- SMS Preview -->
+                        <div class="result-card" id="smsCard">
+                            <div class="card-header">
+                                <i class="fas fa-sms"></i>
+                                <span id="smsCardTitle">Customer SMS</span>
+                                <span class="status-badge" id="smsStatus">Pending</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="sms-preview" id="smsPreview">
+                                    <div class="sms-placeholder">
+                                        <i class="fas fa-message"></i>
+                                        <span>SMS appears after confirmation</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Stats -->
-                    <div class="stats-card">
-                        <div class="stat">
-                            <span class="stat-value" id="messageCount">0</span>
-                            <span class="stat-label">Messages</span>
+                        <!-- Confirmation Card -->
+                        <div class="result-card" id="ticketCard">
+                            <div class="card-header">
+                                <i class="fas fa-receipt" id="ticketCardIcon"></i>
+                                <span id="ticketCardTitle">Confirmation</span>
+                                <span class="status-badge" id="ticketStatus">Pending</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="ticket-preview" id="ticketPreview">
+                                    <div class="ticket-placeholder">
+                                        <i class="fas fa-print"></i>
+                                        <span>Confirmation appears after booking</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="stat">
-                            <span class="stat-value" id="orderTotal">$0</span>
-                            <span class="stat-label">Order Total</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-value" id="callDuration">0:00</span>
-                            <span class="stat-label">Call Time</span>
+
+                        <!-- Stats -->
+                        <div class="stats-card">
+                            <div class="stat">
+                                <span class="stat-value" id="messageCount">0</span>
+                                <span class="stat-label">Messages</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="orderTotal">$0</span>
+                                <span class="stat-label">Order Total</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="callDuration">0:00</span>
+                                <span class="stat-label">Call Time</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
 
-    <!-- Menu Section -->
-    <section class="menu-section hidden" id="menuSection">
-        <div class="container">
-            <h2><i class="fas fa-utensils"></i> Our Menu</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <span class="item-emoji">🥗</span>
-                    <div class="item-details">
-                        <h4>Grilled Halloumi Salad</h4>
-                        <p>Fresh greens, cherry tomatoes, grilled halloumi</p>
+        <!-- Menu Section -->
+        <section class="menu-section hidden" id="menuSection">
+            <div class="container">
+                <h2><i class="fas fa-utensils"></i> Our Menu</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <span class="item-emoji">🥗</span>
+                        <div class="item-details">
+                            <h4>Grilled Halloumi Salad</h4>
+                            <p>Fresh greens, cherry tomatoes, grilled halloumi</p>
+                        </div>
+                        <span class="item-price">$17</span>
                     </div>
-                    <span class="item-price">$17</span>
-                </div>
-                <div class="menu-item">
-                    <span class="item-emoji">🧅</span>
-                    <div class="item-details">
-                        <h4>Onion Rings</h4>
-                        <p>Crispy beer-battered rings</p>
+                    <div class="menu-item">
+                        <span class="item-emoji">🧅</span>
+                        <div class="item-details">
+                            <h4>Onion Rings</h4>
+                            <p>Crispy beer-battered rings</p>
+                        </div>
+                        <span class="item-price">$6</span>
                     </div>
-                    <span class="item-price">$6</span>
-                </div>
-                <div class="menu-item">
-                    <span class="item-emoji">🍫</span>
-                    <div class="item-details">
-                        <h4>Chocolate Brownie</h4>
-                        <p>Warm with vanilla ice cream</p>
+                    <div class="menu-item">
+                        <span class="item-emoji">🍫</span>
+                        <div class="item-details">
+                            <h4>Chocolate Brownie</h4>
+                            <p>Warm with vanilla ice cream</p>
+                        </div>
+                        <span class="item-price">$8</span>
                     </div>
-                    <span class="item-price">$8</span>
-                </div>
-                <div class="menu-item">
-                    <span class="item-emoji">🍋</span>
-                    <div class="item-details">
-                        <h4>Lemon Iced Tea</h4>
-                        <p>House-made, refreshing</p>
+                    <div class="menu-item">
+                        <span class="item-emoji">🍋</span>
+                        <div class="item-details">
+                            <h4>Lemon Iced Tea</h4>
+                            <p>House-made, refreshing</p>
+                        </div>
+                        <span class="item-price">$5</span>
                     </div>
-                    <span class="item-price">$5</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>AI Receptionist Demo • Powered by OpenAI GPT-4 & Neural TTS</p>
+        </footer>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- MODALS (shared) -->
+    <!-- ============================================ -->
 
     <!-- ROI Modal -->
     <div class="modal-overlay" id="roiModal">
@@ -400,9 +464,7 @@
                 <div class="stats-row">
                     <div class="stat-card wide">
                         <h4>Industry Breakdown</h4>
-                        <div class="industry-stats" id="industryStats">
-                            <!-- Filled by JS -->
-                        </div>
+                        <div class="industry-stats" id="industryStats"></div>
                     </div>
                     <div class="stat-card wide">
                         <h4>Estimated Savings</h4>
@@ -448,11 +510,6 @@
             <span class="waveform-label" id="waveformLabel">AI Speaking...</span>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>AI Receptionist Demo • Powered by OpenAI GPT-4 & Neural TTS</p>
-    </footer>
 
     <script src="script.js"></script>
 </body>

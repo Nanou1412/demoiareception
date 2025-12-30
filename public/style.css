@@ -1498,3 +1498,274 @@ body.fullscreen-mode .demo-section {
         display: none;
     }
 }
+
+/* ========================================
+   PAGE TRANSITIONS
+   ======================================== */
+.page {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.page.active {
+    display: block;
+    opacity: 1;
+}
+
+.page.fade-out {
+    opacity: 0;
+}
+
+/* ========================================
+   LANDING PAGE
+   ======================================== */
+.landing-header {
+    padding: 1rem 0;
+    background: transparent;
+    border-bottom: 1px solid var(--border);
+}
+
+.landing-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.landing-hero {
+    padding: 4rem 0 3rem;
+    text-align: center;
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+}
+
+.landing-hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.landing-hero .hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Industry Grid */
+.industry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+
+.industry-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.industry-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--industry-color), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.industry-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--industry-color);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--industry-glow);
+}
+
+.industry-card:hover::before {
+    opacity: 0.1;
+}
+
+.industry-card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.industry-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-white);
+    position: relative;
+    z-index: 1;
+}
+
+.industry-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+}
+
+/* Landing CTA */
+.landing-cta {
+    margin-top: 2.5rem;
+    padding: 1rem;
+}
+
+.landing-cta p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.landing-cta i {
+    animation: bounce 2s infinite;
+    color: var(--primary);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.landing-footer {
+    padding: 1.5rem 0;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+}
+
+/* ========================================
+   DEMO PAGE ENHANCEMENTS
+   ======================================== */
+.demo-hero {
+    padding: 1.5rem 0 !important;
+    min-height: auto;
+}
+
+.demo-hero .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.current-industry {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--bg-card);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
+}
+
+.current-industry .industry-icon {
+    font-size: 1.75rem;
+}
+
+.current-industry .industry-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-white);
+}
+
+.change-industry-btn {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.change-industry-btn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* ========================================
+   RESPONSIVE - LANDING PAGE
+   ======================================== */
+@media (max-width: 768px) {
+    .industry-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .industry-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .industry-card-icon {
+        font-size: 2.5rem;
+    }
+    
+    .industry-card h3 {
+        font-size: 1rem;
+    }
+    
+    .industry-card p {
+        font-size: 0.75rem;
+    }
+    
+    .landing-hero {
+        padding: 2rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .industry-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+    
+    .industry-card {
+        padding: 1rem 0.75rem;
+    }
+    
+    .industry-card-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .industry-card h3 {
+        font-size: 0.9rem;
+    }
+    
+    .industry-card p {
+        display: none;
+    }
+    
+    .current-industry {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+}
