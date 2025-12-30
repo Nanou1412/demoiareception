@@ -151,7 +151,7 @@ app.get('/api/orders', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`\n🚀 AI Phone Order Demo running at http://localhost:${PORT}`);
-    console.log(`\n💡 Don't forget to set your OpenAI API key:`);
-    console.log(`   export OPENAI_API_KEY=your_key_here\n`);
+    console.log('\n🚀 AI Phone Order Demo running at http://localhost:' + PORT);
+    console.log('\n💡 Don\'t forget to set your OpenAI API key:');
+    console.log('   export OPENAI_API_KEY=your_key_here\n');
 });
