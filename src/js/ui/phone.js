@@ -232,12 +232,12 @@ class PhoneUI {
         try {
             const response = await sendMessage(message);
 
-            // Lire la réponse si non muet
+            // Speak response if not muted
             if (!store.get('isMuted') && response.response) {
                 await speak(response.response);
             }
         } catch (error) {
-            this._addErrorMessage('Désolé, une erreur est survenue. Veuillez réessayer.');
+            this._addErrorMessage('Sorry, an error occurred. Please try again.');
         }
     }
 

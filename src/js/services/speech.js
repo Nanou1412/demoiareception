@@ -172,16 +172,16 @@ class SpeechManager {
     }
 
     /**
-     * Obtenir les langues supportées
-     * @returns {string[]} Langues
+     * Get supported languages
+     * @returns {string[]} Languages
      */
     getSupportedLanguages() {
-        // Liste des langues françaises courantes
+        // List of supported English locales
         return [
-            'fr-FR',
-            'fr-CA',
-            'fr-BE',
-            'fr-CH'
+            'en-AU',
+            'en-GB',
+            'en-US',
+            'en-NZ'
         ];
     }
 

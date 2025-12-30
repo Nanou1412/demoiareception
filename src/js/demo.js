@@ -121,22 +121,22 @@ async function init() {
 
 async function loadBuiltInIndustries() {
     const industries = [
-        { id: 'restaurant', name: 'Restaurant', icon: '🍽️', category: 'restaurant', description: 'Réservations et informations pour restaurants' },
-        { id: 'salon', name: 'Salon de coiffure', icon: '💇', category: 'beauty', description: 'Prise de rendez-vous et services de coiffure' },
-        { id: 'dental', name: 'Cabinet dentaire', icon: '🦷', category: 'health', description: 'Rendez-vous et soins dentaires' },
-        { id: 'medical', name: 'Cabinet médical', icon: '👨‍⚕️', category: 'health', description: 'Consultations et rendez-vous médicaux' },
-        { id: 'spa', name: 'Spa', icon: '🧖', category: 'beauty', description: 'Réservations de soins et bien-être' },
-        { id: 'gym', name: 'Salle de sport', icon: '🏋️', category: 'services', description: 'Inscriptions et horaires de cours' },
-        { id: 'hotel', name: 'Hôtel', icon: '🏨', category: 'services', description: 'Réservations de chambres et services' },
-        { id: 'garage', name: 'Garage auto', icon: '🚗', category: 'services', description: 'Rendez-vous pour réparations et entretien' },
-        { id: 'pizza', name: 'Pizzeria', icon: '🍕', category: 'restaurant', description: 'Commandes et livraisons de pizzas' },
-        { id: 'sushi', name: 'Restaurant sushi', icon: '🍣', category: 'restaurant', description: 'Réservations et commandes à emporter' },
-        { id: 'bakery', name: 'Boulangerie', icon: '🥐', category: 'commerce', description: 'Commandes et informations' },
-        { id: 'florist', name: 'Fleuriste', icon: '💐', category: 'commerce', description: 'Commandes de bouquets et livraisons' },
-        { id: 'vet', name: 'Clinique vétérinaire', icon: '🐕', category: 'animals', description: 'Rendez-vous pour animaux de compagnie' },
-        { id: 'pharmacy', name: 'Pharmacie', icon: '💊', category: 'health', description: 'Informations et disponibilité de médicaments' },
-        { id: 'lawyer', name: 'Cabinet d\'avocat', icon: '⚖️', category: 'services', description: 'Prises de rendez-vous juridiques' },
-        { id: 'realestate', name: 'Agence immobilière', icon: '🏠', category: 'services', description: 'Visites et renseignements immobiliers' }
+        { id: 'restaurant', name: 'Restaurant', icon: '🍽️', category: 'restaurant', description: 'Reservations and restaurant information' },
+        { id: 'salon', name: 'Hair Salon', icon: '💇', category: 'beauty', description: 'Appointments and hair services' },
+        { id: 'dental', name: 'Dental Clinic', icon: '🦷', category: 'health', description: 'Dental appointments and care' },
+        { id: 'medical', name: 'Medical Practice', icon: '👨‍⚕️', category: 'health', description: 'Medical consultations and appointments' },
+        { id: 'spa', name: 'Spa', icon: '🧖', category: 'beauty', description: 'Wellness treatments and bookings' },
+        { id: 'gym', name: 'Fitness Centre', icon: '🏋️', category: 'services', description: 'Memberships and class schedules' },
+        { id: 'hotel', name: 'Hotel', icon: '🏨', category: 'services', description: 'Room bookings and services' },
+        { id: 'garage', name: 'Auto Service', icon: '🚗', category: 'services', description: 'Repair and service appointments' },
+        { id: 'pizza', name: 'Pizzeria', icon: '🍕', category: 'restaurant', description: 'Pizza orders and delivery' },
+        { id: 'sushi', name: 'Sushi Restaurant', icon: '🍣', category: 'restaurant', description: 'Reservations and takeaway orders' },
+        { id: 'bakery', name: 'Bakery', icon: '🥐', category: 'commerce', description: 'Orders and information' },
+        { id: 'florist', name: 'Florist', icon: '💐', category: 'commerce', description: 'Bouquet orders and delivery' },
+        { id: 'vet', name: 'Veterinary Clinic', icon: '🐕', category: 'animals', description: 'Pet appointments' },
+        { id: 'pharmacy', name: 'Pharmacy', icon: '💊', category: 'health', description: 'Medication information and availability' },
+        { id: 'lawyer', name: 'Law Firm', icon: '⚖️', category: 'services', description: 'Legal appointments' },
+        { id: 'realestate', name: 'Real Estate Agency', icon: '🏠', category: 'services', description: 'Property inspections and enquiries' }
     ];
 
     industries.forEach(industry => {

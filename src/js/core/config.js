@@ -83,22 +83,22 @@ export const UI_CONFIG = {
 // ============================================
 export const INDUSTRY_CATEGORIES = {
     all: {
-        label: 'Tous',
+        label: 'All',
         icon: '🏢',
         order: 0
     },
     restaurant: {
-        label: 'Restauration',
+        label: 'Food & Dining',
         icon: '🍽️',
         order: 1
     },
     health: {
-        label: 'Santé',
+        label: 'Health',
         icon: '🏥',
         order: 2
     },
     beauty: {
-        label: 'Beauté',
+        label: 'Beauty',
         icon: '💅',
         order: 3
     },
@@ -108,22 +108,22 @@ export const INDUSTRY_CATEGORIES = {
         order: 4
     },
     commerce: {
-        label: 'Commerce',
+        label: 'Retail',
         icon: '🛍️',
         order: 5
     },
     education: {
-        label: 'Éducation',
+        label: 'Education',
         icon: '📚',
         order: 6
     },
     events: {
-        label: 'Événements',
+        label: 'Events',
         icon: '🎉',
         order: 7
     },
     animals: {
-        label: 'Animaux',
+        label: 'Pets',
         icon: '🐾',
         order: 8
     }
@@ -133,14 +133,14 @@ export const INDUSTRY_CATEGORIES = {
 // Quick Messages Templates
 // ============================================
 export const QUICK_MESSAGES = {
-    greeting: 'Bonjour, je souhaite prendre rendez-vous',
-    availability: 'Quelles sont vos disponibilités ?',
-    hours: 'Quels sont vos horaires d\'ouverture ?',
-    prices: 'Quels sont vos tarifs ?',
-    cancel: 'Je dois annuler mon rendez-vous',
-    confirm: 'Je confirme ma réservation',
-    info: 'J\'aurais besoin d\'informations',
-    emergency: 'C\'est urgent, pouvez-vous m\'aider ?'
+    greeting: 'Hi, I\'d like to make a booking',
+    availability: 'What\'s your availability?',
+    hours: 'What are your opening hours?',
+    prices: 'What are your prices?',
+    cancel: 'I need to cancel my appointment',
+    confirm: 'I\'d like to confirm my booking',
+    info: 'I need some information',
+    emergency: 'It\'s urgent, can you help me?'
 };
 
 // ============================================
@@ -149,33 +149,33 @@ export const QUICK_MESSAGES = {
 export const DEMO_SCENARIOS = {
     reservation: {
         id: 'reservation',
-        label: 'Réservation',
+        label: 'Booking',
         icon: '📅',
-        description: 'Prise de rendez-vous ou réservation'
+        description: 'Make a booking or reservation'
     },
     information: {
         id: 'information',
         label: 'Information',
         icon: 'ℹ️',
-        description: 'Demande d\'informations générales'
+        description: 'General information enquiry'
     },
     complaint: {
         id: 'complaint',
-        label: 'Réclamation',
+        label: 'Complaint',
         icon: '😤',
-        description: 'Gestion d\'une réclamation client'
+        description: 'Handle a customer complaint'
     },
     emergency: {
         id: 'emergency',
-        label: 'Urgence',
+        label: 'Emergency',
         icon: '🚨',
-        description: 'Situation urgente nécessitant une action immédiate'
+        description: 'Urgent situation requiring immediate action'
     },
     followup: {
         id: 'followup',
-        label: 'Suivi',
+        label: 'Follow-up',
         icon: '📞',
-        description: 'Suivi d\'une demande précédente'
+        description: 'Follow up on a previous enquiry'
     }
 };
 
@@ -234,12 +234,12 @@ export const EVENTS = {
 // Error Messages
 // ============================================
 export const ERROR_MESSAGES = {
-    network: 'Erreur de connexion. Veuillez vérifier votre connexion internet.',
-    api: 'Erreur du serveur. Veuillez réessayer.',
-    timeout: 'La requête a pris trop de temps. Veuillez réessayer.',
-    audio: 'Impossible de lire l\'audio. Veuillez vérifier vos paramètres.',
-    speech: 'La reconnaissance vocale n\'est pas disponible sur ce navigateur.',
-    generic: 'Une erreur est survenue. Veuillez réessayer.'
+    network: 'Connection error. Please check your internet connection.',
+    api: 'Server error. Please try again.',
+    timeout: 'Request timed out. Please try again.',
+    audio: 'Unable to play audio. Please check your settings.',
+    speech: 'Speech recognition is not available on this browser.',
+    generic: 'An error occurred. Please try again.'
 };
 
 // ============================================
