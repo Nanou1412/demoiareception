@@ -72,7 +72,7 @@ class ModalManager {
 
         this.activeModal = id;
         store.set({ activeModal: id });
-        
+
         eventBus.emit(EVENTS.UI_MODAL_OPEN, { id, data });
     }
 
@@ -96,7 +96,7 @@ class ModalManager {
 
         this.activeModal = null;
         store.set({ activeModal: null });
-        
+
         eventBus.emit(EVENTS.UI_MODAL_CLOSE, { id: modalId });
     }
 
@@ -210,7 +210,7 @@ export function confirm(options) {
 
     return new Promise((resolve) => {
         const id = 'confirm-modal-' + Date.now();
-        
+
         modalManager.create(id, {
             title,
             content: `<p>${message}</p>`,
@@ -250,7 +250,7 @@ export function alert(options) {
 
     return new Promise((resolve) => {
         const id = 'alert-modal-' + Date.now();
-        
+
         modalManager.create(id, {
             title,
             content: `<p>${message}</p>`,

@@ -41,7 +41,7 @@ class IndustryManager {
             category: 'services',
             icon: '🏢',
             enabled: true,
-            
+
             // Configuration fournie
             ...config,
 
@@ -86,7 +86,7 @@ class IndustryManager {
      */
     getCategories() {
         const counts = {};
-        
+
         this.industries.forEach(industry => {
             if (industry.enabled) {
                 counts[industry.category] = (counts[industry.category] || 0) + 1;
@@ -168,7 +168,7 @@ CONSIGNES:
         try {
             // Import dynamique de toutes les industries
             const modules = import.meta.glob('/src/industries/*.js');
-            
+
             for (const path in modules) {
                 try {
                     const module = await modules[path]();

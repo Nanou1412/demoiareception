@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je cherche une pension pour mon animal",
-        availability: "Avez-vous de la place pour cet été ?",
-        visit: "Peut-on visiter avant de réserver ?",
-        pricing: "Quels sont vos tarifs ?"
+        greeting: 'Bonjour, je cherche une pension pour mon animal',
+        availability: 'Avez-vous de la place pour cet été ?',
+        visit: 'Peut-on visiter avant de réserver ?',
+        pricing: 'Quels sont vos tarifs ?'
     },
 
     services: [

@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je voudrais un rendez-vous pour mon chien",
-        cat: "Toilettez-vous les chats ?",
-        pricing: "Quels sont vos tarifs ?",
-        urgent: "Mon chien a des nœuds importants"
+        greeting: 'Bonjour, je voudrais un rendez-vous pour mon chien',
+        cat: 'Toilettez-vous les chats ?',
+        pricing: 'Quels sont vos tarifs ?',
+        urgent: 'Mon chien a des nœuds importants'
     },
 
     services: [

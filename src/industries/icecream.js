@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je voudrais des glaces",
-        flavors: "Quels parfums avez-vous ?",
-        vegan: "Avez-vous des options vegan ?",
-        bulk: "Faites-vous des bacs pour emporter ?"
+        greeting: 'Bonjour, je voudrais des glaces',
+        flavors: 'Quels parfums avez-vous ?',
+        vegan: 'Avez-vous des options vegan ?',
+        bulk: 'Faites-vous des bacs pour emporter ?'
     },
 
     services: [

@@ -197,35 +197,35 @@ export const EVENTS = {
     // State events
     STATE_CHANGE: 'state:change',
     STATE_RESET: 'state:reset',
-    
+
     // Chat events
     CHAT_START: 'chat:start',
     CHAT_MESSAGE: 'chat:message',
     CHAT_RESPONSE: 'chat:response',
     CHAT_ERROR: 'chat:error',
     CHAT_RESET: 'chat:reset',
-    
+
     // Audio events
     AUDIO_PLAY: 'audio:play',
     AUDIO_STOP: 'audio:stop',
     AUDIO_ERROR: 'audio:error',
-    
+
     // Speech events
     SPEECH_START: 'speech:start',
     SPEECH_RESULT: 'speech:result',
     SPEECH_END: 'speech:end',
     SPEECH_ERROR: 'speech:error',
-    
+
     // UI events
     UI_MODAL_OPEN: 'ui:modal:open',
     UI_MODAL_CLOSE: 'ui:modal:close',
     UI_TOAST: 'ui:toast',
     UI_LOADING: 'ui:loading',
-    
+
     // Industry events
     INDUSTRY_SELECT: 'industry:select',
     INDUSTRY_CHANGE: 'industry:change',
-    
+
     // Scenario events
     SCENARIO_SELECT: 'scenario:select'
 };

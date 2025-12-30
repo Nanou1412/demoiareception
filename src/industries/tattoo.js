@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je voudrais me faire tatouer",
+        greeting: 'Bonjour, je voudrais me faire tatouer',
         consult: "J'aimerais prendre rendez-vous pour une consultation",
-        pricing: "Comment calculez-vous vos tarifs ?",
-        portfolio: "Puis-je voir vos réalisations ?"
+        pricing: 'Comment calculez-vous vos tarifs ?',
+        portfolio: 'Puis-je voir vos réalisations ?'
     },
 
     services: [

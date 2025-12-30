@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je voudrais commander",
-        menu: "Quel est votre menu ?",
-        delivery: "Faites-vous la livraison ?",
-        bestSeller: "Quel est votre best-seller ?"
+        greeting: 'Bonjour, je voudrais commander',
+        menu: 'Quel est votre menu ?',
+        delivery: 'Faites-vous la livraison ?',
+        bestSeller: 'Quel est votre best-seller ?'
     },
 
     services: [

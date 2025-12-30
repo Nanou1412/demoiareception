@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je voudrais réserver une table",
-        takeaway: "Je voudrais commander à emporter",
-        menu: "Quels sont vos menus ?",
-        allergies: "Avez-vous des options sans gluten ?"
+        greeting: 'Bonjour, je voudrais réserver une table',
+        takeaway: 'Je voudrais commander à emporter',
+        menu: 'Quels sont vos menus ?',
+        allergies: 'Avez-vous des options sans gluten ?'
     },
 
     menu: [

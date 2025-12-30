@@ -61,11 +61,11 @@ class ApiClient {
             return response;
         } catch (error) {
             clearTimeout(timeoutId);
-            
+
             if (error.name === 'AbortError') {
                 throw new Error(ERROR_MESSAGES.timeout);
             }
-            
+
             throw error;
         }
     }
@@ -95,7 +95,7 @@ const apiClient = new ApiClient();
  */
 export async function sendMessage(message, options = {}) {
     const startTime = Date.now();
-    
+
     // Obtenir ou créer l'ID de session
     let sessionId = store.get('sessionId');
     if (!sessionId) {
@@ -151,7 +151,7 @@ export async function sendMessage(message, options = {}) {
         });
 
         store.set({ isWaitingResponse: false, isTyping: false });
-        
+
         eventBus.emit(EVENTS.CHAT_RESPONSE, {
             response: response.response || response.message,
             responseTime,
@@ -163,7 +163,7 @@ export async function sendMessage(message, options = {}) {
         store.set({ isWaitingResponse: false, isTyping: false });
         emitError('chat', error);
         eventBus.emit(EVENTS.CHAT_ERROR, { error, sessionId });
-        
+
         throw error;
     }
 }
@@ -174,7 +174,7 @@ export async function sendMessage(message, options = {}) {
  */
 export async function resetChat() {
     const sessionId = store.get('sessionId');
-    
+
     if (sessionId) {
         try {
             await apiClient.request(API_CONFIG.endpoints.reset, {

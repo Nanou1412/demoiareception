@@ -28,7 +28,7 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je voudrais un rendez-vous",
+        greeting: 'Bonjour, je voudrais un rendez-vous',
         pain: "J'ai mal aux pieds",
         insoles: "J'aurais besoin de semelles",
         ingrown: "J'ai un ongle incarné"

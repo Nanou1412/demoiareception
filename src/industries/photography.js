@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je voudrais réserver une séance photo",
-        wedding: "Êtes-vous disponible pour un mariage ?",
-        portrait: "Faites-vous des portraits professionnels ?",
-        pricing: "Quels sont vos tarifs ?"
+        greeting: 'Bonjour, je voudrais réserver une séance photo',
+        wedding: 'Êtes-vous disponible pour un mariage ?',
+        portrait: 'Faites-vous des portraits professionnels ?',
+        pricing: 'Quels sont vos tarifs ?'
     },
 
     services: [

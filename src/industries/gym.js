@@ -30,8 +30,8 @@ export default {
     quickMessages: {
         greeting: "Bonjour, je voudrais m'inscrire",
         trial: "Proposez-vous une séance d'essai ?",
-        classes: "Quels cours proposez-vous ?",
-        pricing: "Quels sont vos tarifs ?"
+        classes: 'Quels cours proposez-vous ?',
+        pricing: 'Quels sont vos tarifs ?'
     },
 
     services: [

@@ -1,12 +1,14 @@
 /**
  * Industries Index for Netlify Functions
  * =======================================
- * 
+ *
  * Ce fichier sert de pont entre les industries ESM (src/industries/)
  * et les Netlify Functions (CommonJS).
- * 
+ *
  * Il exporte getSystemPrompt() et getVoice() pour le chat backend.
  */
+
+/* eslint-disable quotes */
 
 // ============================================
 // PROMPTS SYSTÈME PAR INDUSTRIE
@@ -110,7 +112,7 @@ const voices = {
     cleaning: 'nova',
     petgrooming: 'shimmer',
     icecream: 'nova',
-    
+
     // Voix masculines (echo, onyx, fable)
     medical: 'echo',
     dental: 'echo',

@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je voudrais un rendez-vous",
+        greeting: 'Bonjour, je voudrais un rendez-vous',
         urgent: "C'est assez urgent",
         renewal: "J'ai besoin de renouveler mon ordonnance",
-        certificate: "Il me faut un certificat médical"
+        certificate: 'Il me faut un certificat médical'
     },
 
     services: [

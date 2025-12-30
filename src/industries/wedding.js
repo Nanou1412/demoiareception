@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, nous cherchons un wedding planner",
-        availability: "Êtes-vous disponible pour notre date ?",
-        services: "Quels services proposez-vous ?",
-        pricing: "Quels sont vos tarifs ?"
+        greeting: 'Bonjour, nous cherchons un wedding planner',
+        availability: 'Êtes-vous disponible pour notre date ?',
+        services: 'Quels services proposez-vous ?',
+        pricing: 'Quels sont vos tarifs ?'
     },
 
     services: [

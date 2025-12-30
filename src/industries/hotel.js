@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je souhaite réserver une chambre",
-        availability: "Avez-vous des disponibilités ce week-end ?",
-        amenities: "Quels services proposez-vous ?",
-        breakfast: "Le petit-déjeuner est-il inclus ?"
+        greeting: 'Bonjour, je souhaite réserver une chambre',
+        availability: 'Avez-vous des disponibilités ce week-end ?',
+        amenities: 'Quels services proposez-vous ?',
+        breakfast: 'Le petit-déjeuner est-il inclus ?'
     },
 
     services: [

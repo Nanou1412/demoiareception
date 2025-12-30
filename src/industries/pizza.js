@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je voudrais commander des pizzas",
-        menu: "Quelles pizzas avez-vous ?",
-        delivery: "Faites-vous la livraison ?",
-        time: "Quel est le délai de livraison ?"
+        greeting: 'Bonjour, je voudrais commander des pizzas',
+        menu: 'Quelles pizzas avez-vous ?',
+        delivery: 'Faites-vous la livraison ?',
+        time: 'Quel est le délai de livraison ?'
     },
 
     menu: [

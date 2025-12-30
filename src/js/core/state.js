@@ -85,7 +85,7 @@ class Store {
      */
     set(updates, silent = false) {
         const prevState = { ...this._state };
-        
+
         // Appliquer les mises à jour
         Object.entries(updates).forEach(([key, value]) => {
             if (Object.prototype.hasOwnProperty.call(this._state, key)) {
@@ -131,7 +131,7 @@ class Store {
         };
 
         this._history = [];
-        
+
         eventBus.emit(EVENTS.STATE_RESET, this.state);
         this._notifyAll();
     }
@@ -235,7 +235,7 @@ class Store {
         try {
             localStorage.setItem(STORAGE_KEYS.theme, this._state.theme);
             localStorage.setItem(STORAGE_KEYS.volume, String(this._state.volume));
-            
+
             if (this._state.currentIndustry) {
                 localStorage.setItem(
                     STORAGE_KEYS.lastIndustry,
@@ -267,7 +267,7 @@ export function addMessage(message) {
         id: Date.now(),
         timestamp: new Date().toISOString()
     }];
-    
+
     store.set({
         messages,
         demoStats: {

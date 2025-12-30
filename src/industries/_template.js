@@ -1,9 +1,9 @@
 /**
  * Industry Template v2.0
  * ======================
- * 
+ *
  * Template de base pour créer une nouvelle industrie
- * 
+ *
  * INSTRUCTIONS:
  * 1. Copier ce fichier avec le nom de l'industrie (ex: restaurant.js)
  * 2. Modifier les valeurs selon l'industrie
@@ -18,32 +18,32 @@ export default {
     // ============================================
     // IDENTIFICATION (Obligatoire)
     // ============================================
-    
+
     /**
      * ID unique de l'industrie (lowercase, sans espaces)
      * @type {string}
      */
     id: 'template',
-    
+
     /**
      * Nom affiché de l'industrie
      * @type {string}
      */
     name: 'Template Industry',
-    
+
     /**
      * Icône emoji de l'industrie
      * @type {string}
      */
     icon: '🏢',
-    
+
     /**
      * Catégorie pour le filtrage
      * Options: restaurant, health, beauty, services, commerce, education, events, animals
      * @type {string}
      */
     category: 'services',
-    
+
     /**
      * Description courte (max 100 caractères)
      * @type {string}
@@ -53,31 +53,31 @@ export default {
     // ============================================
     // INFORMATIONS BUSINESS (Optionnel)
     // ============================================
-    
+
     /**
      * Nom de l'entreprise de démo
      * @type {string}
      */
     businessName: 'Demo Business',
-    
+
     /**
      * Adresse de l'établissement
      * @type {string}
      */
     address: '123 Rue de la Demo, 75001 Paris',
-    
+
     /**
      * Numéro de téléphone
      * @type {string}
      */
     phone: '01 23 45 67 89',
-    
+
     /**
      * Horaires d'ouverture
      * @type {string}
      */
     hours: 'Lun-Ven: 9h-18h, Sam: 10h-17h',
-    
+
     /**
      * Site web
      * @type {string}
@@ -87,7 +87,7 @@ export default {
     // ============================================
     // MOTS-CLÉS POUR RECHERCHE
     // ============================================
-    
+
     /**
      * Mots-clés pour améliorer la recherche
      * @type {string[]}
@@ -101,7 +101,7 @@ export default {
     // ============================================
     // CAPACITÉS DE L'IA
     // ============================================
-    
+
     /**
      * Fonctionnalités supportées par cette industrie
      * @type {Object}
@@ -109,22 +109,22 @@ export default {
     capabilities: {
         /** Peut prendre des rendez-vous */
         appointments: true,
-        
+
         /** Peut donner des informations sur les prix */
         pricing: true,
-        
+
         /** Peut donner les horaires */
         hours: true,
-        
+
         /** Peut traiter les réclamations */
         complaints: true,
-        
+
         /** Peut traiter les urgences */
         emergencies: false,
-        
+
         /** Peut prendre des commandes */
         orders: false,
-        
+
         /** Peut donner des informations sur les produits/services */
         productInfo: true
     },
@@ -132,23 +132,23 @@ export default {
     // ============================================
     // MESSAGES RAPIDES
     // ============================================
-    
+
     /**
      * Messages rapides personnalisés pour cette industrie
      * @type {Object<string, string>}
      */
     quickMessages: {
-        greeting: "Bonjour, je souhaite prendre rendez-vous",
-        availability: "Quelles sont vos disponibilités ?",
-        pricing: "Quels sont vos tarifs ?",
-        hours: "Quels sont vos horaires ?",
+        greeting: 'Bonjour, je souhaite prendre rendez-vous',
+        availability: 'Quelles sont vos disponibilités ?',
+        pricing: 'Quels sont vos tarifs ?',
+        hours: 'Quels sont vos horaires ?',
         info: "J'aurais besoin d'informations"
     },
 
     // ============================================
     // SCÉNARIOS DE CONVERSATION
     // ============================================
-    
+
     /**
      * Scénarios de démo disponibles
      * @type {Object}
@@ -183,7 +183,7 @@ export default {
     // ============================================
     // TARIFS (Optionnel)
     // ============================================
-    
+
     /**
      * Grille tarifaire
      * @type {Array<{name: string, price: string, description?: string}>}
@@ -196,7 +196,7 @@ export default {
     // ============================================
     // SERVICES (Optionnel)
     // ============================================
-    
+
     /**
      * Liste des services proposés
      * @type {string[]}
@@ -210,7 +210,7 @@ export default {
     // ============================================
     // PROMPT SYSTÈME (Obligatoire)
     // ============================================
-    
+
     /**
      * Prompt système pour l'IA
      * Doit être détaillé et personnalisé pour l'industrie
@@ -260,19 +260,19 @@ INFORMATIONS SUPPLÉMENTAIRES:
     // ============================================
     // METADATA
     // ============================================
-    
+
     /**
      * Version du template
      * @type {string}
      */
     version: '2.0',
-    
+
     /**
      * Industrie active ou non
      * @type {boolean}
      */
     enabled: true,
-    
+
     /**
      * Date de dernière mise à jour
      * @type {string}

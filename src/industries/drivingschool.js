@@ -29,8 +29,8 @@ export default {
 
     quickMessages: {
         greeting: "Bonjour, je voudrais m'inscrire au permis",
-        code: "Comment fonctionne le code en ligne ?",
-        lessons: "Quels sont vos tarifs ?",
+        code: 'Comment fonctionne le code en ligne ?',
+        lessons: 'Quels sont vos tarifs ?',
         exam: "Quand puis-je passer l'examen ?"
     },
 

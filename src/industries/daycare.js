@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je cherche une place en crèche",
-        waitlist: "Y a-t-il des places disponibles ?",
-        visit: "Peut-on visiter la crèche ?",
-        pricing: "Comment fonctionnent les tarifs ?"
+        greeting: 'Bonjour, je cherche une place en crèche',
+        waitlist: 'Y a-t-il des places disponibles ?',
+        visit: 'Peut-on visiter la crèche ?',
+        pricing: 'Comment fonctionnent les tarifs ?'
     },
 
     services: [

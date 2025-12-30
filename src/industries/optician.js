@@ -29,8 +29,8 @@ export default {
 
     quickMessages: {
         greeting: "Bonjour, j'aurais besoin de lunettes",
-        repair: "Mes lunettes sont cassées",
-        lenses: "Je voudrais des lentilles",
+        repair: 'Mes lunettes sont cassées',
+        lenses: 'Je voudrais des lentilles',
         control: "J'ai besoin d'un contrôle de vue"
     },
 

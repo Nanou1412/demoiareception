@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je voudrais commander",
-        menu: "Quels cafés proposez-vous ?",
-        brunch: "Faites-vous le brunch ?",
-        takeaway: "Puis-je commander à emporter ?"
+        greeting: 'Bonjour, je voudrais commander',
+        menu: 'Quels cafés proposez-vous ?',
+        brunch: 'Faites-vous le brunch ?',
+        takeaway: 'Puis-je commander à emporter ?'
     },
 
     services: [

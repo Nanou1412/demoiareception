@@ -124,14 +124,14 @@ export const industries = [
     fastfood,
     icecream,
     bakery,
-    
+
     // Beauty & Wellness
     salon,
     spa,
     massage,
     nailsalon,
     tattoo,
-    
+
     // Health & Medical
     dental,
     medical,
@@ -139,7 +139,7 @@ export const industries = [
     pharmacy,
     optician,
     podiatrist,
-    
+
     // Services & Trades
     hotel,
     garage,
@@ -150,23 +150,23 @@ export const industries = [
     landscaping,
     locksmith,
     moving,
-    
+
     // Professional Services
     lawyer,
     realestate,
     drivingschool,
     tutoring,
     photography,
-    
+
     // Pet Services
     petgrooming,
     petboarding,
-    
+
     // Family & Events
     daycare,
     wedding,
     eventvenue,
-    
+
     // Commerce
     florist
 ];
@@ -204,7 +204,7 @@ export function getCategories() {
  */
 export function searchIndustries(keyword) {
     const term = keyword.toLowerCase();
-    return industries.filter(industry => 
+    return industries.filter(industry =>
         industry.name.toLowerCase().includes(term) ||
         industry.keywords?.some(k => k.toLowerCase().includes(term)) ||
         industry.description?.toLowerCase().includes(term)

@@ -29,7 +29,7 @@ export default {
 
     quickMessages: {
         greeting: "Bonjour, j'aurais besoin d'un paysagiste",
-        maintenance: "Je cherche un entretien régulier",
+        maintenance: 'Je cherche un entretien régulier',
         project: "J'ai un projet d'aménagement",
         tree: "J'ai un arbre à élaguer"
     },

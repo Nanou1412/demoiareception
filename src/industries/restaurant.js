@@ -1,7 +1,7 @@
 /**
  * Restaurant Industry v2.0
  * ========================
- * 
+ *
  * Configuration complète pour les restaurants
  */
 
@@ -57,12 +57,12 @@ export default {
     // MESSAGES RAPIDES
     // ============================================
     quickMessages: {
-        greeting: "Bonjour, je souhaite réserver une table",
-        availability: "Avez-vous des disponibilités ce soir ?",
-        menu: "Quel est votre menu du jour ?",
-        allergies: "Proposez-vous des options végétariennes ?",
-        group: "Je voudrais réserver pour un groupe",
-        cancel: "Je dois annuler ma réservation"
+        greeting: 'Bonjour, je souhaite réserver une table',
+        availability: 'Avez-vous des disponibilités ce soir ?',
+        menu: 'Quel est votre menu du jour ?',
+        allergies: 'Proposez-vous des options végétariennes ?',
+        group: 'Je voudrais réserver pour un groupe',
+        cancel: 'Je dois annuler ma réservation'
     },
 
     // ============================================
@@ -75,8 +75,8 @@ export default {
             icon: '📅',
             description: 'Réserver une table',
             suggestedQuestions: [
-                "Je voudrais réserver pour 4 personnes samedi soir",
-                "Avez-vous une table en terrasse ?",
+                'Je voudrais réserver pour 4 personnes samedi soir',
+                'Avez-vous une table en terrasse ?',
                 "C'est pour un anniversaire"
             ]
         },
@@ -86,9 +86,9 @@ export default {
             icon: 'ℹ️',
             description: 'Informations générales',
             suggestedQuestions: [
-                "Quel est le menu du jour ?",
-                "Avez-vous un menu enfant ?",
-                "Quels sont vos horaires ?"
+                'Quel est le menu du jour ?',
+                'Avez-vous un menu enfant ?',
+                'Quels sont vos horaires ?'
             ]
         },
         complaint: {
@@ -108,9 +108,9 @@ export default {
             icon: '🥡',
             description: 'Commande à emporter',
             suggestedQuestions: [
-                "Je voudrais commander à emporter",
-                "Faites-vous la livraison ?",
-                "Quel est le délai de préparation ?"
+                'Je voudrais commander à emporter',
+                'Faites-vous la livraison ?',
+                'Quel est le délai de préparation ?'
             ]
         }
     },

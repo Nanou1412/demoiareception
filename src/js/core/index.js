@@ -1,7 +1,7 @@
 /**
  * Core Module - Point d'entrée
  * ============================
- * 
+ *
  * Exporte tous les modules core
  */
 
@@ -12,14 +12,14 @@ export * from './config.js';
 export { eventBus, EventEmitter, emitLoading, emitToast, emitError } from './events.js';
 
 // État
-export { 
-    store, 
+export {
+    store,
     Store,
-    addMessage, 
-    setCurrentIndustry, 
+    addMessage,
+    setCurrentIndustry,
     setCurrentScenario,
     updateDemoStats,
-    toggleTheme 
+    toggleTheme
 } from './state.js';
 
 // Utilitaires

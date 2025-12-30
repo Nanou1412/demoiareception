@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je souhaite réserver un soin",
-        massage: "Quels massages proposez-vous ?",
-        duo: "Avez-vous des soins en duo ?",
-        gift: "Je cherche une carte cadeau"
+        greeting: 'Bonjour, je souhaite réserver un soin',
+        massage: 'Quels massages proposez-vous ?',
+        duo: 'Avez-vous des soins en duo ?',
+        gift: 'Je cherche une carte cadeau'
     },
 
     services: [

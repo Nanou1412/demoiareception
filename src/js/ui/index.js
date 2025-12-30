@@ -1,7 +1,7 @@
 /**
  * UI Module - Point d'entrée
  * ==========================
- * 
+ *
  * Exporte tous les composants UI
  */
 

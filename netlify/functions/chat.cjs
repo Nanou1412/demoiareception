@@ -1,5 +1,5 @@
 const OpenAI = require('openai');
-const { getSystemPrompt, getVoice } = require('../../industries/index');
+const { getSystemPrompt, getVoice } = require('../../industries/index.cjs');
 
 // Store conversations in memory (note: will reset on cold starts)
 const conversations = new Map();

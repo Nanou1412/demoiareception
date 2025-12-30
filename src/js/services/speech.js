@@ -124,7 +124,7 @@ class SpeechManager {
 
             this.transcript = '';
             this.onResultCallback = options.onResult || null;
-            
+
             this.onEndCallback = (transcript) => {
                 if (options.onEnd) options.onEnd(transcript);
                 resolve(transcript);

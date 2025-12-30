@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je cherche une salle pour un événement",
-        wedding: "La salle est-elle disponible pour un mariage ?",
-        corporate: "Organisez-vous des séminaires ?",
-        visit: "Peut-on visiter la salle ?"
+        greeting: 'Bonjour, je cherche une salle pour un événement',
+        wedding: 'La salle est-elle disponible pour un mariage ?',
+        corporate: 'Organisez-vous des séminaires ?',
+        visit: 'Peut-on visiter la salle ?'
     },
 
     services: [

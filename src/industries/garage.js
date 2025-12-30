@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je voudrais prendre rendez-vous",
+        greeting: 'Bonjour, je voudrais prendre rendez-vous',
         oil: "J'ai besoin d'une vidange",
-        tires: "Je voudrais changer mes pneus",
-        issue: "Ma voiture fait un bruit bizarre"
+        tires: 'Je voudrais changer mes pneus',
+        issue: 'Ma voiture fait un bruit bizarre'
     },
 
     services: [

@@ -29,9 +29,9 @@ export default {
 
     quickMessages: {
         greeting: "Bonjour, j'ai besoin d'un devis déménagement",
-        urgent: "Je dois déménager rapidement",
+        urgent: 'Je dois déménager rapidement',
         packing: "Proposez-vous l'emballage ?",
-        storage: "Avez-vous des solutions de garde-meuble ?"
+        storage: 'Avez-vous des solutions de garde-meuble ?'
     },
 
     services: [

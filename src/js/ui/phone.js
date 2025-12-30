@@ -39,10 +39,10 @@ class PhoneUI {
         this._bindEvents();
         this._subscribeToState();
         this._updateTime();
-        
+
         // Mettre à jour l'heure toutes les minutes
         setInterval(() => this._updateTime(), 60000);
-        
+
         this.isInitialized = true;
     }
 
@@ -223,7 +223,7 @@ class PhoneUI {
     async _handleSend() {
         const { input } = this.elements;
         const message = input.value.trim();
-        
+
         if (!message || store.get('isWaitingResponse')) return;
 
         input.value = '';
@@ -231,7 +231,7 @@ class PhoneUI {
 
         try {
             const response = await sendMessage(message);
-            
+
             // Lire la réponse si non muet
             if (!store.get('isMuted') && response.response) {
                 await speak(response.response);
@@ -256,7 +256,7 @@ class PhoneUI {
                         this.elements.input.value = text;
                     }
                 });
-                
+
                 if (transcript) {
                     this.elements.input.value = transcript;
                     this._handleSend();
@@ -273,7 +273,7 @@ class PhoneUI {
     _handleMute() {
         const isMuted = store.get('isMuted');
         store.set({ isMuted: !isMuted });
-        
+
         if (!isMuted) {
             stopAudio();
         }
@@ -286,7 +286,7 @@ class PhoneUI {
         abortRequest();
         stopAudio();
         stopListening();
-        
+
         eventBus.emit(EVENTS.CHAT_RESET);
     }
 
@@ -317,7 +317,7 @@ class PhoneUI {
         const errorDiv = createElement('div', {
             className: 'message error-message'
         }, text);
-        
+
         container.appendChild(errorDiv);
         container.scrollTop = container.scrollHeight;
     }

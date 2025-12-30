@@ -59,7 +59,7 @@ let elements = {};
 
 async function init() {
     await domReady();
-    
+
     // Cache DOM elements
     elements = {
         phoneContainer: $('#phoneContainer'),
@@ -277,7 +277,7 @@ async function handleReset() {
 function toggleAutoSpeak() {
     demoState.autoSpeak = !demoState.autoSpeak;
     store.set({ isMuted: !demoState.autoSpeak });
-    
+
     if (elements.autoSpeakBtn) {
         elements.autoSpeakBtn.textContent = `🔊 Lecture automatique: ${demoState.autoSpeak ? 'ON' : 'OFF'}`;
     }
@@ -289,18 +289,18 @@ function handleIndustryChange(industryId) {
 
     selectIndustry(industryId);
     demoState.currentIndustryId = industryId;
-    
+
     // Save preference
     localStorage.setItem('ia-receptionist-last-industry', industryId);
-    
+
     // Reset chat
     resetChat();
     phoneUI.init(elements.phoneContainer);
-    
+
     // Update UI
     updateIndustryDisplay();
     closeIndustryModal();
-    
+
     toast.success(`Industrie changée: ${industry.name}`);
 }
 
@@ -313,7 +313,7 @@ function openIndustryModal() {
         elements.industryModal.classList.add('active');
         elements.industryModal.setAttribute('aria-hidden', 'false');
         renderModalIndustries();
-        
+
         if (elements.modalSearch) {
             elements.modalSearch.value = '';
             elements.modalSearch.focus();
@@ -330,7 +330,7 @@ function closeIndustryModal() {
 
 function renderModalIndustries(query = '') {
     const industries = query ? searchIndustries(query) : getAllIndustries();
-    
+
     if (elements.modalGrid) {
         elements.modalGrid.innerHTML = industries.map(ind => `
             <article class="industry-card ${ind.id === demoState.currentIndustryId ? 'active' : ''}" 
@@ -364,7 +364,7 @@ function updateIndustryDisplay() {
     if (elements.industryInfo) {
         const description = elements.industryInfo.querySelector('.industry-description');
         if (description) {
-            description.textContent = industry.description || 
+            description.textContent = industry.description ||
                 `Cette IA est configurée pour simuler un réceptionniste professionnel dans le secteur ${industry.name.toLowerCase()}.`;
         }
     }

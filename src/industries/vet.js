@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je voudrais un rendez-vous pour mon animal",
+        greeting: 'Bonjour, je voudrais un rendez-vous pour mon animal',
         emergency: "C'est urgent, mon animal est malade",
-        vaccine: "Mon chat a besoin de ses vaccins",
-        checkup: "Je voudrais un bilan de santé"
+        vaccine: 'Mon chat a besoin de ses vaccins',
+        checkup: 'Je voudrais un bilan de santé'
     },
 
     services: [

@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je souhaite prendre rendez-vous",
+        greeting: 'Bonjour, je souhaite prendre rendez-vous',
         emergency: "J'ai une urgence dentaire",
-        checkup: "Je voudrais un détartrage",
-        pricing: "Êtes-vous conventionné ?"
+        checkup: 'Je voudrais un détartrage',
+        pricing: 'Êtes-vous conventionné ?'
     },
 
     services: [

@@ -28,9 +28,9 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je voudrais passer une commande",
+        greeting: 'Bonjour, je voudrais passer une commande',
         cake: "Je cherche un gâteau d'anniversaire",
-        bread: "Pouvez-vous me réserver du pain ?",
+        bread: 'Pouvez-vous me réserver du pain ?',
         event: "J'organise un événement"
     },
 

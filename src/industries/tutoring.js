@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je cherche un professeur particulier",
-        subject: "Quelles matières proposez-vous ?",
-        pricing: "Quels sont vos tarifs ?",
-        online: "Faites-vous des cours en ligne ?"
+        greeting: 'Bonjour, je cherche un professeur particulier',
+        subject: 'Quelles matières proposez-vous ?',
+        pricing: 'Quels sont vos tarifs ?',
+        online: 'Faites-vous des cours en ligne ?'
     },
 
     services: [

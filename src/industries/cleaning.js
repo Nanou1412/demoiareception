@@ -28,9 +28,9 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je cherche une femme de ménage",
+        greeting: 'Bonjour, je cherche une femme de ménage',
         oneTime: "J'aurais besoin d'un nettoyage ponctuel",
-        regular: "Je cherche un service régulier",
+        regular: 'Je cherche un service régulier',
         moving: "J'ai besoin d'un ménage de fin de bail"
     },
 

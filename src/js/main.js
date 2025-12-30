@@ -50,7 +50,7 @@ let elements = {};
 
 async function init() {
     await domReady();
-    
+
     // Cache DOM elements
     elements = {
         industryGrid: $('#industryGrid'),
@@ -138,7 +138,7 @@ async function loadBuiltInIndustries() {
 
 function renderCategories() {
     const categories = getIndustryCategories();
-    
+
     if (elements.categoryFilters) {
         elements.categoryFilters.innerHTML = categories.map(cat => `
             <button class="category-btn ${cat.id === appState.currentCategory ? 'active' : ''}" 
@@ -153,7 +153,7 @@ function renderCategories() {
 
 function renderIndustries() {
     let industries;
-    
+
     if (appState.searchQuery) {
         industries = searchIndustries(appState.searchQuery);
     } else {
@@ -171,7 +171,7 @@ function renderIndustries() {
                     </button>
                 </div>
             `;
-            
+
             const resetBtn = $('#resetFilters');
             if (resetBtn) {
                 resetBtn.addEventListener('click', () => {
@@ -226,7 +226,7 @@ function bindEvents() {
         elements.industryGrid.addEventListener('click', (e) => {
             const demoBtn = e.target.closest('[data-demo]');
             const card = e.target.closest('.industry-card');
-            
+
             if (demoBtn || card) {
                 const industryId = demoBtn?.dataset.demo || card?.dataset.industry;
                 if (industryId) {
@@ -273,7 +273,7 @@ function bindEvents() {
 function navigateToDemo(industryId) {
     // Save selected industry
     localStorage.setItem('ia-receptionist-last-industry', industryId);
-    
+
     // Navigate to demo page
     window.location.href = `/demo.html?industry=${industryId}`;
 }

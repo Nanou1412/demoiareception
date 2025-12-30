@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je voudrais prendre rendez-vous",
-        availability: "Quelles sont vos disponibilités cette semaine ?",
-        pricing: "Quels sont vos tarifs pour une coupe ?",
-        stylist: "Puis-je choisir mon coiffeur ?"
+        greeting: 'Bonjour, je voudrais prendre rendez-vous',
+        availability: 'Quelles sont vos disponibilités cette semaine ?',
+        pricing: 'Quels sont vos tarifs pour une coupe ?',
+        stylist: 'Puis-je choisir mon coiffeur ?'
     },
 
     services: [

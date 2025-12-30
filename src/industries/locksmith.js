@@ -29,9 +29,9 @@ export default {
 
     quickMessages: {
         greeting: "Bonjour, j'ai besoin d'un serrurier",
-        lockedOut: "Je suis enfermé dehors !",
-        broken: "Ma serrure est cassée",
-        security: "Je voudrais sécuriser ma porte"
+        lockedOut: 'Je suis enfermé dehors !',
+        broken: 'Ma serrure est cassée',
+        security: 'Je voudrais sécuriser ma porte'
     },
 
     services: [

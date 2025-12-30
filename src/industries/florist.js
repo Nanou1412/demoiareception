@@ -28,8 +28,8 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je voudrais commander un bouquet",
-        delivery: "Faites-vous la livraison ?",
+        greeting: 'Bonjour, je voudrais commander un bouquet',
+        delivery: 'Faites-vous la livraison ?',
         wedding: "J'organise un mariage",
         occasion: "C'est pour un anniversaire"
     },
