@@ -1,7 +1,7 @@
 /**
  * Templates HTML
  * ===============
- * 
+ *
  * Fonctions pour générer le HTML des composants
  */
 

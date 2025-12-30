@@ -1,7 +1,7 @@
 /**
  * Notifications Toast
  * ====================
- * 
+ *
  * Système de notifications éphémères
  */
 

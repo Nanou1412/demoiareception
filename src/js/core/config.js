@@ -1,7 +1,7 @@
 /**
  * Configuration centrale de l'application
  * ========================================
- * 
+ *
  * Toutes les constantes et configurations globales
  */
 
@@ -133,14 +133,14 @@ export const INDUSTRY_CATEGORIES = {
 // Quick Messages Templates
 // ============================================
 export const QUICK_MESSAGES = {
-    greeting: "Bonjour, je souhaite prendre rendez-vous",
-    availability: "Quelles sont vos disponibilités ?",
-    hours: "Quels sont vos horaires d'ouverture ?",
-    prices: "Quels sont vos tarifs ?",
-    cancel: "Je dois annuler mon rendez-vous",
-    confirm: "Je confirme ma réservation",
-    info: "J'aurais besoin d'informations",
-    emergency: "C'est urgent, pouvez-vous m'aider ?"
+    greeting: 'Bonjour, je souhaite prendre rendez-vous',
+    availability: 'Quelles sont vos disponibilités ?',
+    hours: 'Quels sont vos horaires d\'ouverture ?',
+    prices: 'Quels sont vos tarifs ?',
+    cancel: 'Je dois annuler mon rendez-vous',
+    confirm: 'Je confirme ma réservation',
+    info: 'J\'aurais besoin d\'informations',
+    emergency: 'C\'est urgent, pouvez-vous m\'aider ?'
 };
 
 // ============================================

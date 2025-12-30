@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je voudrais prendre rendez-vous",
-        gel: "Faites-vous la pose de gel ?",
-        pricing: "Quels sont vos tarifs ?",
-        nailart: "Proposez-vous du nail art ?"
+        greeting: 'Bonjour, je voudrais prendre rendez-vous',
+        gel: 'Faites-vous la pose de gel ?',
+        pricing: 'Quels sont vos tarifs ?',
+        nailart: 'Proposez-vous du nail art ?'
     },
 
     services: [

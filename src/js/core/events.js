@@ -1,7 +1,7 @@
 /**
  * Système d'événements global
  * ===========================
- * 
+ *
  * EventEmitter léger pour la communication inter-modules
  */
 

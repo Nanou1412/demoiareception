@@ -1,13 +1,13 @@
 /**
  * Service Industries
  * ===================
- * 
+ *
  * Gestion du chargement et de la configuration des industries
  */
 
 import { INDUSTRY_CATEGORIES, EVENTS } from '../core/config.js';
 import { eventBus } from '../core/events.js';
-import { store, setCurrentIndustry } from '../core/state.js';
+import { setCurrentIndustry } from '../core/state.js';
 
 // ============================================
 // Registry des industries
@@ -97,8 +97,8 @@ class IndustryManager {
             .map(([id, config]) => ({
                 id,
                 ...config,
-                count: id === 'all' 
-                    ? this.getAll().length 
+                count: id === 'all'
+                    ? this.getAll().length
                     : (counts[id] || 0)
             }))
             .filter(cat => cat.id === 'all' || cat.count > 0)
@@ -124,7 +124,7 @@ class IndustryManager {
      */
     search(query) {
         const lowerQuery = query.toLowerCase();
-        return this.getAll().filter(industry => 
+        return this.getAll().filter(industry =>
             industry.name.toLowerCase().includes(lowerQuery) ||
             industry.description?.toLowerCase().includes(lowerQuery) ||
             industry.keywords?.some(k => k.toLowerCase().includes(lowerQuery))

@@ -1,7 +1,7 @@
 /**
  * Fonctions utilitaires
  * =====================
- * 
+ *
  * Helpers réutilisables dans toute l'application
  */
 

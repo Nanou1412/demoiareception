@@ -1,7 +1,7 @@
 /**
  * Service Audio
  * =============
- * 
+ *
  * Gestion du Text-to-Speech et de la lecture audio
  */
 
@@ -88,7 +88,7 @@ class AudioManager {
                 resolve();
             };
 
-            this.currentAudio.onerror = (e) => {
+            this.currentAudio.onerror = () => {
                 this.isPlaying = false;
                 reject(new Error(ERROR_MESSAGES.audio));
             };

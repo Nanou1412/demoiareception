@@ -1,7 +1,7 @@
 /**
  * Service de Reconnaissance Vocale
  * =================================
- * 
+ *
  * Gestion du Speech-to-Text via Web Speech API
  */
 

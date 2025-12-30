@@ -1,7 +1,7 @@
 /**
  * Gestionnaire de Modals
  * ======================
- * 
+ *
  * Gestion centralisée des modals
  */
 
@@ -161,7 +161,7 @@ class ModalManager {
      * @param {Element} element - Élément du modal
      */
     _bindModalEvents(id, element) {
-        const { closeOnOverlay, closeOnEscape } = UI_CONFIG.modal;
+        const { closeOnOverlay } = UI_CONFIG.modal;
 
         // Fermeture par bouton
         $$('[data-close-modal]', element).forEach(btn => {

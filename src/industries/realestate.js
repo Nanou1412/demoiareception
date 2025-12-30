@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je recherche un appartement",
-        visit: "Je voudrais visiter un bien",
-        sell: "Je souhaite vendre mon bien",
-        estimate: "Pouvez-vous estimer mon appartement ?"
+        greeting: 'Bonjour, je recherche un appartement',
+        visit: 'Je voudrais visiter un bien',
+        sell: 'Je souhaite vendre mon bien',
+        estimate: 'Pouvez-vous estimer mon appartement ?'
     },
 
     services: [

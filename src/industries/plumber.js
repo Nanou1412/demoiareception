@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, j'ai besoin d'un plombier",
-        emergency: "J'ai une fuite d'eau urgente !",
-        quote: "Je voudrais un devis",
-        clog: "Mon évier est bouché"
+        greeting: 'Bonjour, j\'ai besoin d\'un plombier',
+        emergency: 'J\'ai une fuite d\'eau urgente !',
+        quote: 'Je voudrais un devis',
+        clog: 'Mon évier est bouché'
     },
 
     services: [

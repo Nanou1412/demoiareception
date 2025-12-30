@@ -1,14 +1,14 @@
 /**
  * Composant Phone UI
  * ===================
- * 
+ *
  * Gestion de l'interface du simulateur de téléphone
  */
 
 import { PHONE_CONFIG, EVENTS, QUICK_MESSAGES } from '../core/config.js';
 import { eventBus } from '../core/events.js';
 import { store } from '../core/state.js';
-import { $, $$, createElement, formatTime, delay, escapeHtml } from '../core/utils.js';
+import { $, createElement, formatTime, escapeHtml } from '../core/utils.js';
 import { sendMessage, abortRequest } from '../services/api.js';
 import { speak, stopAudio } from '../services/audio.js';
 import { startListening, stopListening } from '../services/speech.js';
@@ -127,7 +127,7 @@ class PhoneUI {
      * @returns {string}
      */
     _renderQuickMessages() {
-        return Object.entries(QUICK_MESSAGES).slice(0, 4).map(([key, text]) => `
+        return Object.entries(QUICK_MESSAGES).slice(0, 4).map(([_key, text]) => `
             <button class="quick-btn" data-message="${escapeHtml(text)}">
                 ${escapeHtml(text.substring(0, 30))}${text.length > 30 ? '...' : ''}
             </button>
@@ -237,7 +237,7 @@ class PhoneUI {
                 await speak(response.response);
             }
         } catch (error) {
-            this._addErrorMessage("Désolé, une erreur est survenue. Veuillez réessayer.");
+            this._addErrorMessage('Désolé, une erreur est survenue. Veuillez réessayer.');
         }
     }
 

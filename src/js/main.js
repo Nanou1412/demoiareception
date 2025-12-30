@@ -1,7 +1,7 @@
 /**
  * Main Application Entry Point
  * ============================
- * 
+ *
  * Point d'entrée principal pour la page d'accueil
  */
 
@@ -10,33 +10,23 @@
 // ============================================
 
 // Core
-import { 
-    store, 
-    eventBus, 
-    EVENTS, 
-    INDUSTRY_CATEGORIES,
-    $, $$, 
-    domReady, 
+import {
+    $,
+    domReady,
     debounce,
     toggleTheme
 } from './core/index.js';
 
 // Services
-import { 
+import {
     industryManager,
-    getAllIndustries, 
     getIndustryCategories,
     getIndustriesByCategory,
     searchIndustries
 } from './services/index.js';
 
-// UI
-import { 
-    industryCard, 
-    industryGrid, 
-    categoryFilters,
-    toast 
-} from './ui/index.js';
+// UI - toast sera utilisé pour les notifications
+import './ui/index.js';
 
 // ============================================
 // Application State

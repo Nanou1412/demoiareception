@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, j'ai une question sur un médicament",
-        availability: "Avez-vous ce médicament en stock ?",
-        prescription: "J'ai une ordonnance à préparer",
-        vaccine: "Faites-vous les vaccins ?"
+        greeting: 'Bonjour, j\'ai une question sur un médicament',
+        availability: 'Avez-vous ce médicament en stock ?',
+        prescription: 'J\'ai une ordonnance à préparer',
+        vaccine: 'Faites-vous les vaccins ?'
     },
 
     services: [

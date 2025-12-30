@@ -1,7 +1,7 @@
 /**
  * Gestion d'état centralisée
  * ==========================
- * 
+ *
  * Store réactif pour l'état de l'application
  */
 
@@ -88,7 +88,7 @@ class Store {
         
         // Appliquer les mises à jour
         Object.entries(updates).forEach(([key, value]) => {
-            if (this._state.hasOwnProperty(key)) {
+            if (Object.prototype.hasOwnProperty.call(this._state, key)) {
                 this._state[key] = value;
             }
         });

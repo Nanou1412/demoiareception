@@ -1,7 +1,7 @@
 /**
  * Service API
  * ===========
- * 
+ *
  * Gestion des appels API vers les fonctions Netlify
  */
 

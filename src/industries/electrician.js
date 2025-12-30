@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, j'ai besoin d'un électricien",
-        emergency: "Je n'ai plus de courant !",
-        quote: "Je voudrais un devis pour une installation",
-        issue: "J'ai des prises qui ne marchent plus"
+        greeting: 'Bonjour, j\'ai besoin d\'un électricien',
+        emergency: 'Je n\'ai plus de courant !',
+        quote: 'Je voudrais un devis pour une installation',
+        issue: 'J\'ai des prises qui ne marchent plus'
     },
 
     services: [

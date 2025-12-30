@@ -28,10 +28,10 @@ export default {
     },
 
     quickMessages: {
-        greeting: "Bonjour, je souhaite consulter un avocat",
-        urgent: "J'ai un problème juridique urgent",
-        pricing: "Quels sont vos honoraires ?",
-        speciality: "Quels domaines traitez-vous ?"
+        greeting: 'Bonjour, je souhaite consulter un avocat',
+        urgent: 'J\'ai un problème juridique urgent',
+        pricing: 'Quels sont vos honoraires ?',
+        speciality: 'Quels domaines traitez-vous ?'
     },
 
     services: [

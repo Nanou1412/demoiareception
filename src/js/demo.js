@@ -1,7 +1,7 @@
 /**
  * Demo Page Entry Point
  * =====================
- * 
+ *
  * Point d'entrée pour la page de démonstration
  */
 
@@ -10,12 +10,12 @@
 // ============================================
 
 // Core
-import { 
-    store, 
-    eventBus, 
-    EVENTS, 
+import {
+    store,
+    eventBus,
+    EVENTS,
     DEMO_SCENARIOS,
-    $, $$, 
+    $, $$,
     domReady,
     parseQueryParams,
     toggleTheme,
@@ -23,7 +23,7 @@ import {
 } from './core/index.js';
 
 // Services
-import { 
+import {
     industryManager,
     getIndustry,
     getAllIndustries,
@@ -33,9 +33,9 @@ import {
 } from './services/index.js';
 
 // UI
-import { 
+import {
     phoneUI,
-    toast 
+    toast
 } from './ui/index.js';
 
 // ============================================
