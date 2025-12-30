@@ -6,7 +6,7 @@ const Timer = {
         const { State, DOM } = window.AppState;
         State.callStartTime = Date.now();
         if (DOM.callStatus) DOM.callStatus.textContent = 'On Call';
-        
+
         State.callTimerInterval = setInterval(() => {
             const elapsed = Math.floor((Date.now() - State.callStartTime) / 1000);
             const mins = Math.floor(elapsed / 60);
@@ -39,13 +39,13 @@ const SpeechManager = {
             State.recognition.interimResults = true;
             State.recognition.lang = 'en-AU';
 
-            State.recognition.onresult = (event) => {
+            State.recognition.onresult = event => {
                 let transcript = '';
                 for (let i = event.resultIndex; i < event.results.length; i++) {
                     transcript += event.results[i][0].transcript;
                 }
                 if (DOM.userInput) DOM.userInput.value = transcript;
-                
+
                 if (event.results[event.results.length - 1].isFinal) {
                     Demo.handleUserMessage(transcript.trim());
                     if (DOM.userInput) DOM.userInput.value = '';

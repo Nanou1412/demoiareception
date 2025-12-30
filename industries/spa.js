@@ -5,13 +5,13 @@
 const spa = {
     id: 'spa',
     category: 'health',
-    
+
     icon: '🧖‍♀️',
     customerIcon: '👤',
     color: '#7c3aed',
     cardIcon: 'fa-spa',
     voice: 'shimmer',
-    
+
     en: {
         name: 'Tranquil Waters Day Spa',
         aiName: 'Serena',
@@ -21,15 +21,15 @@ const spa = {
         responses: {
             greeting: "Hi, I'd like to book a spa treatment",
             service: "I'd love a Swedish massage",
-            duration: "90 minutes please",
-            datetime: "This weekend if possible",
-            therapist: "A female therapist please",
-            name: "Amanda",
-            phone: "0401 234 567",
-            confirm: "That sounds heavenly, thank you"
+            duration: '90 minutes please',
+            datetime: 'This weekend if possible',
+            therapist: 'A female therapist please',
+            name: 'Amanda',
+            phone: '0401 234 567',
+            confirm: 'That sounds heavenly, thank you'
         }
     },
-    
+
     prompt: `You're Serena, a serene and calming receptionist at Tranquil Waters Day Spa in Gold Coast. You create a peaceful experience from the first call.
 
 SERVICES:
@@ -66,24 +66,24 @@ CRITICAL RULES:
 
     quickActions: [
         { emoji: '💆', label: 'Book', text: "I'd like to book a spa treatment" },
-        { emoji: '💑', label: 'Couples', text: "Do you have couples massages?" },
-        { emoji: '🎁', label: 'Packages', text: "What spa packages do you offer?" }
+        { emoji: '💑', label: 'Couples', text: 'Do you have couples massages?' },
+        { emoji: '🎁', label: 'Packages', text: 'What spa packages do you offer?' }
     ],
-    
+
     menuItems: [
         { emoji: '💆', name: 'Swedish Massage', desc: 'Relaxation massage', price: 120 },
         { emoji: '💪', name: 'Deep Tissue', desc: 'Therapeutic massage', price: 140 },
         { emoji: '✨', name: 'Facial', desc: 'Rejuvenating treatment', price: 95 },
         { emoji: '🌟', name: 'Day Package', desc: 'Full spa experience', price: 350 }
     ],
-    
+
     stepInfos: [
-        "📞 Serena answers in a calm, soothing voice.",
-        "🧖 Discussing treatments and preferences.",
-        "✅ Confirming therapist and appointment details.",
-        "🎉 Booking complete! Relaxation awaits."
+        '📞 Serena answers in a calm, soothing voice.',
+        '🧖 Discussing treatments and preferences.',
+        '✅ Confirming therapist and appointment details.',
+        '🎉 Booking complete! Relaxation awaits.'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'service' },
@@ -94,10 +94,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Namaste 🧘<br><br>Your escape at <strong>${businessName}</strong> is confirmed!<br><br>Prepare to unwind and relax... 🌸</div>`,
-    
+
     ticketIcon: '🧖'
 };
 

@@ -5,16 +5,16 @@
 const restaurant = {
     id: 'restaurant',
     category: 'food',
-    
+
     // Visual Configuration
     icon: '👩‍🍳',
     customerIcon: '👤',
     color: '#ef4444',
     cardIcon: 'fa-receipt',
-    
+
     // Voice Configuration
     voice: 'shimmer',
-    
+
     // Business Info
     en: {
         name: 'Aussie Bites Cafe',
@@ -25,15 +25,15 @@ const restaurant = {
         responses: {
             greeting: "Hi, I'd like to place an order for pickup please",
             orderItem: "I'll have the Halloumi Salad please",
-            moreItems: "Yeah, add some Onion Rings too",
+            moreItems: 'Yeah, add some Onion Rings too',
             noMore: "That's all thanks",
-            pickupTime: "About 20 minutes",
-            name: "Sarah",
-            phone: "0412 345 678",
-            confirm: "Yep, perfect!"
+            pickupTime: 'About 20 minutes',
+            name: 'Sarah',
+            phone: '0412 345 678',
+            confirm: 'Yep, perfect!'
         }
     },
-    
+
     // AI System Prompt
     prompt: `You're Emma, a friendly young woman working the phones at Aussie Bites Cafe in Melbourne. You sound warm, natural, and genuinely happy to help.
 
@@ -70,9 +70,9 @@ CRITICAL RULES:
     quickActions: [
         { emoji: '🍽️', label: 'Order', text: "I'd like to place an order please" },
         { emoji: '📋', label: 'Menu', text: "What's on the menu?" },
-        { emoji: '⏰', label: 'Pickup', text: "Can I pick up in 20 mins?" }
+        { emoji: '⏰', label: 'Pickup', text: 'Can I pick up in 20 mins?' }
     ],
-    
+
     // Menu/Services Display
     menuItems: [
         { emoji: '🥗', name: 'Halloumi Salad', desc: 'Fresh greens, cherry tomatoes', price: 17 },
@@ -80,15 +80,15 @@ CRITICAL RULES:
         { emoji: '🍫', name: 'Chocolate Brownie', desc: 'Warm with ice cream', price: 8 },
         { emoji: '☕', name: 'Flat White', desc: 'Smooth espresso coffee', price: 5 }
     ],
-    
+
     // Step-by-Step Process Info
     stepInfos: [
-        "📞 Emma answers and greets the hungry customer warmly.",
-        "🍽️ Taking the food order, suggesting sides and drinks.",
-        "✅ Confirming items, pickup time and contact details.",
-        "🎉 Order sent to kitchen! SMS confirmation on the way."
+        '📞 Emma answers and greets the hungry customer warmly.',
+        '🍽️ Taking the food order, suggesting sides and drinks.',
+        '✅ Confirming items, pickup time and contact details.',
+        '🎉 Order sent to kitchen! SMS confirmation on the way.'
     ],
-    
+
     // Demo Script Timing
     demoScript: [
         { delay: 2000, type: 'greeting' },
@@ -100,11 +100,11 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
+
     // SMS Template
-    smsTemplate: (businessName, total, currency = '$') => 
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">G'day! 🎉<br><br>Your order from <strong>${businessName}</strong> is confirmed!<br><br><strong>Total:</strong> ${currency}${total}<br><br>Thanks mate! See you soon! 🙏</div>`,
-    
+
     // Ticket Icon
     ticketIcon: '🍽️'
 };

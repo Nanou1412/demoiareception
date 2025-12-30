@@ -5,13 +5,13 @@
 const realestate = {
     id: 'realestate',
     category: 'professional',
-    
+
     icon: '🏠',
     customerIcon: '👤',
     color: '#059669',
     cardIcon: 'fa-home',
     voice: 'echo',
-    
+
     en: {
         name: 'Prestige Properties',
         aiName: 'Marcus',
@@ -20,17 +20,17 @@ const realestate = {
         cardTitle: 'Viewing Booking',
         responses: {
             greeting: "Hi, I'm looking to buy a property",
-            interest: "Buying, looking for a family home",
-            area: "South Yarra or Toorak area",
-            requirements: "4 bedrooms, prefer a garden",
-            budget: "Around 2 million",
-            inspection: "This weekend would be great",
-            name: "Amanda Roberts",
-            contact: "0401 234 567, amanda@email.com",
-            confirm: "Yes, please set that up"
+            interest: 'Buying, looking for a family home',
+            area: 'South Yarra or Toorak area',
+            requirements: '4 bedrooms, prefer a garden',
+            budget: 'Around 2 million',
+            inspection: 'This weekend would be great',
+            name: 'Amanda Roberts',
+            contact: '0401 234 567, amanda@email.com',
+            confirm: 'Yes, please set that up'
         }
     },
-    
+
     prompt: `You're Marcus, an enthusiastic real estate agent at Prestige Properties in Melbourne. You help people find their dream home.
 
 SERVICES:
@@ -66,24 +66,24 @@ CRITICAL RULES:
 
     quickActions: [
         { emoji: '🏠', label: 'Buy', text: "I'm looking to buy a property" },
-        { emoji: '💰', label: 'Sell', text: "I want to sell my property" },
+        { emoji: '💰', label: 'Sell', text: 'I want to sell my property' },
         { emoji: '🔑', label: 'Rent', text: "I'm looking to rent" }
     ],
-    
+
     menuItems: [
         { emoji: '🔍', name: 'Inspection', desc: 'Property viewing', price: 0 },
         { emoji: '📊', name: 'Appraisal', desc: 'Market valuation', price: 0 },
         { emoji: '📋', name: 'Consultation', desc: 'Buyer advice', price: 0 },
         { emoji: '🏘️', name: 'Management', desc: 'Property rental', price: 0 }
     ],
-    
+
     stepInfos: [
-        "📞 Marcus answers enthusiastically about property!",
-        "🏠 Discussing requirements, area and budget.",
-        "✅ Arranging property inspections.",
+        '📞 Marcus answers enthusiastically about property!',
+        '🏠 Discussing requirements, area and budget.',
+        '✅ Arranging property inspections.',
         "🎉 Inspections booked! Let's find your dream home!"
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'interest' },
@@ -95,10 +95,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'contact' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Exciting! 🏠<br><br>Your property inspection with <strong>${businessName}</strong> is confirmed!<br><br>Let's find your dream home! 🔑</div>`,
-    
+
     ticketIcon: '🏠'
 };
 

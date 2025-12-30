@@ -1,15 +1,34 @@
 {
-  "name": "ai-receptionist-demo",
-  "version": "2.0.0",
-  "description": "AI Receptionist Demo - 38 Industries",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "build": "node scripts/build-industries.js",
-    "dev": "npm run build && node server.js"
-  },
-  "dependencies": {
-    "express": "^4.18.2",
-    "openai": "^4.20.0"
-  }
+    "name": "ai-receptionist-demo",
+    "version": "2.0.0",
+    "description": "AI Receptionist Demo - 38 Industries",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "npm run build:dev && node server.js",
+        "build:dev": "node scripts/build-industries.js",
+        "build:prod": "node scripts/build.js",
+        "build": "npm run build:dev",
+        "lint": "eslint public/js/**/*.js industries/**/*.js --fix",
+        "lint:check": "eslint public/js/**/*.js industries/**/*.js",
+        "format": "prettier --write \"**/*.{js,json,css,html}\"",
+        "clean": "rm -rf dist public/js/industries.js"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "openai": "^4.20.0"
+    },
+    "devDependencies": {
+        "eslint": "^8.56.0",
+        "prettier": "^3.2.0"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Nanou1412/demoiareception.git"
+    },
+    "author": "Nanou1412",
+    "license": "MIT"
 }

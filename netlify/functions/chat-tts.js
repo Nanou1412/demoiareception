@@ -56,7 +56,6 @@ exports.handler = async (event, context) => {
             headers,
             body: JSON.stringify({ audio: audioBase64 })
         };
-
     } catch (error) {
         console.error('TTS Error:', error);
         return {

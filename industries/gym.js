@@ -5,13 +5,13 @@
 const gym = {
     id: 'gym',
     category: 'lifestyle',
-    
+
     icon: '💪',
     customerIcon: '👤',
     color: '#f97316',
     cardIcon: 'fa-dumbbell',
     voice: 'echo',
-    
+
     en: {
         name: 'Peak Fitness Brisbane',
         aiName: 'Alex',
@@ -20,17 +20,17 @@ const gym = {
         cardTitle: 'Member Card',
         responses: {
             greeting: "Hi, I'm interested in joining the gym",
-            interest: "Looking for a full membership with classes",
-            goals: "Mainly weight loss and general fitness",
+            interest: 'Looking for a full membership with classes',
+            goals: 'Mainly weight loss and general fitness',
             tour: "Yes, I'd like to see the facilities first",
-            membership: "The Premium sounds good",
+            membership: 'The Premium sounds good',
             startDate: "I'd like to start next Monday",
-            name: "Chris Anderson",
-            contact: "0412 345 678, chris.a@email.com",
-            confirm: "Yes, sign me up!"
+            name: 'Chris Anderson',
+            contact: '0412 345 678, chris.a@email.com',
+            confirm: 'Yes, sign me up!'
         }
     },
-    
+
     prompt: `You're Alex, an energetic and motivating membership advisor at Peak Fitness Brisbane.
 
 MEMBERSHIPS:
@@ -65,25 +65,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '💪', label: 'Join', text: "I want to join the gym" },
-        { emoji: '🎫', label: 'Day Pass', text: "Can I get a day pass?" },
-        { emoji: '🏋️', label: 'PT', text: "Tell me about personal training" }
+        { emoji: '💪', label: 'Join', text: 'I want to join the gym' },
+        { emoji: '🎫', label: 'Day Pass', text: 'Can I get a day pass?' },
+        { emoji: '🏋️', label: 'PT', text: 'Tell me about personal training' }
     ],
-    
+
     menuItems: [
         { emoji: '🏃', name: 'Basic', desc: 'Gym access only', price: 45 },
         { emoji: '⭐', name: 'Premium', desc: 'Gym + all classes', price: 65 },
         { emoji: '👑', name: 'VIP', desc: 'All access + PT', price: 99 },
         { emoji: '🎫', name: 'Day Pass', desc: 'Single visit', price: 25 }
     ],
-    
+
     stepInfos: [
-        "📞 Alex answers with energy and motivation!",
-        "💪 Discussing fitness goals and membership options.",
-        "✅ Setting up your membership start date.",
+        '📞 Alex answers with energy and motivation!',
+        '💪 Discussing fitness goals and membership options.',
+        '✅ Setting up your membership start date.',
         "🎉 Welcome to the team! Let's crush those goals!"
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'interest' },
@@ -95,10 +95,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'contact' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Let's go! 💪<br><br>Your membership at <strong>${businessName}</strong> is active!<br><br>Time to crush those goals! 🏆</div>`,
-    
+
     ticketIcon: '💪'
 };
 

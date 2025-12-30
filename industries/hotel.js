@@ -5,13 +5,13 @@
 const hotel = {
     id: 'hotel',
     category: 'lifestyle',
-    
+
     icon: '🏨',
     customerIcon: '👤',
     color: '#7c3aed',
     cardIcon: 'fa-hotel',
     voice: 'onyx',
-    
+
     en: {
         name: 'The Grand Melbourne Hotel',
         aiName: 'James',
@@ -20,16 +20,16 @@ const hotel = {
         cardTitle: 'Reservation',
         responses: {
             greeting: "Hi, I'd like to book a room",
-            dates: "From the 15th to the 18th of January",
-            roomType: "A deluxe room please",
-            guests: "Just the two of us",
-            extras: "Yes, breakfast would be great",
-            name: "Robert and Sarah Williams",
-            contact: "0401 234 567, robert.w@email.com",
-            confirm: "Yes please, confirm the booking"
+            dates: 'From the 15th to the 18th of January',
+            roomType: 'A deluxe room please',
+            guests: 'Just the two of us',
+            extras: 'Yes, breakfast would be great',
+            name: 'Robert and Sarah Williams',
+            contact: '0401 234 567, robert.w@email.com',
+            confirm: 'Yes please, confirm the booking'
         }
     },
-    
+
     prompt: `You're James, a polished and professional front desk agent at The Grand Melbourne Hotel. You provide 5-star service.
 
 ROOMS:
@@ -65,23 +65,23 @@ CRITICAL RULES:
     quickActions: [
         { emoji: '🛏️', label: 'Book', text: "I'd like to book a room" },
         { emoji: '📅', label: 'Dates', text: "What's available next weekend?" },
-        { emoji: '🍳', label: 'Breakfast', text: "Is breakfast included?" }
+        { emoji: '🍳', label: 'Breakfast', text: 'Is breakfast included?' }
     ],
-    
+
     menuItems: [
         { emoji: '🛏️', name: 'Standard Room', desc: 'Comfortable stay', price: 189 },
         { emoji: '✨', name: 'Deluxe Room', desc: 'City views', price: 259 },
         { emoji: '👔', name: 'Executive Suite', desc: 'Luxury space', price: 399 },
         { emoji: '🍳', name: 'Breakfast', desc: 'Per person', price: 35 }
     ],
-    
+
     stepInfos: [
-        "📞 James answers with 5-star professionalism.",
-        "🏨 Checking dates, room type and guests.",
-        "✅ Confirming reservation details.",
-        "🎉 Reservation confirmed! Welcome to The Grand."
+        '📞 James answers with 5-star professionalism.',
+        '🏨 Checking dates, room type and guests.',
+        '✅ Confirming reservation details.',
+        '🎉 Reservation confirmed! Welcome to The Grand.'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'dates' },
@@ -92,10 +92,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'contact' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Welcome! 🏨<br><br>Your reservation at <strong>${businessName}</strong> is confirmed.<br><br>We look forward to your stay! ⭐</div>`,
-    
+
     ticketIcon: '🏨'
 };
 

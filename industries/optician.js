@@ -5,13 +5,13 @@
 const optician = {
     id: 'optician',
     category: 'health',
-    
+
     icon: '👓',
     customerIcon: '👤',
     color: '#3b82f6',
     cardIcon: 'fa-glasses',
     voice: 'nova',
-    
+
     en: {
         name: 'Clear Vision Optometry',
         aiName: 'Lisa',
@@ -19,17 +19,17 @@ const optician = {
         totalLabel: 'Service',
         cardTitle: 'Eye Appointment',
         responses: {
-            greeting: "Hi, I need to book an eye test",
-            service: "Just a general eye exam",
+            greeting: 'Hi, I need to book an eye test',
+            service: 'Just a general eye exam',
             lastVisit: "It's been about 2 years",
-            insurance: "Yes, I have Bupa",
-            datetime: "Next week sometime",
-            name: "Robert Chen",
-            phone: "0434 567 890",
+            insurance: 'Yes, I have Bupa',
+            datetime: 'Next week sometime',
+            name: 'Robert Chen',
+            phone: '0434 567 890',
             confirm: "Yes, that's great"
         }
     },
-    
+
     prompt: `You're Lisa, a friendly receptionist at Clear Vision Optometry. You book eye exams and consultations.
 
 SERVICES:
@@ -63,25 +63,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '👓', label: 'Book', text: "I need an eye test" },
-        { emoji: '📋', label: 'Glasses', text: "I need new glasses" },
-        { emoji: '👁️', label: 'Contacts', text: "I want to try contact lenses" }
+        { emoji: '👓', label: 'Book', text: 'I need an eye test' },
+        { emoji: '📋', label: 'Glasses', text: 'I need new glasses' },
+        { emoji: '👁️', label: 'Contacts', text: 'I want to try contact lenses' }
     ],
-    
+
     menuItems: [
         { emoji: '👁️', name: 'Eye Exam', desc: 'Comprehensive test', price: 75 },
         { emoji: '👶', name: "Children's Test", desc: 'Kids eye assessment', price: 65 },
         { emoji: '📱', name: 'Contact Fitting', desc: 'Lens fitting & trial', price: 50 },
         { emoji: '👓', name: 'Frames', desc: 'Wide selection', price: 150 }
     ],
-    
+
     stepInfos: [
-        "📞 Lisa answers ready to help with your eye care.",
-        "👓 Discussing eye exam or glasses needs.",
-        "✅ Confirming insurance and appointment time.",
-        "🎉 Booked! See you soon for clearer vision."
+        '📞 Lisa answers ready to help with your eye care.',
+        '👓 Discussing eye exam or glasses needs.',
+        '✅ Confirming insurance and appointment time.',
+        '🎉 Booked! See you soon for clearer vision.'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'service' },
@@ -92,10 +92,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">See you soon! 👓<br><br>Your eye appointment at <strong>${businessName}</strong> is confirmed!<br><br>Looking forward to helping you see clearly! 👁️</div>`,
-    
+
     ticketIcon: '👓'
 };
 

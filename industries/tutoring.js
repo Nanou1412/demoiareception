@@ -5,13 +5,13 @@
 const tutoring = {
     id: 'tutoring',
     category: 'professional',
-    
+
     icon: '📚',
     customerIcon: '👤',
     color: '#6366f1',
     cardIcon: 'fa-graduation-cap',
     voice: 'nova',
-    
+
     en: {
         name: 'BrightMinds Tutoring',
         aiName: 'Amy',
@@ -22,15 +22,15 @@ const tutoring = {
             greeting: "Hi, I'm looking for a tutor for my son",
             student: "He's in Year 10",
             subject: "Maths, he's struggling with algebra",
-            level: "Year 10, VCE prep",
-            goals: "We want him to improve his grades and confidence",
-            schedule: "Twice a week, after school",
-            name: "Karen Mitchell",
-            phone: "0412 345 678",
-            confirm: "Yes, please match us with a tutor"
+            level: 'Year 10, VCE prep',
+            goals: 'We want him to improve his grades and confidence',
+            schedule: 'Twice a week, after school',
+            name: 'Karen Mitchell',
+            phone: '0412 345 678',
+            confirm: 'Yes, please match us with a tutor'
         }
     },
-    
+
     prompt: `You're Professor Amy's assistant at BrightMinds Tutoring. You match students with tutors.
 
 SERVICES:
@@ -70,25 +70,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '📚', label: 'Tutor', text: "I need a tutor for my child" },
-        { emoji: '🔢', label: 'Maths', text: "We need maths tutoring" },
-        { emoji: '📝', label: 'Exam', text: "Help with exam preparation" }
+        { emoji: '📚', label: 'Tutor', text: 'I need a tutor for my child' },
+        { emoji: '🔢', label: 'Maths', text: 'We need maths tutoring' },
+        { emoji: '📝', label: 'Exam', text: 'Help with exam preparation' }
     ],
-    
+
     menuItems: [
         { emoji: '🧒', name: 'Primary', desc: 'Years 1-6', price: 50 },
         { emoji: '👦', name: 'High School', desc: 'Years 7-10', price: 60 },
         { emoji: '🎓', name: 'VCE/HSC', desc: 'Year 11-12 specialist', price: 75 },
         { emoji: '👥', name: 'Group Session', desc: 'Max 4 students', price: 35 }
     ],
-    
+
     stepInfos: [
         "📞 Amy's team is ready to help your child succeed!",
-        "📚 Discussing subject, level and learning goals.",
-        "✅ Matching with the perfect tutor.",
-        "🎉 Tutor matched! Learning journey begins!"
+        '📚 Discussing subject, level and learning goals.',
+        '✅ Matching with the perfect tutor.',
+        '🎉 Tutor matched! Learning journey begins!'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'student' },
@@ -100,10 +100,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Learning begins! 📚<br><br>Your tutoring with <strong>${businessName}</strong> is set up!<br><br>Let's reach their potential! 🌟</div>`,
-    
+
     ticketIcon: '📚'
 };
 

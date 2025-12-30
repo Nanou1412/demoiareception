@@ -5,13 +5,13 @@
 const tattoo = {
     id: 'tattoo',
     category: 'lifestyle',
-    
+
     icon: '🎨',
     customerIcon: '👤',
     color: '#1f2937',
     cardIcon: 'fa-pen-nib',
     voice: 'onyx',
-    
+
     en: {
         name: 'Ink Masters Studio',
         aiName: 'Mike',
@@ -20,17 +20,17 @@ const tattoo = {
         cardTitle: 'Tattoo Booking',
         responses: {
             greeting: "Hi, I'm looking to get a tattoo",
-            type: "New tattoo, first one actually",
+            type: 'New tattoo, first one actually',
             design: "I'm thinking a small geometric design",
-            sizePlacement: "About 3 inches, on my forearm",
-            consultation: "Yeah, a consult would be good first",
-            datetime: "This weekend if possible",
-            name: "Tyler",
-            phone: "0434 567 890",
-            confirm: "Yeah, lock it in"
+            sizePlacement: 'About 3 inches, on my forearm',
+            consultation: 'Yeah, a consult would be good first',
+            datetime: 'This weekend if possible',
+            name: 'Tyler',
+            phone: '0434 567 890',
+            confirm: 'Yeah, lock it in'
         }
     },
-    
+
     prompt: `You're Mike, a friendly tattoo artist at Ink Masters Studio. You help clients bring their ideas to life.
 
 SERVICES:
@@ -66,25 +66,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '🎨', label: 'Book', text: "I want to get a tattoo" },
-        { emoji: '🖼️', label: 'Design', text: "I have a design idea" },
-        { emoji: '🔄', label: 'Cover-up', text: "I need a cover-up" }
+        { emoji: '🎨', label: 'Book', text: 'I want to get a tattoo' },
+        { emoji: '🖼️', label: 'Design', text: 'I have a design idea' },
+        { emoji: '🔄', label: 'Cover-up', text: 'I need a cover-up' }
     ],
-    
+
     menuItems: [
         { emoji: '✨', name: 'Small Tattoo', desc: '2-3 hour session', price: 200 },
         { emoji: '🎨', name: 'Medium Piece', desc: '4-5 hour session', price: 400 },
         { emoji: '🖼️', name: 'Large Piece', desc: 'Per hour rate', price: 150 },
         { emoji: '💬', name: 'Consultation', desc: 'Free design chat', price: 0 }
     ],
-    
+
     stepInfos: [
-        "📞 Mike answers ready to create something awesome!",
-        "🎨 Discussing design, size and placement.",
-        "✅ Booking consultation or session time.",
-        "🎉 Locked in! Get ready for some sick ink!"
+        '📞 Mike answers ready to create something awesome!',
+        '🎨 Discussing design, size and placement.',
+        '✅ Booking consultation or session time.',
+        '🎉 Locked in! Get ready for some sick ink!'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'type' },
@@ -96,10 +96,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Let's ink it! 🎨<br><br>Your appointment at <strong>${businessName}</strong> is confirmed!<br><br>Get ready for some awesome art! 💉</div>`,
-    
+
     ticketIcon: '🎨'
 };
 

@@ -12,37 +12,37 @@
     --accent-light: #34d399;
     --warning: #f59e0b;
     --danger: #ef4444;
-    
+
     /* Industry color (dynamic - set by JS) */
     --industry-color: var(--primary);
     --industry-glow: rgba(99, 102, 241, 0.3);
-    
+
     /* Backgrounds */
     --bg-dark: #0a0a1a;
     --bg-card: #12122a;
     --bg-elevated: #1a1a3a;
     --bg-phone: #000000;
-    
+
     /* Text */
     --text-white: #ffffff;
     --text-light: #e2e8f0;
     --text-muted: #94a3b8;
     --text-dim: #64748b;
-    
+
     /* Borders & Effects */
     --border: rgba(99, 102, 241, 0.2);
     --glow: rgba(99, 102, 241, 0.4);
-    
+
     /* Spacing */
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 20px;
     --radius-xl: 28px;
-    
+
     /* Shadows */
     --shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     --shadow-glow: 0 0 40px var(--industry-glow);
-    
+
     /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
@@ -55,7 +55,10 @@
 }
 
 body {
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family:
+        'Inter',
+        -apple-system,
+        sans-serif;
     background: var(--bg-dark);
     color: var(--text-white);
     min-height: 100vh;
@@ -66,7 +69,7 @@ body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background: 
+    background:
         radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 40%),
         radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 40%);
     pointer-events: none;
@@ -121,7 +124,8 @@ header .container {
     gap: 0.75rem;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
     padding: 0.6rem 1.2rem;
     border-radius: var(--radius-md);
     font-weight: 600;
@@ -185,8 +189,15 @@ header .container {
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.2); }
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
 }
 
 .hero h1 {
@@ -407,10 +418,10 @@ header .container {
     background: var(--bg-phone);
     border-radius: 45px;
     padding: 12px;
-    box-shadow: 
-        0 0 0 2px rgba(255,255,255,0.1),
-        0 20px 60px rgba(0,0,0,0.5),
-        inset 0 0 40px rgba(255,255,255,0.02);
+    box-shadow:
+        0 0 0 2px rgba(255, 255, 255, 0.1),
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 0 40px rgba(255, 255, 255, 0.02);
     position: relative;
     overflow: hidden;
 }
@@ -470,7 +481,7 @@ header .container {
 .caller-info {
     text-align: center;
     padding: 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .caller-avatar {
@@ -522,8 +533,14 @@ header .container {
 }
 
 @keyframes messageIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .message.ai {
@@ -603,12 +620,22 @@ header .container {
     animation: typing 1.4s infinite;
 }
 
-.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
-.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
 
 @keyframes typing {
-    0%, 60%, 100% { transform: translateY(0); }
-    30% { transform: translateY(-6px); }
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-6px);
+    }
 }
 
 /* Phone Controls */
@@ -792,7 +819,8 @@ header .container {
     padding: 1rem;
 }
 
-.sms-placeholder, .ticket-placeholder {
+.sms-placeholder,
+.ticket-placeholder {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -802,7 +830,8 @@ header .container {
     font-size: 0.85rem;
 }
 
-.sms-placeholder i, .ticket-placeholder i {
+.sms-placeholder i,
+.ticket-placeholder i {
     font-size: 1.5rem;
     opacity: 0.5;
 }
@@ -1061,13 +1090,13 @@ footer {
     .demo-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .phone-container {
         position: static;
         display: flex;
         justify-content: center;
     }
-    
+
     .phone-frame {
         max-width: 380px;
     }
@@ -1077,29 +1106,29 @@ footer {
     .hero h1 {
         font-size: 1.75rem;
     }
-    
+
     .demo-buttons {
         flex-direction: column;
     }
-    
+
     .btn-demo {
         width: 100%;
         justify-content: center;
     }
-    
+
     .process-step span {
         display: none;
     }
-    
+
     .step-dot {
         width: 40px;
         height: 40px;
     }
-    
+
     .process-line {
         width: 30px;
     }
-    
+
     .stats-card {
         grid-template-columns: 1fr;
     }
@@ -1113,8 +1142,12 @@ footer {
 }
 
 @keyframes speakingPulse {
-    from { transform: scale(1); }
-    to { transform: scale(1.1); }
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
 }
 
 /* ========================================
@@ -1133,7 +1166,7 @@ body.light-mode {
 }
 
 body.light-mode::before {
-    background: 
+    background:
         radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
         radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
 }
@@ -1416,20 +1449,45 @@ body.light-mode .stats-card {
     animation: waveAnimation 0.5s infinite ease-in-out;
 }
 
-.wave-bar:nth-child(1) { animation-delay: 0s; }
-.wave-bar:nth-child(2) { animation-delay: 0.1s; }
-.wave-bar:nth-child(3) { animation-delay: 0.2s; }
-.wave-bar:nth-child(4) { animation-delay: 0.15s; }
-.wave-bar:nth-child(5) { animation-delay: 0.25s; }
-.wave-bar:nth-child(6) { animation-delay: 0.05s; }
-.wave-bar:nth-child(7) { animation-delay: 0.3s; }
-.wave-bar:nth-child(8) { animation-delay: 0.1s; }
-.wave-bar:nth-child(9) { animation-delay: 0.2s; }
-.wave-bar:nth-child(10) { animation-delay: 0.15s; }
+.wave-bar:nth-child(1) {
+    animation-delay: 0s;
+}
+.wave-bar:nth-child(2) {
+    animation-delay: 0.1s;
+}
+.wave-bar:nth-child(3) {
+    animation-delay: 0.2s;
+}
+.wave-bar:nth-child(4) {
+    animation-delay: 0.15s;
+}
+.wave-bar:nth-child(5) {
+    animation-delay: 0.25s;
+}
+.wave-bar:nth-child(6) {
+    animation-delay: 0.05s;
+}
+.wave-bar:nth-child(7) {
+    animation-delay: 0.3s;
+}
+.wave-bar:nth-child(8) {
+    animation-delay: 0.1s;
+}
+.wave-bar:nth-child(9) {
+    animation-delay: 0.2s;
+}
+.wave-bar:nth-child(10) {
+    animation-delay: 0.15s;
+}
 
 @keyframes waveAnimation {
-    0%, 100% { height: 10px; }
-    50% { height: 25px; }
+    0%,
+    100% {
+        height: 10px;
+    }
+    50% {
+        height: 25px;
+    }
 }
 
 .waveform-label {
@@ -1462,7 +1520,7 @@ body.fullscreen-mode .demo-section {
     .stats-row {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .stats-row:last-child {
         grid-template-columns: 1fr;
     }
@@ -1472,28 +1530,28 @@ body.fullscreen-mode .demo-section {
     .header-actions {
         gap: 0.5rem;
     }
-    
+
     .lang-toggle {
         display: none;
     }
-    
+
     .industry-selector {
         gap: 0.5rem;
     }
-    
+
     .industry-btn {
         min-width: 70px;
         padding: 0.5rem 0.75rem;
     }
-    
+
     .industry-icon {
         font-size: 1.25rem;
     }
-    
+
     .industry-name {
         font-size: 0.65rem;
     }
-    
+
     .scenario-selector {
         display: none;
     }
@@ -1590,7 +1648,9 @@ body.fullscreen-mode .demo-section {
 .industry-card:hover {
     transform: translateY(-8px);
     border-color: var(--industry-color);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--industry-glow);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px var(--industry-glow);
 }
 
 .industry-card:hover::before {
@@ -1663,8 +1723,13 @@ body.fullscreen-mode .demo-section {
 }
 
 @keyframes pulse-icon {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
 }
 
 .benefits-grid {
@@ -1767,7 +1832,9 @@ body.fullscreen-mode .demo-section {
     border-radius: 2rem;
     padding: 0.6rem 1rem;
     gap: 0.75rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
 }
 
 .industry-search:focus-within {
@@ -1844,7 +1911,10 @@ body.fullscreen-mode .demo-section {
 }
 
 .industry-card {
-    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        opacity 0.2s;
     will-change: transform;
 }
 
@@ -1908,7 +1978,7 @@ img {
         max-width: 100%;
         margin: 0 1rem 1rem;
     }
-    
+
     .benefits-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1952,8 +2022,13 @@ img {
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
 }
 
 .landing-footer {
@@ -2027,23 +2102,23 @@ img {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
-    
+
     .industry-card {
         padding: 1.5rem 1rem;
     }
-    
+
     .industry-card-icon {
         font-size: 2.5rem;
     }
-    
+
     .industry-card h3 {
         font-size: 1rem;
     }
-    
+
     .industry-card p {
         font-size: 0.75rem;
     }
-    
+
     .landing-hero {
         padding: 2rem 0;
     }
@@ -2054,24 +2129,24 @@ img {
         grid-template-columns: repeat(2, 1fr);
         gap: 0.75rem;
     }
-    
+
     .industry-card {
         padding: 1rem 0.75rem;
     }
-    
+
     .industry-card-icon {
         font-size: 2rem;
         margin-bottom: 0.5rem;
     }
-    
+
     .industry-card h3 {
         font-size: 0.9rem;
     }
-    
+
     .industry-card p {
         display: none;
     }
-    
+
     .current-industry {
         flex-wrap: wrap;
         justify-content: center;
@@ -2277,7 +2352,7 @@ img {
     font-size: 0.95rem;
 }
 
-.roi-input-group input[type="range"] {
+.roi-input-group input[type='range'] {
     width: 100%;
     height: 8px;
     border-radius: 4px;
@@ -2286,7 +2361,7 @@ img {
     -webkit-appearance: none;
 }
 
-.roi-input-group input[type="range"]::-webkit-slider-thumb {
+.roi-input-group input[type='range']::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 20px;
     height: 20px;
@@ -2296,7 +2371,7 @@ img {
     transition: all 0.2s;
 }
 
-.roi-input-group input[type="range"]::-webkit-slider-thumb:hover {
+.roi-input-group input[type='range']::-webkit-slider-thumb:hover {
     transform: scale(1.2);
 }
 
@@ -2758,41 +2833,41 @@ img {
     .steps-container {
         flex-direction: column;
     }
-    
+
     .step-arrow {
         transform: rotate(90deg);
     }
-    
+
     .step-card {
         width: 100%;
         max-width: 350px;
     }
-    
+
     .roi-calculator {
         grid-template-columns: 1fr;
     }
-    
+
     .use-cases-grid,
     .faq-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .comparison-header,
     .comparison-row {
         grid-template-columns: 1fr 1fr 1fr;
         font-size: 0.85rem;
     }
-    
+
     .comparison-header > div,
     .comparison-row > div {
         padding: 0.75rem;
     }
-    
+
     .pricing-card {
         margin: 0 1rem;
         padding: 2rem 1.5rem;
     }
-    
+
     .weekly-price {
         font-size: 2.75rem;
     }
@@ -2802,35 +2877,35 @@ img {
     .comparison-table {
         font-size: 0.8rem;
     }
-    
+
     .comparison-feature {
         font-size: 0.75rem;
     }
-    
+
     .final-cta-section h2 {
         font-size: 1.5rem;
     }
-    
+
     .cta-buttons {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .cta-primary,
     .cta-secondary {
         width: 100%;
         max-width: 300px;
         justify-content: center;
     }
-    
+
     .pricing-card {
         padding: 1.5rem 1rem;
     }
-    
+
     .pricing-features li {
         font-size: 0.85rem;
     }
-    
+
     .savings-card {
         flex-direction: column;
         text-align: center;

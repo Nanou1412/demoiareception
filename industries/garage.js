@@ -5,13 +5,13 @@
 const garage = {
     id: 'garage',
     category: 'services',
-    
+
     icon: '🚗',
     customerIcon: '👤',
     color: '#64748b',
     cardIcon: 'fa-car',
     voice: 'onyx',
-    
+
     en: {
         name: 'Aussie Auto Care',
         aiName: 'Mike',
@@ -19,16 +19,16 @@ const garage = {
         totalLabel: 'Service',
         cardTitle: 'Service Booking',
         responses: {
-            greeting: "Hi, I need to book my car in for a service",
+            greeting: 'Hi, I need to book my car in for a service',
             service: "Just a regular service, it's due",
             vehicle: "It's a 2019 Toyota Camry",
-            datetime: "Next Monday morning if possible",
-            name: "Sarah Collins",
-            phone: "0489 012 345",
+            datetime: 'Next Monday morning if possible',
+            name: 'Sarah Collins',
+            phone: '0489 012 345',
             confirm: "That's perfect, thanks"
         }
     },
-    
+
     prompt: `You're Mike, a friendly and down-to-earth service advisor at Aussie Auto Care in Perth. You know cars and speak plainly.
 
 SERVICES:
@@ -62,25 +62,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '🔧', label: 'Service', text: "I need to book a car service" },
-        { emoji: '🛞', label: 'Tyres', text: "I need my tyres checked" },
-        { emoji: '💨', label: 'Aircon', text: "My aircon needs a regas" }
+        { emoji: '🔧', label: 'Service', text: 'I need to book a car service' },
+        { emoji: '🛞', label: 'Tyres', text: 'I need my tyres checked' },
+        { emoji: '💨', label: 'Aircon', text: 'My aircon needs a regas' }
     ],
-    
+
     menuItems: [
         { emoji: '🔧', name: 'Basic Service', desc: 'Oil, filter, check', price: 189 },
         { emoji: '⚙️', name: 'Full Service', desc: 'Complete service', price: 349 },
         { emoji: '🛞', name: 'Brake Check', desc: 'Safety inspection', price: 49 },
         { emoji: '❄️', name: 'Aircon Regas', desc: 'Full recharge', price: 120 }
     ],
-    
+
     stepInfos: [
-        "📞 Mike answers like a true Aussie mechanic.",
-        "🚗 Discussing service needs and vehicle details.",
-        "✅ Confirming booking date and time.",
+        '📞 Mike answers like a true Aussie mechanic.',
+        '🚗 Discussing service needs and vehicle details.',
+        '✅ Confirming booking date and time.',
         "🎉 Booked in! We'll take good care of her."
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'service' },
@@ -90,10 +90,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Booked in mate! 🚗<br><br>Your service at <strong>${businessName}</strong> is confirmed!<br><br>She'll be running sweet! 🔧</div>`,
-    
+
     ticketIcon: '🚗'
 };
 

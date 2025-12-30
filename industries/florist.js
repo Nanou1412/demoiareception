@@ -5,13 +5,13 @@
 const florist = {
     id: 'florist',
     category: 'lifestyle',
-    
+
     icon: '💐',
     customerIcon: '👤',
     color: '#ec4899',
     cardIcon: 'fa-seedling',
     voice: 'nova',
-    
+
     en: {
         name: 'Bloom & Petal',
         aiName: 'Lily',
@@ -19,18 +19,18 @@ const florist = {
         totalLabel: 'Order',
         cardTitle: 'Flower Order',
         responses: {
-            greeting: "Hi, I need to order some flowers",
+            greeting: 'Hi, I need to order some flowers',
             occasion: "It's for my wife's birthday",
-            preferences: "She loves roses, maybe pink ones",
-            budget: "Around $80",
-            delivery: "Delivery please",
-            datetime: "Tomorrow by noon",
-            recipient: "Sarah, my darling wife",
-            nameContact: "Tom, 0412 345 678",
-            confirm: "Yes, please create that"
+            preferences: 'She loves roses, maybe pink ones',
+            budget: 'Around $80',
+            delivery: 'Delivery please',
+            datetime: 'Tomorrow by noon',
+            recipient: 'Sarah, my darling wife',
+            nameContact: 'Tom, 0412 345 678',
+            confirm: 'Yes, please create that'
         }
     },
-    
+
     prompt: `You're Lily, a passionate florist at Bloom & Petal. You create beautiful arrangements for every occasion.
 
 PRODUCTS:
@@ -66,25 +66,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '💐', label: 'Order', text: "I need to order flowers" },
+        { emoji: '💐', label: 'Order', text: 'I need to order flowers' },
         { emoji: '🌹', label: 'Roses', text: "I'd like a rose bouquet" },
-        { emoji: '💒', label: 'Wedding', text: "I need wedding flowers" }
+        { emoji: '💒', label: 'Wedding', text: 'I need wedding flowers' }
     ],
-    
+
     menuItems: [
         { emoji: '🌹', name: 'Rose Bouquet', desc: 'Classic elegance', price: 45 },
         { emoji: '💐', name: 'Mixed Seasonal', desc: 'Fresh variety', price: 55 },
         { emoji: '🪻', name: 'Orchid Plant', desc: 'Long lasting', price: 65 },
         { emoji: '🤍', name: 'Sympathy', desc: 'Thoughtful tribute', price: 75 }
     ],
-    
+
     stepInfos: [
-        "📞 Lily answers ready to create something beautiful!",
-        "💐 Discussing occasion, colors and preferences.",
-        "✅ Confirming delivery details and card message.",
-        "🎉 Order created! Beautiful flowers on the way!"
+        '📞 Lily answers ready to create something beautiful!',
+        '💐 Discussing occasion, colors and preferences.',
+        '✅ Confirming delivery details and card message.',
+        '🎉 Order created! Beautiful flowers on the way!'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'occasion' },
@@ -96,10 +96,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'nameContact' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Beautiful! 💐<br><br>Your flower order from <strong>${businessName}</strong> is confirmed!<br><br>Ready to brighten someone's day! 🌸</div>`,
-    
+
     ticketIcon: '💐'
 };
 

@@ -5,13 +5,13 @@
 const pharmacy = {
     id: 'pharmacy',
     category: 'health',
-    
+
     icon: '💊',
     customerIcon: '👤',
     color: '#22c55e',
     cardIcon: 'fa-prescription-bottle',
     voice: 'nova',
-    
+
     en: {
         name: 'City Pharmacy',
         aiName: 'Sarah',
@@ -19,16 +19,16 @@ const pharmacy = {
         totalLabel: 'Service',
         cardTitle: 'Pharmacy Order',
         responses: {
-            greeting: "Hi, I need to order a prescription",
+            greeting: 'Hi, I need to order a prescription',
             medication: "It's my blood pressure medication",
-            doctor: "Yes, Dr. Smith sent it through",
-            pickupTime: "In about an hour",
-            name: "John Williams",
-            phone: "0456 789 012",
+            doctor: 'Yes, Dr. Smith sent it through',
+            pickupTime: 'In about an hour',
+            name: 'John Williams',
+            phone: '0456 789 012',
             confirm: "Yes, that's all correct"
         }
     },
-    
+
     prompt: `You're Dr. Sarah, a helpful pharmacist at City Pharmacy. You assist with prescriptions and health advice.
 
 SERVICES:
@@ -63,25 +63,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '💊', label: 'Script', text: "I need to fill a prescription" },
-        { emoji: '💉', label: 'Vaccine', text: "I need a flu vaccination" },
-        { emoji: '❓', label: 'Advice', text: "I need some health advice" }
+        { emoji: '💊', label: 'Script', text: 'I need to fill a prescription' },
+        { emoji: '💉', label: 'Vaccine', text: 'I need a flu vaccination' },
+        { emoji: '❓', label: 'Advice', text: 'I need some health advice' }
     ],
-    
+
     menuItems: [
         { emoji: '💊', name: 'Prescription', desc: 'Medication fill', price: 0 },
         { emoji: '💉', name: 'Vaccination', desc: 'Flu, COVID etc.', price: 35 },
         { emoji: '❤️', name: 'Health Check', desc: 'Quick assessment', price: 25 },
         { emoji: '🩺', name: 'BP Check', desc: 'Blood pressure', price: 0 }
     ],
-    
+
     stepInfos: [
-        "📞 Sarah answers ready to help with your health needs.",
-        "💊 Checking prescription and medication details.",
-        "✅ Confirming pickup time and patient info.",
-        "🎉 Prescription ready! Come collect anytime."
+        '📞 Sarah answers ready to help with your health needs.',
+        '💊 Checking prescription and medication details.',
+        '✅ Confirming pickup time and patient info.',
+        '🎉 Prescription ready! Come collect anytime.'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'medication' },
@@ -91,10 +91,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Ready for pickup! 💊<br><br>Your prescription at <strong>${businessName}</strong> is ready.<br><br>See you soon! 🏥</div>`,
-    
+
     ticketIcon: '💊'
 };
 

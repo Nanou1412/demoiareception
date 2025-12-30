@@ -5,13 +5,13 @@
 const petboarding = {
     id: 'petboarding',
     category: 'lifestyle',
-    
+
     icon: '🏠',
     customerIcon: '👤',
     color: '#22c55e',
     cardIcon: 'fa-house-chimney',
     voice: 'shimmer',
-    
+
     en: {
         name: 'Happy Tails Pet Resort',
         aiName: 'Lucy',
@@ -19,17 +19,17 @@ const petboarding = {
         totalLabel: 'Stay',
         cardTitle: 'Boarding Booking',
         responses: {
-            greeting: "Hi, I need to board my dog",
+            greeting: 'Hi, I need to board my dog',
             petInfo: "She's a border collie named Luna",
-            dates: "From the 15th to the 22nd, a week",
-            specialNeeds: "She takes medication in the morning",
-            vaccination: "Yes, all up to date",
-            ownerName: "Michelle",
-            phone: "0456 789 012",
-            confirm: "Yes please, book her in"
+            dates: 'From the 15th to the 22nd, a week',
+            specialNeeds: 'She takes medication in the morning',
+            vaccination: 'Yes, all up to date',
+            ownerName: 'Michelle',
+            phone: '0456 789 012',
+            confirm: 'Yes please, book her in'
         }
     },
-    
+
     prompt: `You're Lucy at Happy Tails Pet Resort. You book pet boarding and daycare.
 
 SERVICES:
@@ -63,25 +63,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '🏠', label: 'Board', text: "I need to board my pet" },
-        { emoji: '☀️', label: 'Daycare', text: "Do you do daycare?" },
-        { emoji: '👑', label: 'Luxury', text: "Tell me about the luxury suite" }
+        { emoji: '🏠', label: 'Board', text: 'I need to board my pet' },
+        { emoji: '☀️', label: 'Daycare', text: 'Do you do daycare?' },
+        { emoji: '👑', label: 'Luxury', text: 'Tell me about the luxury suite' }
     ],
-    
+
     menuItems: [
         { emoji: '🐕', name: 'Dog Boarding', desc: 'Per night', price: 50 },
         { emoji: '🐈', name: 'Cat Boarding', desc: 'Per night', price: 35 },
         { emoji: '👑', name: 'Luxury Suite', desc: 'Premium stay', price: 75 },
         { emoji: '☀️', name: 'Daycare', desc: 'Daily care', price: 40 }
     ],
-    
+
     stepInfos: [
-        "📞 Lucy answers ready to welcome your pet!",
-        "🏠 Getting pet details and stay dates.",
-        "✅ Noting special needs and confirming booking.",
-        "🎉 Booked! Your pet will have a great stay!"
+        '📞 Lucy answers ready to welcome your pet!',
+        '🏠 Getting pet details and stay dates.',
+        '✅ Noting special needs and confirming booking.',
+        '🎉 Booked! Your pet will have a great stay!'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'petInfo' },
@@ -92,10 +92,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Home away from home! 🏠<br><br>Your pet's stay at <strong>${businessName}</strong> is confirmed!<br><br>They'll have a tail-wagging time! 🐕</div>`,
-    
+
     ticketIcon: '🏠'
 };
 

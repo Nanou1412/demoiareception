@@ -5,13 +5,13 @@
 const cleaning = {
     id: 'cleaning',
     category: 'services',
-    
+
     icon: '🧹',
     customerIcon: '👤',
     color: '#06b6d4',
     cardIcon: 'fa-broom',
     voice: 'nova',
-    
+
     en: {
         name: 'Sparkle Clean Co',
         aiName: 'Maria',
@@ -19,18 +19,18 @@ const cleaning = {
         totalLabel: 'Service',
         cardTitle: 'Cleaning Booking',
         responses: {
-            greeting: "Hi, I need to book a house cleaning",
-            serviceType: "A deep clean please",
-            propertySize: "3 bedroom house",
-            frequency: "Just a one-time clean",
-            datetime: "This Saturday morning",
-            address: "45 Oak Street, Richmond",
-            name: "Emma Watson",
-            phone: "0423 456 789",
+            greeting: 'Hi, I need to book a house cleaning',
+            serviceType: 'A deep clean please',
+            propertySize: '3 bedroom house',
+            frequency: 'Just a one-time clean',
+            datetime: 'This Saturday morning',
+            address: '45 Oak Street, Richmond',
+            name: 'Emma Watson',
+            phone: '0423 456 789',
             confirm: "Yes, that's perfect"
         }
     },
-    
+
     prompt: `You're Maria, a friendly booking agent at Sparkle Clean Co. You handle residential and commercial cleaning bookings.
 
 SERVICES:
@@ -65,25 +65,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '🏠', label: 'Book', text: "I need a house cleaning" },
-        { emoji: '✨', label: 'Deep', text: "I need a deep clean" },
-        { emoji: '🔑', label: 'Lease', text: "End of lease cleaning" }
+        { emoji: '🏠', label: 'Book', text: 'I need a house cleaning' },
+        { emoji: '✨', label: 'Deep', text: 'I need a deep clean' },
+        { emoji: '🔑', label: 'Lease', text: 'End of lease cleaning' }
     ],
-    
+
     menuItems: [
         { emoji: '🏠', name: 'Regular Clean', desc: '2-3 bedroom home', price: 120 },
         { emoji: '✨', name: 'Deep Clean', desc: 'Thorough cleaning', price: 250 },
         { emoji: '🔑', name: 'End of Lease', desc: 'Bond back guarantee', price: 350 },
         { emoji: '🪟', name: 'Windows', desc: 'Interior & exterior', price: 80 }
     ],
-    
+
     stepInfos: [
-        "📞 Maria answers ready to help you sparkle!",
-        "🧹 Discussing cleaning type and property size.",
-        "✅ Confirming date, time and address.",
-        "🎉 Booked! Your home will be sparkling soon!"
+        '📞 Maria answers ready to help you sparkle!',
+        '🧹 Discussing cleaning type and property size.',
+        '✅ Confirming date, time and address.',
+        '🎉 Booked! Your home will be sparkling soon!'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'serviceType' },
@@ -95,10 +95,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Sparkle sparkle! 🧹<br><br>Your cleaning from <strong>${businessName}</strong> is confirmed!<br><br>Get ready for a spotless home! ✨</div>`,
-    
+
     ticketIcon: '🧹'
 };
 

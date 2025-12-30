@@ -11,7 +11,8 @@ const industriesDir = path.join(__dirname, '..', 'industries');
 const outputFile = path.join(__dirname, '..', 'public', 'js', 'industries.js');
 
 // Get all industry files except index.js
-const files = fs.readdirSync(industriesDir)
+const files = fs
+    .readdirSync(industriesDir)
     .filter(f => f.endsWith('.js') && f !== 'index.js')
     .sort();
 
@@ -30,7 +31,7 @@ files.forEach((file, index) => {
     const filePath = path.join(industriesDir, file);
     const industry = require(filePath);
     const id = file.replace('.js', '');
-    
+
     // Only include frontend-relevant properties (exclude prompt)
     const frontendConfig = {
         icon: industry.icon,
@@ -44,13 +45,13 @@ files.forEach((file, index) => {
         demoScript: industry.demoScript,
         en: industry.en
     };
-    
+
     const json = JSON.stringify(frontendConfig, null, 4)
-        .replace(/"([^"]+)":/g, '$1:')  // Remove quotes from keys
+        .replace(/"([^"]+)":/g, '$1:') // Remove quotes from keys
         .split('\n')
-        .map((line, i) => i === 0 ? line : '    ' + line)  // Indent
+        .map((line, i) => (i === 0 ? line : '    ' + line)) // Indent
         .join('\n');
-    
+
     output += `    ${id}: ${json}${index < files.length - 1 ? ',' : ''}\n`;
 });
 

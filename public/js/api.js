@@ -5,7 +5,7 @@
 const API = {
     async sendMessage(message = null) {
         const { State, sessionId } = window.AppState;
-        
+
         UI.showTyping();
         try {
             const response = await fetch('/api/chat', {
@@ -17,27 +17,27 @@ const API = {
                     industry: State.currentIndustry
                 })
             });
-            
+
             const data = await response.json();
             UI.hideTyping();
-            
+
             if (data.error) {
                 const errorMsg = 'Sorry, having technical difficulties. Try again?';
                 UI.addMessage(errorMsg, true, false);
                 return null;
             }
-            
+
             UI.addMessage(data.response, true, false);
             if (State.currentStep === 0) UI.updateProcessStep(1);
-            
+
             if (data.audio) {
                 await AudioManager.playAIAudio(data.audio);
             }
-            
+
             if (data.isConfirmed) {
                 UI.handleOrderConfirmed();
             }
-            
+
             return data;
         } catch (error) {
             UI.hideTyping();
@@ -54,7 +54,9 @@ const API = {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ sessionId })
             });
-        } catch (e) { console.error('Reset error:', e); }
+        } catch (e) {
+            console.error('Reset error:', e);
+        }
     }
 };
 

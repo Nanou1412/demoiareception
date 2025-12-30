@@ -5,13 +5,13 @@
 const wedding = {
     id: 'wedding',
     category: 'lifestyle',
-    
+
     icon: '💒',
     customerIcon: '👤',
     color: '#f43f5e',
     cardIcon: 'fa-heart',
     voice: 'nova',
-    
+
     en: {
         name: 'Forever After Weddings',
         aiName: 'Grace',
@@ -22,15 +22,15 @@ const wedding = {
             greeting: "Hi, we're getting married and need help planning",
             date: "We're looking at October next year",
             venue: "We have a venue, it's at the Grand Hotel",
-            guests: "About 120 guests",
-            services: "Full planning and coordination",
-            budget: "Around $30,000 all up",
-            coupleNames: "James and Emily",
-            phone: "0478 901 234",
+            guests: 'About 120 guests',
+            services: 'Full planning and coordination',
+            budget: 'Around $30,000 all up',
+            coupleNames: 'James and Emily',
+            phone: '0478 901 234',
             confirm: "Yes, let's book a consultation"
         }
     },
-    
+
     prompt: `You're Grace at Forever After Weddings. You book initial consultations for wedding planning.
 
 PACKAGES:
@@ -64,25 +64,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '💒', label: 'Plan', text: "We need wedding planning help" },
-        { emoji: '📅', label: 'Date', text: "We have a date, need a planner" },
-        { emoji: '💰', label: 'Packages', text: "What packages do you offer?" }
+        { emoji: '💒', label: 'Plan', text: 'We need wedding planning help' },
+        { emoji: '📅', label: 'Date', text: 'We have a date, need a planner' },
+        { emoji: '💰', label: 'Packages', text: 'What packages do you offer?' }
     ],
-    
+
     menuItems: [
         { emoji: '👑', name: 'Full Planning', desc: 'Complete service', price: 5000 },
         { emoji: '📋', name: 'Partial', desc: 'Selected services', price: 2500 },
         { emoji: '📅', name: 'Day-of', desc: 'Coordination only', price: 1500 },
         { emoji: '💕', name: 'Elopement', desc: 'Intimate package', price: 800 }
     ],
-    
+
     stepInfos: [
-        "📞 Grace answers with wedding excitement!",
-        "💒 Discussing date, venue and vision.",
-        "✅ Matching to the perfect planning package.",
+        '📞 Grace answers with wedding excitement!',
+        '💒 Discussing date, venue and vision.',
+        '✅ Matching to the perfect planning package.',
         "🎉 Consultation booked! Let's plan your dream day!"
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'date' },
@@ -94,10 +94,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Congratulations! 💒<br><br>Your consultation with <strong>${businessName}</strong> is confirmed!<br><br>Let's plan your dream wedding! 💕</div>`,
-    
+
     ticketIcon: '💒'
 };
 

@@ -5,13 +5,13 @@
 const landscaping = {
     id: 'landscaping',
     category: 'services',
-    
+
     icon: '🌿',
     customerIcon: '👤',
     color: '#22c55e',
     cardIcon: 'fa-leaf',
     voice: 'echo',
-    
+
     en: {
         name: 'Green Thumb Gardens',
         aiName: 'Tom',
@@ -19,18 +19,18 @@ const landscaping = {
         totalLabel: 'Service',
         cardTitle: 'Garden Booking',
         responses: {
-            greeting: "Hi, I need some gardening work done",
-            service: "Lawn mowing and hedge trimming",
-            size: "Medium sized yard, about 400 sqm",
-            frequency: "Monthly would be great",
-            datetime: "Next week sometime",
-            address: "22 Garden Lane, Toorak",
-            name: "Peter Green",
-            phone: "0456 789 012",
+            greeting: 'Hi, I need some gardening work done',
+            service: 'Lawn mowing and hedge trimming',
+            size: 'Medium sized yard, about 400 sqm',
+            frequency: 'Monthly would be great',
+            datetime: 'Next week sometime',
+            address: '22 Garden Lane, Toorak',
+            name: 'Peter Green',
+            phone: '0456 789 012',
             confirm: "Yes, that's great"
         }
     },
-    
+
     prompt: `You're Tom, a friendly garden expert at Green Thumb Gardens. You book lawn and garden services.
 
 SERVICES:
@@ -64,25 +64,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '🌿', label: 'Book', text: "I need garden work done" },
-        { emoji: '🌱', label: 'Mowing', text: "I need lawn mowing" },
-        { emoji: '🌳', label: 'Trees', text: "I need tree pruning" }
+        { emoji: '🌿', label: 'Book', text: 'I need garden work done' },
+        { emoji: '🌱', label: 'Mowing', text: 'I need lawn mowing' },
+        { emoji: '🌳', label: 'Trees', text: 'I need tree pruning' }
     ],
-    
+
     menuItems: [
         { emoji: '🌱', name: 'Lawn Mow', desc: 'Standard yard', price: 60 },
         { emoji: '🌲', name: 'Hedge Trim', desc: 'Shape and trim', price: 80 },
         { emoji: '🧹', name: 'Garden Cleanup', desc: 'Full tidy up', price: 200 },
         { emoji: '📅', name: 'Regular Care', desc: 'Fortnightly visits', price: 120 }
     ],
-    
+
     stepInfos: [
-        "📞 Tom answers with enthusiasm for gardens!",
-        "🌿 Discussing garden work and yard size.",
-        "✅ Confirming schedule and address.",
-        "🎉 Booked! Your garden will look amazing!"
+        '📞 Tom answers with enthusiasm for gardens!',
+        '🌿 Discussing garden work and yard size.',
+        '✅ Confirming schedule and address.',
+        '🎉 Booked! Your garden will look amazing!'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'service' },
@@ -94,10 +94,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Green thumbs up! 🌿<br><br>Your garden service with <strong>${businessName}</strong> is booked!<br><br>Your yard will be beautiful! 🌱</div>`,
-    
+
     ticketIcon: '🌿'
 };
 

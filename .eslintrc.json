@@ -1,0 +1,37 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": ["eslint:recommended"],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "globals": {
+        "Industries": "readonly",
+        "getIndustry": "readonly",
+        "getIndustryLang": "readonly",
+        "getCurrency": "readonly",
+        "API": "readonly",
+        "UI": "readonly",
+        "Demo": "readonly",
+        "Timer": "readonly",
+        "Templates": "readonly",
+        "AudioManager": "readonly",
+        "SpeechManager": "readonly",
+        "Navigation": "readonly",
+        "ROI": "readonly",
+        "Export": "readonly"
+    },
+    "rules": {
+        "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+        "no-console": "off",
+        "semi": ["error", "always"],
+        "quotes": ["warn", "single", { "avoidEscape": true }],
+        "indent": ["warn", 4],
+        "no-trailing-spaces": "warn",
+        "eol-last": ["warn", "always"]
+    }
+}

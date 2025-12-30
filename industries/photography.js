@@ -5,13 +5,13 @@
 const photography = {
     id: 'photography',
     category: 'lifestyle',
-    
+
     icon: '📷',
     customerIcon: '👤',
     color: '#6366f1',
     cardIcon: 'fa-camera',
     voice: 'onyx',
-    
+
     en: {
         name: 'Capture Studio',
         aiName: 'James',
@@ -20,17 +20,17 @@ const photography = {
         cardTitle: 'Photo Session',
         responses: {
             greeting: "Hi, I'd like to book a photography session",
-            type: "Family photos, we have two kids",
-            occasion: "Just want some nice family portraits",
-            location: "Outdoor would be lovely, maybe a park",
-            datetime: "Next Saturday afternoon",
-            people: "Four of us - two adults, two children",
-            name: "The Johnson family",
-            contact: "0423 456 789, sarah.j@email.com",
+            type: 'Family photos, we have two kids',
+            occasion: 'Just want some nice family portraits',
+            location: 'Outdoor would be lovely, maybe a park',
+            datetime: 'Next Saturday afternoon',
+            people: 'Four of us - two adults, two children',
+            name: 'The Johnson family',
+            contact: '0423 456 789, sarah.j@email.com',
             confirm: "Yes, let's book it"
         }
     },
-    
+
     prompt: `You're James, a professional photographer at Capture Studio. You help clients preserve their precious moments.
 
 PACKAGES:
@@ -67,24 +67,24 @@ CRITICAL RULES:
 
     quickActions: [
         { emoji: '📷', label: 'Book', text: "I'd like to book a photo session" },
-        { emoji: '👨‍👩‍👧‍👦', label: 'Family', text: "I need family photos" },
-        { emoji: '💼', label: 'Headshots', text: "I need professional headshots" }
+        { emoji: '👨‍👩‍👧‍👦', label: 'Family', text: 'I need family photos' },
+        { emoji: '💼', label: 'Headshots', text: 'I need professional headshots' }
     ],
-    
+
     menuItems: [
         { emoji: '🖼️', name: 'Portrait', desc: 'Individual session', price: 150 },
         { emoji: '👨‍👩‍👧‍👦', name: 'Family', desc: 'Group package', price: 250 },
         { emoji: '💼', name: 'Headshots', desc: 'Professional photos', price: 120 },
         { emoji: '🎉', name: 'Event', desc: 'Full coverage', price: 400 }
     ],
-    
+
     stepInfos: [
-        "📞 James answers ready to capture your moment!",
-        "📷 Discussing shoot type, location and occasion.",
-        "✅ Confirming date, people and package.",
-        "🎉 Session booked! Get ready for amazing photos!"
+        '📞 James answers ready to capture your moment!',
+        '📷 Discussing shoot type, location and occasion.',
+        '✅ Confirming date, people and package.',
+        '🎉 Session booked! Get ready for amazing photos!'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'type' },
@@ -96,10 +96,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'contact' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Say cheese! 📷<br><br>Your photo session with <strong>${businessName}</strong> is confirmed!<br><br>Get ready for amazing shots! ✨</div>`,
-    
+
     ticketIcon: '📷'
 };
 

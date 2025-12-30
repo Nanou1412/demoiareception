@@ -8,7 +8,7 @@ const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
 });
 
-exports.handler = async (event) => {
+exports.handler = async event => {
     const headers = {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type',
@@ -28,7 +28,8 @@ exports.handler = async (event) => {
 
         if (!process.env.OPENAI_API_KEY) {
             return {
-                statusCode: 500, headers,
+                statusCode: 500,
+                headers,
                 body: JSON.stringify({ error: 'OpenAI API key not configured' })
             };
         }
@@ -48,10 +49,7 @@ exports.handler = async (event) => {
         // Call OpenAI
         const completion = await openai.chat.completions.create({
             model: 'gpt-4o-mini',
-            messages: [
-                { role: 'system', content: getSystemPrompt(industry) },
-                ...history
-            ],
+            messages: [{ role: 'system', content: getSystemPrompt(industry) }, ...history],
             max_tokens: 200,
             temperature: 0.85
         });
@@ -80,16 +78,16 @@ exports.handler = async (event) => {
         }
 
         return {
-            statusCode: 200, headers,
+            statusCode: 200,
+            headers,
             body: JSON.stringify({ response: cleanResponse, audio: audioBase64, isConfirmed })
         };
-
     } catch (error) {
         console.error('Error:', error);
         return {
-            statusCode: 500, headers,
+            statusCode: 500,
+            headers,
             body: JSON.stringify({ error: 'Failed to process request' })
         };
     }
 };
-

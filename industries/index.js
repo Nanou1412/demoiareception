@@ -62,7 +62,7 @@ const INDUSTRIES = {
     sushi,
     fastfood,
     icecream,
-    
+
     // Health & Wellness
     medical,
     dental,
@@ -74,7 +74,7 @@ const INDUSTRIES = {
     podiatrist,
     pharmacy,
     vet,
-    
+
     // Home Services
     cleaning,
     electrician,
@@ -83,13 +83,13 @@ const INDUSTRIES = {
     locksmith,
     moving,
     garage,
-    
+
     // Professional Services
     lawyer,
     realestate,
     tutoring,
     drivingschool,
-    
+
     // Lifestyle & Events
     hotel,
     gym,
@@ -115,12 +115,31 @@ const CATEGORIES = {
     health: {
         name: 'Health & Wellness',
         icon: '💆',
-        industries: ['medical', 'dental', 'salon', 'spa', 'massage', 'nailsalon', 'optician', 'podiatrist', 'pharmacy', 'vet']
+        industries: [
+            'medical',
+            'dental',
+            'salon',
+            'spa',
+            'massage',
+            'nailsalon',
+            'optician',
+            'podiatrist',
+            'pharmacy',
+            'vet'
+        ]
     },
     services: {
         name: 'Home Services',
         icon: '🔧',
-        industries: ['cleaning', 'electrician', 'plumber', 'landscaping', 'locksmith', 'moving', 'garage']
+        industries: [
+            'cleaning',
+            'electrician',
+            'plumber',
+            'landscaping',
+            'locksmith',
+            'moving',
+            'garage'
+        ]
     },
     professional: {
         name: 'Professional',
@@ -130,7 +149,18 @@ const CATEGORIES = {
     lifestyle: {
         name: 'Lifestyle & Events',
         icon: '🎉',
-        industries: ['hotel', 'gym', 'florist', 'photography', 'tattoo', 'petgrooming', 'petboarding', 'daycare', 'wedding', 'eventvenue']
+        industries: [
+            'hotel',
+            'gym',
+            'florist',
+            'photography',
+            'tattoo',
+            'petgrooming',
+            'petboarding',
+            'daycare',
+            'wedding',
+            'eventvenue'
+        ]
     }
 };
 

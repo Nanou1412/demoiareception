@@ -5,13 +5,13 @@
 const electrician = {
     id: 'electrician',
     category: 'services',
-    
+
     icon: '⚡',
     customerIcon: '👤',
     color: '#eab308',
     cardIcon: 'fa-bolt',
     voice: 'onyx',
-    
+
     en: {
         name: 'PowerUp Electric',
         aiName: 'Dave',
@@ -19,17 +19,17 @@ const electrician = {
         totalLabel: 'Job',
         cardTitle: 'Service Call',
         responses: {
-            greeting: "Hi, I need an electrician",
-            issue: "Some power points have stopped working",
+            greeting: 'Hi, I need an electrician',
+            issue: 'Some power points have stopped working',
             urgency: "It's not urgent, but I'd like it fixed soon",
-            address: "12 Pine Avenue, Carlton",
-            datetime: "Tomorrow if possible",
-            name: "Mike Stevens",
-            phone: "0434 567 890",
-            confirm: "Yep, that works"
+            address: '12 Pine Avenue, Carlton',
+            datetime: 'Tomorrow if possible',
+            name: 'Mike Stevens',
+            phone: '0434 567 890',
+            confirm: 'Yep, that works'
         }
     },
-    
+
     prompt: `You're Dave, a friendly scheduler at PowerUp Electric. You book electrical jobs for residential and commercial clients.
 
 SERVICES:
@@ -63,25 +63,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '⚡', label: 'Book', text: "I need an electrician" },
-        { emoji: '🚨', label: 'Emergency', text: "I have an electrical emergency" },
-        { emoji: '💡', label: 'Lights', text: "I need lights installed" }
+        { emoji: '⚡', label: 'Book', text: 'I need an electrician' },
+        { emoji: '🚨', label: 'Emergency', text: 'I have an electrical emergency' },
+        { emoji: '💡', label: 'Lights', text: 'I need lights installed' }
     ],
-    
+
     menuItems: [
         { emoji: '🔌', name: 'Powerpoint', desc: 'Install or repair', price: 150 },
         { emoji: '💡', name: 'Light Fixture', desc: 'Install new lights', price: 80 },
         { emoji: '⚡', name: 'Switchboard', desc: 'Upgrade or repair', price: 500 },
         { emoji: '🔍', name: 'Safety Check', desc: 'Full inspection', price: 200 }
     ],
-    
+
     stepInfos: [
-        "📞 Dave answers ready to solve your electrical issues.",
-        "⚡ Discussing the electrical problem and urgency.",
-        "✅ Confirming address and appointment time.",
+        '📞 Dave answers ready to solve your electrical issues.',
+        '⚡ Discussing the electrical problem and urgency.',
+        '✅ Confirming address and appointment time.',
         "🎉 Electrician booked! We'll have it sorted."
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'issue' },
@@ -92,10 +92,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Sparky's coming! ⚡<br><br>Your electrical job with <strong>${businessName}</strong> is booked!<br><br>We'll sort it out! 🔌</div>`,
-    
+
     ticketIcon: '⚡'
 };
 

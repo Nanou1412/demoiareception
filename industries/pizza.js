@@ -5,16 +5,16 @@
 const pizza = {
     id: 'pizza',
     category: 'food',
-    
+
     // Visual Configuration
     icon: '🍕',
     customerIcon: '👤',
     color: '#dc2626',
     cardIcon: 'fa-pizza-slice',
-    
+
     // Voice Configuration
     voice: 'echo',
-    
+
     // Business Info
     en: {
         name: "Tony's Famous Pizzeria",
@@ -24,16 +24,16 @@ const pizza = {
         cardTitle: 'Kitchen Order',
         responses: {
             greeting: "Hey, I'd like to order some pizza for delivery",
-            orderItem: "Can I get a large Margherita",
-            moreItems: "And a garlic bread too",
+            orderItem: 'Can I get a large Margherita',
+            moreItems: 'And a garlic bread too',
             noMore: "That's everything",
-            delivery: "Delivery please",
-            address: "42 Smith Street, Richmond",
-            phone: "0467 890 123",
-            confirm: "Yep, all good!"
+            delivery: 'Delivery please',
+            address: '42 Smith Street, Richmond',
+            phone: '0467 890 123',
+            confirm: 'Yep, all good!'
         }
     },
-    
+
     // AI System Prompt
     prompt: `You're Tony, an enthusiastic and friendly guy at Tony's Famous Pizzeria in Adelaide. You love pizza and it shows!
 
@@ -73,10 +73,10 @@ CRITICAL RULES:
     // Quick Action Buttons
     quickActions: [
         { emoji: '🍕', label: 'Order', text: "I'd like to order a pizza" },
-        { emoji: '🛵', label: 'Delivery', text: "Do you deliver?" },
+        { emoji: '🛵', label: 'Delivery', text: 'Do you deliver?' },
         { emoji: '🌶️', label: 'Specials', text: "What are today's specials?" }
     ],
-    
+
     // Menu/Services Display
     menuItems: [
         { emoji: '🍕', name: 'Margherita', desc: 'Classic tomato & mozzarella', price: 18 },
@@ -84,15 +84,15 @@ CRITICAL RULES:
         { emoji: '🧄', name: 'Garlic Bread', desc: 'With herbs & butter', price: 8 },
         { emoji: '🥤', name: 'Soft Drink', desc: 'Can - various flavors', price: 4 }
     ],
-    
+
     // Step-by-Step Process Info
     stepInfos: [
-        "📞 Tony answers with his famous Italian enthusiasm!",
-        "🍕 Taking the pizza order, size and toppings.",
-        "✅ Confirming delivery/pickup and payment details.",
+        '📞 Tony answers with his famous Italian enthusiasm!',
+        '🍕 Taking the pizza order, size and toppings.',
+        '✅ Confirming delivery/pickup and payment details.',
         "🎉 Pizza's in the oven! Delivery on its way soon."
     ],
-    
+
     // Demo Script Timing
     demoScript: [
         { delay: 2000, type: 'greeting' },
@@ -104,11 +104,11 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
+
     // SMS Template
-    smsTemplate: (businessName, total, currency = '$') => 
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Bellissimo! 🍕<br><br>Your order from <strong>${businessName}</strong> is confirmed!<br><br><strong>Total:</strong> ${currency}${total}<br><br>Hot pizza coming your way! 🔥</div>`,
-    
+
     // Ticket Icon
     ticketIcon: '🍕'
 };

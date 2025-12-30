@@ -5,13 +5,13 @@
 const sushi = {
     id: 'sushi',
     category: 'food',
-    
+
     icon: '🍣',
     customerIcon: '👤',
     color: '#dc2626',
     cardIcon: 'fa-fish',
     voice: 'nova',
-    
+
     en: {
         name: 'Sakura Sushi',
         aiName: 'Yuki',
@@ -20,16 +20,16 @@ const sushi = {
         cardTitle: 'Sushi Order',
         responses: {
             greeting: "Hi, I'd like to order for pickup",
-            orderItem: "Can I get the salmon sashimi and a California roll",
-            moreItems: "And some edamame too",
+            orderItem: 'Can I get the salmon sashimi and a California roll',
+            moreItems: 'And some edamame too',
             noMore: "That's all thank you",
-            pickupTime: "In 30 minutes",
-            name: "David",
-            phone: "0478 901 234",
+            pickupTime: 'In 30 minutes',
+            name: 'David',
+            phone: '0478 901 234',
             confirm: "Yes, that's correct"
         }
     },
-    
+
     prompt: `You're Yuki at Sakura Sushi. You take takeaway and delivery orders with Japanese hospitality.
 
 MENU:
@@ -68,24 +68,24 @@ CRITICAL RULES:
 
     quickActions: [
         { emoji: '🍣', label: 'Order', text: "I'd like to order sushi" },
-        { emoji: '🛵', label: 'Delivery', text: "Do you deliver?" },
+        { emoji: '🛵', label: 'Delivery', text: 'Do you deliver?' },
         { emoji: '📋', label: 'Menu', text: "What's on the menu?" }
     ],
-    
+
     menuItems: [
         { emoji: '🍣', name: 'Salmon Sashimi', desc: 'Fresh 6 pieces', price: 16 },
         { emoji: '🌈', name: 'Rainbow Roll', desc: 'Assorted fish topping', price: 16 },
         { emoji: '🍱', name: 'Bento Box', desc: 'Complete meal set', price: 22 },
         { emoji: '🫛', name: 'Edamame', desc: 'Salted soybeans', price: 6 }
     ],
-    
+
     stepInfos: [
-        "📞 Yuki answers with traditional Japanese hospitality.",
-        "🍣 Taking the sushi order with care and precision.",
-        "✅ Confirming items, pickup time and contact details.",
-        "🎉 Itadakimasu! Your order is being prepared."
+        '📞 Yuki answers with traditional Japanese hospitality.',
+        '🍣 Taking the sushi order with care and precision.',
+        '✅ Confirming items, pickup time and contact details.',
+        '🎉 Itadakimasu! Your order is being prepared.'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'orderItem' },
@@ -96,10 +96,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Arigatou! 🍣<br><br>Your order from <strong>${businessName}</strong> is confirmed!<br><br><strong>Total:</strong> ${currency}${total}<br><br>Itadakimasu! 🙏</div>`,
-    
+
     ticketIcon: '🍣'
 };
 

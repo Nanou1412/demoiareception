@@ -5,13 +5,13 @@
 const drivingschool = {
     id: 'drivingschool',
     category: 'professional',
-    
+
     icon: '🚗',
     customerIcon: '👤',
     color: '#ef4444',
     cardIcon: 'fa-car-side',
     voice: 'echo',
-    
+
     en: {
         name: 'Pass First Driving School',
         aiName: 'Mike',
@@ -22,15 +22,15 @@ const drivingschool = {
             greeting: "Hi, I'd like to book driving lessons",
             experience: "I've had about 20 hours with my parents",
             license: "Yes, I have my learner's permit",
-            package: "Maybe the 5 lesson package",
-            datetime: "Weekends would work best",
-            pickup: "From home, in Brunswick",
-            name: "Jake Thompson",
-            phone: "0423 456 789",
+            package: 'Maybe the 5 lesson package',
+            datetime: 'Weekends would work best',
+            pickup: 'From home, in Brunswick',
+            name: 'Jake Thompson',
+            phone: '0423 456 789',
             confirm: "Yes, let's book it"
         }
     },
-    
+
     prompt: `You're Instructor Mike's receptionist at Pass First Driving School. You book driving lessons.
 
 SERVICES:
@@ -65,25 +65,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '🚗', label: 'Lesson', text: "I want to book driving lessons" },
-        { emoji: '📦', label: 'Package', text: "What lesson packages do you have?" },
-        { emoji: '📝', label: 'Test', text: "I need a pre-test lesson" }
+        { emoji: '🚗', label: 'Lesson', text: 'I want to book driving lessons' },
+        { emoji: '📦', label: 'Package', text: 'What lesson packages do you have?' },
+        { emoji: '📝', label: 'Test', text: 'I need a pre-test lesson' }
     ],
-    
+
     menuItems: [
         { emoji: '🚗', name: 'Single Lesson', desc: '1 hour session', price: 70 },
         { emoji: '📦', name: '5 Lessons', desc: 'Save $30', price: 320 },
         { emoji: '🎯', name: '10 Lessons', desc: 'Best value', price: 600 },
         { emoji: '📝', name: 'Test Day', desc: 'Car for test', price: 150 }
     ],
-    
+
     stepInfos: [
-        "📞 Booking team ready to get you on the road!",
-        "🚗 Checking experience and learner permit.",
-        "✅ Setting up lessons and pickup location.",
+        '📞 Booking team ready to get you on the road!',
+        '🚗 Checking experience and learner permit.',
+        '✅ Setting up lessons and pickup location.',
         "🎉 Lessons booked! You'll pass in no time!"
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'experience' },
@@ -95,10 +95,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Let's drive! 🚗<br><br>Your lesson with <strong>${businessName}</strong> is booked!<br><br>You'll pass in no time! 🎉</div>`,
-    
+
     ticketIcon: '🚗'
 };
 

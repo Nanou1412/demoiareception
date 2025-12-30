@@ -55,25 +55,88 @@ const Templates = {
     getTicket(industry, orderNum, total, currency) {
         const now = new Date();
         const time = now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' });
-        
+
         const icons = {
-            restaurant: '🍽️', pizza: '🍕', bakery: '🥐', coffeeshop: '☕', sushi: '🍣', fastfood: '🍔', icecream: '🍦',
-            salon: '💇', medical: '🏥', dental: '🦷', vet: '🐾', spa: '🧘', pharmacy: '💊', optician: '👁️', podiatrist: '🦶', massage: '💆', nailsalon: '💅',
-            garage: '🔧', cleaning: '✨', electrician: '⚡', plumber: '🔧', landscaping: '🌳', moving: '🚚', locksmith: '🔐',
-            hotel: '🏨', gym: '🏋️', lawyer: '⚖️', realestate: '🏠',
-            florist: '💐', photography: '📷', tattoo: '🎨', petgrooming: '🐩', petboarding: '🐈', daycare: '👶', wedding: '💒', eventvenue: '🎭',
-            drivingschool: '🚗', tutoring: '📚'
+            restaurant: '🍽️',
+            pizza: '🍕',
+            bakery: '🥐',
+            coffeeshop: '☕',
+            sushi: '🍣',
+            fastfood: '🍔',
+            icecream: '🍦',
+            salon: '💇',
+            medical: '🏥',
+            dental: '🦷',
+            vet: '🐾',
+            spa: '🧘',
+            pharmacy: '💊',
+            optician: '👁️',
+            podiatrist: '🦶',
+            massage: '💆',
+            nailsalon: '💅',
+            garage: '🔧',
+            cleaning: '✨',
+            electrician: '⚡',
+            plumber: '🔧',
+            landscaping: '🌳',
+            moving: '🚚',
+            locksmith: '🔐',
+            hotel: '🏨',
+            gym: '🏋️',
+            lawyer: '⚖️',
+            realestate: '🏠',
+            florist: '💐',
+            photography: '📷',
+            tattoo: '🎨',
+            petgrooming: '🐩',
+            petboarding: '🐈',
+            daycare: '👶',
+            wedding: '💒',
+            eventvenue: '🎭',
+            drivingschool: '🚗',
+            tutoring: '📚'
         };
         const icon = icons[industry] || '📋';
-        
-        const isBooking = ['salon', 'medical', 'dental', 'vet', 'spa', 'massage', 'nailsalon', 'optician', 'podiatrist', 'hotel', 'gym', 'lawyer', 'photography', 'tattoo', 'petgrooming', 'wedding', 'eventvenue', 'drivingschool', 'tutoring', 'daycare', 'petboarding'].includes(industry);
-        const isService = ['cleaning', 'electrician', 'plumber', 'landscaping', 'moving', 'locksmith', 'garage', 'realestate'].includes(industry);
-        
+
+        const isBooking = [
+            'salon',
+            'medical',
+            'dental',
+            'vet',
+            'spa',
+            'massage',
+            'nailsalon',
+            'optician',
+            'podiatrist',
+            'hotel',
+            'gym',
+            'lawyer',
+            'photography',
+            'tattoo',
+            'petgrooming',
+            'wedding',
+            'eventvenue',
+            'drivingschool',
+            'tutoring',
+            'daycare',
+            'petboarding'
+        ].includes(industry);
+        const isService = [
+            'cleaning',
+            'electrician',
+            'plumber',
+            'landscaping',
+            'moving',
+            'locksmith',
+            'garage',
+            'realestate'
+        ].includes(industry);
+
         let ticketType = 'ORDER';
         if (isBooking) ticketType = 'BOOKING';
         if (isService) ticketType = 'JOB';
         if (industry === 'locksmith') ticketType = 'DISPATCH';
-        
+
         return `<div class="ticket-content">
             <h4>${icon} ${ticketType} #${orderNum}</h4>
             <p style="text-align:center;color:#666;font-size:0.75rem;">${time}</p>

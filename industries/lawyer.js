@@ -5,13 +5,13 @@
 const lawyer = {
     id: 'lawyer',
     category: 'professional',
-    
+
     icon: '⚖️',
     customerIcon: '👤',
     color: '#1e3a5f',
     cardIcon: 'fa-gavel',
     voice: 'onyx',
-    
+
     en: {
         name: 'Harper & Associates Law',
         aiName: 'Victoria',
@@ -19,18 +19,18 @@ const lawyer = {
         totalLabel: 'Consultation',
         cardTitle: 'Appointment',
         responses: {
-            greeting: "Hi, I need to speak with a lawyer",
+            greeting: 'Hi, I need to speak with a lawyer',
             area: "It's regarding a property matter",
             consultation: "Yes, I'd like to book a consultation",
-            lawyer: "Anyone available is fine",
-            datetime: "Early next week if possible",
-            name: "Richard Thompson",
-            phone: "0490 123 456",
-            brief: "Property settlement dispute",
+            lawyer: 'Anyone available is fine',
+            datetime: 'Early next week if possible',
+            name: 'Richard Thompson',
+            phone: '0490 123 456',
+            brief: 'Property settlement dispute',
             confirm: "Yes, that's all correct"
         }
     },
-    
+
     prompt: `You're Victoria, a professional and discreet legal receptionist at Harper & Associates Law Firm in Sydney.
 
 SERVICES:
@@ -67,25 +67,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '⚖️', label: 'Consult', text: "I need legal advice" },
-        { emoji: '🏠', label: 'Property', text: "I have a property matter" },
-        { emoji: '👨‍👩‍👧', label: 'Family', text: "I need family law help" }
+        { emoji: '⚖️', label: 'Consult', text: 'I need legal advice' },
+        { emoji: '🏠', label: 'Property', text: 'I have a property matter' },
+        { emoji: '👨‍👩‍👧', label: 'Family', text: 'I need family law help' }
     ],
-    
+
     menuItems: [
         { emoji: '💼', name: 'Consultation', desc: 'Initial 30 min meeting', price: 350 },
         { emoji: '🏠', name: 'Property Law', desc: 'Conveyancing & disputes', price: 0 },
         { emoji: '👨‍👩‍👧', name: 'Family Law', desc: 'Separation & custody', price: 0 },
         { emoji: '📜', name: 'Wills & Estates', desc: 'Estate planning', price: 0 }
     ],
-    
+
     stepInfos: [
-        "📞 Victoria answers professionally and discreetly.",
-        "⚖️ Identifying the legal matter and needs.",
-        "✅ Confirming solicitor and appointment time.",
-        "🎉 Consultation booked! Confidential and secure."
+        '📞 Victoria answers professionally and discreetly.',
+        '⚖️ Identifying the legal matter and needs.',
+        '✅ Confirming solicitor and appointment time.',
+        '🎉 Consultation booked! Confidential and secure.'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'area' },
@@ -97,10 +97,10 @@ CRITICAL RULES:
         { delay: 2500, type: 'brief' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Confirmed ⚖️<br><br>Your consultation at <strong>${businessName}</strong> is booked.<br><br>Please bring relevant documents. 📋</div>`,
-    
+
     ticketIcon: '⚖️'
 };
 

@@ -5,13 +5,13 @@
 const coffeeshop = {
     id: 'coffeeshop',
     category: 'food',
-    
+
     icon: '☕',
     customerIcon: '👤',
     color: '#78350f',
     cardIcon: 'fa-mug-hot',
     voice: 'echo',
-    
+
     en: {
         name: 'Bean There Café',
         aiName: 'Joe',
@@ -20,16 +20,16 @@ const coffeeshop = {
         cardTitle: 'Café Order',
         responses: {
             greeting: "Hi, I'd like to place an order for pickup",
-            orderItem: "Can I get a large flat white with oat milk",
-            moreItems: "And a banana bread please",
+            orderItem: 'Can I get a large flat white with oat milk',
+            moreItems: 'And a banana bread please',
             noMore: "That's all",
-            pickupTime: "In 10 minutes",
-            name: "Chris",
-            phone: "0456 789 012",
-            confirm: "Yep, sounds good!"
+            pickupTime: 'In 10 minutes',
+            name: 'Chris',
+            phone: '0456 789 012',
+            confirm: 'Yep, sounds good!'
         }
     },
-    
+
     prompt: `You're Barista Joe at Bean There Café. You take phone orders for coffee and light food.
 
 MENU:
@@ -67,24 +67,24 @@ CRITICAL RULES:
 
     quickActions: [
         { emoji: '☕', label: 'Coffee', text: "I'd like to order a coffee" },
-        { emoji: '🥛', label: 'Milk', text: "What milk options do you have?" },
-        { emoji: '🥐', label: 'Food', text: "What food do you have?" }
+        { emoji: '🥛', label: 'Milk', text: 'What milk options do you have?' },
+        { emoji: '🥐', label: 'Food', text: 'What food do you have?' }
     ],
-    
+
     menuItems: [
         { emoji: '☕', name: 'Flat White', desc: 'Smooth espresso & milk', price: 5 },
-        { emoji: '🧋', name: 'Chai Latte', desc: 'Spiced chai with milk', price: 5.50 },
+        { emoji: '🧋', name: 'Chai Latte', desc: 'Spiced chai with milk', price: 5.5 },
         { emoji: '🍌', name: 'Banana Bread', desc: 'Fresh baked, toasted', price: 6 },
         { emoji: '🌯', name: 'Breakfast Wrap', desc: 'Eggs, bacon, cheese', price: 12 }
     ],
-    
+
     stepInfos: [
-        "📞 Joe answers, ready to brew your perfect cup!",
-        "☕ Taking the coffee order with milk preferences.",
-        "✅ Confirming pickup time and order details.",
+        '📞 Joe answers, ready to brew your perfect cup!',
+        '☕ Taking the coffee order with milk preferences.',
+        '✅ Confirming pickup time and order details.',
         "🎉 Barista's on it! Coffee will be ready soon."
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'orderItem' },
@@ -95,10 +95,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Coffee time! ☕<br><br>Your order from <strong>${businessName}</strong> is brewing!<br><br><strong>Total:</strong> ${currency}${total}<br><br>See you soon! ☕</div>`,
-    
+
     ticketIcon: '☕'
 };
 

@@ -5,13 +5,13 @@
 const vet = {
     id: 'vet',
     category: 'health',
-    
+
     icon: '🐕',
     customerIcon: '👤',
     color: '#14b8a6',
     cardIcon: 'fa-paw',
     voice: 'shimmer',
-    
+
     en: {
         name: 'Paws & Claws Vet Clinic',
         aiName: 'Bella',
@@ -19,17 +19,17 @@ const vet = {
         totalLabel: 'Consult',
         cardTitle: 'Vet Appointment',
         responses: {
-            greeting: "Hi, I need to book an appointment for my dog",
+            greeting: 'Hi, I need to book an appointment for my dog',
             petType: "He's a golden retriever named Max",
             reason: "He's been scratching a lot and seems uncomfortable",
-            datetime: "As soon as possible please",
-            petName: "Max",
-            ownerName: "Sarah Johnson",
-            phone: "0412 345 678",
+            datetime: 'As soon as possible please',
+            petName: 'Max',
+            ownerName: 'Sarah Johnson',
+            phone: '0412 345 678',
             confirm: "Yes, that's all correct"
         }
     },
-    
+
     prompt: `You're Dr. Sarah's receptionist, Bella, at Paws & Claws Veterinary Clinic in Sydney. You're gentle and caring, especially about pets.
 
 SERVICES:
@@ -64,25 +64,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '🐾', label: 'Book', text: "I need to book a vet appointment" },
-        { emoji: '🚨', label: 'Emergency', text: "My pet needs urgent care" },
-        { emoji: '💉', label: 'Vaccines', text: "I need to update vaccinations" }
+        { emoji: '🐾', label: 'Book', text: 'I need to book a vet appointment' },
+        { emoji: '🚨', label: 'Emergency', text: 'My pet needs urgent care' },
+        { emoji: '💉', label: 'Vaccines', text: 'I need to update vaccinations' }
     ],
-    
+
     menuItems: [
         { emoji: '🩺', name: 'Consultation', desc: 'General checkup', price: 75 },
         { emoji: '💉', name: 'Vaccination', desc: 'Annual vaccines', price: 95 },
         { emoji: '✂️', name: 'Desexing', desc: 'Surgical procedure', price: 300 },
         { emoji: '🦷', name: 'Dental Clean', desc: 'Pet dental care', price: 350 }
     ],
-    
+
     stepInfos: [
-        "📞 Bella answers with love for all furry friends!",
-        "🐾 Getting pet details, symptoms and urgency level.",
-        "✅ Confirming owner details and pet information.",
-        "🎉 Appointment booked! See you at the clinic."
+        '📞 Bella answers with love for all furry friends!',
+        '🐾 Getting pet details, symptoms and urgency level.',
+        '✅ Confirming owner details and pet information.',
+        '🎉 Appointment booked! See you at the clinic.'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'petType' },
@@ -93,10 +93,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Paws up! 🐾<br><br>Your pet's appointment at <strong>${businessName}</strong> is confirmed!<br><br>We'll take great care of your fur baby! 🐕</div>`,
-    
+
     ticketIcon: '🐾'
 };
 

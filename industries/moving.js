@@ -5,13 +5,13 @@
 const moving = {
     id: 'moving',
     category: 'services',
-    
+
     icon: '📦',
     customerIcon: '👤',
     color: '#8b5cf6',
     cardIcon: 'fa-truck-moving',
     voice: 'echo',
-    
+
     en: {
         name: 'Swift Movers',
         aiName: 'Mark',
@@ -19,17 +19,17 @@ const moving = {
         totalLabel: 'Estimate',
         cardTitle: 'Moving Booking',
         responses: {
-            greeting: "Hi, I need to book a move",
+            greeting: 'Hi, I need to book a move',
             moveType: "It's a local move",
-            size: "3 bedroom house",
-            datetime: "End of the month, the 30th",
-            addresses: "From Carlton to Fitzroy",
-            name: "James Wilson",
-            phone: "0478 901 234",
+            size: '3 bedroom house',
+            datetime: 'End of the month, the 30th',
+            addresses: 'From Carlton to Fitzroy',
+            name: 'James Wilson',
+            phone: '0478 901 234',
             confirm: "Yes, let's book it"
         }
     },
-    
+
     prompt: `You're Mark, a moving coordinator at Swift Movers. You book residential and commercial moves.
 
 SERVICES:
@@ -64,25 +64,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '📦', label: 'Book', text: "I need to book a move" },
-        { emoji: '💰', label: 'Quote', text: "Can I get a quote?" },
-        { emoji: '📅', label: 'Date', text: "What dates are available?" }
+        { emoji: '📦', label: 'Book', text: 'I need to book a move' },
+        { emoji: '💰', label: 'Quote', text: 'Can I get a quote?' },
+        { emoji: '📅', label: 'Date', text: 'What dates are available?' }
     ],
-    
+
     menuItems: [
         { emoji: '👥', name: '2 Movers + Truck', desc: 'Standard move', price: 150 },
         { emoji: '👥', name: '3 Movers + Truck', desc: 'Larger move', price: 200 },
         { emoji: '📦', name: 'Packing Service', desc: 'Per hour/packer', price: 50 },
         { emoji: '🎹', name: 'Piano Moving', desc: 'Specialist move', price: 200 }
     ],
-    
+
     stepInfos: [
-        "📞 Mark answers ready to plan your stress-free move.",
-        "📦 Getting details on size and distance.",
-        "✅ Confirming date, addresses and quote.",
+        '📞 Mark answers ready to plan your stress-free move.',
+        '📦 Getting details on size and distance.',
+        '✅ Confirming date, addresses and quote.',
         "🎉 Move booked! We've got you covered!"
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'moveType' },
@@ -93,10 +93,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Moving day set! 📦<br><br>Your move with <strong>${businessName}</strong> is confirmed!<br><br>We'll make it stress-free! 🚚</div>`,
-    
+
     ticketIcon: '📦'
 };
 

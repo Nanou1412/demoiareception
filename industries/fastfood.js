@@ -5,13 +5,13 @@
 const fastfood = {
     id: 'fastfood',
     category: 'food',
-    
+
     icon: '🍔',
     customerIcon: '👤',
     color: '#ea580c',
     cardIcon: 'fa-burger',
     voice: 'echo',
-    
+
     en: {
         name: 'Burger Barn',
         aiName: 'Billy',
@@ -21,15 +21,15 @@ const fastfood = {
         responses: {
             greeting: "Hi, I'd like to order a burger",
             orderItem: "I'll have the Double Cheese",
-            moreItems: "Large fries and a Coke please",
+            moreItems: 'Large fries and a Coke please',
             noMore: "That's everything",
-            pickupTime: "Pickup in 15 mins",
-            name: "Jake",
-            phone: "0489 012 345",
-            confirm: "Yep, sounds good!"
+            pickupTime: 'Pickup in 15 mins',
+            name: 'Jake',
+            phone: '0489 012 345',
+            confirm: 'Yep, sounds good!'
         }
     },
-    
+
     prompt: `You're Billy at Burger Barn. You take fast food orders quickly and efficiently.
 
 MENU:
@@ -69,24 +69,24 @@ CRITICAL RULES:
 
     quickActions: [
         { emoji: '🍔', label: 'Order', text: "I'd like to order a burger" },
-        { emoji: '🍟', label: 'Combo', text: "What combos do you have?" },
-        { emoji: '🛵', label: 'Delivery', text: "Do you deliver?" }
+        { emoji: '🍟', label: 'Combo', text: 'What combos do you have?' },
+        { emoji: '🛵', label: 'Delivery', text: 'Do you deliver?' }
     ],
-    
+
     menuItems: [
         { emoji: '🍔', name: 'Double Cheese', desc: 'Two patties, extra cheese', price: 12 },
         { emoji: '🐔', name: 'Chicken Burger', desc: 'Crispy chicken fillet', price: 10 },
         { emoji: '🍟', name: 'Large Fries', desc: 'Crispy golden fries', price: 6 },
-        { emoji: '🥤', name: 'Soft Drink', desc: 'Various flavors', price: 3.50 }
+        { emoji: '🥤', name: 'Soft Drink', desc: 'Various flavors', price: 3.5 }
     ],
-    
+
     stepInfos: [
-        "📞 Billy answers, ready for your order!",
-        "🍔 Taking your burger order with sides and drinks.",
-        "✅ Confirming pickup/delivery and total.",
-        "🎉 Order in! Burgers cooking now!"
+        '📞 Billy answers, ready for your order!',
+        '🍔 Taking your burger order with sides and drinks.',
+        '✅ Confirming pickup/delivery and total.',
+        '🎉 Order in! Burgers cooking now!'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'orderItem' },
@@ -97,10 +97,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Burgers up! 🍔<br><br>Your order from <strong>${businessName}</strong> is confirmed!<br><br><strong>Total:</strong> ${currency}${total}<br><br>See you at the counter! 🍟</div>`,
-    
+
     ticketIcon: '🍔'
 };
 

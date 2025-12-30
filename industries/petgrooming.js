@@ -5,13 +5,13 @@
 const petgrooming = {
     id: 'petgrooming',
     category: 'lifestyle',
-    
+
     icon: '🐩',
     customerIcon: '👤',
     color: '#f472b6',
     cardIcon: 'fa-dog',
     voice: 'shimmer',
-    
+
     en: {
         name: 'Pampered Paws',
         aiName: 'Bella',
@@ -19,18 +19,18 @@ const petgrooming = {
         totalLabel: 'Service',
         cardTitle: 'Grooming Booking',
         responses: {
-            greeting: "Hi, I need to book my dog for grooming",
+            greeting: 'Hi, I need to book my dog for grooming',
             petType: "He's a golden retriever",
             service: "Full groom please, he's very fluffy",
-            size: "Large, about 30 kilos",
-            datetime: "This Saturday morning",
-            petName: "Buddy",
-            ownerName: "Lisa",
-            phone: "0445 678 901",
-            confirm: "Yes, book him in"
+            size: 'Large, about 30 kilos',
+            datetime: 'This Saturday morning',
+            petName: 'Buddy',
+            ownerName: 'Lisa',
+            phone: '0445 678 901',
+            confirm: 'Yes, book him in'
         }
     },
-    
+
     prompt: `You're Bella, a pet-loving groomer at Pampered Paws. You treat every pet like royalty.
 
 SERVICES:
@@ -67,25 +67,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '🐕', label: 'Book', text: "I need to book grooming for my dog" },
-        { emoji: '🐈', label: 'Cat', text: "Do you groom cats?" },
-        { emoji: '✂️', label: 'Nails', text: "Just a nail trim please" }
+        { emoji: '🐕', label: 'Book', text: 'I need to book grooming for my dog' },
+        { emoji: '🐈', label: 'Cat', text: 'Do you groom cats?' },
+        { emoji: '✂️', label: 'Nails', text: 'Just a nail trim please' }
     ],
-    
+
     menuItems: [
         { emoji: '✂️', name: 'Full Groom', desc: 'Wash, cut, style', price: 65 },
         { emoji: '🛁', name: 'Bath & Brush', desc: 'Clean and tidy', price: 35 },
         { emoji: '💅', name: 'Nail Trim', desc: 'Quick clip', price: 15 },
         { emoji: '🐈', name: 'Cat Groom', desc: 'Feline pampering', price: 55 }
     ],
-    
+
     stepInfos: [
-        "📞 Bella answers with love for all fur babies!",
-        "🐕 Getting pet details and grooming needs.",
-        "✅ Confirming appointment time and service.",
-        "🎉 Booked! Your pet will look fabulous!"
+        '📞 Bella answers with love for all fur babies!',
+        '🐕 Getting pet details and grooming needs.',
+        '✅ Confirming appointment time and service.',
+        '🎉 Booked! Your pet will look fabulous!'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'petType' },
@@ -97,10 +97,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Pamper time! 🐩<br><br>Grooming booked at <strong>${businessName}</strong>!<br><br>Your fur baby will look fabulous! ✨</div>`,
-    
+
     ticketIcon: '🐩'
 };
 

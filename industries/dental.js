@@ -5,13 +5,13 @@
 const dental = {
     id: 'dental',
     category: 'health',
-    
+
     icon: '🦷',
     customerIcon: '👤',
     color: '#0ea5e9',
     cardIcon: 'fa-tooth',
     voice: 'nova',
-    
+
     en: {
         name: 'Smile Bright Dental',
         aiName: 'Grace',
@@ -20,16 +20,16 @@ const dental = {
         cardTitle: 'Dental Appointment',
         responses: {
             greeting: "Hi, I'd like to book a dental appointment",
-            reason: "Just a regular checkup and clean",
-            dentist: "Anyone available is fine",
-            datetime: "Next Tuesday morning",
-            name: "Jennifer Brown",
-            insurance: "Yes, I have Medibank",
-            phone: "0490 123 456",
+            reason: 'Just a regular checkup and clean',
+            dentist: 'Anyone available is fine',
+            datetime: 'Next Tuesday morning',
+            name: 'Jennifer Brown',
+            insurance: 'Yes, I have Medibank',
+            phone: '0490 123 456',
             confirm: "That's all correct, thanks!"
         }
     },
-    
+
     prompt: `You're Grace, a friendly receptionist at Smile Bright Dental in Melbourne. You help patients feel at ease about dental visits.
 
 SERVICES:
@@ -64,25 +64,25 @@ CRITICAL RULES:
 - Keep responses under 20 words`,
 
     quickActions: [
-        { emoji: '🦷', label: 'Book', text: "I need a dental appointment" },
+        { emoji: '🦷', label: 'Book', text: 'I need a dental appointment' },
         { emoji: '😬', label: 'Emergency', text: "I have a toothache, it's urgent" },
-        { emoji: '💰', label: 'Prices', text: "What are your prices?" }
+        { emoji: '💰', label: 'Prices', text: 'What are your prices?' }
     ],
-    
+
     menuItems: [
         { emoji: '✨', name: 'Check & Clean', desc: 'Regular dental hygiene', price: 180 },
         { emoji: '🦷', name: 'Filling', desc: 'Composite or amalgam', price: 200 },
         { emoji: '😁', name: 'Whitening', desc: 'Professional whitening', price: 450 },
         { emoji: '📸', name: 'X-Ray', desc: 'Digital dental x-ray', price: 95 }
     ],
-    
+
     stepInfos: [
-        "📞 Grace answers with a reassuring, friendly tone.",
-        "🦷 Discussing the dental issue and preferred times.",
-        "✅ Confirming patient details and insurance info.",
-        "🎉 Appointment booked! Smile bright soon!"
+        '📞 Grace answers with a reassuring, friendly tone.',
+        '🦷 Discussing the dental issue and preferred times.',
+        '✅ Confirming patient details and insurance info.',
+        '🎉 Appointment booked! Smile bright soon!'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'reason' },
@@ -93,10 +93,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">All smiles! 😁<br><br>Your appointment at <strong>${businessName}</strong> is confirmed!<br><br>Remember to brush before your visit! 🦷</div>`,
-    
+
     ticketIcon: '🦷'
 };
 

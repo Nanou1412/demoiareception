@@ -5,13 +5,13 @@
 const medical = {
     id: 'medical',
     category: 'health',
-    
+
     icon: '👩‍⚕️',
     customerIcon: '👤',
     color: '#06b6d4',
     cardIcon: 'fa-notes-medical',
     voice: 'nova',
-    
+
     en: {
         name: 'Wellness Medical Centre',
         aiName: 'Rachel',
@@ -20,16 +20,16 @@ const medical = {
         cardTitle: 'Booking Slip',
         responses: {
             greeting: "Hi, I'd like to book an appointment with a GP",
-            service: "Just a general checkup",
-            doctor: "Any doctor available is fine",
-            datetime: "Tomorrow morning if you have anything",
-            name: "Michael Thompson",
-            dob: "15th of March 1985",
-            phone: "0434 567 890",
+            service: 'Just a general checkup',
+            doctor: 'Any doctor available is fine',
+            datetime: 'Tomorrow morning if you have anything',
+            name: 'Michael Thompson',
+            dob: '15th of March 1985',
+            phone: '0434 567 890',
             confirm: "Yes, that's all correct"
         }
     },
-    
+
     prompt: `You're Rachel, a calm and professional receptionist at Wellness Medical Centre in Brisbane. You're efficient but caring.
 
 SERVICES:
@@ -66,24 +66,24 @@ CRITICAL RULES:
 
     quickActions: [
         { emoji: '📅', label: 'Book', text: "I'd like to book an appointment" },
-        { emoji: '👨‍⚕️', label: 'Doctor', text: "Which doctors are available?" },
-        { emoji: '⏰', label: 'Urgent', text: "I need an urgent appointment" }
+        { emoji: '👨‍⚕️', label: 'Doctor', text: 'Which doctors are available?' },
+        { emoji: '⏰', label: 'Urgent', text: 'I need an urgent appointment' }
     ],
-    
+
     menuItems: [
         { emoji: '🩺', name: 'General Consult', desc: 'Standard GP visit', price: 75 },
         { emoji: '💉', name: 'Vaccination', desc: 'Flu, travel, etc.', price: 45 },
         { emoji: '🧪', name: 'Blood Test', desc: 'Pathology referral', price: 0 },
         { emoji: '📝', name: 'Health Check', desc: 'Full assessment', price: 120 }
     ],
-    
+
     stepInfos: [
-        "📞 Rachel answers professionally and warmly.",
-        "🏥 Checking doctor availability and preferred times.",
-        "✅ Confirming patient details and Medicare info.",
-        "🎉 Appointment confirmed! Reminder SMS on the way."
+        '📞 Rachel answers professionally and warmly.',
+        '🏥 Checking doctor availability and preferred times.',
+        '✅ Confirming patient details and Medicare info.',
+        '🎉 Appointment confirmed! Reminder SMS on the way.'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'service' },
@@ -94,10 +94,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Appointment Confirmed! 🏥<br><br>Your booking at <strong>${businessName}</strong> is set.<br><br>Please arrive 10 mins early.<br><br>See you soon! 🩺</div>`,
-    
+
     ticketIcon: '🏥'
 };
 

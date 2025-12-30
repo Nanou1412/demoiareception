@@ -5,13 +5,13 @@
 const salon = {
     id: 'salon',
     category: 'health',
-    
+
     icon: '💇‍♀️',
     customerIcon: '👤',
     color: '#ec4899',
     cardIcon: 'fa-calendar-check',
     voice: 'nova',
-    
+
     en: {
         name: 'Luxe Hair Studio',
         aiName: 'Sophie',
@@ -20,15 +20,15 @@ const salon = {
         cardTitle: 'Appointment Card',
         responses: {
             greeting: "Hi, I'd like to book an appointment please",
-            service: "I need a cut and colour",
-            stylist: "Anyone available is fine",
-            datetime: "This Saturday afternoon if possible",
-            name: "Jessica",
-            phone: "0423 456 789",
-            confirm: "That sounds perfect, thanks!"
+            service: 'I need a cut and colour',
+            stylist: 'Anyone available is fine',
+            datetime: 'This Saturday afternoon if possible',
+            name: 'Jessica',
+            phone: '0423 456 789',
+            confirm: 'That sounds perfect, thanks!'
         }
     },
-    
+
     prompt: `You're Sophie, a bubbly and stylish receptionist at Luxe Hair Studio in Sydney. You're passionate about hair and making people feel beautiful.
 
 SERVICES:
@@ -62,24 +62,24 @@ CRITICAL RULES:
 
     quickActions: [
         { emoji: '💇', label: 'Book', text: "I'd like to book an appointment" },
-        { emoji: '💅', label: 'Services', text: "What services do you offer?" },
-        { emoji: '📅', label: 'Availability', text: "When are you available?" }
+        { emoji: '💅', label: 'Services', text: 'What services do you offer?' },
+        { emoji: '📅', label: 'Availability', text: 'When are you available?' }
     ],
-    
+
     menuItems: [
         { emoji: '✂️', name: 'Haircut', desc: 'Wash, cut & style', price: 85 },
         { emoji: '🎨', name: 'Full Colour', desc: 'All-over colour', price: 120 },
         { emoji: '✨', name: 'Highlights', desc: 'Foils & balayage', price: 150 },
         { emoji: '💆', name: 'Treatment', desc: 'Deep conditioning', price: 40 }
     ],
-    
+
     stepInfos: [
-        "📞 Sophie answers with style and enthusiasm!",
-        "💇 Discussing services, stylist preferences and timing.",
-        "✅ Confirming appointment details and contact info.",
-        "🎉 Appointment booked! See you at the salon."
+        '📞 Sophie answers with style and enthusiasm!',
+        '💇 Discussing services, stylist preferences and timing.',
+        '✅ Confirming appointment details and contact info.',
+        '🎉 Appointment booked! See you at the salon.'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'service' },
@@ -89,10 +89,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Gorgeous! 💇‍♀️<br><br>Your appointment at <strong>${businessName}</strong> is confirmed!<br><br>Can't wait to make you fabulous! ✨</div>`,
-    
+
     ticketIcon: '💇'
 };
 

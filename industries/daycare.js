@@ -5,13 +5,13 @@
 const daycare = {
     id: 'daycare',
     category: 'lifestyle',
-    
+
     icon: '👶',
     customerIcon: '👤',
     color: '#fbbf24',
     cardIcon: 'fa-baby',
     voice: 'shimmer',
-    
+
     en: {
         name: 'Little Stars Daycare',
         aiName: 'Jenny',
@@ -21,15 +21,15 @@ const daycare = {
         responses: {
             greeting: "Hi, I'm looking for daycare for my daughter",
             child: "She's 2 and a half years old",
-            days: "Monday, Wednesday and Friday",
+            days: 'Monday, Wednesday and Friday',
             startDate: "We'd like to start in February",
-            specialNeeds: "She has a nut allergy",
-            parentName: "Emma Watson",
-            phone: "0467 890 123",
+            specialNeeds: 'She has a nut allergy',
+            parentName: 'Emma Watson',
+            phone: '0467 890 123',
             confirm: "Yes, let's enroll her"
         }
     },
-    
+
     prompt: `You're Miss Jenny at Little Stars Daycare. You handle enrollment enquiries and bookings.
 
 SERVICES:
@@ -70,24 +70,24 @@ CRITICAL RULES:
 
     quickActions: [
         { emoji: '👶', label: 'Enroll', text: "I'm looking for childcare" },
-        { emoji: '📅', label: 'Availability', text: "Do you have spots available?" },
-        { emoji: '💰', label: 'Fees', text: "What are your fees?" }
+        { emoji: '📅', label: 'Availability', text: 'Do you have spots available?' },
+        { emoji: '💰', label: 'Fees', text: 'What are your fees?' }
     ],
-    
+
     menuItems: [
         { emoji: '☀️', name: 'Full Day', desc: '7am to 6pm', price: 120 },
         { emoji: '🌤️', name: 'Half Day', desc: '4 hour session', price: 70 },
         { emoji: '🌅', name: 'Before School', desc: 'Early care', price: 25 },
         { emoji: '🌆', name: 'After School', desc: 'Afternoon care', price: 35 }
     ],
-    
+
     stepInfos: [
-        "📞 Miss Jenny answers with warmth and care!",
+        '📞 Miss Jenny answers with warmth and care!',
         "👶 Discussing child's age and care needs.",
-        "✅ Checking availability and special requirements.",
-        "🎉 Enrolled! Your little star will love it here!"
+        '✅ Checking availability and special requirements.',
+        '🎉 Enrolled! Your little star will love it here!'
     ],
-    
+
     demoScript: [
         { delay: 2000, type: 'greeting' },
         { delay: 2500, type: 'child' },
@@ -98,10 +98,10 @@ CRITICAL RULES:
         { delay: 2000, type: 'phone' },
         { delay: 2000, type: 'confirm' }
     ],
-    
-    smsTemplate: (businessName, total, currency = '$') => 
+
+    smsTemplate: (businessName, total, currency = '$') =>
         `<div class="sms-content">Welcome little star! 👶<br><br>Enrollment at <strong>${businessName}</strong> is confirmed!<br><br>We can't wait to meet you! ⭐</div>`,
-    
+
     ticketIcon: '👶'
 };
 
