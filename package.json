@@ -3,14 +3,10 @@
     "version": "2.0.0",
     "description": "AI Receptionist Demo - 38 Industries",
     "type": "module",
-    "main": "server.js",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
-        "server": "node server.js",
-        "start": "npm run build && npm run server",
-        "build:industries": "node scripts/build-industries.js",
         "lint": "eslint src/**/*.js --fix",
         "lint:check": "eslint src/**/*.js",
         "format": "prettier --write \"**/*.{js,json,css,html}\"",
@@ -18,7 +14,6 @@
     },
     "dependencies": {
         "dotenv": "^17.2.3",
-        "express": "^4.18.2",
         "openai": "^4.20.0"
     },
     "devDependencies": {

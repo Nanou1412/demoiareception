@@ -14,41 +14,35 @@ A multi-industry AI receptionist demonstration powered by OpenAI's GPT-4 and TTS
 ## 📁 Project Structure
 
 ```
-├── public/                 # Frontend files
-│   ├── index.html         # Main HTML
-│   ├── style.css          # Styles
-│   └── js/                # Modular JavaScript
-│       ├── app.js         # Main entry point
-│       ├── state.js       # State management
-│       ├── industries.js  # Auto-generated from /industries
-│       ├── ui.js          # UI updates
-│       ├── api.js         # API calls
-│       ├── audio.js       # TTS handling
-│       ├── demo.js        # Demo controller
-│       ├── templates.js   # SMS/Ticket templates
-│       ├── navigation.js  # Page navigation
-│       └── utils.js       # Timer, Speech recognition
+├── src/                    # Source files (Vite)
+│   ├── index.html         # Landing page
+│   ├── demo.html          # Demo page
+│   ├── css/               # Modular CSS
+│   │   ├── main.css       # Entry point
+│   │   ├── base/          # Reset, typography, variables
+│   │   ├── components/    # Buttons, cards, forms, modals
+│   │   ├── layout/        # Grid, header
+│   │   └── pages/         # Landing, demo styles
+│   ├── js/                # Modular JavaScript (ES Modules)
+│   │   ├── main.js        # Landing page entry
+│   │   ├── demo.js        # Demo page entry
+│   │   ├── core/          # Config, state, events, utils
+│   │   ├── services/      # API, audio, speech, industries
+│   │   └── ui/            # Phone, modal, toast, templates
+│   └── industries/        # 38 industry configs (ESM)
 │
-├── industries/            # Industry configurations (1 file per industry)
-│   ├── index.js          # Central registry
-│   ├── restaurant.js     # Restaurant config + prompt
-│   ├── pizza.js          # Pizza config + prompt
-│   └── ...               # 38 total industries
+├── industries/            # Netlify bridge (CommonJS)
+│   └── index.cjs          # getSystemPrompt(), getVoice()
 │
 ├── netlify/functions/     # Serverless functions
-│   ├── chat.js           # Main chat API
-│   ├── chat-tts.js       # TTS API
-│   └── chat-reset.js     # Reset conversation
+│   ├── chat.cjs           # Main chat API
+│   ├── chat-tts.cjs       # TTS API
+│   └── chat-reset.cjs     # Reset conversation
 │
-├── shared/               # Shared utilities
-│   └── prompts.js        # Re-exports from industries
-│
-├── scripts/              # Build scripts
-│   └── build-industries.js  # Generate frontend industries.js
-│
-├── server.js             # Express server (local dev)
-├── package.json          # Dependencies
-└── netlify.toml          # Netlify config
+├── dist/                  # Build output (generated)
+├── vite.config.js         # Vite configuration
+├── netlify.toml           # Netlify config
+└── package.json           # Dependencies
 ```
 
 ## 🛠️ Setup
@@ -67,87 +61,79 @@ cd demoiareception
 # Install dependencies
 npm install
 
-# Set environment variable
-export OPENAI_API_KEY=your_key_here
+# Copy environment file
+cp .env.example .env
+# Edit .env and add your OPENAI_API_KEY
 
-# Build frontend industries
-npm run build
-
-# Start server
-npm start
+# Start development server
+npm run dev
 ```
 
-Open http://localhost:3000
+Open http://localhost:5173
+
+### Build for production
+
+```bash
+npm run build
+npm run preview
+```
 
 ## 📝 Adding a New Industry
 
-1. Create `/industries/newindustry.js`:
+1. Create `/src/industries/newindustry.js`:
 
 ```javascript
-const newindustry = {
+export default {
     id: 'newindustry',
-    category: 'services',  // food, health, services, professional, lifestyle
+    name: 'New Industry',
     icon: '🆕',
-    customerIcon: '👤',
-    voice: 'shimmer',  // shimmer, nova, echo, onyx
-    color: '#6366f1',
-    cardIcon: 'fa-star',
+    category: 'services',
+    description: 'Description of the industry',
     
-    prompt: `You're [Name], a friendly receptionist at [Business]...`,
+    businessName: 'Business Name',
+    address: '123 Street, City',
+    phone: '01 23 45 67 89',
+    hours: 'Mon-Fri: 9h-18h',
     
-    quickActions: [
-        { emoji: '📞', label: 'Book', text: "I'd like to book..." }
-    ],
+    capabilities: {
+        appointments: true,
+        pricing: true,
+        hours: true
+    },
     
-    menuItems: [
-        { emoji: '⭐', name: 'Service', desc: 'Description', price: 99 }
-    ],
-    
-    stepInfos: [
-        "📞 AI answers the call...",
-        "📋 Taking details...",
-        "✅ Confirming...",
-        "🎉 Done!"
-    ],
-    
-    demoScript: [
-        { delay: 2000, type: 'greeting' },
-        { delay: 2500, type: 'service' },
-        // ...
-    ],
-    
-    en: {
-        name: 'Business Name',
-        aiName: 'AI Name',
-        steps: ['Call', 'Book', 'Confirm', 'Done'],
-        totalLabel: 'Total',
-        cardTitle: 'Booking',
-        responses: {
-            greeting: "Hi, I'd like to...",
-            service: "...",
-            // matching demoScript types
+    scenarios: {
+        booking: {
+            enabled: true,
+            label: 'Réservation',
+            icon: '📅'
         }
-    }
+    },
+    
+    systemPrompt: `Tu es l'assistant virtuel de [Business]...`,
+    
+    version: '2.0',
+    enabled: true
 };
-
-module.exports = newindustry;
 ```
 
-2. Add to `/industries/index.js`:
+2. Add to `/src/industries/index.js`:
 
 ```javascript
-const newindustry = require('./newindustry');
-// Add to INDUSTRIES object
-// Add to CATEGORIES
+import newindustry from './newindustry.js';
+// Add to industries object
 ```
 
-3. Rebuild frontend:
+3. Add to `/industries/index.cjs` (for Netlify):
+
+```javascript
+// Add prompt and voice in systemPrompts and voices objects
+```
+
+4. Rebuild:
 
 ```bash
 npm run build
 ```
-
-4. Add industry card to `index.html`
 
 ## 🚀 Deployment
 
@@ -172,6 +158,17 @@ Set `OPENAI_API_KEY` in Netlify environment variables.
 | 🔧 Services | cleaning, electrician, plumber, landscaping, locksmith, moving, garage |
 | 💼 Professional | lawyer, realestate, tutoring, drivingschool |
 | 🎉 Lifestyle | hotel, gym, florist, photography, tattoo, petgrooming, petboarding, daycare, wedding, eventvenue |
+
+## 🛠️ Available Scripts
+
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Start Vite dev server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Fix ESLint issues |
+| `npm run format` | Format with Prettier |
+| `npm run clean` | Remove dist folder |
 
 ## 📄 License
 
