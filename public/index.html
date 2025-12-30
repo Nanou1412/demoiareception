@@ -103,198 +103,225 @@
 
                 <h2 class="section-title">Try It Live - Pick Your Industry</h2>
                 
+                <!-- Category Filters -->
+                <div class="category-filters">
+                    <button class="category-btn active" data-category="all">
+                        <i class="fas fa-th"></i> All
+                    </button>
+                    <button class="category-btn" data-category="food">
+                        <i class="fas fa-utensils"></i> Food & Dining
+                    </button>
+                    <button class="category-btn" data-category="health">
+                        <i class="fas fa-heartbeat"></i> Health & Beauty
+                    </button>
+                    <button class="category-btn" data-category="services">
+                        <i class="fas fa-tools"></i> Home Services
+                    </button>
+                    <button class="category-btn" data-category="professional">
+                        <i class="fas fa-briefcase"></i> Professional
+                    </button>
+                    <button class="category-btn" data-category="lifestyle">
+                        <i class="fas fa-star"></i> Lifestyle
+                    </button>
+                </div>
+                
                 <!-- Industry Grid -->
                 <div class="industry-grid">
-                    <button class="industry-card" data-industry="restaurant">
+                    <!-- FOOD & DINING -->
+                    <button class="industry-card" data-industry="restaurant" data-category="food">
                         <div class="industry-card-icon">🍽️</div>
                         <h3>Restaurant</h3>
                         <p data-i18n="restaurantDesc">Take orders, handle reservations</p>
                     </button>
-                    <button class="industry-card" data-industry="pizza">
+                    <button class="industry-card" data-industry="pizza" data-category="food">
                         <div class="industry-card-icon">🍕</div>
                         <h3>Pizzeria</h3>
                         <p data-i18n="pizzaDesc">Orders & delivery management</p>
                     </button>
-                    <button class="industry-card" data-industry="salon">
-                        <div class="industry-card-icon">💇</div>
-                        <h3 data-i18n="salonName">Hair Salon</h3>
-                        <p data-i18n="salonDesc">Book appointments, manage stylists</p>
-                    </button>
-                    <button class="industry-card" data-industry="medical">
-                        <div class="industry-card-icon">🏥</div>
-                        <h3 data-i18n="medicalName">Medical Centre</h3>
-                        <p data-i18n="medicalDesc">Patient scheduling & inquiries</p>
-                    </button>
-                    <button class="industry-card" data-industry="dental">
-                        <div class="industry-card-icon">🦷</div>
-                        <h3 data-i18n="dentalName">Dentist</h3>
-                        <p data-i18n="dentalDesc">Dental appointments & care</p>
-                    </button>
-                    <button class="industry-card" data-industry="vet">
-                        <div class="industry-card-icon">🐕</div>
-                        <h3 data-i18n="vetName">Vet Clinic</h3>
-                        <p data-i18n="vetDesc">Pet appointments & emergencies</p>
-                    </button>
-                    <button class="industry-card" data-industry="garage">
-                        <div class="industry-card-icon">🔧</div>
-                        <h3 data-i18n="garageName">Auto Shop</h3>
-                        <p data-i18n="garageDesc">Service bookings & quotes</p>
-                    </button>
-                    <button class="industry-card" data-industry="hotel">
-                        <div class="industry-card-icon">🏨</div>
-                        <h3 data-i18n="hotelName">Hotel</h3>
-                        <p data-i18n="hotelDesc">Room reservations & concierge</p>
-                    </button>
-                    <button class="industry-card" data-industry="gym">
-                        <div class="industry-card-icon">🏋️</div>
-                        <h3 data-i18n="gymName">Gym</h3>
-                        <p data-i18n="gymDesc">Memberships & class bookings</p>
-                    </button>
-                    <button class="industry-card" data-industry="spa">
-                        <div class="industry-card-icon">🧘</div>
-                        <h3>Spa</h3>
-                        <p data-i18n="spaDesc">Wellness appointments & packages</p>
-                    </button>
-                    <button class="industry-card" data-industry="lawyer">
-                        <div class="industry-card-icon">⚖️</div>
-                        <h3 data-i18n="lawyerName">Legal</h3>
-                        <p data-i18n="lawyerDesc">Consultations & case inquiries</p>
-                    </button>
-                    <button class="industry-card" data-industry="realestate">
-                        <div class="industry-card-icon">🏠</div>
-                        <h3 data-i18n="realestateName">Real Estate</h3>
-                        <p data-i18n="realestateDesc">Property viewings & inquiries</p>
-                    </button>
-                    <button class="industry-card" data-industry="pharmacy">
-                        <div class="industry-card-icon">💊</div>
-                        <h3 data-i18n="pharmacyName">Pharmacy</h3>
-                        <p data-i18n="pharmacyDesc">Prescriptions & health advice</p>
-                    </button>
-                    <button class="industry-card" data-industry="bakery">
+                    <button class="industry-card" data-industry="bakery" data-category="food">
                         <div class="industry-card-icon">🥐</div>
-                        <h3 data-i18n="bakeryName">Bakery</h3>
-                        <p data-i18n="bakeryDesc">Orders & special requests</p>
+                        <h3>Bakery</h3>
+                        <p>Orders & special requests</p>
                     </button>
-                    <button class="industry-card" data-industry="florist">
-                        <div class="industry-card-icon">💐</div>
-                        <h3 data-i18n="floristName">Florist</h3>
-                        <p data-i18n="floristDesc">Bouquets & delivery</p>
-                    </button>
-                    <button class="industry-card" data-industry="photography">
-                        <div class="industry-card-icon">📷</div>
-                        <h3 data-i18n="photographyName">Photo Studio</h3>
-                        <p data-i18n="photographyDesc">Sessions & packages</p>
-                    </button>
-                    <button class="industry-card" data-industry="tattoo">
-                        <div class="industry-card-icon">🎨</div>
-                        <h3 data-i18n="tattooName">Tattoo Studio</h3>
-                        <p data-i18n="tattooDesc">Appointments & consultations</p>
-                    </button>
-                    <button class="industry-card" data-industry="petgrooming">
-                        <div class="industry-card-icon">🐩</div>
-                        <h3 data-i18n="petgroomingName">Pet Grooming</h3>
-                        <p data-i18n="petgroomingDesc">Grooming & pet care</p>
-                    </button>
-                    <!-- Services -->
-                    <button class="industry-card" data-industry="cleaning">
-                        <div class="industry-card-icon">🧹</div>
-                        <h3>Cleaning</h3>
-                        <p>Home & office cleaning</p>
-                    </button>
-                    <button class="industry-card" data-industry="electrician">
-                        <div class="industry-card-icon">🔌</div>
-                        <h3>Electrician</h3>
-                        <p>Electrical services</p>
-                    </button>
-                    <button class="industry-card" data-industry="plumber">
-                        <div class="industry-card-icon">🚿</div>
-                        <h3>Plumber</h3>
-                        <p>Plumbing repairs</p>
-                    </button>
-                    <button class="industry-card" data-industry="landscaping">
-                        <div class="industry-card-icon">🌳</div>
-                        <h3>Landscaping</h3>
-                        <p>Garden & lawn care</p>
-                    </button>
-                    <button class="industry-card" data-industry="moving">
-                        <div class="industry-card-icon">🚚</div>
-                        <h3>Moving</h3>
-                        <p>Relocation services</p>
-                    </button>
-                    <button class="industry-card" data-industry="locksmith">
-                        <div class="industry-card-icon">🔒</div>
-                        <h3>Locksmith</h3>
-                        <p>Lock & key services</p>
-                    </button>
-                    <!-- Health/Beauty -->
-                    <button class="industry-card" data-industry="optician">
-                        <div class="industry-card-icon">👁️</div>
-                        <h3>Optician</h3>
-                        <p>Eye care & glasses</p>
-                    </button>
-                    <button class="industry-card" data-industry="podiatrist">
-                        <div class="industry-card-icon">🦶</div>
-                        <h3>Podiatrist</h3>
-                        <p>Foot care & health</p>
-                    </button>
-                    <button class="industry-card" data-industry="massage">
-                        <div class="industry-card-icon">💆</div>
-                        <h3>Massage</h3>
-                        <p>Therapeutic massage</p>
-                    </button>
-                    <button class="industry-card" data-industry="nailsalon">
-                        <div class="industry-card-icon">💅</div>
-                        <h3>Nail Salon</h3>
-                        <p>Manicures & pedicures</p>
-                    </button>
-                    <!-- Food -->
-                    <button class="industry-card" data-industry="coffeeshop">
+                    <button class="industry-card" data-industry="coffeeshop" data-category="food">
                         <div class="industry-card-icon">☕</div>
                         <h3>Coffee Shop</h3>
                         <p>Café orders & catering</p>
                     </button>
-                    <button class="industry-card" data-industry="icecream">
-                        <div class="industry-card-icon">🍦</div>
-                        <h3>Ice Cream</h3>
-                        <p>Ice cream & desserts</p>
-                    </button>
-                    <button class="industry-card" data-industry="sushi">
+                    <button class="industry-card" data-industry="sushi" data-category="food">
                         <div class="industry-card-icon">🍣</div>
                         <h3>Sushi</h3>
                         <p>Japanese cuisine</p>
                     </button>
-                    <button class="industry-card" data-industry="fastfood">
+                    <button class="industry-card" data-industry="fastfood" data-category="food">
                         <div class="industry-card-icon">🍔</div>
                         <h3>Fast Food</h3>
                         <p>Quick service dining</p>
                     </button>
-                    <!-- Other -->
-                    <button class="industry-card" data-industry="drivingschool">
-                        <div class="industry-card-icon">🏫</div>
-                        <h3>Driving School</h3>
-                        <p>Driving lessons</p>
+                    <button class="industry-card" data-industry="icecream" data-category="food">
+                        <div class="industry-card-icon">🍦</div>
+                        <h3>Ice Cream</h3>
+                        <p>Ice cream & desserts</p>
                     </button>
-                    <button class="industry-card" data-industry="tutoring">
+                    
+                    <!-- HEALTH & BEAUTY -->
+                    <button class="industry-card" data-industry="medical" data-category="health">
+                        <div class="industry-card-icon">🏥</div>
+                        <h3>Medical Centre</h3>
+                        <p>Patient scheduling & inquiries</p>
+                    </button>
+                    <button class="industry-card" data-industry="dental" data-category="health">
+                        <div class="industry-card-icon">🦷</div>
+                        <h3>Dentist</h3>
+                        <p>Dental appointments</p>
+                    </button>
+                    <button class="industry-card" data-industry="salon" data-category="health">
+                        <div class="industry-card-icon">💇</div>
+                        <h3>Hair Salon</h3>
+                        <p>Book appointments, manage stylists</p>
+                    </button>
+                    <button class="industry-card" data-industry="spa" data-category="health">
+                        <div class="industry-card-icon">🧘</div>
+                        <h3>Spa</h3>
+                        <p>Wellness appointments & packages</p>
+                    </button>
+                    <button class="industry-card" data-industry="massage" data-category="health">
+                        <div class="industry-card-icon">💆</div>
+                        <h3>Massage</h3>
+                        <p>Therapeutic massage</p>
+                    </button>
+                    <button class="industry-card" data-industry="nailsalon" data-category="health">
+                        <div class="industry-card-icon">💅</div>
+                        <h3>Nail Salon</h3>
+                        <p>Manicures & pedicures</p>
+                    </button>
+                    <button class="industry-card" data-industry="optician" data-category="health">
+                        <div class="industry-card-icon">👁️</div>
+                        <h3>Optician</h3>
+                        <p>Eye care & glasses</p>
+                    </button>
+                    <button class="industry-card" data-industry="podiatrist" data-category="health">
+                        <div class="industry-card-icon">🦶</div>
+                        <h3>Podiatrist</h3>
+                        <p>Foot care & health</p>
+                    </button>
+                    <button class="industry-card" data-industry="pharmacy" data-category="health">
+                        <div class="industry-card-icon">💊</div>
+                        <h3>Pharmacy</h3>
+                        <p>Prescriptions & health advice</p>
+                    </button>
+                    <button class="industry-card" data-industry="vet" data-category="health">
+                        <div class="industry-card-icon">🐕</div>
+                        <h3>Veterinarian</h3>
+                        <p>Pet health appointments</p>
+                    </button>
+                    
+                    <!-- HOME SERVICES -->
+                    <button class="industry-card" data-industry="cleaning" data-category="services">
+                        <div class="industry-card-icon">🧹</div>
+                        <h3>Cleaning</h3>
+                        <p>Home & office cleaning</p>
+                    </button>
+                    <button class="industry-card" data-industry="electrician" data-category="services">
+                        <div class="industry-card-icon">🔌</div>
+                        <h3>Electrician</h3>
+                        <p>Electrical services</p>
+                    </button>
+                    <button class="industry-card" data-industry="plumber" data-category="services">
+                        <div class="industry-card-icon">🚿</div>
+                        <h3>Plumber</h3>
+                        <p>Plumbing repairs</p>
+                    </button>
+                    <button class="industry-card" data-industry="landscaping" data-category="services">
+                        <div class="industry-card-icon">🌳</div>
+                        <h3>Landscaping</h3>
+                        <p>Garden & lawn care</p>
+                    </button>
+                    <button class="industry-card" data-industry="locksmith" data-category="services">
+                        <div class="industry-card-icon">🔒</div>
+                        <h3>Locksmith</h3>
+                        <p>Lock & key services</p>
+                    </button>
+                    <button class="industry-card" data-industry="moving" data-category="services">
+                        <div class="industry-card-icon">🚚</div>
+                        <h3>Moving</h3>
+                        <p>Relocation services</p>
+                    </button>
+                    <button class="industry-card" data-industry="garage" data-category="services">
+                        <div class="industry-card-icon">🔧</div>
+                        <h3>Auto Repair</h3>
+                        <p>Vehicle service & repairs</p>
+                    </button>
+                    
+                    <!-- PROFESSIONAL -->
+                    <button class="industry-card" data-industry="lawyer" data-category="professional">
+                        <div class="industry-card-icon">⚖️</div>
+                        <h3>Legal</h3>
+                        <p>Consultations & case inquiries</p>
+                    </button>
+                    <button class="industry-card" data-industry="realestate" data-category="professional">
+                        <div class="industry-card-icon">🏠</div>
+                        <h3>Real Estate</h3>
+                        <p>Property viewings & inquiries</p>
+                    </button>
+                    <button class="industry-card" data-industry="tutoring" data-category="professional">
                         <div class="industry-card-icon">🎓</div>
                         <h3>Tutoring</h3>
                         <p>Private lessons</p>
                     </button>
-                    <button class="industry-card" data-industry="daycare">
-                        <div class="industry-card-icon">🧒</div>
-                        <h3>Daycare</h3>
-                        <p>Childcare services</p>
+                    <button class="industry-card" data-industry="drivingschool" data-category="professional">
+                        <div class="industry-card-icon">🏫</div>
+                        <h3>Driving School</h3>
+                        <p>Driving lessons</p>
                     </button>
-                    <button class="industry-card" data-industry="petboarding">
+                    
+                    <!-- LIFESTYLE -->
+                    <button class="industry-card" data-industry="hotel" data-category="lifestyle">
+                        <div class="industry-card-icon">🏨</div>
+                        <h3>Hotel</h3>
+                        <p>Room bookings & concierge</p>
+                    </button>
+                    <button class="industry-card" data-industry="gym" data-category="lifestyle">
+                        <div class="industry-card-icon">💪</div>
+                        <h3>Gym</h3>
+                        <p>Memberships & class bookings</p>
+                    </button>
+                    <button class="industry-card" data-industry="florist" data-category="lifestyle">
+                        <div class="industry-card-icon">💐</div>
+                        <h3>Florist</h3>
+                        <p>Bouquets & delivery</p>
+                    </button>
+                    <button class="industry-card" data-industry="photography" data-category="lifestyle">
+                        <div class="industry-card-icon">📷</div>
+                        <h3>Photo Studio</h3>
+                        <p>Sessions & packages</p>
+                    </button>
+                    <button class="industry-card" data-industry="tattoo" data-category="lifestyle">
+                        <div class="industry-card-icon">🎨</div>
+                        <h3>Tattoo Studio</h3>
+                        <p>Appointments & consultations</p>
+                    </button>
+                    <button class="industry-card" data-industry="petgrooming" data-category="lifestyle">
+                        <div class="industry-card-icon">🐩</div>
+                        <h3>Pet Grooming</h3>
+                        <p>Grooming & pet care</p>
+                    </button>
+                    <button class="industry-card" data-industry="petboarding" data-category="lifestyle">
                         <div class="industry-card-icon">🐈</div>
                         <h3>Pet Boarding</h3>
                         <p>Pet hotel & sitting</p>
                     </button>
-                    <button class="industry-card" data-industry="wedding">
+                    <button class="industry-card" data-industry="daycare" data-category="lifestyle">
+                        <div class="industry-card-icon">🧒</div>
+                        <h3>Daycare</h3>
+                        <p>Childcare services</p>
+                    </button>
+                    <button class="industry-card" data-industry="wedding" data-category="lifestyle">
                         <div class="industry-card-icon">💒</div>
                         <h3>Wedding Planner</h3>
                         <p>Wedding coordination</p>
                     </button>
-                    <button class="industry-card" data-industry="eventvenue">
+                    <button class="industry-card" data-industry="eventvenue" data-category="lifestyle">
                         <div class="industry-card-icon">🎭</div>
                         <h3>Event Venue</h3>
                         <p>Venue bookings</p>

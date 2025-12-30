@@ -2297,5 +2297,28 @@ Ready to see it in action? Pick your industry below and watch the magic happen!`
         // Scroll to demo section or open contact
         document.querySelector('.industry-section')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
+    
+    // ========== CATEGORY FILTERS ==========
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const industryCards = document.querySelectorAll('.industry-card[data-category]');
+    
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Update active button
+            categoryBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const category = btn.dataset.category;
+            
+            // Filter cards
+            industryCards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    });
 });
 
