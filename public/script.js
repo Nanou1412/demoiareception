@@ -651,6 +651,649 @@ const Industries = {
                 confirm: "Perfect, Max will love it!"
             }
         }
+    },
+    // ============= NEW INDUSTRIES =============
+    // SERVICES
+    cleaning: {
+        icon: '🧹',
+        customerIcon: '👤',
+        voice: 'shimmer',
+        color: '#06b6d4',
+        cardIcon: 'fa-spray-can-sparkles',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'service' },
+            { delay: 2500, type: 'size' },
+            { delay: 2000, type: 'datetime' },
+            { delay: 2000, type: 'address' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Sparkle Clean Co',
+            aiName: 'Maria',
+            steps: ['Call', 'Quote', 'Book', 'Done'],
+            totalLabel: 'Estimate',
+            cardTitle: 'Cleaning Booked',
+            responses: {
+                greeting: "Hi, I need a house cleaning service",
+                service: "A deep clean please, including windows",
+                size: "It's a 3 bedroom house",
+                datetime: "Next Monday morning",
+                address: "25 Ocean Drive, Brighton",
+                phone: "0423 567 890",
+                confirm: "That works great, thanks!"
+            }
+        }
+    },
+    electrician: {
+        icon: '🔌',
+        customerIcon: '👤',
+        voice: 'echo',
+        color: '#eab308',
+        cardIcon: 'fa-bolt',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'issue' },
+            { delay: 2500, type: 'urgent' },
+            { delay: 2000, type: 'address' },
+            { delay: 2000, type: 'datetime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'PowerUp Electric',
+            aiName: 'Dave',
+            steps: ['Call', 'Assess', 'Book', 'Done'],
+            totalLabel: 'Call-out',
+            cardTitle: 'Job Booked',
+            responses: {
+                greeting: "Hi, I need an electrician",
+                issue: "Some power points stopped working in my kitchen",
+                urgent: "Not urgent, but this week would be good",
+                address: "18 Park Lane, Kew",
+                datetime: "Wednesday afternoon works",
+                name: "Robert Miller",
+                confirm: "Perfect, see you then!"
+            }
+        }
+    },
+    plumber: {
+        icon: '🚿',
+        customerIcon: '👤',
+        voice: 'onyx',
+        color: '#3b82f6',
+        cardIcon: 'fa-faucet',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'issue' },
+            { delay: 2500, type: 'urgent' },
+            { delay: 2000, type: 'address' },
+            { delay: 2000, type: 'datetime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Quick Flow Plumbing',
+            aiName: 'Steve',
+            steps: ['Call', 'Assess', 'Book', 'Done'],
+            totalLabel: 'Call-out',
+            cardTitle: 'Job Booked',
+            responses: {
+                greeting: "Hi, I've got a plumbing issue",
+                issue: "There's a leak under my kitchen sink",
+                urgent: "It's dripping pretty badly, as soon as possible",
+                address: "42 River Road, Hawthorn",
+                datetime: "Today if you can",
+                name: "Karen White",
+                confirm: "Thank you so much!"
+            }
+        }
+    },
+    landscaping: {
+        icon: '🌳',
+        customerIcon: '👤',
+        voice: 'echo',
+        color: '#22c55e',
+        cardIcon: 'fa-tree',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'service' },
+            { delay: 2500, type: 'size' },
+            { delay: 2000, type: 'datetime' },
+            { delay: 2000, type: 'address' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Green Thumb Gardens',
+            aiName: 'Tom',
+            steps: ['Call', 'Quote', 'Book', 'Done'],
+            totalLabel: 'Estimate',
+            cardTitle: 'Service Booked',
+            responses: {
+                greeting: "Hi, I need some landscaping work done",
+                service: "Lawn mowing and hedge trimming",
+                size: "It's a medium-sized backyard, about 200sqm",
+                datetime: "Every fortnight would be ideal",
+                address: "56 Garden Street, Camberwell",
+                name: "Paul Anderson",
+                confirm: "Sounds great, thanks!"
+            }
+        }
+    },
+    moving: {
+        icon: '🚚',
+        customerIcon: '👤',
+        voice: 'onyx',
+        color: '#f97316',
+        cardIcon: 'fa-truck-moving',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'moveType' },
+            { delay: 2500, type: 'size' },
+            { delay: 2000, type: 'datetime' },
+            { delay: 2000, type: 'addresses' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Swift Movers',
+            aiName: 'Mark',
+            steps: ['Call', 'Quote', 'Book', 'Done'],
+            totalLabel: 'Quote',
+            cardTitle: 'Move Booked',
+            responses: {
+                greeting: "Hi, I need to book a moving service",
+                moveType: "It's a house move, local only",
+                size: "3 bedroom house, fairly standard furniture",
+                datetime: "End of the month, the 28th",
+                addresses: "From Fitzroy to Carlton, about 5km",
+                name: "Sarah Mitchell",
+                confirm: "Perfect, we'll be ready!"
+            }
+        }
+    },
+    locksmith: {
+        icon: '🔒',
+        customerIcon: '👤',
+        voice: 'echo',
+        color: '#64748b',
+        cardIcon: 'fa-key',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'issue' },
+            { delay: 2500, type: 'urgent' },
+            { delay: 2000, type: 'address' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'KeyMaster Locksmiths',
+            aiName: 'Frank',
+            steps: ['Call', 'Dispatch', 'Done'],
+            totalLabel: 'Call-out',
+            cardTitle: 'Job Dispatched',
+            responses: {
+                greeting: "Hi, I'm locked out of my house",
+                issue: "I left my keys inside when the door closed",
+                urgent: "Yes, I'm standing outside now",
+                address: "77 Lock Street, Brunswick",
+                name: "Tim Johnson",
+                phone: "0445 678 901",
+                confirm: "Thank you, I'll wait here!"
+            }
+        }
+    },
+    // HEALTH/BEAUTY
+    optician: {
+        icon: '👁️',
+        customerIcon: '👤',
+        voice: 'nova',
+        color: '#0ea5e9',
+        cardIcon: 'fa-eye',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'service' },
+            { delay: 2500, type: 'insurance' },
+            { delay: 2000, type: 'datetime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Clear Vision Optometry',
+            aiName: 'Lisa',
+            steps: ['Call', 'Book', 'Confirm', 'Done'],
+            totalLabel: 'Appointment',
+            cardTitle: 'Eye Exam Booked',
+            responses: {
+                greeting: "Hi, I'd like to book an eye test",
+                service: "Full eye exam and I might need new glasses",
+                insurance: "Yes, I have private health cover",
+                datetime: "Next Tuesday afternoon",
+                name: "David Chen",
+                phone: "0467 234 567",
+                confirm: "Great, see you then!"
+            }
+        }
+    },
+    podiatrist: {
+        icon: '🦶',
+        customerIcon: '👤',
+        voice: 'shimmer',
+        color: '#14b8a6',
+        cardIcon: 'fa-shoe-prints',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'issue' },
+            { delay: 2500, type: 'firstVisit' },
+            { delay: 2000, type: 'datetime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Happy Feet Podiatry',
+            aiName: 'Dr. Kate',
+            steps: ['Call', 'Book', 'Confirm', 'Done'],
+            totalLabel: 'Consult',
+            cardTitle: 'Appointment Booked',
+            responses: {
+                greeting: "Hi, I need to see a podiatrist",
+                issue: "I've been having heel pain, might be plantar fasciitis",
+                firstVisit: "Yes, this is my first visit",
+                datetime: "Friday morning works for me",
+                name: "Angela Williams",
+                phone: "0489 012 345",
+                confirm: "Thank you, looking forward to it!"
+            }
+        }
+    },
+    massage: {
+        icon: '💆',
+        customerIcon: '👤',
+        voice: 'nova',
+        color: '#a855f7',
+        cardIcon: 'fa-spa',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'service' },
+            { delay: 2500, type: 'duration' },
+            { delay: 2000, type: 'datetime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Healing Hands Massage',
+            aiName: 'Zen',
+            steps: ['Call', 'Book', 'Confirm', 'Done'],
+            totalLabel: 'Session',
+            cardTitle: 'Massage Booked',
+            responses: {
+                greeting: "Hi, I'd like to book a massage",
+                service: "Deep tissue massage please, I have a lot of tension",
+                duration: "60 minutes would be great",
+                datetime: "Saturday afternoon, around 3pm",
+                name: "Michelle Brown",
+                phone: "0456 789 123",
+                confirm: "Perfect, can't wait!"
+            }
+        }
+    },
+    nailsalon: {
+        icon: '💅',
+        customerIcon: '👤',
+        voice: 'shimmer',
+        color: '#ec4899',
+        cardIcon: 'fa-hand-sparkles',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'service' },
+            { delay: 2500, type: 'extras' },
+            { delay: 2000, type: 'datetime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Polished Nails Studio',
+            aiName: 'Kim',
+            steps: ['Call', 'Book', 'Confirm', 'Done'],
+            totalLabel: 'Service',
+            cardTitle: 'Appointment Booked',
+            responses: {
+                greeting: "Hi, I'd like to book a nail appointment",
+                service: "Gel manicure and pedicure please",
+                extras: "Yes, with some nail art on the accent nails",
+                datetime: "Tomorrow at 2pm if available",
+                name: "Jessica Taylor",
+                phone: "0478 345 678",
+                confirm: "Lovely, see you tomorrow!"
+            }
+        }
+    },
+    // FOOD
+    coffeeshop: {
+        icon: '☕',
+        customerIcon: '👤',
+        voice: 'echo',
+        color: '#78350f',
+        cardIcon: 'fa-mug-hot',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'orderItem' },
+            { delay: 2500, type: 'moreItems' },
+            { delay: 2000, type: 'pickupTime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Bean There Café',
+            aiName: 'Barista Joe',
+            steps: ['Call', 'Order', 'Confirm', 'Done'],
+            totalLabel: 'Order Total',
+            cardTitle: 'Coffee Order',
+            responses: {
+                greeting: "Hi, I'd like to order some coffees for pickup",
+                orderItem: "3 flat whites and 2 lattes please",
+                moreItems: "Add a couple of croissants too",
+                pickupTime: "About 15 minutes",
+                name: "Office order for Acme Corp",
+                confirm: "Perfect, thanks!"
+            }
+        }
+    },
+    icecream: {
+        icon: '🍦',
+        customerIcon: '👤',
+        voice: 'shimmer',
+        color: '#fbbf24',
+        cardIcon: 'fa-ice-cream',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'orderItem' },
+            { delay: 2500, type: 'size' },
+            { delay: 2000, type: 'moreItems' },
+            { delay: 2000, type: 'pickupTime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Scoops Delight',
+            aiName: 'Sunny',
+            steps: ['Call', 'Order', 'Confirm', 'Done'],
+            totalLabel: 'Order Total',
+            cardTitle: 'Ice Cream Order',
+            responses: {
+                greeting: "Hi, I'd like to order ice cream for a party",
+                orderItem: "Can I get chocolate, vanilla, and strawberry",
+                size: "Large tubs, 2 liters each",
+                moreItems: "And some waffle cones please",
+                pickupTime: "In about an hour",
+                name: "Birthday party for Lucy",
+                confirm: "Awesome, thanks!"
+            }
+        }
+    },
+    sushi: {
+        icon: '🍣',
+        customerIcon: '👤',
+        voice: 'nova',
+        color: '#dc2626',
+        cardIcon: 'fa-fish',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'orderItem' },
+            { delay: 2500, type: 'moreItems' },
+            { delay: 2000, type: 'noMore' },
+            { delay: 2000, type: 'pickupTime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Sakura Sushi',
+            aiName: 'Yuki',
+            steps: ['Call', 'Order', 'Confirm', 'Done'],
+            totalLabel: 'Order Total',
+            cardTitle: 'Sushi Order',
+            responses: {
+                greeting: "Hi, I'd like to place a takeaway order",
+                orderItem: "Salmon sashimi and a rainbow roll please",
+                moreItems: "Add some edamame and miso soup",
+                noMore: "That's all thanks",
+                pickupTime: "About 20 minutes",
+                name: "Kevin",
+                confirm: "Arigatou!"
+            }
+        }
+    },
+    fastfood: {
+        icon: '🍔',
+        customerIcon: '👤',
+        voice: 'echo',
+        color: '#ea580c',
+        cardIcon: 'fa-burger',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'orderItem' },
+            { delay: 2500, type: 'moreItems' },
+            { delay: 2000, type: 'noMore' },
+            { delay: 2000, type: 'pickupDelivery' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Burger Barn',
+            aiName: 'Billy',
+            steps: ['Call', 'Order', 'Confirm', 'Done'],
+            totalLabel: 'Order Total',
+            cardTitle: 'Burger Order',
+            responses: {
+                greeting: "Hey, I want to order some burgers",
+                orderItem: "Double cheeseburger meal with fries",
+                moreItems: "Make that two, and add a chicken burger",
+                noMore: "That's it",
+                pickupDelivery: "Pickup please, I'll be there in 10",
+                name: "Jake",
+                confirm: "Sweet, cheers!"
+            }
+        }
+    },
+    // OTHER
+    drivingschool: {
+        icon: '🏫',
+        customerIcon: '👤',
+        voice: 'onyx',
+        color: '#0284c7',
+        cardIcon: 'fa-car',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'experience' },
+            { delay: 2500, type: 'license' },
+            { delay: 2000, type: 'datetime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Pass First Driving School',
+            aiName: 'Instructor Mike',
+            steps: ['Call', 'Book', 'Confirm', 'Done'],
+            totalLabel: 'Lesson',
+            cardTitle: 'Lesson Booked',
+            responses: {
+                greeting: "Hi, I want to book driving lessons",
+                experience: "I'm a complete beginner",
+                license: "Yes, I have my learner's permit",
+                datetime: "Weekends work best for me",
+                name: "Emily Watson",
+                phone: "0498 765 432",
+                confirm: "Great, looking forward to it!"
+            }
+        }
+    },
+    tutoring: {
+        icon: '🎓',
+        customerIcon: '👤',
+        voice: 'nova',
+        color: '#6366f1',
+        cardIcon: 'fa-graduation-cap',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'subject' },
+            { delay: 2500, type: 'level' },
+            { delay: 2000, type: 'datetime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'BrightMinds Tutoring',
+            aiName: 'Professor Amy',
+            steps: ['Call', 'Match', 'Book', 'Done'],
+            totalLabel: 'Session',
+            cardTitle: 'Tutoring Booked',
+            responses: {
+                greeting: "Hi, I'm looking for a tutor for my son",
+                subject: "He needs help with maths",
+                level: "Year 10, preparing for VCE",
+                datetime: "Thursdays after school, around 4pm",
+                name: "Daniel, my son's name is Jack",
+                phone: "0412 987 654",
+                confirm: "Wonderful, thank you!"
+            }
+        }
+    },
+    daycare: {
+        icon: '🧒',
+        customerIcon: '👤',
+        voice: 'shimmer',
+        color: '#f472b6',
+        cardIcon: 'fa-baby',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'childAge' },
+            { delay: 2500, type: 'schedule' },
+            { delay: 2000, type: 'startDate' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Little Stars Daycare',
+            aiName: 'Miss Jenny',
+            steps: ['Call', 'Enroll', 'Confirm', 'Done'],
+            totalLabel: 'Enrollment',
+            cardTitle: 'Enrollment Started',
+            responses: {
+                greeting: "Hi, I'm enquiring about daycare spots",
+                childAge: "My daughter is 2 years old",
+                schedule: "We need 3 days a week, Monday, Wednesday, Friday",
+                startDate: "We'd like to start next month",
+                name: "Parent: Sarah, Child: Olivia",
+                phone: "0456 321 098",
+                confirm: "That's perfect, thank you!"
+            }
+        }
+    },
+    petboarding: {
+        icon: '🐈',
+        customerIcon: '👤',
+        voice: 'shimmer',
+        color: '#84cc16',
+        cardIcon: 'fa-cat',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'petInfo' },
+            { delay: 2500, type: 'dates' },
+            { delay: 2000, type: 'special' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Happy Tails Pet Resort',
+            aiName: 'Lucy',
+            steps: ['Call', 'Book', 'Confirm', 'Done'],
+            totalLabel: 'Boarding',
+            cardTitle: 'Boarding Booked',
+            responses: {
+                greeting: "Hi, I need to board my cat while I'm on holiday",
+                petInfo: "She's a 4 year old tabby named Whiskers",
+                dates: "From December 20th to January 3rd",
+                special: "She's on a special diet, I'll bring her food",
+                name: "Rachel Green",
+                phone: "0467 890 123",
+                confirm: "Thank you, she'll love it there!"
+            }
+        }
+    },
+    wedding: {
+        icon: '💒',
+        customerIcon: '👤',
+        voice: 'nova',
+        color: '#f9a8d4',
+        cardIcon: 'fa-heart',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'date' },
+            { delay: 2500, type: 'guests' },
+            { delay: 2000, type: 'services' },
+            { delay: 2000, type: 'budget' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Forever After Weddings',
+            aiName: 'Grace',
+            steps: ['Call', 'Consult', 'Plan', 'Done'],
+            totalLabel: 'Package',
+            cardTitle: 'Consultation Booked',
+            responses: {
+                greeting: "Hi, we just got engaged and need a wedding planner",
+                date: "We're thinking October next year",
+                guests: "Around 120 guests",
+                services: "Full planning, venue, catering, everything",
+                budget: "Our budget is around $40,000",
+                name: "Emma and James",
+                confirm: "We're so excited, thank you!"
+            }
+        }
+    },
+    eventvenue: {
+        icon: '🎭',
+        customerIcon: '👤',
+        voice: 'echo',
+        color: '#7c3aed',
+        cardIcon: 'fa-champagne-glasses',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'eventType' },
+            { delay: 2500, type: 'date' },
+            { delay: 2000, type: 'guests' },
+            { delay: 2000, type: 'catering' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Grand Events Hall',
+            aiName: 'Victoria',
+            steps: ['Call', 'View', 'Book', 'Done'],
+            totalLabel: 'Venue',
+            cardTitle: 'Viewing Booked',
+            responses: {
+                greeting: "Hi, I'm looking to book a venue for an event",
+                eventType: "It's a corporate end-of-year party",
+                date: "December 15th, evening event",
+                guests: "About 80 people",
+                catering: "Yes, we'd need catering and bar service",
+                name: "Acme Corporation, contact: Peter",
+                confirm: "Fantastic, we'll see you for the viewing!"
+            }
+        }
     }
 };
 
