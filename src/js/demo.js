@@ -9,6 +9,9 @@
 // Imports
 // ============================================
 
+// Styles
+import '../css/main.css';
+
 // Core
 import {
     store,
