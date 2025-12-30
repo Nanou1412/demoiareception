@@ -401,23 +401,42 @@ header .container {
 
 .demo-grid {
     display: grid;
-    grid-template-columns: 400px 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
     align-items: start;
+}
+
+/* Desktop: two columns */
+@media (min-width: 992px) {
+    .demo-grid {
+        grid-template-columns: minmax(320px, 400px) 1fr;
+        gap: 2rem;
+    }
 }
 
 /* ========================================
    PHONE UI
    ======================================== */
 .phone-container {
-    position: sticky;
-    top: 100px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+    .phone-container {
+        position: sticky;
+        top: 100px;
+    }
 }
 
 .phone-frame {
     background: var(--bg-phone);
     border-radius: 45px;
     padding: 12px;
+    width: 100%;
+    max-width: 380px;
     box-shadow:
         0 0 0 2px rgba(255, 255, 255, 0.1),
         0 20px 60px rgba(0, 0, 0, 0.5),
@@ -1100,25 +1119,13 @@ footer {
         grid-template-columns: 420px 1fr;
         gap: 3rem;
     }
-
-    .industry-grid {
-        grid-template-columns: repeat(5, 1fr);
-        max-width: 1200px;
-    }
-
-    .benefits-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-    }
 }
 
 /* ----------------------------------------
    LARGE SCREENS / DESKTOP (1200px - 1399px)
    ---------------------------------------- */
 @media (max-width: 1399px) and (min-width: 1200px) {
-    .industry-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
+    /* Desktop styles if needed */
 }
 
 /* ----------------------------------------
@@ -1128,10 +1135,6 @@ footer {
     .demo-grid {
         grid-template-columns: 380px 1fr;
         gap: 2rem;
-    }
-
-    .industry-grid {
-        grid-template-columns: repeat(4, 1fr);
     }
 }
 
@@ -1166,35 +1169,9 @@ footer {
         gap: 1rem;
     }
 
-    .industry-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-    }
-
-    .benefits-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
     .stats-row {
         flex-wrap: wrap;
         gap: 1.5rem;
-    }
-
-    .use-cases-grid,
-    .faq-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .roi-calculator {
-        grid-template-columns: 1fr;
-    }
-
-    .steps-container {
-        flex-direction: column;
-    }
-
-    .step-arrow {
-        transform: rotate(90deg);
     }
 
     .comparison-header,
@@ -1231,11 +1208,6 @@ footer {
     .btn-demo {
         width: 100%;
         justify-content: center;
-    }
-
-    .industry-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
     }
 
     .industry-card {
@@ -1317,11 +1289,6 @@ footer {
 
     .category-btn .cat-count {
         display: none;
-    }
-
-    .benefits-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
     }
 
     .benefit-card {
@@ -1420,11 +1387,6 @@ footer {
     .hero-badge {
         font-size: 0.75rem;
         padding: 0.4rem 0.8rem;
-    }
-
-    .industry-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.5rem;
     }
 
     .industry-card {
@@ -2019,15 +1981,23 @@ body.light-mode .stats-card {
     margin-top: 1.5rem;
 }
 
+/* Stats Row - Mobile First */
 .stats-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
     margin-bottom: 1rem;
 }
 
-.stats-row:last-child {
-    grid-template-columns: repeat(2, 1fr);
+@media (min-width: 768px) {
+    .stats-row {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+    
+    .stats-row:last-child {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .stat-card {
@@ -2278,14 +2248,35 @@ body.fullscreen-mode .demo-section {
     margin-right: auto;
 }
 
-/* Industry Grid */
+/* Industry Grid - Mobile First */
 .industry-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
     max-width: 1000px;
     margin: 0 auto;
     padding: 1rem 0;
+}
+
+@media (min-width: 576px) {
+    .industry-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .industry-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.25rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .industry-grid {
+        grid-template-columns: repeat(5, 1fr);
+        max-width: 1200px;
+    }
 }
 
 .industry-card {
@@ -2396,11 +2387,26 @@ body.fullscreen-mode .demo-section {
     }
 }
 
+/* Benefits Grid - Mobile First */
 .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
     margin-bottom: 2rem;
+}
+
+@media (min-width: 576px) {
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .benefits-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
 }
 
 .benefit-card {
@@ -2436,12 +2442,22 @@ body.fullscreen-mode .demo-section {
     line-height: 1.5;
 }
 
-.stats-row {
+/* Landing Stats Row - Mobile First (uses flex) */
+.landing-hero .stats-row,
+.sales-pitch-section .stats-row {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 3rem;
+    gap: 1.5rem;
     padding: 1.5rem 0;
     border-top: 1px solid var(--border);
+}
+
+@media (min-width: 768px) {
+    .landing-hero .stats-row,
+    .sales-pitch-section .stats-row {
+        gap: 3rem;
+    }
 }
 
 .stat-item {
@@ -2745,23 +2761,40 @@ img {
     margin-bottom: 2.5rem;
 }
 
+/* Steps Container - Mobile First */
 .steps-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .steps-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
 }
 
 .step-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 1.5rem;
     text-align: center;
-    width: 280px;
+    width: 100%;
+    max-width: 280px;
     position: relative;
     transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+    .step-card {
+        padding: 2rem;
+        width: 280px;
+    }
 }
 
 .step-card:hover {
@@ -2805,10 +2838,18 @@ img {
     line-height: 1.5;
 }
 
+/* Step Arrow - Rotate on mobile */
 .step-arrow {
     font-size: 2rem;
     color: var(--primary);
     font-weight: 700;
+    transform: rotate(90deg);
+}
+
+@media (min-width: 768px) {
+    .step-arrow {
+        transform: rotate(0deg);
+    }
 }
 
 .setup-time {
@@ -2898,16 +2939,25 @@ img {
     background: var(--bg-secondary);
 }
 
+/* ROI Calculator - Mobile First */
 .roi-calculator {
     max-width: 900px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 1.5rem;
-    padding: 2.5rem;
+    padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .roi-calculator {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        padding: 2.5rem;
+    }
 }
 
 .roi-inputs {
@@ -3017,12 +3067,20 @@ img {
     background: var(--bg);
 }
 
+/* Use Cases Grid - Mobile First */
 .use-cases-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
     max-width: 1000px;
     margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .use-cases-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
 }
 
 .use-case-card {
@@ -3086,12 +3144,20 @@ img {
     background: var(--bg-secondary);
 }
 
+/* FAQ Grid - Mobile First */
 .faq-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
     max-width: 1000px;
     margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .faq-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
 }
 
 .faq-item {
