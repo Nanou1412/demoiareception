@@ -123,6 +123,8 @@ header .container {
 .header-actions {
     display: flex;
     gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .btn-primary,
@@ -279,20 +281,34 @@ header .container {
 .demo-buttons {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.75rem;
     flex-wrap: wrap;
+    padding: 0 0.5rem;
 }
 
 .btn-demo {
-    padding: 1rem 2rem;
+    padding: 0.75rem 1.25rem;
     border-radius: var(--radius-lg);
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.3s;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+@media (min-width: 576px) {
+    .demo-buttons {
+        gap: 1rem;
+    }
+    
+    .btn-demo {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        gap: 0.75rem;
+    }
 }
 
 .btn-demo.primary {
@@ -1205,6 +1221,7 @@ footer {
     .demo-buttons {
         flex-direction: column;
         width: 100%;
+        padding: 0 1rem;
     }
 
     .btn-demo {
@@ -1212,6 +1229,36 @@ footer {
         justify-content: center;
     }
 
+    /* Header actions compact */
+    .header-actions {
+        gap: 0.4rem;
+    }
+
+    .header-actions .btn-primary,
+    .header-actions .btn-secondary {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .header-actions .btn-primary span,
+    .header-actions .btn-secondary span {
+        display: none;
+    }
+
+    .header-actions .icon-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Scenario selector compact */
+    .scenario-selector {
+        gap: 0.4rem;
+    }
+
+    .scenario-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.7rem;
+    }
     .industry-card {
         padding: 1.25rem 1rem;
     }
@@ -1390,6 +1437,80 @@ footer {
     .hero-badge {
         font-size: 0.75rem;
         padding: 0.4rem 0.8rem;
+    }
+
+    /* Header compact sur mobile portrait */
+    .header-actions {
+        gap: 0.3rem;
+    }
+
+    .header-actions .btn-primary,
+    .header-actions .btn-secondary {
+        padding: 0.4rem 0.5rem;
+        font-size: 0.7rem;
+        min-width: 36px;
+        justify-content: center;
+    }
+
+    .header-actions .btn-primary span,
+    .header-actions .btn-secondary span {
+        display: none;
+    }
+
+    .header-actions .icon-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    /* Demo buttons stack */
+    .demo-buttons {
+        gap: 0.5rem;
+    }
+
+    .btn-demo {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    /* Scenario selector très compact */
+    .scenario-selector {
+        gap: 0.3rem;
+    }
+
+    .scenario-label {
+        font-size: 0.75rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .scenario-btn {
+        padding: 0.35rem 0.5rem;
+        font-size: 0.65rem;
+    }
+
+    /* Current industry badge compact */
+    .current-industry {
+        padding: 0.4rem 0.75rem;
+        gap: 0.4rem;
+    }
+
+    .current-industry .industry-icon {
+        font-size: 1.25rem;
+    }
+
+    .current-industry .industry-name {
+        font-size: 0.9rem;
+    }
+
+    .change-industry-btn {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.75rem;
+    }
+
+    /* Category buttons compact */
+    .category-btn {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.7rem;
     }
 
     .industry-card {
@@ -1642,6 +1763,70 @@ footer {
         font-size: 1.3rem;
     }
 
+    /* Header ultra compact */
+    .header-actions {
+        gap: 0.2rem;
+    }
+
+    .header-actions .btn-primary,
+    .header-actions .btn-secondary {
+        padding: 0.3rem 0.4rem;
+        font-size: 0.65rem;
+        min-width: 30px;
+    }
+
+    .header-actions .icon-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .logo-icon {
+        font-size: 1.1rem;
+    }
+
+    /* Scenario selector - show only emoji */
+    .scenario-btn {
+        padding: 0.3rem 0.4rem;
+        font-size: 0.9rem;
+    }
+
+    .scenario-btn::after {
+        content: none;
+    }
+
+    /* Current industry minimal */
+    .current-industry {
+        padding: 0.3rem 0.5rem;
+    }
+
+    .current-industry .industry-name {
+        font-size: 0.8rem;
+    }
+
+    .change-industry-btn {
+        padding: 0.25rem 0.4rem;
+        font-size: 0.65rem;
+    }
+
+    .change-industry-btn span {
+        display: none;
+    }
+
+    /* Demo buttons minimal */
+    .btn-demo {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .btn-demo span {
+        font-size: 0.7rem;
+    }
+
     .industry-card {
         padding: 0.75rem 0.5rem;
     }
@@ -1673,6 +1858,12 @@ footer {
 
     .stat-value {
         font-size: 1.1rem;
+    }
+
+    /* Category filters scroll */
+    .category-btn {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.65rem;
     }
 }
 
@@ -1929,23 +2120,41 @@ body.light-mode .stats-card {
     gap: 0.5rem;
     margin-bottom: 1.5rem;
     flex-wrap: wrap;
+    padding: 0 0.5rem;
 }
 
 .scenario-label {
     font-size: 0.85rem;
     color: var(--text-muted);
     margin-right: 0.5rem;
+    width: 100%;
+    text-align: center;
+}
+
+@media (min-width: 576px) {
+    .scenario-label {
+        width: auto;
+        text-align: left;
+    }
 }
 
 .scenario-btn {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     background: var(--bg-elevated);
     border: 1px solid var(--border);
     border-radius: 50px;
     color: var(--text-light);
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     cursor: pointer;
     transition: all 0.2s;
+    white-space: nowrap;
+}
+
+@media (min-width: 576px) {
+    .scenario-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
 }
 
 .scenario-btn:hover {
@@ -2495,11 +2704,27 @@ body.fullscreen-mode .demo-section {
    ======================================== */
 .category-filters {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
     gap: 0.5rem;
     margin-bottom: 1.5rem;
     padding: 0 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.category-filters::-webkit-scrollbar {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .category-filters {
+        flex-wrap: wrap;
+        justify-content: center;
+        overflow-x: visible;
+    }
 }
 
 /* ========================================
@@ -2712,21 +2937,43 @@ img {
 .current-industry {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    justify-content: center;
+    gap: 0.5rem;
     background: var(--bg-card);
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1rem;
     border-radius: var(--radius-xl);
     border: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+
+@media (min-width: 576px) {
+    .current-industry {
+        gap: 1rem;
+        padding: 0.75rem 1.5rem;
+        flex-wrap: nowrap;
+    }
 }
 
 .current-industry .industry-icon {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+}
+
+@media (min-width: 576px) {
+    .current-industry .industry-icon {
+        font-size: 1.75rem;
+    }
 }
 
 .current-industry .industry-name {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--text-white);
+}
+
+@media (min-width: 576px) {
+    .current-industry .industry-name {
+        font-size: 1.25rem;
+    }
 }
 
 .change-industry-btn {
