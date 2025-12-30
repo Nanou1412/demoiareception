@@ -2306,6 +2306,216 @@ body.fullscreen-mode .demo-section {
 }
 
 /* ========================================
+   PRICING SECTION
+   ======================================== */
+.pricing-section {
+    padding: 5rem 0;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-secondary) 100%);
+}
+
+.pricing-card {
+    max-width: 480px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border: 2px solid var(--primary);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: white;
+    padding: 0.4rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-top: 0.5rem;
+}
+
+.pricing-header h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.pricing-tagline {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.pricing-cost {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.setup-fee {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--border);
+}
+
+.setup-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.setup-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.weekly-fee {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0.25rem;
+}
+
+.weekly-price {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.weekly-price .cents {
+    font-size: 1.5rem;
+}
+
+.weekly-label {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.monthly-equivalent {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+}
+
+.pricing-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    color: var(--text);
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+.pricing-features li i {
+    color: #22c55e;
+    font-size: 0.9rem;
+    width: 20px;
+    text-align: center;
+}
+
+.pricing-cta {
+    width: 100%;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, var(--primary), #8b5cf6);
+    color: white;
+    border: none;
+    border-radius: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.pricing-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+}
+
+.pricing-guarantee {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.pricing-guarantee i {
+    color: #22c55e;
+}
+
+.pricing-savings {
+    max-width: 480px;
+    margin: 2rem auto 0;
+}
+
+.savings-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 1rem;
+    padding: 1.25rem 2rem;
+}
+
+.savings-card i {
+    font-size: 2rem;
+    color: #22c55e;
+}
+
+.savings-card div {
+    display: flex;
+    flex-direction: column;
+}
+
+.savings-card strong {
+    font-size: 1.1rem;
+    color: #22c55e;
+}
+
+.savings-card span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ========================================
    FINAL CTA SECTION
    ======================================== */
 .final-cta-section {
@@ -2411,6 +2621,15 @@ body.fullscreen-mode .demo-section {
     .comparison-row > div {
         padding: 0.75rem;
     }
+    
+    .pricing-card {
+        margin: 0 1rem;
+        padding: 2rem 1.5rem;
+    }
+    
+    .weekly-price {
+        font-size: 2.75rem;
+    }
 }
 
 @media (max-width: 600px) {
@@ -2436,5 +2655,18 @@ body.fullscreen-mode .demo-section {
         width: 100%;
         max-width: 300px;
         justify-content: center;
+    }
+    
+    .pricing-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .pricing-features li {
+        font-size: 0.85rem;
+    }
+    
+    .savings-card {
+        flex-direction: column;
+        text-align: center;
     }
 }

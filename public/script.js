@@ -1621,7 +1621,7 @@ Ready to see it in action? Pick your industry below and watch the magic happen!`
         const workingDays = 260; // Working days per year
         const dailyHumanCost = rate * hours;
         const annualHumanCost = dailyHumanCost * workingDays;
-        const annualAICost = 399 * 12; // $399/month AI plan
+        const annualAICost = Math.round(69.90 * 52); // $69.90/week = ~$3,635/year
         const annualSavings = annualHumanCost - annualAICost;
         const roiPercent = Math.round((annualSavings / annualAICost) * 100);
         
@@ -1647,6 +1647,12 @@ Ready to see it in action? Pick your industry below and watch the magic happen!`
     document.getElementById('ctaContact')?.addEventListener('click', () => {
         // Open contact or calendar
         window.open('mailto:contact@aireceptionist.com?subject=Free Consultation Request', '_blank');
+    });
+    
+    // Pricing CTA Button
+    document.getElementById('pricingCta')?.addEventListener('click', () => {
+        // Scroll to demo section or open contact
+        document.querySelector('.industry-section')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
 });
 
