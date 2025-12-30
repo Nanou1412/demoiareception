@@ -1368,10 +1368,108 @@ document.addEventListener('DOMContentLoaded', () => {
     SpeechManager.init();
     
     // ========== LANDING PAGE ==========
+    // Sales Pitch Button
+    const pitchBtn = document.getElementById('playPitchBtn');
+    let pitchAudio = null;
+    let isPitchPlaying = false;
+    
+    const salesPitchText = `Hey there! Welcome to AI Receptionist, the future of business communication!
+
+Imagine never missing a customer call again. Our AI receptionist answers every single call instantly, 24 hours a day, 7 days a week, even on Christmas!
+
+Here's what makes us incredible: We save businesses up to 80% on reception costs. No salaries, no sick days, no training required.
+
+Your customers get zero wait time. The moment they call, they're greeted by a friendly, professional voice that sounds completely natural.
+
+And the best part? Our AI never makes mistakes. Perfect order accuracy, every single time. No mishearing, no forgotten details.
+
+During peak hours, we can handle hundreds of calls simultaneously. Your busiest days become your most profitable days.
+
+From restaurants to medical clinics, from hair salons to law firms - we're customized for YOUR specific business.
+
+Ready to see it in action? Pick your industry below and watch the magic happen!`;
+
+    pitchBtn?.addEventListener('click', async () => {
+        if (isPitchPlaying) {
+            // Stop playing
+            if (pitchAudio) {
+                pitchAudio.pause();
+                pitchAudio.currentTime = 0;
+            }
+            speechSynthesis.cancel();
+            pitchBtn.innerHTML = '<i class="fas fa-play"></i><span>Hear Why Businesses Love Us</span>';
+            pitchBtn.classList.remove('playing');
+            isPitchPlaying = false;
+            return;
+        }
+        
+        // Start playing
+        pitchBtn.innerHTML = '<i class="fas fa-stop"></i><span>Stop Presentation</span>';
+        pitchBtn.classList.add('playing');
+        isPitchPlaying = true;
+        
+        try {
+            // Try OpenAI TTS first
+            const response = await fetch('/api/chat/tts', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    text: salesPitchText,
+                    voice: 'onyx', // Deep, professional male voice
+                    speed: 1.0
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (data.audio) {
+                pitchAudio = new Audio('data:audio/mp3;base64,' + data.audio);
+                pitchAudio.onended = () => {
+                    pitchBtn.innerHTML = '<i class="fas fa-play"></i><span>Hear Why Businesses Love Us</span>';
+                    pitchBtn.classList.remove('playing');
+                    isPitchPlaying = false;
+                };
+                await pitchAudio.play();
+            } else {
+                throw new Error('No audio data');
+            }
+        } catch (error) {
+            console.log('TTS API not available, using browser speech');
+            // Fallback to browser speech synthesis
+            const utterance = new SpeechSynthesisUtterance(salesPitchText);
+            utterance.rate = 0.95;
+            utterance.pitch = 0.9;
+            utterance.lang = 'en-AU';
+            
+            const voices = speechSynthesis.getVoices();
+            const maleVoice = voices.find(v => v.name.includes('Daniel') || v.name.includes('Alex') || v.name.toLowerCase().includes('male'));
+            if (maleVoice) utterance.voice = maleVoice;
+            
+            utterance.onend = () => {
+                pitchBtn.innerHTML = '<i class="fas fa-play"></i><span>Hear Why Businesses Love Us</span>';
+                pitchBtn.classList.remove('playing');
+                isPitchPlaying = false;
+            };
+            
+            speechSynthesis.speak(utterance);
+        }
+    });
+    
     // Industry cards on landing page
     document.querySelectorAll('.industry-card').forEach(card => {
         card.addEventListener('click', () => {
             const industry = card.dataset.industry;
+            // Stop pitch if playing
+            if (isPitchPlaying) {
+                if (pitchAudio) {
+                    pitchAudio.pause();
+                    pitchAudio.currentTime = 0;
+                }
+                speechSynthesis.cancel();
+                pitchBtn.innerHTML = '<i class="fas fa-play"></i><span>Hear Why Businesses Love Us</span>';
+                pitchBtn.classList.remove('playing');
+                isPitchPlaying = false;
+            }
             Navigation.goToDemo(industry);
         });
     });
