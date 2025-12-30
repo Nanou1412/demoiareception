@@ -91,7 +91,7 @@ CRITICAL RULES:
         { delay: 2000, type: 'confirm' }
     ],
 
-    smsTemplate: (businessName, total, currency = '$') =>
+    smsTemplate: (businessName, total, _currency = '$') =>
         `<div class="sms-content">Booked in mate! 🚗<br><br>Your service at <strong>${businessName}</strong> is confirmed!<br><br>She'll be running sweet! 🔧</div>`,
 
     ticketIcon: '🚗'

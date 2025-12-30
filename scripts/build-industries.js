@@ -76,6 +76,5 @@ console.log(`✅ Generated: ${outputFile}`);
 console.log(`   ${files.length} industries included`);
 
 // Calculate size reduction
-const originalSize = 136064; // Original script.js size
 const newSize = Buffer.byteLength(output, 'utf8');
 console.log(`   Size: ${(newSize / 1024).toFixed(1)}KB (was ~133KB inline)`);

@@ -95,7 +95,7 @@ CRITICAL RULES:
         { delay: 2000, type: 'confirm' }
     ],
 
-    smsTemplate: (businessName, total, currency = '$') =>
+    smsTemplate: (businessName, total, _currency = '$') =>
         `<div class="sms-content">Green thumbs up! 🌿<br><br>Your garden service with <strong>${businessName}</strong> is booked!<br><br>Your yard will be beautiful! 🌱</div>`,
 
     ticketIcon: '🌿'

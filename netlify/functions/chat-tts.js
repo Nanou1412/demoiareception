@@ -4,7 +4,7 @@ const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
 });
 
-exports.handler = async (event, context) => {
+exports.handler = async (event, _context) => {
     // Handle CORS
     const headers = {
         'Access-Control-Allow-Origin': '*',

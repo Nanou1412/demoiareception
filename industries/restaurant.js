@@ -502,11 +502,11 @@ Mon-Wed: 7am-9pm | Thu: 7am-10pm | Fri-Sat: 7am-11pm (last booking 9:30pm) | Sun
         const { customerName, items, pickupTime, orderNumber, address } = data;
         const itemsList = items
             ? items
-                  .map(
-                      item =>
-                          `• ${item.qty || 1}x ${item.name} - $${(item.price || 0) * (item.qty || 1)}`
-                  )
-                  .join('<br>')
+                .map(
+                    item =>
+                        `• ${item.qty || 1}x ${item.name} - $${(item.price || 0) * (item.qty || 1)}`
+                )
+                .join('<br>')
             : '• 1x Aussie Beef Burger - $24<br>• 1x Onion Rings - $8<br>• 1x Lemon Iced Tea - $6';
 
         return `<div class="sms-content">
@@ -606,7 +606,7 @@ Mon-Wed: 7am-9pm | Thu: 7am-10pm | Fri-Sat: 7am-11pm (last booking 9:30pm) | Sun
     ticketIcon: '🍽️',
 
     // Availability checker
-    checkAvailability: (date, time, partySize) => {
+    checkAvailability: (date, time, _partySize) => {
         const bookedSlots = {
             '2025-01-04': ['19:00', '19:30'],
             '2025-01-05': ['12:30', '13:00']

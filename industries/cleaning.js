@@ -96,7 +96,7 @@ CRITICAL RULES:
         { delay: 2000, type: 'confirm' }
     ],
 
-    smsTemplate: (businessName, total, currency = '$') =>
+    smsTemplate: (businessName, total, _currency = '$') =>
         `<div class="sms-content">Sparkle sparkle! 🧹<br><br>Your cleaning from <strong>${businessName}</strong> is confirmed!<br><br>Get ready for a spotless home! ✨</div>`,
 
     ticketIcon: '🧹'

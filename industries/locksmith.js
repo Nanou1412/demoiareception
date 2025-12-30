@@ -91,7 +91,7 @@ CRITICAL RULES:
         { delay: 2000, type: 'confirm' }
     ],
 
-    smsTemplate: (businessName, total, currency = '$') =>
+    smsTemplate: (businessName, total, _currency = '$') =>
         `<div class="sms-content">Help is coming! 🔐<br><br>Your locksmith from <strong>${businessName}</strong> is on the way!<br><br>ETA: 15-20 minutes 🔑</div>`,
 
     ticketIcon: '🔐'

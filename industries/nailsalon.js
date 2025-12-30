@@ -92,7 +92,7 @@ CRITICAL RULES:
         { delay: 2000, type: 'confirm' }
     ],
 
-    smsTemplate: (businessName, total, currency = '$') =>
+    smsTemplate: (businessName, total, _currency = '$') =>
         `<div class="sms-content">Fabulous! 💅<br><br>Your nail appointment at <strong>${businessName}</strong> is confirmed!<br><br>Get ready for gorgeous nails! ✨</div>`,
 
     ticketIcon: '💅'

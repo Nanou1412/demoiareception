@@ -1,14 +1,15 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const OpenAI = require('openai');
 const { getSystemPrompt } = require('./shared/prompts');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // OpenAI setup
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY || 'YOUR_API_KEY_HERE'
+    apiKey: process.env.OPENAI_API_KEY
 });
 
 // Middleware

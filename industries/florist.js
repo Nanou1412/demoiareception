@@ -97,7 +97,7 @@ CRITICAL RULES:
         { delay: 2000, type: 'confirm' }
     ],
 
-    smsTemplate: (businessName, total, currency = '$') =>
+    smsTemplate: (businessName, total, _currency = '$') =>
         `<div class="sms-content">Beautiful! 💐<br><br>Your flower order from <strong>${businessName}</strong> is confirmed!<br><br>Ready to brighten someone's day! 🌸</div>`,
 
     ticketIcon: '💐'

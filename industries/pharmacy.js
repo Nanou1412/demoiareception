@@ -92,7 +92,7 @@ CRITICAL RULES:
         { delay: 2000, type: 'confirm' }
     ],
 
-    smsTemplate: (businessName, total, currency = '$') =>
+    smsTemplate: (businessName, total, _currency = '$') =>
         `<div class="sms-content">Ready for pickup! 💊<br><br>Your prescription at <strong>${businessName}</strong> is ready.<br><br>See you soon! 🏥</div>`,
 
     ticketIcon: '💊'

@@ -95,7 +95,7 @@ CRITICAL RULES:
         { delay: 2000, type: 'confirm' }
     ],
 
-    smsTemplate: (businessName, total, currency = '$') =>
+    smsTemplate: (businessName, total, _currency = '$') =>
         `<div class="sms-content">Namaste 🧘<br><br>Your escape at <strong>${businessName}</strong> is confirmed!<br><br>Prepare to unwind and relax... 🌸</div>`,
 
     ticketIcon: '🧖'

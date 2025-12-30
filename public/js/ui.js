@@ -13,7 +13,7 @@ const UI = {
         DOM.typingIndicator?.classList.remove('visible');
     },
 
-    addMessage(text, isAI = true, speakIt = true) {
+    addMessage(text, isAI = true, _speakIt = true) {
         const { State, DOM } = window.AppState;
         const ind = getIndustry();
         const indLang = getIndustryLang();

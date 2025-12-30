@@ -68,6 +68,7 @@ function buildIndustries() {
         output += `    ${id}: ${json}${index < files.length - 1 ? ',' : ''}\n`;
     });
 
+    // eslint-disable-next-line quotes
     output += `};\n\nconst getIndustry = () => Industries[window.AppState?.State?.currentIndustry] || Industries.restaurant;\nconst getIndustryLang = () => getIndustry().en;\nconst getCurrency = () => '$';\n\nwindow.Industries = Industries;\nwindow.getIndustry = getIndustry;\nwindow.getIndustryLang = getIndustryLang;\nwindow.getCurrency = getCurrency;\n`;
 
     fs.writeFileSync(outputFile, output);
@@ -156,7 +157,7 @@ function copyHTML() {
     // For now, just copy as-is
     fs.writeFileSync(distHtmlFile, content);
 
-    log(`   ✅ index.html copied`, 'green');
+    log('   ✅ index.html copied', 'green');
 }
 
 // ============================================
@@ -193,7 +194,7 @@ function main() {
 
     log('\n================================', 'yellow');
     log(`✨ Build complete in ${duration}s`, 'green');
-    log(`   📁 Output: ./dist/`, 'blue');
+    log('   📁 Output: ./dist/', 'blue');
     log(`   🏭 Industries: ${industriesCount}`, 'blue');
 }
 

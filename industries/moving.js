@@ -94,7 +94,7 @@ CRITICAL RULES:
         { delay: 2000, type: 'confirm' }
     ],
 
-    smsTemplate: (businessName, total, currency = '$') =>
+    smsTemplate: (businessName, total, _currency = '$') =>
         `<div class="sms-content">Moving day set! 📦<br><br>Your move with <strong>${businessName}</strong> is confirmed!<br><br>We'll make it stress-free! 🚚</div>`,
 
     ticketIcon: '📦'

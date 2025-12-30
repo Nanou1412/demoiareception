@@ -97,7 +97,7 @@ CRITICAL RULES:
         { delay: 2000, type: 'confirm' }
     ],
 
-    smsTemplate: (businessName, total, currency = '$') =>
+    smsTemplate: (businessName, total, _currency = '$') =>
         `<div class="sms-content">Say cheese! 📷<br><br>Your photo session with <strong>${businessName}</strong> is confirmed!<br><br>Get ready for amazing shots! ✨</div>`,
 
     ticketIcon: '📷'

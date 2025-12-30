@@ -116,6 +116,7 @@ header .container {
 .logo span {
     background: linear-gradient(135deg, var(--primary), var(--accent));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -210,6 +211,7 @@ header .container {
 .gradient-text {
     background: linear-gradient(135deg, var(--primary-light), var(--accent));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -1226,6 +1228,7 @@ footer {
         font-size: 0.8rem;
         display: -webkit-box;
         -webkit-line-clamp: 2;
+        line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
@@ -2985,6 +2988,7 @@ img {
     background: var(--border);
     outline: none;
     -webkit-appearance: none;
+    appearance: none;
 }
 
 .roi-input-group input[type='range']::-webkit-slider-thumb {
