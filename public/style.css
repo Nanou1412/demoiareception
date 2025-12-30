@@ -1084,36 +1084,198 @@ footer {
 }
 
 /* ========================================
-   RESPONSIVE
+   RESPONSIVE - COMPLETE BREAKPOINTS
+   Mobile First Approach
    ======================================== */
-@media (max-width: 900px) {
+
+/* ----------------------------------------
+   EXTRA LARGE SCREENS (1400px+)
+   ---------------------------------------- */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1400px;
+    }
+
+    .demo-grid {
+        grid-template-columns: 420px 1fr;
+        gap: 3rem;
+    }
+
+    .industry-grid {
+        grid-template-columns: repeat(5, 1fr);
+        max-width: 1200px;
+    }
+
+    .benefits-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* ----------------------------------------
+   LARGE SCREENS / DESKTOP (1200px - 1399px)
+   ---------------------------------------- */
+@media (max-width: 1399px) and (min-width: 1200px) {
+    .industry-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ----------------------------------------
+   MEDIUM SCREENS / TABLET LANDSCAPE (992px - 1199px)
+   ---------------------------------------- */
+@media (max-width: 1199px) and (min-width: 992px) {
+    .demo-grid {
+        grid-template-columns: 380px 1fr;
+        gap: 2rem;
+    }
+
+    .industry-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ----------------------------------------
+   TABLET PORTRAIT (768px - 991px)
+   ---------------------------------------- */
+@media (max-width: 991px) {
+    .container {
+        padding: 0 1rem;
+    }
+
     .demo-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
     .phone-container {
         position: static;
         display: flex;
         justify-content: center;
+        order: -1;
     }
 
     .phone-frame {
         max-width: 380px;
+        width: 100%;
+    }
+
+    .results-panel {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .industry-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-row {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .use-cases-grid,
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .roi-calculator {
+        grid-template-columns: 1fr;
+    }
+
+    .steps-container {
+        flex-direction: column;
+    }
+
+    .step-arrow {
+        transform: rotate(90deg);
+    }
+
+    .comparison-header,
+    .comparison-row {
+        font-size: 0.9rem;
+    }
+
+    .comparison-header > div,
+    .comparison-row > div {
+        padding: 0.75rem;
     }
 }
 
-@media (max-width: 600px) {
-    .hero h1 {
+/* ----------------------------------------
+   MOBILE LANDSCAPE / SMALL TABLET (576px - 767px)
+   ---------------------------------------- */
+@media (max-width: 767px) {
+    .hero h1,
+    .landing-hero h1 {
         font-size: 1.75rem;
+    }
+
+    .hero-subtitle,
+    .landing-hero .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
     }
 
     .demo-buttons {
         flex-direction: column;
+        width: 100%;
     }
 
     .btn-demo {
         width: 100%;
         justify-content: center;
+    }
+
+    .industry-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .industry-card {
+        padding: 1.25rem 1rem;
+    }
+
+    .industry-card-icon {
+        font-size: 2.5rem;
+    }
+
+    .industry-card h3 {
+        font-size: 0.95rem;
+    }
+
+    .industry-card p {
+        font-size: 0.8rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .phone-frame {
+        max-width: 100%;
+        border-radius: 35px;
+        margin: 0 0.5rem;
+    }
+
+    .phone-screen {
+        min-height: 400px;
+        max-height: 400px;
+    }
+
+    .results-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .process-bar {
+        justify-content: space-between;
+        padding: 0 0.5rem;
     }
 
     .process-step span {
@@ -1123,14 +1285,560 @@ footer {
     .step-dot {
         width: 40px;
         height: 40px;
+        font-size: 1rem;
     }
 
     .process-line {
-        width: 30px;
+        width: 25px;
+        flex: 1;
+    }
+
+    .quick-actions {
+        flex-wrap: wrap;
+    }
+
+    .quick-btn {
+        font-size: 0.7rem;
+        padding: 0.35rem 0.6rem;
     }
 
     .stats-card {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .category-filters {
+        gap: 0.4rem;
+    }
+
+    .category-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .category-btn .cat-count {
+        display: none;
+    }
+
+    .benefits-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .benefit-card {
+        padding: 1.25rem;
+    }
+
+    .landing-hero {
+        padding: 2rem 0;
+        min-height: auto;
+    }
+
+    .sales-pitch-section {
+        padding: 1.5rem;
+    }
+
+    .play-pitch-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .pricing-card {
+        margin: 0 1rem;
+        padding: 2rem 1.5rem;
+    }
+
+    .weekly-price {
+        font-size: 2.75rem;
+    }
+
+    .header-actions {
+        gap: 0.5rem;
+    }
+
+    .lang-toggle {
+        display: none;
+    }
+
+    .modal {
+        width: 95%;
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .modal-large {
+        max-width: 100%;
+    }
+
+    .stats-row.modal-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .current-industry {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .change-industry-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ----------------------------------------
+   MOBILE PORTRAIT (up to 575px)
+   ---------------------------------------- */
+@media (max-width: 575px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    header .container,
+    .landing-header .container {
+        padding: 0 0.75rem;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    .logo-icon {
+        font-size: 1.25rem;
+    }
+
+    .hero h1,
+    .landing-hero h1 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+
+    .hero-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .industry-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .industry-card {
+        padding: 1rem 0.75rem;
+    }
+
+    .industry-card-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .industry-card h3 {
+        font-size: 0.85rem;
+    }
+
+    .industry-card p {
+        display: none;
+    }
+
+    .phone-frame {
+        border-radius: 30px;
+        padding: 8px;
+    }
+
+    .phone-notch {
+        width: 120px;
+        height: 25px;
+    }
+
+    .phone-header {
+        padding: 2rem 0.75rem 0.75rem;
+        border-radius: 25px 25px 0 0;
+    }
+
+    .phone-screen {
+        min-height: 350px;
+        max-height: 350px;
+    }
+
+    .phone-controls {
+        padding: 0.75rem;
+        border-radius: 0 0 25px 25px;
+    }
+
+    .caller-avatar {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+
+    .caller-name {
+        font-size: 1rem;
+    }
+
+    .conversation {
+        padding: 0.75rem;
+        gap: 0.5rem;
+    }
+
+    .message {
+        max-width: 90%;
+    }
+
+    .msg-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+
+    .msg-bubble {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .input-area input {
+        padding: 0.6rem 0.9rem;
+        font-size: 0.85rem;
+    }
+
+    .control-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .quick-actions {
+        gap: 0.35rem;
+    }
+
+    .quick-btn {
+        font-size: 0.65rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .step-dot {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+
+    .process-line {
+        width: 20px;
+    }
+
+    .stats-card {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 0.75rem;
+        gap: 0.5rem;
+    }
+
+    .stat-value {
+        font-size: 1.25rem;
+    }
+
+    .stat-label {
+        font-size: 0.65rem;
+    }
+
+    .info-card {
+        padding: 1rem;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .card-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .result-card .card-header {
+        padding: 0.6rem 0.75rem;
+    }
+
+    .result-card .card-body {
+        padding: 0.75rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-item {
+        padding: 0.75rem;
+    }
+
+    .item-emoji {
+        font-size: 1.5rem;
+    }
+
+    .category-filters {
+        padding: 0 0.5rem;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .category-filters::-webkit-scrollbar {
+        display: none;
+    }
+
+    .category-btn {
+        flex-shrink: 0;
+        padding: 0.4rem 0.7rem;
+        font-size: 0.75rem;
+    }
+
+    .industry-search {
+        margin: 0 0.5rem 1rem;
+    }
+
+    .comparison-table {
+        font-size: 0.75rem;
+    }
+
+    .comparison-header > div,
+    .comparison-row > div {
+        padding: 0.5rem;
+    }
+
+    .comparison-feature {
+        font-size: 0.7rem;
+    }
+
+    .final-cta-section h2 {
+        font-size: 1.35rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .cta-primary,
+    .cta-secondary {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .pricing-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .pricing-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .weekly-price {
+        font-size: 2.5rem;
+    }
+
+    .pricing-features li {
+        font-size: 0.85rem;
+        padding: 0.5rem 0;
+    }
+
+    .savings-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    footer {
+        padding: 1.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .waveform-overlay {
+        bottom: 1rem;
+        padding: 0.75rem 1.25rem;
+        border-radius: var(--radius-md);
+    }
+
+    .waveform-label {
+        font-size: 0.8rem;
+    }
+}
+
+/* ----------------------------------------
+   EXTRA SMALL SCREENS (up to 360px)
+   ---------------------------------------- */
+@media (max-width: 360px) {
+    .hero h1,
+    .landing-hero h1 {
+        font-size: 1.3rem;
+    }
+
+    .industry-card {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .industry-card-icon {
+        font-size: 1.75rem;
+    }
+
+    .industry-card h3 {
+        font-size: 0.75rem;
+    }
+
+    .phone-screen {
+        min-height: 300px;
+        max-height: 300px;
+    }
+
+    .msg-bubble {
+        font-size: 0.8rem;
+    }
+
+    .quick-btn {
+        font-size: 0.6rem;
+    }
+
+    .stats-card {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .stat-value {
+        font-size: 1.1rem;
+    }
+}
+
+/* ----------------------------------------
+   LANDSCAPE ORIENTATION MOBILE
+   ---------------------------------------- */
+@media (max-height: 500px) and (orientation: landscape) {
+    .landing-hero {
+        min-height: auto;
+        padding: 1.5rem 0;
+    }
+
+    .phone-screen {
+        min-height: 280px;
+        max-height: 280px;
+    }
+
+    .phone-frame {
+        max-width: 320px;
+    }
+
+    header,
+    .landing-header {
+        padding: 0.5rem 0;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+        margin-bottom: 1rem;
+    }
+
+    .demo-section {
+        padding: 1rem 0 2rem;
+    }
+
+    .process-section {
+        padding: 1rem 0;
+    }
+}
+
+/* ----------------------------------------
+   TOUCH DEVICE OPTIMIZATIONS
+   ---------------------------------------- */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase touch targets */
+    .btn-primary,
+    .btn-secondary,
+    .btn-demo,
+    .control-btn,
+    .quick-btn,
+    .category-btn,
+    .industry-btn {
+        min-height: 44px;
+    }
+
+    .quick-btn {
+        min-height: 36px;
+        padding: 0.5rem 0.75rem;
+    }
+
+    /* Remove hover effects on touch */
+    .industry-card:hover,
+    .benefit-card:hover,
+    .step-card:hover,
+    .use-case-card:hover {
+        transform: none;
+    }
+
+    /* Add active states instead */
+    .industry-card:active,
+    .benefit-card:active,
+    .step-card:active,
+    .use-case-card:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+
+    .btn-demo:active,
+    .btn-primary:active,
+    .btn-secondary:active {
+        transform: scale(0.97);
+    }
+}
+
+/* ----------------------------------------
+   HIGH DPI / RETINA DISPLAYS
+   ---------------------------------------- */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .phone-frame {
+        box-shadow:
+            0 0 0 1px rgba(255, 255, 255, 0.1),
+            0 20px 60px rgba(0, 0, 0, 0.5),
+            inset 0 0 40px rgba(255, 255, 255, 0.02);
+    }
+}
+
+/* ----------------------------------------
+   DARK/LIGHT MODE RESPONSIVE
+   ---------------------------------------- */
+@media (prefers-color-scheme: light) {
+    /* Auto light mode if user hasn't toggled */
+}
+
+/* ----------------------------------------
+   PRINT STYLES
+   ---------------------------------------- */
+@media print {
+    header,
+    footer,
+    .phone-controls,
+    .quick-actions,
+    .demo-buttons {
+        display: none !important;
+    }
+
+    .page {
+        display: block !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .conversation {
+        max-height: none;
+        overflow: visible;
     }
 }
 
@@ -1511,50 +2219,6 @@ body.fullscreen-mode .industry-selector {
 
 body.fullscreen-mode .demo-section {
     padding-top: 1rem;
-}
-
-/* ========================================
-   RESPONSIVE ADJUSTMENTS
-   ======================================== */
-@media (max-width: 900px) {
-    .stats-row {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .stats-row:last-child {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 600px) {
-    .header-actions {
-        gap: 0.5rem;
-    }
-
-    .lang-toggle {
-        display: none;
-    }
-
-    .industry-selector {
-        gap: 0.5rem;
-    }
-
-    .industry-btn {
-        min-width: 70px;
-        padding: 0.5rem 0.75rem;
-    }
-
-    .industry-icon {
-        font-size: 1.25rem;
-    }
-
-    .industry-name {
-        font-size: 0.65rem;
-    }
-
-    .scenario-selector {
-        display: none;
-    }
 }
 
 /* ========================================
@@ -1973,34 +2637,6 @@ img {
     content-visibility: auto;
 }
 
-@media (max-width: 900px) {
-    .industry-search {
-        max-width: 100%;
-        margin: 0 1rem 1rem;
-    }
-
-    .benefits-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .stats-row {
-        flex-wrap: wrap;
-        gap: 1.5rem;
-    }
-}
-
-@media (max-width: 600px) {
-    .benefits-grid {
-        grid-template-columns: 1fr;
-    }
-    .stats-row {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    .stat-number {
-        font-size: 1.5rem;
-    }
-}
-
 /* Landing CTA */
 .landing-cta {
     margin-top: 2.5rem;
@@ -2092,66 +2728,6 @@ img {
     background: var(--primary);
     color: white;
     border-color: var(--primary);
-}
-
-/* ========================================
-   RESPONSIVE - LANDING PAGE
-   ======================================== */
-@media (max-width: 768px) {
-    .industry-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-
-    .industry-card {
-        padding: 1.5rem 1rem;
-    }
-
-    .industry-card-icon {
-        font-size: 2.5rem;
-    }
-
-    .industry-card h3 {
-        font-size: 1rem;
-    }
-
-    .industry-card p {
-        font-size: 0.75rem;
-    }
-
-    .landing-hero {
-        padding: 2rem 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .industry-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
-    }
-
-    .industry-card {
-        padding: 1rem 0.75rem;
-    }
-
-    .industry-card-icon {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .industry-card h3 {
-        font-size: 0.9rem;
-    }
-
-    .industry-card p {
-        display: none;
-    }
-
-    .current-industry {
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
-    }
 }
 
 /* ========================================
@@ -2824,90 +3400,4 @@ img {
     margin-top: 1.5rem;
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.8);
-}
-
-/* ========================================
-   RESPONSIVE - New Sections
-   ======================================== */
-@media (max-width: 900px) {
-    .steps-container {
-        flex-direction: column;
-    }
-
-    .step-arrow {
-        transform: rotate(90deg);
-    }
-
-    .step-card {
-        width: 100%;
-        max-width: 350px;
-    }
-
-    .roi-calculator {
-        grid-template-columns: 1fr;
-    }
-
-    .use-cases-grid,
-    .faq-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .comparison-header,
-    .comparison-row {
-        grid-template-columns: 1fr 1fr 1fr;
-        font-size: 0.85rem;
-    }
-
-    .comparison-header > div,
-    .comparison-row > div {
-        padding: 0.75rem;
-    }
-
-    .pricing-card {
-        margin: 0 1rem;
-        padding: 2rem 1.5rem;
-    }
-
-    .weekly-price {
-        font-size: 2.75rem;
-    }
-}
-
-@media (max-width: 600px) {
-    .comparison-table {
-        font-size: 0.8rem;
-    }
-
-    .comparison-feature {
-        font-size: 0.75rem;
-    }
-
-    .final-cta-section h2 {
-        font-size: 1.5rem;
-    }
-
-    .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .cta-primary,
-    .cta-secondary {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
-    }
-
-    .pricing-card {
-        padding: 1.5rem 1rem;
-    }
-
-    .pricing-features li {
-        font-size: 0.85rem;
-    }
-
-    .savings-card {
-        flex-direction: column;
-        text-align: center;
-    }
 }

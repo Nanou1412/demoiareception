@@ -3403,84 +3403,115 @@ const Industries = {
         cardIcon: "fa-receipt",
         quickActions: [
             {
-                emoji: "🍽️",
-                label: "Order",
-                text: "I'd like to place an order please"
+                emoji: "🍔",
+                label: "Order Pickup",
+                text: "I'd like to place a pickup order please"
+            },
+            {
+                emoji: "📅",
+                label: "Book Table",
+                text: "I'd like to book a table please"
             },
             {
                 emoji: "📋",
-                label: "Menu",
-                text: "What's on the menu?"
+                label: "See Menu",
+                text: "What's on the menu today?"
             },
             {
                 emoji: "⏰",
-                label: "Pickup",
-                text: "Can I pick up in 20 mins?"
+                label: "Hours",
+                text: "What are your opening hours?"
+            },
+            {
+                emoji: "🥗",
+                label: "Vegetarian",
+                text: "What vegetarian options do you have?"
+            },
+            {
+                emoji: "🎉",
+                label: "Events",
+                text: "Do you cater for private events?"
             }
         ],
         menuItems: [
             {
-                emoji: "🥗",
-                name: "Halloumi Salad",
-                desc: "Fresh greens, cherry tomatoes",
-                price: 17
+                emoji: "🍔",
+                name: "Aussie Beef Burger",
+                desc: "Wagyu, bacon, egg, beetroot, chips",
+                price: 24
             },
             {
-                emoji: "🧅",
-                name: "Onion Rings",
-                desc: "Crispy beer-battered",
-                price: 6
+                emoji: "🐟",
+                name: "Fish & Chips",
+                desc: "Beer-battered barramundi",
+                price: 26
+            },
+            {
+                emoji: "🥩",
+                name: "Scotch Fillet",
+                desc: "300g grass-fed, choice of sauce",
+                price: 42
+            },
+            {
+                emoji: "🍝",
+                name: "Prawn Linguine",
+                desc: "Tiger prawns, garlic, chilli",
+                price: 28
+            },
+            {
+                emoji: "🥗",
+                name: "Halloumi Salad",
+                desc: "Fresh greens, lemon herb dressing",
+                price: 17
             },
             {
                 emoji: "🍫",
                 name: "Chocolate Brownie",
-                desc: "Warm with ice cream",
-                price: 8
-            },
-            {
-                emoji: "☕",
-                name: "Flat White",
-                desc: "Smooth espresso coffee",
-                price: 5
+                desc: "Warm with vanilla ice cream",
+                price: 14
             }
         ],
         stepInfos: [
-            "📞 Emma answers and greets the hungry customer warmly.",
-            "🍽️ Taking the food order, suggesting sides and drinks.",
-            "✅ Confirming items, pickup time and contact details.",
-            "🎉 Order sent to kitchen! SMS confirmation on the way."
+            "📞 Emma answers warmly - pickup order or table reservation?",
+            "🍽️ Taking details - menu items or party size and date.",
+            "✅ Confirming everything - time, contact details, special requests.",
+            "🎉 All done! SMS confirmation sent, kitchen notified or table reserved."
         ],
         demoScript: [
             {
-                delay: 2000,
+                delay: 1500,
                 type: "greeting"
             },
             {
-                delay: 2500,
+                delay: 2000,
                 type: "orderItem"
             },
             {
-                delay: 2500,
+                delay: 2000,
                 type: "moreItems"
             },
             {
-                delay: 2000,
+                delay: 1800,
+                type: "drink"
+            },
+            {
+                delay: 1500,
                 type: "noMore"
             },
             {
-                delay: 2500,
+                delay: 2000,
                 type: "pickupTime"
             },
             {
-                delay: 2000,
+                delay: 1500,
                 type: "name"
             },
             {
-                delay: 2000,
+                delay: 1500,
                 type: "phone"
             },
             {
-                delay: 2000,
+                delay: 1500,
                 type: "confirm"
             }
         ],
@@ -3496,14 +3527,20 @@ const Industries = {
             totalLabel: "Order Total",
             cardTitle: "Kitchen Ticket",
             responses: {
-                greeting: "Hi, I'd like to place an order for pickup please",
-                orderItem: "I'll have the Halloumi Salad please",
-                moreItems: "Yeah, add some Onion Rings too",
-                noMore: "That's all thanks",
-                pickupTime: "About 20 minutes",
+                greeting: "Hi, I'd like to place a pickup order please",
+                orderItem: "I'll have the Aussie Beef Burger please",
+                moreItems: "And some onion rings as a side",
+                drink: "A lemon iced tea would be great",
+                noMore: "That's everything thanks",
+                pickupTime: "In about 25 minutes",
                 name: "Sarah",
                 phone: "0412 345 678",
-                confirm: "Yep, perfect!"
+                confirm: "Yep, perfect!",
+                reserveGreeting: "Hi, I'd like to book a table please",
+                partySize: "For 4 people",
+                reserveDate: "This Saturday night",
+                reserveTime: "Around 7pm if possible",
+                reserveConfirm: "That sounds perfect, thanks!"
             }
         }
     },

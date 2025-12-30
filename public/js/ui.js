@@ -238,9 +238,11 @@ const UI = {
             DOM.ticketStatus.classList.remove('sent');
         }
         if (DOM.smsPreview)
-            DOM.smsPreview.innerHTML = '<div class="sms-placeholder"><i class="fas fa-message"></i><span>SMS appears after confirmation</span></div>';
+            DOM.smsPreview.innerHTML =
+                '<div class="sms-placeholder"><i class="fas fa-message"></i><span>SMS appears after confirmation</span></div>';
         if (DOM.ticketPreview)
-            DOM.ticketPreview.innerHTML = '<div class="ticket-placeholder"><i class="fas fa-print"></i><span>Confirmation appears after booking</span></div>';
+            DOM.ticketPreview.innerHTML =
+                '<div class="ticket-placeholder"><i class="fas fa-print"></i><span>Confirmation appears after booking</span></div>';
     }
 };
 
