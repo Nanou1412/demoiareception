@@ -661,6 +661,291 @@ const Industries = {
                 confirm: "Parfait, j'y serai !"
             }
         }
+    },
+    pharmacy: {
+        icon: '💊',
+        customerIcon: '👤',
+        voice: 'nova',
+        color: '#16a34a',
+        cardIcon: 'fa-prescription-bottle-medical',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'prescription' },
+            { delay: 2500, type: 'pickup' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'dob' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'HealthPlus Pharmacy',
+            aiName: 'Lisa',
+            steps: ['Call', 'Request', 'Confirm', 'Done'],
+            totalLabel: 'Prescription',
+            cardTitle: 'Prescription Ready',
+            responses: {
+                greeting: "Hi, I need to check if my prescription is ready",
+                prescription: "It's for blood pressure medication, Amlodipine",
+                pickup: "I can come by in an hour",
+                name: "Margaret Wilson",
+                dob: "15th March 1965",
+                confirm: "Great, thanks so much!"
+            }
+        },
+        fr: {
+            name: 'Pharmacie Santé Plus',
+            aiName: 'Isabelle',
+            steps: ['Appel', 'Demande', 'Confirmer', 'Terminé'],
+            totalLabel: 'Ordonnance',
+            cardTitle: 'Ordonnance Prête',
+            responses: {
+                greeting: "Bonjour, je voudrais savoir si mon ordonnance est prête",
+                prescription: "C'est pour des médicaments contre la tension",
+                pickup: "Je peux passer dans une heure",
+                name: "Marie Dupont",
+                dob: "15 mars 1965",
+                confirm: "Parfait, merci beaucoup !"
+            }
+        }
+    },
+    bakery: {
+        icon: '🥐',
+        customerIcon: '👤',
+        voice: 'shimmer',
+        color: '#d97706',
+        cardIcon: 'fa-bread-slice',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'orderItem' },
+            { delay: 2500, type: 'quantity' },
+            { delay: 2000, type: 'pickupTime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Golden Crust Bakery',
+            aiName: 'Sophie',
+            steps: ['Call', 'Order', 'Confirm', 'Done'],
+            totalLabel: 'Order Total',
+            cardTitle: 'Bakery Order',
+            responses: {
+                greeting: "Hi, I'd like to order some pastries for tomorrow morning",
+                orderItem: "I need croissants and pain au chocolat",
+                quantity: "6 of each please",
+                pickupTime: "Around 8am tomorrow",
+                name: "Jennifer Blake",
+                phone: "0423 456 789",
+                confirm: "Perfect, see you then!"
+            }
+        },
+        fr: {
+            name: 'Boulangerie Dorée',
+            aiName: 'Margot',
+            steps: ['Appel', 'Commande', 'Confirmer', 'Terminé'],
+            totalLabel: 'Total',
+            cardTitle: 'Commande Boulangerie',
+            responses: {
+                greeting: "Bonjour, je voudrais commander des viennoiseries pour demain matin",
+                orderItem: "Des croissants et des pains au chocolat",
+                quantity: "6 de chaque s'il vous plaît",
+                pickupTime: "Vers 8h demain matin",
+                name: "Nathalie Blanc",
+                phone: "06 23 45 67 89",
+                confirm: "Parfait, à demain !"
+            }
+        }
+    },
+    florist: {
+        icon: '💐',
+        customerIcon: '👤',
+        voice: 'shimmer',
+        color: '#e11d48',
+        cardIcon: 'fa-seedling',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'occasion' },
+            { delay: 2500, type: 'budget' },
+            { delay: 2000, type: 'delivery' },
+            { delay: 2000, type: 'datetime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Bloom & Co Florist',
+            aiName: 'Rose',
+            steps: ['Call', 'Design', 'Confirm', 'Done'],
+            totalLabel: 'Bouquet',
+            cardTitle: 'Floral Order',
+            responses: {
+                greeting: "Hi, I need to order flowers for a special occasion",
+                occasion: "It's for my wife's birthday",
+                budget: "Around $80 to $100",
+                delivery: "Yes, delivery please",
+                datetime: "Tomorrow before noon",
+                name: "Michael Thompson, to 15 Rose Street",
+                confirm: "That sounds beautiful, thank you!"
+            }
+        },
+        fr: {
+            name: 'Fleurs & Jardins',
+            aiName: 'Rosalie',
+            steps: ['Appel', 'Création', 'Confirmer', 'Terminé'],
+            totalLabel: 'Bouquet',
+            cardTitle: 'Commande Florale',
+            responses: {
+                greeting: "Bonjour, j'aimerais commander des fleurs pour une occasion spéciale",
+                occasion: "C'est pour l'anniversaire de ma femme",
+                budget: "Entre 60 et 80 euros",
+                delivery: "Oui, en livraison s'il vous plaît",
+                datetime: "Demain avant midi",
+                name: "Michel Leroy, au 15 rue des Roses",
+                confirm: "Ça a l'air magnifique, merci !"
+            }
+        }
+    },
+    photographer: {
+        icon: '📸',
+        customerIcon: '👤',
+        voice: 'echo',
+        color: '#7c3aed',
+        cardIcon: 'fa-camera',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'eventType' },
+            { delay: 2500, type: 'datetime' },
+            { delay: 2000, type: 'location' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Capture Moments Studio',
+            aiName: 'Alex',
+            steps: ['Call', 'Book', 'Confirm', 'Done'],
+            totalLabel: 'Session',
+            cardTitle: 'Booking Confirmed',
+            responses: {
+                greeting: "Hi, I'm looking to book a photography session",
+                eventType: "It's for a wedding, about 6 hours coverage",
+                datetime: "March 15th next year",
+                location: "The ceremony is at St Mary's Church",
+                name: "Emma and James Mitchell",
+                phone: "0456 789 012",
+                confirm: "Wonderful, we're so excited!"
+            }
+        },
+        fr: {
+            name: 'Studio Moments Captés',
+            aiName: 'Alexandre',
+            steps: ['Appel', 'Réserver', 'Confirmer', 'Terminé'],
+            totalLabel: 'Séance',
+            cardTitle: 'Réservation Confirmée',
+            responses: {
+                greeting: "Bonjour, j'aimerais réserver une séance photo",
+                eventType: "C'est pour un mariage, environ 6 heures",
+                datetime: "Le 15 mars de l'année prochaine",
+                location: "La cérémonie est à l'église Sainte-Marie",
+                name: "Émilie et Jacques Martin",
+                phone: "06 56 78 90 12",
+                confirm: "Merveilleux, on a tellement hâte !"
+            }
+        }
+    },
+    tattoo: {
+        icon: '🎨',
+        customerIcon: '👤',
+        voice: 'onyx',
+        color: '#1f2937',
+        cardIcon: 'fa-pen-nib',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'design' },
+            { delay: 2500, type: 'size' },
+            { delay: 2000, type: 'artist' },
+            { delay: 2000, type: 'datetime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Ink Masters Studio',
+            aiName: 'Jake',
+            steps: ['Call', 'Consult', 'Confirm', 'Done'],
+            totalLabel: 'Deposit',
+            cardTitle: 'Session Booked',
+            responses: {
+                greeting: "Hey, I want to book a tattoo consultation",
+                design: "I'm thinking a Japanese sleeve, koi fish theme",
+                size: "Full sleeve, shoulder to wrist",
+                artist: "I've seen Mike's work online, is he available?",
+                datetime: "Any Saturday afternoon works for me",
+                name: "Chris Palmer",
+                confirm: "Awesome, can't wait!"
+            }
+        },
+        fr: {
+            name: 'Studio Encre et Art',
+            aiName: 'Julien',
+            steps: ['Appel', 'Consulter', 'Confirmer', 'Terminé'],
+            totalLabel: 'Acompte',
+            cardTitle: 'Séance Réservée',
+            responses: {
+                greeting: "Salut, je voudrais réserver une consultation pour un tatouage",
+                design: "Je pense à un sleeve japonais, thème carpe koï",
+                size: "Bras complet, de l'épaule au poignet",
+                artist: "J'ai vu le travail de Marc en ligne, il est disponible ?",
+                datetime: "N'importe quel samedi après-midi me convient",
+                name: "Christophe Mercier",
+                confirm: "Super, j'ai hâte !"
+            }
+        }
+    },
+    petgrooming: {
+        icon: '🐩',
+        customerIcon: '👤',
+        voice: 'shimmer',
+        color: '#0891b2',
+        cardIcon: 'fa-paw',
+        demoScript: [
+            { delay: 2000, type: 'greeting' },
+            { delay: 2500, type: 'petInfo' },
+            { delay: 2500, type: 'service' },
+            { delay: 2000, type: 'datetime' },
+            { delay: 2000, type: 'name' },
+            { delay: 2000, type: 'phone' },
+            { delay: 2000, type: 'confirm' }
+        ],
+        en: {
+            name: 'Pawfect Grooming',
+            aiName: 'Bella',
+            steps: ['Call', 'Book', 'Confirm', 'Done'],
+            totalLabel: 'Service',
+            cardTitle: 'Grooming Booked',
+            responses: {
+                greeting: "Hi, I'd like to book a grooming appointment for my dog",
+                petInfo: "He's a Golden Retriever named Max, about 3 years old",
+                service: "Full groom please, bath, haircut and nails",
+                datetime: "This Saturday morning if possible",
+                name: "Laura Henderson",
+                phone: "0478 901 234",
+                confirm: "Perfect, Max will love it!"
+            }
+        },
+        fr: {
+            name: 'Toilettage Parfait',
+            aiName: 'Léa',
+            steps: ['Appel', 'Réserver', 'Confirmer', 'Terminé'],
+            totalLabel: 'Service',
+            cardTitle: 'Toilettage Réservé',
+            responses: {
+                greeting: "Bonjour, je voudrais prendre rendez-vous pour faire toiletter mon chien",
+                petInfo: "C'est un Golden Retriever qui s'appelle Max, il a 3 ans",
+                service: "Toilettage complet s'il vous plaît, bain, coupe et griffes",
+                datetime: "Ce samedi matin si possible",
+                name: "Laure Martin",
+                phone: "06 78 90 12 34",
+                confirm: "Parfait, Max va adorer !"
+            }
+        }
     }
 };
 
@@ -717,7 +1002,19 @@ const Translations = {
         lawyerName: 'Legal',
         lawyerDesc: 'Consultations & case inquiries',
         realestateName: 'Real Estate',
-        realestateDesc: 'Property viewings & inquiries'
+        realestateDesc: 'Property viewings & inquiries',
+        pharmacyName: 'Pharmacy',
+        pharmacyDesc: 'Prescriptions & health advice',
+        bakeryName: 'Bakery',
+        bakeryDesc: 'Orders & special requests',
+        floristName: 'Florist',
+        floristDesc: 'Bouquets & delivery',
+        photographyName: 'Photo Studio',
+        photographyDesc: 'Sessions & packages',
+        tattooName: 'Tattoo Studio',
+        tattooDesc: 'Appointments & consultations',
+        petgroomingName: 'Pet Grooming',
+        petgroomingDesc: 'Grooming & pet care'
     },
     fr: {
         title: 'Réceptionniste IA',
@@ -768,7 +1065,19 @@ const Translations = {
         lawyerName: 'Cabinet Juridique',
         lawyerDesc: 'Consultations juridiques',
         realestateName: 'Immobilier',
-        realestateDesc: 'Visites et estimations'
+        realestateDesc: 'Visites et estimations',
+        pharmacyName: 'Pharmacie',
+        pharmacyDesc: 'Ordonnances et conseils',
+        bakeryName: 'Boulangerie',
+        bakeryDesc: 'Commandes et gâteaux',
+        floristName: 'Fleuriste',
+        floristDesc: 'Bouquets et livraisons',
+        photographyName: 'Studio Photo',
+        photographyDesc: 'Séances et forfaits',
+        tattooName: 'Studio Tatouage',
+        tattooDesc: 'Rendez-vous et projets',
+        petgroomingName: 'Toilettage',
+        petgroomingDesc: 'Soins pour animaux'
     }
 };
 
