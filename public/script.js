@@ -70,6 +70,23 @@ const Industries = {
         voice: 'shimmer',
         color: '#ef4444',
         cardIcon: 'fa-receipt',
+        quickActions: [
+            { emoji: '🍽️', label: 'Order', text: "I'd like to place an order please" },
+            { emoji: '📋', label: 'Menu', text: "What's on the menu?" },
+            { emoji: '⏰', label: 'Pickup', text: "Can I pick up in 20 mins?" }
+        ],
+        menuItems: [
+            { emoji: '🥗', name: 'Halloumi Salad', desc: 'Fresh greens, cherry tomatoes', price: 17 },
+            { emoji: '🧅', name: 'Onion Rings', desc: 'Crispy beer-battered', price: 6 },
+            { emoji: '🍫', name: 'Chocolate Brownie', desc: 'Warm with ice cream', price: 8 },
+            { emoji: '☕', name: 'Flat White', desc: 'Smooth espresso coffee', price: 5 }
+        ],
+        stepInfos: [
+            "📞 The AI answers and greets the hungry customer warmly.",
+            "🍽️ Taking the food order, suggesting sides and drinks.",
+            "✅ Confirming items, pickup time and contact details.",
+            "🎉 Order sent to kitchen! SMS confirmation on the way."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'orderItem' },
@@ -104,6 +121,23 @@ const Industries = {
         voice: 'echo',
         color: '#dc2626',
         cardIcon: 'fa-pizza-slice',
+        quickActions: [
+            { emoji: '🍕', label: 'Order', text: "I'd like to order a pizza" },
+            { emoji: '🛵', label: 'Delivery', text: "Do you deliver?" },
+            { emoji: '🌶️', label: 'Specials', text: "What are today's specials?" }
+        ],
+        menuItems: [
+            { emoji: '🍕', name: 'Margherita', desc: 'Classic tomato & mozzarella', price: 18 },
+            { emoji: '🥓', name: 'Meat Lovers', desc: 'Pepperoni, bacon, sausage', price: 24 },
+            { emoji: '🧄', name: 'Garlic Bread', desc: 'With herbs & butter', price: 8 },
+            { emoji: '🥤', name: 'Soft Drink', desc: 'Can - various flavors', price: 4 }
+        ],
+        stepInfos: [
+            "📞 Tony answers with his famous Italian enthusiasm!",
+            "🍕 Taking the pizza order, size and toppings.",
+            "✅ Confirming delivery/pickup and payment details.",
+            "🎉 Pizza's in the oven! Delivery on its way soon."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'orderItem' },
@@ -138,6 +172,23 @@ const Industries = {
         voice: 'nova',
         color: '#ec4899',
         cardIcon: 'fa-calendar-check',
+        quickActions: [
+            { emoji: '💇', label: 'Book', text: "I'd like to book an appointment" },
+            { emoji: '💅', label: 'Services', text: "What services do you offer?" },
+            { emoji: '📅', label: 'Availability', text: "When are you available?" }
+        ],
+        menuItems: [
+            { emoji: '✂️', name: 'Haircut', desc: 'Wash, cut & style', price: 65 },
+            { emoji: '🎨', name: 'Full Colour', desc: 'All-over colour', price: 120 },
+            { emoji: '✨', name: 'Highlights', desc: 'Foils & balayage', price: 150 },
+            { emoji: '💆', name: 'Treatment', desc: 'Deep conditioning', price: 45 }
+        ],
+        stepInfos: [
+            "📞 Sophie answers with style and enthusiasm!",
+            "💇 Discussing services, stylist preferences and timing.",
+            "✅ Confirming appointment details and contact info.",
+            "🎉 Appointment booked! See you at the salon."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'service' },
@@ -170,6 +221,23 @@ const Industries = {
         voice: 'alloy',
         color: '#06b6d4',
         cardIcon: 'fa-notes-medical',
+        quickActions: [
+            { emoji: '📅', label: 'Book', text: "I'd like to book an appointment" },
+            { emoji: '👨‍⚕️', label: 'Doctor', text: "Which doctors are available?" },
+            { emoji: '⏰', label: 'Urgent', text: "I need an urgent appointment" }
+        ],
+        menuItems: [
+            { emoji: '🩺', name: 'General Consult', desc: 'Standard GP visit', price: 75 },
+            { emoji: '💉', name: 'Vaccination', desc: 'Flu, travel, etc.', price: 40 },
+            { emoji: '🧪', name: 'Blood Test', desc: 'Pathology referral', price: 0 },
+            { emoji: '📝', name: 'Health Check', desc: 'Full health assessment', price: 150 }
+        ],
+        stepInfos: [
+            "📞 Rachel answers professionally and efficiently.",
+            "🏥 Checking availability, doctor preference and reason.",
+            "✅ Confirming patient details and Medicare info.",
+            "🎉 Appointment confirmed! Reminder SMS on the way."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'service' },
@@ -204,6 +272,23 @@ const Industries = {
         voice: 'nova',
         color: '#0ea5e9',
         cardIcon: 'fa-tooth',
+        quickActions: [
+            { emoji: '🦷', label: 'Book', text: "I need a dental appointment" },
+            { emoji: '😬', label: 'Emergency', text: "I have a toothache, it's urgent" },
+            { emoji: '💰', label: 'Prices', text: "What are your prices?" }
+        ],
+        menuItems: [
+            { emoji: '✨', name: 'Check & Clean', desc: 'Regular dental hygiene', price: 180 },
+            { emoji: '🦷', name: 'Filling', desc: 'Composite or amalgam', price: 200 },
+            { emoji: '😁', name: 'Whitening', desc: 'Professional whitening', price: 450 },
+            { emoji: '📸', name: 'X-Ray', desc: 'Digital dental x-ray', price: 60 }
+        ],
+        stepInfos: [
+            "📞 Grace answers with a reassuring, friendly tone.",
+            "🦷 Discussing the dental issue and preferred times.",
+            "✅ Confirming patient details and insurance info.",
+            "🎉 Appointment booked! Smile bright soon!"
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'reason' },
@@ -238,6 +323,23 @@ const Industries = {
         voice: 'nova',
         color: '#14b8a6',
         cardIcon: 'fa-paw',
+        quickActions: [
+            { emoji: '🐾', label: 'Book', text: "I need to book a vet appointment" },
+            { emoji: '🚨', label: 'Emergency', text: "My pet needs urgent care" },
+            { emoji: '💉', label: 'Vaccines', text: "I need to update my pet's vaccinations" }
+        ],
+        menuItems: [
+            { emoji: '🩺', name: 'Consultation', desc: 'General checkup', price: 85 },
+            { emoji: '💉', name: 'Vaccination', desc: 'Annual vaccines', price: 120 },
+            { emoji: '✂️', name: 'Desexing', desc: 'Surgical procedure', price: 350 },
+            { emoji: '🦷', name: 'Dental Clean', desc: 'Pet dental care', price: 450 }
+        ],
+        stepInfos: [
+            "📞 Bella answers with love for all furry friends!",
+            "🐾 Getting pet details, symptoms and urgency level.",
+            "✅ Confirming owner details and pet information.",
+            "🎉 Appointment booked! See you at the clinic."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'petType' },
@@ -272,6 +374,23 @@ const Industries = {
         voice: 'onyx',
         color: '#f59e0b',
         cardIcon: 'fa-car',
+        quickActions: [
+            { emoji: '🚗', label: 'Service', text: "I need to book a car service" },
+            { emoji: '🚨', label: 'Breakdown', text: "My car broke down, I need help" },
+            { emoji: '💰', label: 'Quote', text: "Can I get a quote?" }
+        ],
+        menuItems: [
+            { emoji: '🛢️', name: 'Basic Service', desc: 'Oil, filter, check', price: 189 },
+            { emoji: '🔧', name: 'Full Service', desc: 'Complete inspection', price: 350 },
+            { emoji: '🚧', name: 'Brake Service', desc: 'Pads & rotors check', price: 250 },
+            { emoji: '💻', name: 'Diagnostic', desc: 'Computer scan', price: 99 }
+        ],
+        stepInfos: [
+            "📞 Mike answers like a true Aussie car legend!",
+            "🚗 Getting vehicle details and service requirements.",
+            "✅ Confirming drop-off time and contact details.",
+            "🎉 Booking confirmed! She'll be right, mate."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'service' },
@@ -304,6 +423,23 @@ const Industries = {
         voice: 'shimmer',
         color: '#8b5cf6',
         cardIcon: 'fa-bed',
+        quickActions: [
+            { emoji: '🛏️', label: 'Book', text: "I'd like to book a room" },
+            { emoji: '📅', label: 'Availability', text: "What rooms are available?" },
+            { emoji: '🍽️', label: 'Amenities', text: "What amenities do you have?" }
+        ],
+        menuItems: [
+            { emoji: '🛏️', name: 'Standard Room', desc: 'Comfortable queen bed', price: 189 },
+            { emoji: '🌅', name: 'Ocean View', desc: 'King bed, balcony', price: 289 },
+            { emoji: '👑', name: 'Suite', desc: 'Luxury suite', price: 450 },
+            { emoji: '🍳', name: 'Breakfast', desc: 'Buffet add-on', price: 35 }
+        ],
+        stepInfos: [
+            "📞 James welcomes you with 5-star hospitality.",
+            "🏨 Checking room types, dates and special requests.",
+            "✅ Confirming reservation details and payment.",
+            "🎉 Booking confirmed! Welcome to the Grand."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'roomType' },
@@ -336,6 +472,23 @@ const Industries = {
         voice: 'onyx',
         color: '#22c55e',
         cardIcon: 'fa-dumbbell',
+        quickActions: [
+            { emoji: '💪', label: 'Join', text: "I want to join the gym" },
+            { emoji: '🏟️', label: 'Classes', text: "What classes do you offer?" },
+            { emoji: '🎫', label: 'Trial', text: "Can I get a free trial?" }
+        ],
+        menuItems: [
+            { emoji: '🎫', name: 'Day Pass', desc: 'Single visit', price: 20 },
+            { emoji: '💪', name: 'Monthly', desc: 'Full access', price: 69 },
+            { emoji: '🥇', name: 'Annual', desc: 'Best value', price: 599 },
+            { emoji: '🧑‍🏫', name: 'PT Session', desc: 'Personal trainer', price: 80 }
+        ],
+        stepInfos: [
+            "📞 Alex answers with energy and motivation!",
+            "🏋️ Discussing fitness goals and membership options.",
+            "✅ Confirming trial visit or membership signup.",
+            "🎉 You're in! Get ready to crush those goals."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'interest' },
@@ -368,6 +521,23 @@ const Industries = {
         voice: 'shimmer',
         color: '#a855f7',
         cardIcon: 'fa-spa',
+        quickActions: [
+            { emoji: '💆', label: 'Book', text: "I'd like to book a treatment" },
+            { emoji: '👆', label: 'Massage', text: "What massages do you offer?" },
+            { emoji: '🎁', label: 'Packages', text: "Do you have any packages?" }
+        ],
+        menuItems: [
+            { emoji: '💆', name: 'Swedish Massage', desc: 'Relaxation massage', price: 95 },
+            { emoji: '💪', name: 'Deep Tissue', desc: 'Therapeutic massage', price: 110 },
+            { emoji: '🪨', name: 'Hot Stone', desc: 'Heated stone therapy', price: 130 },
+            { emoji: '🧖', name: 'Facial', desc: 'Rejuvenating facial', price: 85 }
+        ],
+        stepInfos: [
+            "📞 Serena answers with calm, soothing energy.",
+            "🧘 Discussing treatments, duration and preferences.",
+            "✅ Confirming booking details and special requests.",
+            "🎉 Relaxation awaits! See you at the spa."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'treatment' },
@@ -402,6 +572,23 @@ const Industries = {
         voice: 'onyx',
         color: '#64748b',
         cardIcon: 'fa-gavel',
+        quickActions: [
+            { emoji: '📅', label: 'Consult', text: "I need to book a consultation" },
+            { emoji: '⚖️', label: 'Areas', text: "What areas of law do you cover?" },
+            { emoji: '💰', label: 'Fees', text: "What are your fees?" }
+        ],
+        menuItems: [
+            { emoji: '💼', name: 'Initial Consult', desc: '30-minute meeting', price: 150 },
+            { emoji: '🏠', name: 'Property Law', desc: 'Conveyancing services', price: 1200 },
+            { emoji: '💔', name: 'Family Law', desc: 'Divorce, custody', price: 350 },
+            { emoji: '📝', name: 'Will & Estate', desc: 'Estate planning', price: 450 }
+        ],
+        stepInfos: [
+            "📞 Victoria answers with professionalism and discretion.",
+            "⚖️ Understanding the legal matter and urgency.",
+            "✅ Confirming consultation details and client info.",
+            "🎉 Consultation booked. We'll be in touch."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'matter' },
@@ -434,6 +621,23 @@ const Industries = {
         voice: 'echo',
         color: '#059669',
         cardIcon: 'fa-home',
+        quickActions: [
+            { emoji: '🏠', label: 'View', text: "I'd like to book a property viewing" },
+            { emoji: '🔍', label: 'Search', text: "What properties do you have?" },
+            { emoji: '💰', label: 'Appraisal', text: "I need a property appraisal" }
+        ],
+        menuItems: [
+            { emoji: '🏡', name: '3 Bed House', desc: 'Family home', price: 850000 },
+            { emoji: '🏙️', name: '2 Bed Apartment', desc: 'City living', price: 550000 },
+            { emoji: '🌳', name: 'Townhouse', desc: 'Low maintenance', price: 720000 },
+            { emoji: '🏞️', name: 'Land', desc: 'Build your dream', price: 450000 }
+        ],
+        stepInfos: [
+            "📞 Marcus answers with property expertise!",
+            "🏠 Discussing requirements, budget and locations.",
+            "✅ Scheduling property viewings and follow-up.",
+            "🎉 Viewing booked! Your dream home awaits."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'interest' },
@@ -468,6 +672,23 @@ const Industries = {
         voice: 'nova',
         color: '#16a34a',
         cardIcon: 'fa-prescription-bottle-medical',
+        quickActions: [
+            { emoji: '💊', label: 'Prescription', text: "Is my prescription ready?" },
+            { emoji: '🩺', label: 'Advice', text: "I need some health advice" },
+            { emoji: '🔄', label: 'Refill', text: "I need to refill my medication" }
+        ],
+        menuItems: [
+            { emoji: '💊', name: 'Prescription', desc: 'PBS medications', price: 7 },
+            { emoji: '🧤', name: 'Vitamins', desc: 'Daily supplements', price: 25 },
+            { emoji: '🩺', name: 'First Aid', desc: 'Medical supplies', price: 15 },
+            { emoji: '🧬', name: 'Blood Pressure', desc: 'Free check', price: 0 }
+        ],
+        stepInfos: [
+            "📞 Dr. Sarah answers with healthcare expertise.",
+            "💊 Checking prescription status or health query.",
+            "✅ Confirming patient details and pickup time.",
+            "🎉 Ready for pickup! Stay healthy."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'prescription' },
@@ -498,6 +719,23 @@ const Industries = {
         voice: 'shimmer',
         color: '#d97706',
         cardIcon: 'fa-bread-slice',
+        quickActions: [
+            { emoji: '🥐', label: 'Order', text: "I'd like to place an order" },
+            { emoji: '🎂', label: 'Cakes', text: "Do you make custom cakes?" },
+            { emoji: '⏰', label: 'Pickup', text: "When can I pick up?" }
+        ],
+        menuItems: [
+            { emoji: '🥐', name: 'Croissants', desc: 'Fresh buttery', price: 5 },
+            { emoji: '🍞', name: 'Sourdough', desc: 'Artisan loaf', price: 9 },
+            { emoji: '🎂', name: 'Custom Cake', desc: 'Made to order', price: 85 },
+            { emoji: '🧁', name: 'Cupcakes (6)', desc: 'Assorted flavors', price: 24 }
+        ],
+        stepInfos: [
+            "📞 Emma answers with sweet enthusiasm!",
+            "🥐 Taking the order for fresh baked goods.",
+            "✅ Confirming items and pickup time.",
+            "🎉 Fresh from the oven! Order confirmed."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'orderItem' },
@@ -530,6 +768,23 @@ const Industries = {
         voice: 'shimmer',
         color: '#e11d48',
         cardIcon: 'fa-seedling',
+        quickActions: [
+            { emoji: '🌹', label: 'Order', text: "I'd like to order flowers" },
+            { emoji: '🚚', label: 'Delivery', text: "Do you deliver?" },
+            { emoji: '🎁', label: 'Occasions', text: "What do you recommend for a birthday?" }
+        ],
+        menuItems: [
+            { emoji: '🌹', name: 'Dozen Roses', desc: 'Classic red roses', price: 89 },
+            { emoji: '💐', name: 'Mixed Bouquet', desc: 'Seasonal flowers', price: 65 },
+            { emoji: '🌷', name: 'Tulips', desc: 'Fresh tulip bunch', price: 45 },
+            { emoji: '🌻', name: 'Sunflowers', desc: 'Bright & cheerful', price: 55 }
+        ],
+        stepInfos: [
+            "📞 Lily answers with passion for blooms!",
+            "🌹 Discussing occasion, preferences and budget.",
+            "✅ Confirming delivery details and message.",
+            "🎉 Beautiful blooms on the way!"
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'occasion' },
@@ -556,12 +811,29 @@ const Industries = {
             }
         }
     },
-    photographer: {
+    photography: {
         icon: '📸',
         customerIcon: '👤',
         voice: 'echo',
         color: '#7c3aed',
         cardIcon: 'fa-camera',
+        quickActions: [
+            { emoji: '📷', label: 'Book', text: "I'd like to book a session" },
+            { emoji: '👰', label: 'Wedding', text: "I need a wedding photographer" },
+            { emoji: '💰', label: 'Packages', text: "What packages do you offer?" }
+        ],
+        menuItems: [
+            { emoji: '👶', name: 'Portrait', desc: '1 hour session', price: 250 },
+            { emoji: '👰', name: 'Wedding', desc: 'Full day coverage', price: 3500 },
+            { emoji: '👨‍👩‍👧', name: 'Family', desc: '2 hour session', price: 450 },
+            { emoji: '🏢', name: 'Corporate', desc: 'Headshots & events', price: 600 }
+        ],
+        stepInfos: [
+            "📞 James answers with creative energy!",
+            "📷 Discussing event type, style and coverage.",
+            "✅ Confirming date, location and package.",
+            "🎉 Booking confirmed! Ready to capture magic."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'eventType' },
@@ -594,6 +866,23 @@ const Industries = {
         voice: 'onyx',
         color: '#1f2937',
         cardIcon: 'fa-pen-nib',
+        quickActions: [
+            { emoji: '🎨', label: 'Book', text: "I want to book a tattoo session" },
+            { emoji: '📝', label: 'Consult', text: "I need a design consultation" },
+            { emoji: '💰', label: 'Prices', text: "What are your rates?" }
+        ],
+        menuItems: [
+            { emoji: '✨', name: 'Small Tattoo', desc: 'Under 2 inches', price: 150 },
+            { emoji: '🎨', name: 'Medium', desc: '2-5 inches', price: 350 },
+            { emoji: '💪', name: 'Large', desc: 'Half sleeve', price: 800 },
+            { emoji: '🌟', name: 'Custom Design', desc: 'Unique artwork', price: 100 }
+        ],
+        stepInfos: [
+            "📞 Mike answers with artistic flair!",
+            "🎨 Discussing design ideas, size and placement.",
+            "✅ Confirming consultation or session booking.",
+            "🎉 Can't wait to create your masterpiece!"
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'design' },
@@ -626,6 +915,23 @@ const Industries = {
         voice: 'shimmer',
         color: '#0891b2',
         cardIcon: 'fa-paw',
+        quickActions: [
+            { emoji: '🐕', label: 'Book', text: "I need to book a grooming session" },
+            { emoji: '✂️', label: 'Services', text: "What grooming services do you offer?" },
+            { emoji: '💰', label: 'Prices', text: "What are your prices?" }
+        ],
+        menuItems: [
+            { emoji: '🛁', name: 'Bath & Brush', desc: 'Wash and dry', price: 45 },
+            { emoji: '✂️', name: 'Full Groom', desc: 'Bath, cut & nails', price: 75 },
+            { emoji: '🐾', name: 'Nail Trim', desc: 'Quick nail clip', price: 20 },
+            { emoji: '🧴', name: 'De-shedding', desc: 'Reduce shedding', price: 55 }
+        ],
+        stepInfos: [
+            "📞 Bella answers with love for furry friends!",
+            "🐩 Getting pet details and grooming needs.",
+            "✅ Confirming appointment and special requests.",
+            "🎉 They'll look fabulous! See you soon."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'petInfo' },
@@ -660,6 +966,23 @@ const Industries = {
         voice: 'shimmer',
         color: '#06b6d4',
         cardIcon: 'fa-spray-can-sparkles',
+        quickActions: [
+            { emoji: '🧹', label: 'Book', text: "I need a cleaning service" },
+            { emoji: '🏠', label: 'Quote', text: "Can I get a quote?" },
+            { emoji: '📅', label: 'Regular', text: "I want regular cleaning" }
+        ],
+        menuItems: [
+            { emoji: '✨', name: 'Standard Clean', desc: 'Weekly/fortnightly', price: 150 },
+            { emoji: '🧴', name: 'Deep Clean', desc: 'Top to bottom', price: 350 },
+            { emoji: '🛁', name: 'Carpet Clean', desc: 'Steam cleaning', price: 200 },
+            { emoji: '🧼', name: 'Move Out Clean', desc: 'Bond clean', price: 450 }
+        ],
+        stepInfos: [
+            "📞 Maria answers with professionalism!",
+            "🧹 Getting property details and cleaning needs.",
+            "✅ Confirming date, time and access details.",
+            "🎉 Cleaning scheduled! Your place will sparkle."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'service' },
@@ -692,6 +1015,23 @@ const Industries = {
         voice: 'echo',
         color: '#eab308',
         cardIcon: 'fa-bolt',
+        quickActions: [
+            { emoji: '⚡', label: 'Urgent', text: "I have an electrical emergency" },
+            { emoji: '🔌', label: 'Book', text: "I need an electrician" },
+            { emoji: '💰', label: 'Quote', text: "Can I get a quote?" }
+        ],
+        menuItems: [
+            { emoji: '📡', name: 'Call-out', desc: 'Diagnosis fee', price: 99 },
+            { emoji: '🔌', name: 'Power Point', desc: 'Install/repair', price: 150 },
+            { emoji: '💡', name: 'Lighting', desc: 'Install/replace', price: 180 },
+            { emoji: '⚡', name: 'Safety Check', desc: 'Full inspection', price: 250 }
+        ],
+        stepInfos: [
+            "📞 Dave answers ready to power up!",
+            "🔌 Understanding the electrical issue and urgency.",
+            "✅ Confirming address and booking time.",
+            "🎉 Sparky's on the way! Job booked."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'issue' },
@@ -724,6 +1064,23 @@ const Industries = {
         voice: 'onyx',
         color: '#3b82f6',
         cardIcon: 'fa-faucet',
+        quickActions: [
+            { emoji: '🚨', label: 'Emergency', text: "I have a plumbing emergency" },
+            { emoji: '🚿', label: 'Book', text: "I need a plumber" },
+            { emoji: '💰', label: 'Quote', text: "Can I get a quote?" }
+        ],
+        menuItems: [
+            { emoji: '🔧', name: 'Call-out', desc: 'Diagnosis fee', price: 99 },
+            { emoji: '🚿', name: 'Tap Repair', desc: 'Fix leaky tap', price: 120 },
+            { emoji: '🚽', name: 'Toilet Repair', desc: 'Unblock/repair', price: 180 },
+            { emoji: '🌡️', name: 'Hot Water', desc: 'System repair', price: 350 }
+        ],
+        stepInfos: [
+            "📞 Steve answers, ready to fix it fast!",
+            "🚿 Understanding the plumbing problem and urgency.",
+            "✅ Confirming address and booking time.",
+            "🎉 Plumber dispatched! Help is on the way."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'issue' },
@@ -756,6 +1113,23 @@ const Industries = {
         voice: 'echo',
         color: '#22c55e',
         cardIcon: 'fa-tree',
+        quickActions: [
+            { emoji: '🌿', label: 'Book', text: "I need lawn and garden services" },
+            { emoji: '🌳', label: 'Quote', text: "Can I get a quote?" },
+            { emoji: '🔄', label: 'Regular', text: "I want regular maintenance" }
+        ],
+        menuItems: [
+            { emoji: '🌾', name: 'Lawn Mow', desc: 'Standard mow', price: 60 },
+            { emoji: '✂️', name: 'Hedge Trim', desc: 'Shape & trim', price: 80 },
+            { emoji: '🍂', name: 'Garden Clean', desc: 'Full cleanup', price: 200 },
+            { emoji: '🌱', name: 'Planting', desc: 'New plants', price: 150 }
+        ],
+        stepInfos: [
+            "📞 Tom answers with garden enthusiasm!",
+            "🌳 Discussing yard size and services needed.",
+            "✅ Confirming schedule and access details.",
+            "🎉 Garden service booked! Looking great soon."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'service' },
@@ -788,6 +1162,23 @@ const Industries = {
         voice: 'onyx',
         color: '#f97316',
         cardIcon: 'fa-truck-moving',
+        quickActions: [
+            { emoji: '🚚', label: 'Quote', text: "I need a moving quote" },
+            { emoji: '📅', label: 'Book', text: "I want to book a move" },
+            { emoji: '📦', label: 'Packing', text: "Do you offer packing services?" }
+        ],
+        menuItems: [
+            { emoji: '🚚', name: '2 Movers', desc: 'Small move', price: 150 },
+            { emoji: '📦', name: '3 Movers', desc: 'Standard move', price: 200 },
+            { emoji: '🏠', name: 'Full Service', desc: 'Pack & move', price: 400 },
+            { emoji: '🎹', name: 'Piano', desc: 'Specialty move', price: 300 }
+        ],
+        stepInfos: [
+            "📞 Mark answers ready to help you move!",
+            "🚚 Getting move details, size and dates.",
+            "✅ Confirming addresses and booking.",
+            "🎉 Move booked! Stress-free relocation ahead."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'moveType' },
@@ -820,6 +1211,23 @@ const Industries = {
         voice: 'echo',
         color: '#64748b',
         cardIcon: 'fa-key',
+        quickActions: [
+            { emoji: '🚨', label: 'Locked Out', text: "I'm locked out!" },
+            { emoji: '🔑', label: 'Rekey', text: "I need locks rekeyed" },
+            { emoji: '🔒', label: 'New Lock', text: "I need a new lock installed" }
+        ],
+        menuItems: [
+            { emoji: '🚗', name: 'Car Lockout', desc: 'Emergency unlock', price: 89 },
+            { emoji: '🏠', name: 'House Lockout', desc: 'Emergency unlock', price: 99 },
+            { emoji: '🔑', name: 'Rekey', desc: 'Change key combo', price: 150 },
+            { emoji: '🔒', name: 'New Lock', desc: 'Install new lock', price: 200 }
+        ],
+        stepInfos: [
+            "📞 Frank answers calmly in your emergency!",
+            "🔒 Getting your location and situation.",
+            "✅ Dispatching locksmith immediately.",
+            "🎉 Help is on the way! ETA provided."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'issue' },
@@ -853,6 +1261,23 @@ const Industries = {
         voice: 'nova',
         color: '#0ea5e9',
         cardIcon: 'fa-eye',
+        quickActions: [
+            { emoji: '👁️', label: 'Eye Test', text: "I need an eye test" },
+            { emoji: '👓', label: 'Glasses', text: "I need new glasses" },
+            { emoji: '📞', label: 'Contacts', text: "I need contact lenses" }
+        ],
+        menuItems: [
+            { emoji: '👁️', name: 'Eye Exam', desc: 'Comprehensive test', price: 75 },
+            { emoji: '👓', name: 'Frames', desc: 'Designer range', price: 199 },
+            { emoji: '🩹', name: 'Contacts', desc: 'Monthly supply', price: 60 },
+            { emoji: '🕶️', name: 'Sunglasses', desc: 'Prescription sunnies', price: 249 }
+        ],
+        stepInfos: [
+            "📞 Lisa answers with care for your vision!",
+            "👁️ Discussing eye care needs and insurance.",
+            "✅ Confirming appointment details.",
+            "🎉 Eye exam booked! See you soon."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'service' },
@@ -885,6 +1310,23 @@ const Industries = {
         voice: 'shimmer',
         color: '#14b8a6',
         cardIcon: 'fa-shoe-prints',
+        quickActions: [
+            { emoji: '🦶', label: 'Book', text: "I need a podiatry appointment" },
+            { emoji: '🩺', label: 'Pain', text: "I have foot pain" },
+            { emoji: '👟', label: 'Orthotics', text: "I need custom orthotics" }
+        ],
+        menuItems: [
+            { emoji: '🦶', name: 'Consultation', desc: 'Initial assessment', price: 90 },
+            { emoji: '✂️', name: 'Nail Care', desc: 'Trim & treatment', price: 70 },
+            { emoji: '👟', name: 'Orthotics', desc: 'Custom insoles', price: 350 },
+            { emoji: '🩺', name: 'Corn Removal', desc: 'Professional care', price: 80 }
+        ],
+        stepInfos: [
+            "📞 Dr. Kate's receptionist answers warmly.",
+            "🦶 Understanding foot issues and concerns.",
+            "✅ Confirming appointment and patient details.",
+            "🎉 Appointment booked! Happy feet ahead."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'issue' },
@@ -917,6 +1359,23 @@ const Industries = {
         voice: 'nova',
         color: '#a855f7',
         cardIcon: 'fa-spa',
+        quickActions: [
+            { emoji: '💆', label: 'Book', text: "I'd like to book a massage" },
+            { emoji: '💪', label: 'Deep Tissue', text: "I need a deep tissue massage" },
+            { emoji: '🎁', label: 'Couples', text: "Do you offer couples massage?" }
+        ],
+        menuItems: [
+            { emoji: '🧘', name: 'Relaxation', desc: '60 min Swedish', price: 90 },
+            { emoji: '💪', name: 'Deep Tissue', desc: '60 min therapeutic', price: 100 },
+            { emoji: '🪨', name: 'Hot Stone', desc: '75 min treatment', price: 120 },
+            { emoji: '👫', name: 'Couples', desc: 'Side by side', price: 180 }
+        ],
+        stepInfos: [
+            "📞 Zen answers with calming energy.",
+            "💆 Discussing massage type and preferences.",
+            "✅ Confirming booking and therapist preference.",
+            "🎉 Relaxation awaits! Booking confirmed."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'service' },
@@ -949,6 +1408,23 @@ const Industries = {
         voice: 'shimmer',
         color: '#ec4899',
         cardIcon: 'fa-hand-sparkles',
+        quickActions: [
+            { emoji: '💅', label: 'Book', text: "I'd like to book a nail appointment" },
+            { emoji: '✨', label: 'Gel', text: "Do you do gel nails?" },
+            { emoji: '🎨', label: 'Art', text: "Do you offer nail art?" }
+        ],
+        menuItems: [
+            { emoji: '💅', name: 'Manicure', desc: 'Classic polish', price: 35 },
+            { emoji: '✨', name: 'Gel Manicure', desc: 'Long-lasting gel', price: 55 },
+            { emoji: '🦶', name: 'Pedicure', desc: 'Full foot care', price: 50 },
+            { emoji: '🎨', name: 'Nail Art', desc: 'Custom designs', price: 15 }
+        ],
+        stepInfos: [
+            "📞 Kim answers with bubbly enthusiasm!",
+            "💅 Discussing services and nail preferences.",
+            "✅ Confirming appointment time.",
+            "🎉 Gorgeous nails coming up!"
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'service' },
@@ -982,6 +1458,23 @@ const Industries = {
         voice: 'echo',
         color: '#78350f',
         cardIcon: 'fa-mug-hot',
+        quickActions: [
+            { emoji: '☕', label: 'Order', text: "I'd like to order coffees" },
+            { emoji: '🥐', label: 'Food', text: "What food do you have?" },
+            { emoji: '⏰', label: 'Pickup', text: "When can I pick up?" }
+        ],
+        menuItems: [
+            { emoji: '☕', name: 'Flat White', desc: 'Classic aussie coffee', price: 5 },
+            { emoji: '☕', name: 'Latte', desc: 'Smooth & creamy', price: 5 },
+            { emoji: '🥐', name: 'Croissant', desc: 'Fresh buttery', price: 5 },
+            { emoji: '🍞', name: 'Toast', desc: 'Sourdough w/ avo', price: 12 }
+        ],
+        stepInfos: [
+            "📞 Barista Joe answers with caffeine energy!",
+            "☕ Taking the coffee order and extras.",
+            "✅ Confirming order and pickup time.",
+            "🎉 Coffee's brewing! See you soon."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'orderItem' },
@@ -1012,6 +1505,23 @@ const Industries = {
         voice: 'shimmer',
         color: '#fbbf24',
         cardIcon: 'fa-ice-cream',
+        quickActions: [
+            { emoji: '🍦', label: 'Order', text: "I'd like to order ice cream" },
+            { emoji: '🍨', label: 'Flavors', text: "What flavors do you have?" },
+            { emoji: '🎂', label: 'Party', text: "I need ice cream for a party" }
+        ],
+        menuItems: [
+            { emoji: '🍦', name: 'Single Scoop', desc: 'One flavor', price: 5 },
+            { emoji: '🍨', name: 'Double Scoop', desc: 'Two flavors', price: 7.5 },
+            { emoji: '🥤', name: 'Milkshake', desc: 'Thick & creamy', price: 9 },
+            { emoji: '🧁', name: 'Tub (1L)', desc: 'Take home', price: 15 }
+        ],
+        stepInfos: [
+            "📞 Sunny answers with sweet enthusiasm!",
+            "🍦 Taking the ice cream order and flavors.",
+            "✅ Confirming size and pickup time.",
+            "🎉 Sweet treat on the way!"
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'orderItem' },
@@ -1044,6 +1554,23 @@ const Industries = {
         voice: 'nova',
         color: '#dc2626',
         cardIcon: 'fa-fish',
+        quickActions: [
+            { emoji: '🍣', label: 'Order', text: "I'd like to order sushi" },
+            { emoji: '🚚', label: 'Delivery', text: "Do you deliver?" },
+            { emoji: '🍱', label: 'Bento', text: "What bento boxes do you have?" }
+        ],
+        menuItems: [
+            { emoji: '🍣', name: 'Salmon Sashimi', desc: '6 pieces', price: 16 },
+            { emoji: '🌣', name: 'California Roll', desc: '8 pieces', price: 12 },
+            { emoji: '🍱', name: 'Bento Box', desc: 'Complete meal', price: 22 },
+            { emoji: '🥮', name: 'Gyoza', desc: '6 dumplings', price: 10 }
+        ],
+        stepInfos: [
+            "📞 Yuki answers with Japanese hospitality!",
+            "🍣 Taking the sushi order carefully.",
+            "✅ Confirming items and pickup/delivery.",
+            "🎉 Arigatou! Your order is being prepared."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'orderItem' },
@@ -1076,6 +1603,23 @@ const Industries = {
         voice: 'echo',
         color: '#ea580c',
         cardIcon: 'fa-burger',
+        quickActions: [
+            { emoji: '🍔', label: 'Order', text: "I want to order food" },
+            { emoji: '🍟', label: 'Combo', text: "What combos do you have?" },
+            { emoji: '🚚', label: 'Delivery', text: "Do you deliver?" }
+        ],
+        menuItems: [
+            { emoji: '🍔', name: 'Classic Burger', desc: 'Beef patty', price: 9 },
+            { emoji: '🍟', name: 'Fries', desc: 'Large size', price: 6 },
+            { emoji: '🍗', name: 'Chicken Burger', desc: 'Crispy chicken', price: 10 },
+            { emoji: '🥤', name: 'Combo Deal', desc: 'Burger+Fries+Drink', price: 15 }
+        ],
+        stepInfos: [
+            "📞 Billy answers fast and friendly!",
+            "🍔 Taking your burger order quickly.",
+            "✅ Confirming order and pickup/delivery.",
+            "🎉 Order up! Almost ready."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'orderItem' },
@@ -1109,6 +1653,23 @@ const Industries = {
         voice: 'onyx',
         color: '#0284c7',
         cardIcon: 'fa-car',
+        quickActions: [
+            { emoji: '🚗', label: 'Lesson', text: "I want to book a driving lesson" },
+            { emoji: '🎫', label: 'Package', text: "What packages do you offer?" },
+            { emoji: '🏆', label: 'Test', text: "I need a test day lesson" }
+        ],
+        menuItems: [
+            { emoji: '🚗', name: 'Single Lesson', desc: '1 hour', price: 70 },
+            { emoji: '🎫', name: '5 Lessons', desc: 'Package deal', price: 320 },
+            { emoji: '🌟', name: '10 Lessons', desc: 'Best value', price: 600 },
+            { emoji: '🏆', name: 'Test Day', desc: 'Pre-test + car', price: 150 }
+        ],
+        stepInfos: [
+            "📞 Instructor Mike's team answers encouragingly!",
+            "🚗 Discussing experience and lesson needs.",
+            "✅ Confirming schedule and pickup location.",
+            "🎉 Lesson booked! You'll be driving soon."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'experience' },
@@ -1141,6 +1702,23 @@ const Industries = {
         voice: 'nova',
         color: '#6366f1',
         cardIcon: 'fa-graduation-cap',
+        quickActions: [
+            { emoji: '📚', label: 'Find Tutor', text: "I need a tutor" },
+            { emoji: '🧠', label: 'Subjects', text: "What subjects do you cover?" },
+            { emoji: '💰', label: 'Rates', text: "What are your rates?" }
+        ],
+        menuItems: [
+            { emoji: '📖', name: 'Primary', desc: '1 hour session', price: 50 },
+            { emoji: '📚', name: 'High School', desc: '1 hour session', price: 60 },
+            { emoji: '🎓', name: 'VCE/HSC', desc: 'Specialist', price: 75 },
+            { emoji: '👥', name: 'Group', desc: 'Per student', price: 35 }
+        ],
+        stepInfos: [
+            "📞 Professor Amy's team answers warmly!",
+            "📚 Discussing student needs and subjects.",
+            "✅ Matching with the right tutor.",
+            "🎉 Tutor matched! Success awaits."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'subject' },
@@ -1171,6 +1749,25 @@ const Industries = {
         icon: '🧒',
         customerIcon: '👤',
         voice: 'shimmer',
+        color: '#f472b6',
+        cardIcon: 'fa-baby',
+        quickActions: [
+            { emoji: '👶', label: 'Enquire', text: "I'm looking for childcare" },
+            { emoji: '📅', label: 'Availability', text: "Do you have spots available?" },
+            { emoji: '💰', label: 'Fees', text: "What are your fees?" }
+        ],
+        menuItems: [
+            { emoji: '☀️', name: 'Full Day', desc: '7am-6pm', price: 120 },
+            { emoji: '🌙', name: 'Half Day', desc: '4 hours', price: 70 },
+            { emoji: '🏠', name: 'After School', desc: '3pm-6pm', price: 35 },
+            { emoji: '🌴', name: 'Holiday', desc: 'Per day', price: 85 }
+        ],
+        stepInfos: [
+            "📞 Miss Jenny answers with warmth and care!",
+            "👶 Learning about your child's needs.",
+            "✅ Checking availability and requirements.",
+            "🎉 Enrollment started! Welcome to the family."
+        ],
         color: '#f472b6',
         cardIcon: 'fa-baby',
         demoScript: [
@@ -1205,6 +1802,23 @@ const Industries = {
         voice: 'shimmer',
         color: '#84cc16',
         cardIcon: 'fa-cat',
+        quickActions: [
+            { emoji: '🐾', label: 'Book', text: "I need to board my pet" },
+            { emoji: '📅', label: 'Dates', text: "I need boarding from..." },
+            { emoji: '💰', label: 'Rates', text: "What are your rates?" }
+        ],
+        menuItems: [
+            { emoji: '🐕', name: 'Dog Boarding', desc: 'Per night', price: 50 },
+            { emoji: '🐈', name: 'Cat Boarding', desc: 'Per night', price: 35 },
+            { emoji: '👑', name: 'Luxury Suite', desc: 'Premium stay', price: 75 },
+            { emoji: '☀️', name: 'Day Care', desc: 'Daily visit', price: 40 }
+        ],
+        stepInfos: [
+            "📞 Lucy answers with pet parent understanding!",
+            "🐾 Getting pet details and special needs.",
+            "✅ Confirming dates and requirements.",
+            "🎉 Boarding booked! They'll have a blast."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'petInfo' },
@@ -1237,6 +1851,23 @@ const Industries = {
         voice: 'nova',
         color: '#f9a8d4',
         cardIcon: 'fa-heart',
+        quickActions: [
+            { emoji: '💍', label: 'Plan', text: "We need a wedding planner" },
+            { emoji: '📅', label: 'Date', text: "We're getting married in..." },
+            { emoji: '💰', label: 'Packages', text: "What packages do you offer?" }
+        ],
+        menuItems: [
+            { emoji: '💒', name: 'Full Planning', desc: 'Everything covered', price: 5000 },
+            { emoji: '📅', name: 'Partial', desc: 'Key elements', price: 2500 },
+            { emoji: '✨', name: 'Day-of', desc: 'Coordination only', price: 1500 },
+            { emoji: '✈️', name: 'Destination', desc: 'Quote based', price: 0 }
+        ],
+        stepInfos: [
+            "📞 Grace answers with wedding excitement!",
+            "💒 Learning about your dream wedding.",
+            "✅ Booking consultation and next steps.",
+            "🎉 Congratulations! Let's make magic."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'date' },
@@ -1269,6 +1900,23 @@ const Industries = {
         voice: 'echo',
         color: '#7c3aed',
         cardIcon: 'fa-champagne-glasses',
+        quickActions: [
+            { emoji: '🎪', label: 'Book', text: "I want to book a venue" },
+            { emoji: '📅', label: 'Viewing', text: "Can I schedule a viewing?" },
+            { emoji: '💰', label: 'Pricing', text: "What are your venue rates?" }
+        ],
+        menuItems: [
+            { emoji: '🏛️', name: 'Main Hall', desc: '200 guests', price: 3000 },
+            { emoji: '🌳', name: 'Garden', desc: '100 guests', price: 2000 },
+            { emoji: '🏢', name: 'Boardroom', desc: '30 guests', price: 500 },
+            { emoji: '🌃', name: 'Rooftop', desc: '80 guests', price: 2500 }
+        ],
+        stepInfos: [
+            "📞 Victoria answers with event expertise!",
+            "🎭 Discussing event type, date and capacity.",
+            "✅ Scheduling venue viewing or booking.",
+            "🎉 Viewing confirmed! Let's create magic."
+        ],
         demoScript: [
             { delay: 2000, type: 'greeting' },
             { delay: 2500, type: 'eventType' },
@@ -1596,7 +2244,9 @@ const UI = {
             line.classList.toggle('active', i < step);
         });
         
-        const infos = t('stepInfos');
+        // Use industry-specific step infos if available
+        const ind = getIndustry();
+        const infos = ind.stepInfos || t('stepInfos');
         if (DOM.stepInfoEl) DOM.stepInfoEl.textContent = infos[step] || infos[0];
     },
 
@@ -1617,6 +2267,64 @@ const UI = {
         
         // Update CSS variables for industry color
         this.updateIndustryColor();
+        
+        // Update quick actions for this industry
+        this.updateQuickActions();
+        
+        // Update menu/services section
+        this.updateMenuSection();
+    },
+
+    updateQuickActions() {
+        const ind = getIndustry();
+        const quickActionsContainer = document.querySelector('.quick-actions');
+        
+        if (!quickActionsContainer || !ind.quickActions) return;
+        
+        quickActionsContainer.innerHTML = ind.quickActions.map(action => 
+            `<button class="quick-btn" data-text="${action.text}">${action.emoji} ${action.label}</button>`
+        ).join('');
+        
+        // Re-attach event listeners
+        quickActionsContainer.querySelectorAll('.quick-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const text = btn.dataset.text;
+                if (text) Demo.handleUserMessage(text);
+            });
+        });
+    },
+
+    updateMenuSection() {
+        const ind = getIndustry();
+        const indLang = getIndustryLang();
+        const menuGrid = document.querySelector('.menu-grid');
+        const menuTitle = document.querySelector('.menu-section h2');
+        
+        if (!menuGrid || !ind.menuItems) return;
+        
+        // Update menu title based on industry type
+        const isFood = ['restaurant', 'pizza', 'bakery', 'coffeeshop', 'icecream', 'sushi', 'fastfood'].includes(State.currentIndustry);
+        const menuLabel = isFood ? 'Menu' : 'Services';
+        const menuIcon = isFood ? 'fa-utensils' : 'fa-concierge-bell';
+        if (menuTitle) menuTitle.innerHTML = `<i class="fas ${menuIcon}"></i> ${menuLabel}`;
+        
+        // Update menu toggle button text
+        const menuToggle = document.getElementById('menuToggle');
+        if (menuToggle) {
+            menuToggle.innerHTML = `<i class="fas ${menuIcon}"></i> <span>${menuLabel}</span>`;
+        }
+        
+        // Generate menu items
+        menuGrid.innerHTML = ind.menuItems.map(item => `
+            <div class="menu-item">
+                <span class="item-emoji">${item.emoji}</span>
+                <div class="item-details">
+                    <h4>${item.name}</h4>
+                    <p>${item.desc}</p>
+                </div>
+                <span class="item-price">${item.price > 0 ? '$' + item.price.toLocaleString() : 'Free'}</span>
+            </div>
+        `).join('');
     },
 
     updateProcessStepLabels() {
@@ -1703,24 +2411,50 @@ const UI = {
 const Templates = {
     getSMS(industry, businessName, total, currency) {
         const templates = {
+            // FOOD
             restaurant: `<div class="sms-content">G'day! 🎉<br><br>Your order from <strong>${businessName}</strong> is confirmed!<br><br><strong>Total:</strong> ${currency}${total}<br><br>Thanks mate! See you soon! 🙏</div>`,
             pizza: `<div class="sms-content">Bellissimo! 🍕<br><br>Your pizza order from <strong>${businessName}</strong> is confirmed!<br><br><strong>Total:</strong> ${currency}${total}<br><br>Your delicious pizza is on its way! 🛵</div>`,
+            bakery: `<div class="sms-content">Fresh from the oven! 🥐<br><br>Your order from <strong>${businessName}</strong> is confirmed!<br><br><strong>Total:</strong> ${currency}${total}<br><br>See you soon!</div>`,
+            coffeeshop: `<div class="sms-content">☕ Coffee's brewing!<br><br>Your order from <strong>${businessName}</strong> is ready soon!<br><br><strong>Total:</strong> ${currency}${total}<br><br>See you in a few!</div>`,
+            sushi: `<div class="sms-content">🍣 Arigatou!<br><br>Your order from <strong>${businessName}</strong> is confirmed!<br><br><strong>Total:</strong> ${currency}${total}<br><br>Enjoy your meal!</div>`,
+            fastfood: `<div class="sms-content">🍔 Order up!<br><br>Your order from <strong>${businessName}</strong> is confirmed!<br><br><strong>Total:</strong> ${currency}${total}<br><br>Ready soon!</div>`,
+            icecream: `<div class="sms-content">🍦 Sweet!<br><br>Your order from <strong>${businessName}</strong> is confirmed!<br><br><strong>Total:</strong> ${currency}${total}<br><br>Deliciousness awaits!</div>`,
+            // HEALTH/BEAUTY
             salon: `<div class="sms-content">Hey gorgeous! 💇‍♀️<br><br>Your appointment at <strong>${businessName}</strong> is confirmed!<br><br>Can't wait to make you look fabulous! ✨</div>`,
             medical: `<div class="sms-content">Hello,<br><br>Your appointment at <strong>${businessName}</strong> is confirmed.<br><br>Please arrive 10 minutes early. 🏥</div>`,
-            dental: `<div class="sms-content">Hello! 🦷<br><br>Your dental appointment at <strong>${businessName}</strong> is confirmed!<br><br>See you soon!</div>`,
-            vet: `<div class="sms-content">Hello! 🐾<br><br>Your pet's appointment at <strong>${businessName}</strong> is confirmed!<br><br>See you soon! 🐕</div>`,
+            dental: `<div class="sms-content">Hello! 🦷<br><br>Your dental appointment at <strong>${businessName}</strong> is confirmed!<br><br>See you soon for a brighter smile!</div>`,
+            vet: `<div class="sms-content">Hello! 🐾<br><br>Your pet's appointment at <strong>${businessName}</strong> is confirmed!<br><br>See you and your furry friend soon! 🐕</div>`,
+            spa: `<div class="sms-content">Namaste 🧘<br><br>Your relaxation awaits at <strong>${businessName}</strong>!<br><br>Pure bliss awaits... ✨</div>`,
+            pharmacy: `<div class="sms-content">Hello! 💊<br><br>Your prescription at <strong>${businessName}</strong> is ready!<br><br>See you soon!</div>`,
+            optician: `<div class="sms-content">👁️ See you soon!<br><br>Your eye exam at <strong>${businessName}</strong> is confirmed!<br><br>Looking forward to it!</div>`,
+            podiatrist: `<div class="sms-content">🦶 Appointment confirmed!<br><br>Your visit to <strong>${businessName}</strong> is booked!<br><br>We'll have you walking happy!</div>`,
+            massage: `<div class="sms-content">💆 Relax & unwind!<br><br>Your massage at <strong>${businessName}</strong> is confirmed!<br><br>Bliss awaits...</div>`,
+            nailsalon: `<div class="sms-content">💅 Gorgeous nails incoming!<br><br>Your appointment at <strong>${businessName}</strong> is confirmed!<br><br>See you soon!</div>`,
+            // SERVICES
             garage: `<div class="sms-content">G'day mate! 🔧<br><br>Your service at <strong>${businessName}</strong> is confirmed!<br><br>She'll be right! 🚗</div>`,
+            cleaning: `<div class="sms-content">✨ Sparkle incoming!<br><br>Your cleaning service from <strong>${businessName}</strong> is confirmed!<br><br>Your place will shine!</div>`,
+            electrician: `<div class="sms-content">⚡ Sparky's coming!<br><br>Your job with <strong>${businessName}</strong> is confirmed!<br><br>We'll get you powered up!</div>`,
+            plumber: `<div class="sms-content">🔧 Help is coming!<br><br>Your job with <strong>${businessName}</strong> is confirmed!<br><br>We'll fix it right!</div>`,
+            landscaping: `<div class="sms-content">🌳 Garden time!<br><br>Your service with <strong>${businessName}</strong> is confirmed!<br><br>Your yard will look amazing!</div>`,
+            moving: `<div class="sms-content">🚚 Moving day booked!<br><br>Your move with <strong>${businessName}</strong> is confirmed!<br><br>Stress-free relocation ahead!</div>`,
+            locksmith: `<div class="sms-content">🔐 Help is on the way!<br><br><strong>${businessName}</strong> has dispatched a locksmith!<br><br>ETA: 15-30 minutes</div>`,
+            // PROFESSIONAL
             hotel: `<div class="sms-content">Welcome! 🏨<br><br>Your reservation at <strong>${businessName}</strong> is confirmed!<br><br>Safe travels! ✨</div>`,
             gym: `<div class="sms-content">Let's go! 💪<br><br>You're all set at <strong>${businessName}</strong>!<br><br>See you at the gym! 🏋️</div>`,
-            spa: `<div class="sms-content">Namaste 🧘<br><br>Your relaxation awaits at <strong>${businessName}</strong>!<br><br>Pure bliss awaits... ✨</div>`,
-            lawyer: `<div class="sms-content">Good day,<br><br>Your consultation at <strong>${businessName}</strong> is confirmed.<br><br>Regards ⚖️</div>`,
+            lawyer: `<div class="sms-content">Good day,<br><br>Your consultation at <strong>${businessName}</strong> is confirmed.<br><br>Kind regards ⚖️</div>`,
             realestate: `<div class="sms-content">Exciting news! 🏠<br><br>Your property viewing with <strong>${businessName}</strong> is confirmed!<br><br>See you there! 🔑</div>`,
-            pharmacy: `<div class="sms-content">Hello! 💊<br><br>Your prescription at <strong>${businessName}</strong> is ready!<br><br>See you soon!</div>`,
-            bakery: `<div class="sms-content">Yum! 🥐<br><br>Your order from <strong>${businessName}</strong> is confirmed!<br><br>Fresh baked goodness awaits!</div>`,
-            florist: `<div class="sms-content">Beautiful! 💐<br><br>Your order from <strong>${businessName}</strong> is confirmed!<br><br>Blooming lovely!</div>`,
-            photography: `<div class="sms-content">Smile! 📷<br><br>Your session at <strong>${businessName}</strong> is confirmed!<br><br>Can't wait to capture the moment!</div>`,
-            tattoo: `<div class="sms-content">Awesome! 🎨<br><br>Your appointment at <strong>${businessName}</strong> is confirmed!<br><br>Let's create something amazing!</div>`,
-            petgrooming: `<div class="sms-content">Woof! 🐩<br><br>Your pet's appointment at <strong>${businessName}</strong> is confirmed!<br><br>They'll look fabulous!</div>`
+            // LIFESTYLE
+            florist: `<div class="sms-content">🌹 Beautiful blooms!<br><br>Your order from <strong>${businessName}</strong> is confirmed!<br><br>Blooming lovely!</div>`,
+            photography: `<div class="sms-content">📸 Say cheese!<br><br>Your session at <strong>${businessName}</strong> is confirmed!<br><br>Can't wait to capture the magic!</div>`,
+            tattoo: `<div class="sms-content">🎨 Let's create art!<br><br>Your appointment at <strong>${businessName}</strong> is confirmed!<br><br>Get ready for something amazing!</div>`,
+            petgrooming: `<div class="sms-content">🐩 Pamper time!<br><br>Your pet's grooming at <strong>${businessName}</strong> is confirmed!<br><br>They'll look fabulous!</div>`,
+            petboarding: `<div class="sms-content">🐾 Holiday booked!<br><br>Your pet's stay at <strong>${businessName}</strong> is confirmed!<br><br>They'll have a blast!</div>`,
+            daycare: `<div class="sms-content">👶 Enrollment confirmed!<br><br>Your child's spot at <strong>${businessName}</strong> is reserved!<br><br>Welcome to the family!</div>`,
+            wedding: `<div class="sms-content">💍 Congratulations!<br><br>Your consultation with <strong>${businessName}</strong> is confirmed!<br><br>Let's plan your dream day! 💒</div>`,
+            eventvenue: `<div class="sms-content">🎭 Event booked!<br><br>Your viewing at <strong>${businessName}</strong> is confirmed!<br><br>Can't wait to show you around!</div>`,
+            // OTHER
+            drivingschool: `<div class="sms-content">🚗 Lesson booked!<br><br>Your driving lesson with <strong>${businessName}</strong> is confirmed!<br><br>You'll be cruising soon!</div>`,
+            tutoring: `<div class="sms-content">📚 Learning awaits!<br><br>Your tutoring session with <strong>${businessName}</strong> is confirmed!<br><br>Success is ahead!</div>`
         };
         return templates[industry] || templates.restaurant;
     },
@@ -1729,14 +2463,36 @@ const Templates = {
         const now = new Date();
         const time = now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' });
         
-        const icons = { restaurant: '🍽️', pizza: '🍕', salon: '💇', medical: '🏥', dental: '🦷', vet: '🐾', garage: '🔧', hotel: '🏨', gym: '🏋️', spa: '🧘', lawyer: '⚖️', realestate: '🏠', pharmacy: '💊', bakery: '🥐', florist: '💐', photography: '📷', tattoo: '🎨', petgrooming: '🐩' };
+        const icons = {
+            // Food
+            restaurant: '🍽️', pizza: '🍕', bakery: '🥐', coffeeshop: '☕', sushi: '🍣', fastfood: '🍔', icecream: '🍦',
+            // Health
+            salon: '💇', medical: '🏥', dental: '🦷', vet: '🐾', spa: '🧘', pharmacy: '💊', optician: '👁️', podiatrist: '🦶', massage: '💆', nailsalon: '💅',
+            // Services
+            garage: '🔧', cleaning: '✨', electrician: '⚡', plumber: '🔧', landscaping: '🌳', moving: '🚚', locksmith: '🔐',
+            // Professional
+            hotel: '🏨', gym: '🏋️', lawyer: '⚖️', realestate: '🏠',
+            // Lifestyle
+            florist: '💐', photography: '📷', tattoo: '🎨', petgrooming: '🐩', petboarding: '🐈', daycare: '👶', wedding: '💒', eventvenue: '🎭',
+            // Other
+            drivingschool: '🚗', tutoring: '📚'
+        };
         const icon = icons[industry] || '📋';
         
+        // Customize ticket label based on industry type
+        const isBooking = ['salon', 'medical', 'dental', 'vet', 'spa', 'massage', 'nailsalon', 'optician', 'podiatrist', 'hotel', 'gym', 'lawyer', 'photography', 'tattoo', 'petgrooming', 'wedding', 'eventvenue', 'drivingschool', 'tutoring', 'daycare', 'petboarding'].includes(industry);
+        const isService = ['cleaning', 'electrician', 'plumber', 'landscaping', 'moving', 'locksmith', 'garage', 'realestate'].includes(industry);
+        
+        let ticketType = 'ORDER';
+        if (isBooking) ticketType = 'BOOKING';
+        if (isService) ticketType = 'JOB';
+        if (industry === 'locksmith') ticketType = 'DISPATCH';
+        
         return `<div class="ticket-content">
-            <h4>${icon} ORDER #${orderNum}</h4>
+            <h4>${icon} ${ticketType} #${orderNum}</h4>
             <p style="text-align:center;color:#666;font-size:0.75rem;">${time}</p>
-            <div class="ticket-item"><span>Items:</span><span>✓</span></div>
-            <div class="ticket-item"><span>Total:</span><span>${currency}${total}</span></div>
+            <div class="ticket-item"><span>${isBooking ? 'Appointment:' : 'Items:'}</span><span>✓</span></div>
+            ${total > 0 ? `<div class="ticket-item"><span>Total:</span><span>${currency}${total}</span></div>` : ''}
             <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** CONFIRMED ***</p>
         </div>`;
     }
