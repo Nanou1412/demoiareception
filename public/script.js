@@ -10,7 +10,6 @@ const sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).sub
 
 const State = {
     currentIndustry: 'restaurant',
-    currentLanguage: 'en',
     currentScenario: 'normal',
     isDarkMode: true,
     messageCount: 0,
@@ -97,23 +96,6 @@ const Industries = {
                 phone: "0412 345 678",
                 confirm: "Yep, perfect!"
             }
-        },
-        fr: {
-            name: 'Le Petit Bistro',
-            aiName: 'Marie',
-            steps: ['Appel', 'Commande', 'Confirmer', 'Terminé'],
-            totalLabel: 'Total',
-            cardTitle: 'Ticket Cuisine',
-            responses: {
-                greeting: "Bonjour, je voudrais passer une commande à emporter s'il vous plaît",
-                orderItem: "Je vais prendre la Salade César s'il vous plaît",
-                moreItems: "Oui, ajoutez aussi des frites",
-                noMore: "Ce sera tout, merci",
-                pickupTime: "Dans environ 20 minutes",
-                name: "Sophie",
-                phone: "06 12 34 56 78",
-                confirm: "Oui, c'est parfait !"
-            }
         }
     },
     pizza: {
@@ -148,23 +130,6 @@ const Industries = {
                 phone: "0467 890 123",
                 confirm: "Yep, all good!"
             }
-        },
-        fr: {
-            name: 'Pizza Napoli',
-            aiName: 'Antonio',
-            steps: ['Appel', 'Commande', 'Confirmer', 'Terminé'],
-            totalLabel: 'Total',
-            cardTitle: 'Commande Cuisine',
-            responses: {
-                greeting: "Bonsoir, je voudrais commander des pizzas en livraison",
-                orderItem: "Une grande Margherita s'il vous plaît",
-                moreItems: "Et aussi du pain à l'ail",
-                noMore: "Ce sera tout",
-                delivery: "En livraison s'il vous plaît",
-                address: "42 rue de la Paix, Paris",
-                phone: "06 67 89 01 23",
-                confirm: "Oui, c'est bon !"
-            }
         }
     },
     salon: {
@@ -196,22 +161,6 @@ const Industries = {
                 name: "Jessica",
                 phone: "0423 456 789",
                 confirm: "That sounds perfect, thanks!"
-            }
-        },
-        fr: {
-            name: 'Salon Élégance',
-            aiName: 'Camille',
-            steps: ['Appel', 'Réserver', 'Confirmer', 'Terminé'],
-            totalLabel: 'Service',
-            cardTitle: 'Fiche Rendez-vous',
-            responses: {
-                greeting: "Bonjour, je voudrais prendre rendez-vous s'il vous plaît",
-                service: "J'aimerais une coupe et une couleur",
-                stylist: "Peu importe, celui qui est disponible",
-                datetime: "Samedi après-midi si possible",
-                name: "Isabelle",
-                phone: "06 23 45 67 89",
-                confirm: "C'est parfait, merci beaucoup !"
             }
         }
     },
@@ -247,23 +196,6 @@ const Industries = {
                 phone: "0434 567 890",
                 confirm: "Yes, that's all correct"
             }
-        },
-        fr: {
-            name: 'Centre Médical Santé Plus',
-            aiName: 'Claire',
-            steps: ['Appel', 'Réserver', 'Confirmer', 'Terminé'],
-            totalLabel: 'Consultation',
-            cardTitle: 'Fiche Patient',
-            responses: {
-                greeting: "Bonjour, je voudrais prendre rendez-vous avec un médecin",
-                service: "C'est pour un bilan de santé général",
-                doctor: "N'importe quel médecin disponible",
-                datetime: "Demain matin si vous avez quelque chose",
-                name: "Jean-Pierre Dubois",
-                dob: "15 mars 1985",
-                phone: "06 34 56 78 90",
-                confirm: "Oui, c'est bien noté"
-            }
         }
     },
     dental: {
@@ -297,23 +229,6 @@ const Industries = {
                 insurance: "Yes, I have Medibank",
                 phone: "0490 123 456",
                 confirm: "That's all correct, thanks!"
-            }
-        },
-        fr: {
-            name: 'Cabinet Dentaire du Sourire',
-            aiName: 'Nathalie',
-            steps: ['Appel', 'Réserver', 'Confirmer', 'Terminé'],
-            totalLabel: 'Soin',
-            cardTitle: 'RDV Dentaire',
-            responses: {
-                greeting: "Bonjour, je voudrais prendre rendez-vous chez le dentiste",
-                reason: "Pour un détartrage et un contrôle",
-                dentist: "Peu importe le praticien",
-                datetime: "Mardi prochain le matin",
-                name: "Catherine Bernard",
-                insurance: "Oui, j'ai une mutuelle",
-                phone: "06 90 12 34 56",
-                confirm: "C'est noté, merci !"
             }
         }
     },
@@ -349,23 +264,6 @@ const Industries = {
                 phone: "0489 012 345",
                 confirm: "Perfect, we'll be there!"
             }
-        },
-        fr: {
-            name: 'Clinique Vétérinaire des Animaux',
-            aiName: 'Dr. Sophie',
-            steps: ['Appel', 'Réserver', 'Confirmer', 'Terminé'],
-            totalLabel: 'Consultation',
-            cardTitle: 'Fiche Visite',
-            responses: {
-                greeting: "Bonjour, je voudrais prendre rendez-vous pour mon animal",
-                petType: "C'est un chien, un labrador",
-                reason: "Pour le bilan annuel et les vaccins",
-                datetime: "Jeudi après-midi si possible",
-                petName: "Il s'appelle Oscar",
-                ownerName: "Je suis Marie Dupont",
-                phone: "06 89 01 23 45",
-                confirm: "Parfait, on sera là !"
-            }
         }
     },
     garage: {
@@ -397,22 +295,6 @@ const Industries = {
                 name: "Dave Wilson",
                 phone: "0445 678 901",
                 confirm: "Yeah, all good mate!"
-            }
-        },
-        fr: {
-            name: 'Garage Auto Plus',
-            aiName: 'Marc',
-            steps: ['Appel', 'Service', 'Confirmer', 'Terminé'],
-            totalLabel: 'Service',
-            cardTitle: 'Ordre Réparation',
-            responses: {
-                greeting: "Bonjour, je voudrais faire réviser ma voiture",
-                service: "Une révision complète et vérifier les freins",
-                vehicle: "C'est une Peugeot 308 de 2019",
-                datetime: "Lundi matin, ça serait possible ?",
-                name: "Pierre Martin",
-                phone: "06 45 67 89 01",
-                confirm: "Parfait, c'est noté !"
             }
         }
     },
@@ -446,22 +328,6 @@ const Industries = {
                 phone: "0456 789 012",
                 confirm: "That's perfect, thank you!"
             }
-        },
-        fr: {
-            name: 'Hôtel Belle Vue',
-            aiName: 'Juliette',
-            steps: ['Appel', 'Réserver', 'Confirmer', 'Terminé'],
-            totalLabel: 'Réservation',
-            cardTitle: 'Réservation',
-            responses: {
-                greeting: "Bonjour, je voudrais réserver une chambre",
-                roomType: "Une chambre double avec vue sur mer si possible",
-                dates: "Du 15 au 18 janvier",
-                guests: "Nous serons deux adultes",
-                name: "Robert Lefèvre",
-                phone: "06 56 78 90 12",
-                confirm: "C'est parfait, merci !"
-            }
         }
     },
     gym: {
@@ -493,22 +359,6 @@ const Industries = {
                 name: "Alex Murphy",
                 phone: "0478 901 234",
                 confirm: "Sounds great, see you then!"
-            }
-        },
-        fr: {
-            name: 'Fitness Club',
-            aiName: 'Lucas',
-            steps: ['Appel', 'Info', 'Confirmer', 'Terminé'],
-            totalLabel: 'Abonnement',
-            cardTitle: 'Pass Essai',
-            responses: {
-                greeting: "Bonjour, je suis intéressé par un abonnement",
-                interest: "Je veux me remettre en forme, faire de la musculation",
-                experience: "J'ai déjà fait de la salle, niveau intermédiaire",
-                trialTime: "Ce weekend serait parfait",
-                name: "Alexandre Martin",
-                phone: "06 78 90 12 34",
-                confirm: "Super, à bientôt alors !"
             }
         }
     },
@@ -544,23 +394,6 @@ const Industries = {
                 phone: "0423 456 789",
                 confirm: "Wonderful, thank you so much!"
             }
-        },
-        fr: {
-            name: 'Spa Sérénité',
-            aiName: 'Léa',
-            steps: ['Appel', 'Réserver', 'Confirmer', 'Terminé'],
-            totalLabel: 'Soin',
-            cardTitle: 'Réservation Spa',
-            responses: {
-                greeting: "Bonjour, je voudrais réserver un soin",
-                treatment: "Un massage relaxant s'il vous plaît",
-                duration: "90 minutes ce serait parfait",
-                datetime: "Dimanche matin si possible",
-                therapist: "Une masseuse de préférence",
-                name: "Aurélie Petit",
-                phone: "06 23 45 67 89",
-                confirm: "Merveilleux, merci beaucoup !"
-            }
         }
     },
     lawyer: {
@@ -592,22 +425,6 @@ const Industries = {
                 name: "David Richardson",
                 phone: "0401 234 567",
                 confirm: "Yes, that's confirmed, thank you"
-            }
-        },
-        fr: {
-            name: 'Cabinet Juridique Conseil',
-            aiName: 'Maître Laurent',
-            steps: ['Appel', 'Consulter', 'Confirmer', 'Terminé'],
-            totalLabel: 'Consultation',
-            cardTitle: 'Consultation',
-            responses: {
-                greeting: "Bonjour, j'aurais besoin de consulter un avocat",
-                matter: "C'est concernant un litige immobilier",
-                lawyer: "Celui qui est spécialisé dans ce domaine",
-                datetime: "Début de semaine prochaine si possible",
-                name: "François Moreau",
-                phone: "06 01 23 45 67",
-                confirm: "Très bien, c'est confirmé"
             }
         }
     },
@@ -643,23 +460,6 @@ const Industries = {
                 phone: "0412 345 678",
                 confirm: "Perfect, I'll be there!"
             }
-        },
-        fr: {
-            name: 'Immobilier Prestige',
-            aiName: 'Philippe',
-            steps: ['Appel', 'Info', 'Confirmer', 'Terminé'],
-            totalLabel: 'Visite',
-            cardTitle: 'Visite Programmée',
-            responses: {
-                greeting: "Bonjour, je cherche à acheter un bien immobilier",
-                interest: "Je souhaite acheter une maison familiale",
-                requirements: "3 chambres minimum, avec jardin",
-                budget: "Entre 400 000 et 500 000 euros",
-                datetime: "Samedi après-midi serait idéal",
-                name: "Émilie Rousseau",
-                phone: "06 12 34 56 78",
-                confirm: "Parfait, j'y serai !"
-            }
         }
     },
     pharmacy: {
@@ -689,21 +489,6 @@ const Industries = {
                 name: "Margaret Wilson",
                 dob: "15th March 1965",
                 confirm: "Great, thanks so much!"
-            }
-        },
-        fr: {
-            name: 'Pharmacie Santé Plus',
-            aiName: 'Isabelle',
-            steps: ['Appel', 'Demande', 'Confirmer', 'Terminé'],
-            totalLabel: 'Ordonnance',
-            cardTitle: 'Ordonnance Prête',
-            responses: {
-                greeting: "Bonjour, je voudrais savoir si mon ordonnance est prête",
-                prescription: "C'est pour des médicaments contre la tension",
-                pickup: "Je peux passer dans une heure",
-                name: "Marie Dupont",
-                dob: "15 mars 1965",
-                confirm: "Parfait, merci beaucoup !"
             }
         }
     },
@@ -737,22 +522,6 @@ const Industries = {
                 phone: "0423 456 789",
                 confirm: "Perfect, see you then!"
             }
-        },
-        fr: {
-            name: 'Boulangerie Dorée',
-            aiName: 'Margot',
-            steps: ['Appel', 'Commande', 'Confirmer', 'Terminé'],
-            totalLabel: 'Total',
-            cardTitle: 'Commande Boulangerie',
-            responses: {
-                greeting: "Bonjour, je voudrais commander des viennoiseries pour demain matin",
-                orderItem: "Des croissants et des pains au chocolat",
-                quantity: "6 de chaque s'il vous plaît",
-                pickupTime: "Vers 8h demain matin",
-                name: "Nathalie Blanc",
-                phone: "06 23 45 67 89",
-                confirm: "Parfait, à demain !"
-            }
         }
     },
     florist: {
@@ -784,22 +553,6 @@ const Industries = {
                 datetime: "Tomorrow before noon",
                 name: "Michael Thompson, to 15 Rose Street",
                 confirm: "That sounds beautiful, thank you!"
-            }
-        },
-        fr: {
-            name: 'Fleurs & Jardins',
-            aiName: 'Rosalie',
-            steps: ['Appel', 'Création', 'Confirmer', 'Terminé'],
-            totalLabel: 'Bouquet',
-            cardTitle: 'Commande Florale',
-            responses: {
-                greeting: "Bonjour, j'aimerais commander des fleurs pour une occasion spéciale",
-                occasion: "C'est pour l'anniversaire de ma femme",
-                budget: "Entre 60 et 80 euros",
-                delivery: "Oui, en livraison s'il vous plaît",
-                datetime: "Demain avant midi",
-                name: "Michel Leroy, au 15 rue des Roses",
-                confirm: "Ça a l'air magnifique, merci !"
             }
         }
     },
@@ -833,22 +586,6 @@ const Industries = {
                 phone: "0456 789 012",
                 confirm: "Wonderful, we're so excited!"
             }
-        },
-        fr: {
-            name: 'Studio Moments Captés',
-            aiName: 'Alexandre',
-            steps: ['Appel', 'Réserver', 'Confirmer', 'Terminé'],
-            totalLabel: 'Séance',
-            cardTitle: 'Réservation Confirmée',
-            responses: {
-                greeting: "Bonjour, j'aimerais réserver une séance photo",
-                eventType: "C'est pour un mariage, environ 6 heures",
-                datetime: "Le 15 mars de l'année prochaine",
-                location: "La cérémonie est à l'église Sainte-Marie",
-                name: "Émilie et Jacques Martin",
-                phone: "06 56 78 90 12",
-                confirm: "Merveilleux, on a tellement hâte !"
-            }
         }
     },
     tattoo: {
@@ -881,22 +618,6 @@ const Industries = {
                 name: "Chris Palmer",
                 confirm: "Awesome, can't wait!"
             }
-        },
-        fr: {
-            name: 'Studio Encre et Art',
-            aiName: 'Julien',
-            steps: ['Appel', 'Consulter', 'Confirmer', 'Terminé'],
-            totalLabel: 'Acompte',
-            cardTitle: 'Séance Réservée',
-            responses: {
-                greeting: "Salut, je voudrais réserver une consultation pour un tatouage",
-                design: "Je pense à un sleeve japonais, thème carpe koï",
-                size: "Bras complet, de l'épaule au poignet",
-                artist: "J'ai vu le travail de Marc en ligne, il est disponible ?",
-                datetime: "N'importe quel samedi après-midi me convient",
-                name: "Christophe Mercier",
-                confirm: "Super, j'ai hâte !"
-            }
         }
     },
     petgrooming: {
@@ -928,22 +649,6 @@ const Industries = {
                 name: "Laura Henderson",
                 phone: "0478 901 234",
                 confirm: "Perfect, Max will love it!"
-            }
-        },
-        fr: {
-            name: 'Toilettage Parfait',
-            aiName: 'Léa',
-            steps: ['Appel', 'Réserver', 'Confirmer', 'Terminé'],
-            totalLabel: 'Service',
-            cardTitle: 'Toilettage Réservé',
-            responses: {
-                greeting: "Bonjour, je voudrais prendre rendez-vous pour faire toiletter mon chien",
-                petInfo: "C'est un Golden Retriever qui s'appelle Max, il a 3 ans",
-                service: "Toilettage complet s'il vous plaît, bain, coupe et griffes",
-                datetime: "Ce samedi matin si possible",
-                name: "Laure Martin",
-                phone: "06 78 90 12 34",
-                confirm: "Parfait, Max va adorer !"
             }
         }
     }
@@ -1015,85 +720,22 @@ const Translations = {
         tattooDesc: 'Appointments & consultations',
         petgroomingName: 'Pet Grooming',
         petgroomingDesc: 'Grooming & pet care'
-    },
-    fr: {
-        title: 'Réceptionniste IA',
-        subtitle: 'Découvrez comment notre réceptionniste IA gère les appels naturellement - avec voix, personnalité et zéro attente.',
-        landingSubtitle: 'Sélectionnez votre secteur pour voir comment l\'IA gère les appels',
-        tryIt: 'Essayez vous-même',
-        watchDemo: 'Voir la démo',
-        messages: 'Messages',
-        callTime: 'Durée',
-        customerSMS: 'SMS Client',
-        pending: 'En attente',
-        sent: '✓ Envoyé',
-        done: '✓ Fait',
-        incomingCall: 'Appel entrant...',
-        onCall: 'En ligne',
-        callEnded: 'Appel terminé',
-        typeOrSpeak: 'Tapez ou parlez...',
-        whatHappening: 'Ce qui se passe',
-        change: 'Changer',
-        clickToStart: 'Cliquez sur un secteur pour lancer la démo',
-        stepInfos: [
-            "📞 L'IA répond à l'appel instantanément et accueille le client naturellement.",
-            "🍽️ L'IA prend la commande, pose des questions et construit le panier.",
-            "✅ Confirmation des détails, heure de retrait et informations client.",
-            "🎉 Commande terminée ! SMS envoyé au client, ticket imprimé en cuisine."
-        ],
-        smsPlaceholder: 'SMS apparaît après confirmation',
-        ticketPlaceholder: 'Confirmation apparaît après réservation',
-        noConversation: 'Aucune conversation à exporter. Lancez une démo !',
-        // Industry descriptions
-        restaurantDesc: 'Commandes et réservations',
-        pizzaDesc: 'Commandes et livraisons',
-        salonName: 'Salon de Coiffure',
-        salonDesc: 'Rendez-vous et coiffeurs',
-        medicalName: 'Centre Médical',
-        medicalDesc: 'Rendez-vous patients',
-        dentalName: 'Dentiste',
-        dentalDesc: 'Soins dentaires',
-        vetName: 'Clinique Vétérinaire',
-        vetDesc: 'Animaux et urgences',
-        garageName: 'Garage Auto',
-        garageDesc: 'Réparations et devis',
-        hotelName: 'Hôtel',
-        hotelDesc: 'Réservations de chambres',
-        gymName: 'Salle de Sport',
-        gymDesc: 'Abonnements et cours',
-        spaDesc: 'Soins et bien-être',
-        lawyerName: 'Cabinet Juridique',
-        lawyerDesc: 'Consultations juridiques',
-        realestateName: 'Immobilier',
-        realestateDesc: 'Visites et estimations',
-        pharmacyName: 'Pharmacie',
-        pharmacyDesc: 'Ordonnances et conseils',
-        bakeryName: 'Boulangerie',
-        bakeryDesc: 'Commandes et gâteaux',
-        floristName: 'Fleuriste',
-        floristDesc: 'Bouquets et livraisons',
-        photographyName: 'Studio Photo',
-        photographyDesc: 'Séances et forfaits',
-        tattooName: 'Studio Tatouage',
-        tattooDesc: 'Rendez-vous et projets',
-        petgroomingName: 'Toilettage',
-        petgroomingDesc: 'Soins pour animaux'
     }
 };
 
 // ============================================
 // HELPER FUNCTIONS
 // ============================================
-const t = (key) => Translations[State.currentLanguage]?.[key] || Translations.en[key] || key;
+const t = (key) => Translations.en[key] || key;
 
 const getIndustry = () => Industries[State.currentIndustry] || Industries.restaurant;
 
 const getIndustryLang = () => {
     const ind = getIndustry();
-    return ind[State.currentLanguage] || ind.en;
+    return ind.en;
 };
 
-const getCurrency = () => State.currentLanguage === 'fr' ? '€' : '$';
+const getCurrency = () => '$';
 
 // ============================================
 // AUDIO MANAGER - Centralized TTS handling
@@ -1174,10 +816,10 @@ const AudioManager = {
                 : ['Karen', 'Samantha', 'female'];
             
             const voice = voices.find(v => voiceSearch.some(s => v.name.toLowerCase().includes(s.toLowerCase())))
-                || voices.find(v => v.lang.startsWith(State.currentLanguage === 'fr' ? 'fr' : 'en'));
+                || voices.find(v => v.lang.startsWith('en'));
             
             if (voice) utterance.voice = voice;
-            utterance.lang = State.currentLanguage === 'fr' ? 'fr-FR' : 'en-AU';
+            utterance.lang = 'en-AU';
             utterance.pitch = role === 'customer' ? 0.9 : 1.1;
             utterance.rate = role === 'customer' ? 1.0 : 1.05;
             
@@ -1209,8 +851,7 @@ const API = {
                 body: JSON.stringify({
                     message,
                     sessionId,
-                    industry: State.currentIndustry,
-                    language: State.currentLanguage
+                    industry: State.currentIndustry
                 })
             });
             
@@ -1218,9 +859,7 @@ const API = {
             UI.hideTyping();
             
             if (data.error) {
-                const errorMsg = State.currentLanguage === 'fr' 
-                    ? 'Désolé, problème technique. Réessayez ?' 
-                    : 'Sorry, having technical difficulties. Try again?';
+                const errorMsg = 'Sorry, having technical difficulties. Try again?';
                 UI.addMessage(errorMsg, true, false);
                 return null;
             }
@@ -1275,7 +914,7 @@ const UI = {
         msgDiv.className = `message ${isAI ? 'ai' : 'user'}`;
         
         const avatar = isAI ? ind.icon : ind.customerIcon;
-        const customerLabel = State.currentLanguage === 'fr' ? 'Client' : 'Customer';
+        const customerLabel = 'Customer';
         const speaker = isAI ? `${indLang.aiName} - ${indLang.name}` : customerLabel;
         
         msgDiv.innerHTML = `
@@ -1410,14 +1049,8 @@ const UI = {
         if (DOM.ticketPreview) DOM.ticketPreview.innerHTML = `<div class="ticket-placeholder"><i class="fas fa-print"></i><span>${t('ticketPlaceholder')}</span></div>`;
     },
 
-    updateLanguage() {
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.dataset.i18n;
-            if (Translations[State.currentLanguage]?.[key]) {
-                el.textContent = Translations[State.currentLanguage][key];
-            }
-        });
-        this.updateCardTitles();
+    updateCardTitles() {
+        this.updateCardTitles && this.updateCardTitles();
     }
 };
 
@@ -1426,70 +1059,42 @@ const UI = {
 // ============================================
 const Templates = {
     getSMS(industry, businessName, total, currency) {
-        const lang = State.currentLanguage;
         const templates = {
-            restaurant: lang === 'fr' 
-                ? `<div class="sms-content">Bonjour ! 🎉<br><br>Votre commande chez <strong>${businessName}</strong> est confirmée !<br><br><strong>Total :</strong> ${total}${currency}<br><br>Merci et à bientôt ! 🙏</div>`
-                : `<div class="sms-content">G'day! 🎉<br><br>Your order from <strong>${businessName}</strong> is confirmed!<br><br><strong>Total:</strong> ${currency}${total}<br><br>Thanks mate! See you soon! 🙏</div>`,
-            pizza: lang === 'fr'
-                ? `<div class="sms-content">Bellissimo ! 🍕<br><br>Votre commande chez <strong>${businessName}</strong> est confirmée !<br><br><strong>Total :</strong> ${total}${currency}<br><br>Votre pizza arrive ! 🛵</div>`
-                : `<div class="sms-content">Bellissimo! 🍕<br><br>Your pizza order from <strong>${businessName}</strong> is confirmed!<br><br><strong>Total:</strong> ${currency}${total}<br><br>Your delicious pizza is on its way! 🛵</div>`,
-            salon: lang === 'fr'
-                ? `<div class="sms-content">Bonjour ! 💇‍♀️<br><br>Votre rendez-vous chez <strong>${businessName}</strong> est confirmé !<br><br>Vous allez être magnifique ! ✨</div>`
-                : `<div class="sms-content">Hey gorgeous! 💇‍♀️<br><br>Your appointment at <strong>${businessName}</strong> is confirmed!<br><br>Can't wait to make you look fabulous! ✨</div>`,
-            medical: lang === 'fr'
-                ? `<div class="sms-content">Bonjour,<br><br>Votre rendez-vous au <strong>${businessName}</strong> est confirmé.<br><br>Merci d'arriver 10 minutes en avance. 🏥</div>`
-                : `<div class="sms-content">Hello,<br><br>Your appointment at <strong>${businessName}</strong> is confirmed.<br><br>Please arrive 10 minutes early. 🏥</div>`,
-            dental: lang === 'fr'
-                ? `<div class="sms-content">Bonjour ! 🦷<br><br>Votre rendez-vous chez <strong>${businessName}</strong> est confirmé !<br><br>À bientôt !</div>`
-                : `<div class="sms-content">Hello! 🦷<br><br>Your dental appointment at <strong>${businessName}</strong> is confirmed!<br><br>See you soon!</div>`,
-            vet: lang === 'fr'
-                ? `<div class="sms-content">Bonjour ! 🐾<br><br>Le rendez-vous chez <strong>${businessName}</strong> est confirmé !<br><br>À bientôt ! 🐕</div>`
-                : `<div class="sms-content">Hello! 🐾<br><br>Your pet's appointment at <strong>${businessName}</strong> is confirmed!<br><br>See you soon! 🐕</div>`,
-            garage: lang === 'fr'
-                ? `<div class="sms-content">Bonjour ! 🔧<br><br>Votre rendez-vous chez <strong>${businessName}</strong> est confirmé !<br><br>À bientôt ! 🚗</div>`
-                : `<div class="sms-content">G'day mate! 🔧<br><br>Your service at <strong>${businessName}</strong> is confirmed!<br><br>She'll be right! 🚗</div>`,
-            hotel: lang === 'fr'
-                ? `<div class="sms-content">Bienvenue ! 🏨<br><br>Votre réservation à <strong>${businessName}</strong> est confirmée !<br><br>Bon voyage ! ✨</div>`
-                : `<div class="sms-content">Welcome! 🏨<br><br>Your reservation at <strong>${businessName}</strong> is confirmed!<br><br>Safe travels! ✨</div>`,
-            gym: lang === 'fr'
-                ? `<div class="sms-content">C'est parti ! 💪<br><br>Vous êtes inscrit chez <strong>${businessName}</strong> !<br><br>À très vite ! 🏋️</div>`
-                : `<div class="sms-content">Let's go! 💪<br><br>You're all set at <strong>${businessName}</strong>!<br><br>See you at the gym! 🏋️</div>`,
-            spa: lang === 'fr'
-                ? `<div class="sms-content">Namaste 🧘<br><br>Votre soin chez <strong>${businessName}</strong> est confirmé !<br><br>Détente garantie... ✨</div>`
-                : `<div class="sms-content">Namaste 🧘<br><br>Your relaxation awaits at <strong>${businessName}</strong>!<br><br>Pure bliss awaits... ✨</div>`,
-            lawyer: lang === 'fr'
-                ? `<div class="sms-content">Bonjour,<br><br>Votre consultation chez <strong>${businessName}</strong> est confirmée.<br><br>Cordialement ⚖️</div>`
-                : `<div class="sms-content">Good day,<br><br>Your consultation at <strong>${businessName}</strong> is confirmed.<br><br>Regards ⚖️</div>`,
-            realestate: lang === 'fr'
-                ? `<div class="sms-content">Bonne nouvelle ! 🏠<br><br>Votre visite avec <strong>${businessName}</strong> est confirmée !<br><br>À bientôt ! 🔑</div>`
-                : `<div class="sms-content">Exciting news! 🏠<br><br>Your property viewing with <strong>${businessName}</strong> is confirmed!<br><br>See you there! 🔑</div>`
+            restaurant: `<div class="sms-content">G'day! 🎉<br><br>Your order from <strong>${businessName}</strong> is confirmed!<br><br><strong>Total:</strong> ${currency}${total}<br><br>Thanks mate! See you soon! 🙏</div>`,
+            pizza: `<div class="sms-content">Bellissimo! 🍕<br><br>Your pizza order from <strong>${businessName}</strong> is confirmed!<br><br><strong>Total:</strong> ${currency}${total}<br><br>Your delicious pizza is on its way! 🛵</div>`,
+            salon: `<div class="sms-content">Hey gorgeous! 💇‍♀️<br><br>Your appointment at <strong>${businessName}</strong> is confirmed!<br><br>Can't wait to make you look fabulous! ✨</div>`,
+            medical: `<div class="sms-content">Hello,<br><br>Your appointment at <strong>${businessName}</strong> is confirmed.<br><br>Please arrive 10 minutes early. 🏥</div>`,
+            dental: `<div class="sms-content">Hello! 🦷<br><br>Your dental appointment at <strong>${businessName}</strong> is confirmed!<br><br>See you soon!</div>`,
+            vet: `<div class="sms-content">Hello! 🐾<br><br>Your pet's appointment at <strong>${businessName}</strong> is confirmed!<br><br>See you soon! 🐕</div>`,
+            garage: `<div class="sms-content">G'day mate! 🔧<br><br>Your service at <strong>${businessName}</strong> is confirmed!<br><br>She'll be right! 🚗</div>`,
+            hotel: `<div class="sms-content">Welcome! 🏨<br><br>Your reservation at <strong>${businessName}</strong> is confirmed!<br><br>Safe travels! ✨</div>`,
+            gym: `<div class="sms-content">Let's go! 💪<br><br>You're all set at <strong>${businessName}</strong>!<br><br>See you at the gym! 🏋️</div>`,
+            spa: `<div class="sms-content">Namaste 🧘<br><br>Your relaxation awaits at <strong>${businessName}</strong>!<br><br>Pure bliss awaits... ✨</div>`,
+            lawyer: `<div class="sms-content">Good day,<br><br>Your consultation at <strong>${businessName}</strong> is confirmed.<br><br>Regards ⚖️</div>`,
+            realestate: `<div class="sms-content">Exciting news! 🏠<br><br>Your property viewing with <strong>${businessName}</strong> is confirmed!<br><br>See you there! 🔑</div>`,
+            pharmacy: `<div class="sms-content">Hello! 💊<br><br>Your prescription at <strong>${businessName}</strong> is ready!<br><br>See you soon!</div>`,
+            bakery: `<div class="sms-content">Yum! 🥐<br><br>Your order from <strong>${businessName}</strong> is confirmed!<br><br>Fresh baked goodness awaits!</div>`,
+            florist: `<div class="sms-content">Beautiful! 💐<br><br>Your order from <strong>${businessName}</strong> is confirmed!<br><br>Blooming lovely!</div>`,
+            photography: `<div class="sms-content">Smile! 📷<br><br>Your session at <strong>${businessName}</strong> is confirmed!<br><br>Can't wait to capture the moment!</div>`,
+            tattoo: `<div class="sms-content">Awesome! 🎨<br><br>Your appointment at <strong>${businessName}</strong> is confirmed!<br><br>Let's create something amazing!</div>`,
+            petgrooming: `<div class="sms-content">Woof! 🐩<br><br>Your pet's appointment at <strong>${businessName}</strong> is confirmed!<br><br>They'll look fabulous!</div>`
         };
         return templates[industry] || templates.restaurant;
     },
 
     getTicket(industry, orderNum, total, currency) {
-        const lang = State.currentLanguage;
         const now = new Date();
-        const locale = lang === 'fr' ? 'fr-FR' : 'en-AU';
-        const time = now.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
-        const date = now.toLocaleDateString(locale);
+        const time = now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' });
         
-        const icons = { restaurant: '🍽️', pizza: '🍕', salon: '💇', medical: '🏥', dental: '🦷', vet: '🐾', garage: '🔧', hotel: '🏨', gym: '🏋️', spa: '🧘', lawyer: '⚖️', realestate: '🏠' };
+        const icons = { restaurant: '🍽️', pizza: '🍕', salon: '💇', medical: '🏥', dental: '🦷', vet: '🐾', garage: '🔧', hotel: '🏨', gym: '🏋️', spa: '🧘', lawyer: '⚖️', realestate: '🏠', pharmacy: '💊', bakery: '🥐', florist: '💐', photography: '📷', tattoo: '🎨', petgrooming: '🐩' };
         const icon = icons[industry] || '📋';
         
-        const labels = lang === 'fr' 
-            ? { order: 'COMMANDE', items: 'Articles', total: 'Total', confirmed: 'CONFIRMÉ', pickup: 'À EMPORTER', delivery: 'LIVRAISON' }
-            : { order: 'ORDER', items: 'Items', total: 'Total', confirmed: 'CONFIRMED', pickup: 'PICKUP', delivery: 'DELIVERY' };
-        
-        const totalDisplay = lang === 'fr' ? `${total}${currency}` : `${currency}${total}`;
-        
         return `<div class="ticket-content">
-            <h4>${icon} ${labels.order} #${orderNum}</h4>
+            <h4>${icon} ORDER #${orderNum}</h4>
             <p style="text-align:center;color:#666;font-size:0.75rem;">${time}</p>
-            <div class="ticket-item"><span>${labels.items}:</span><span>✓</span></div>
-            <div class="ticket-item"><span>${labels.total}:</span><span>${totalDisplay}</span></div>
-            <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** ${labels.confirmed} ***</p>
+            <div class="ticket-item"><span>Items:</span><span>✓</span></div>
+            <div class="ticket-item"><span>Total:</span><span>${currency}${total}</span></div>
+            <p style="text-align:center;margin-top:0.5rem;font-weight:bold;">*** CONFIRMED ***</p>
         </div>`;
     }
 };
@@ -1530,7 +1135,7 @@ const SpeechManager = {
             State.recognition = new SR();
             State.recognition.continuous = false;
             State.recognition.interimResults = true;
-            State.recognition.lang = State.currentLanguage === 'fr' ? 'fr-FR' : 'en-AU';
+            State.recognition.lang = 'en-AU';
 
             State.recognition.onresult = (event) => {
                 let transcript = '';
@@ -1795,9 +1400,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Initialize (for landing page)
-    UI.updateLanguage();
-    
     // Demo buttons
     document.getElementById('startInteractive')?.addEventListener('click', () => Demo.startInteractive());
     document.getElementById('startAutoDemo')?.addEventListener('click', () => Demo.runAutoDemo());
@@ -1861,17 +1463,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
     document.getElementById('themeToggle2')?.addEventListener('click', toggleTheme);
-    
-    // Language Toggle
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            State.currentLanguage = btn.dataset.lang;
-            UI.updateLanguage();
-            if (State.recognition) State.recognition.lang = State.currentLanguage === 'fr' ? 'fr-FR' : 'en-AU';
-        });
-    });
     
     // Fullscreen
     document.getElementById('fullscreenBtn')?.addEventListener('click', () => {
