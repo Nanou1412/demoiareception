@@ -971,8 +971,23 @@ const UI = {
         if (ticketIcon) ticketIcon.className = `fas ${ind.cardIcon}`;
         if (smsCardTitle) smsCardTitle.textContent = t('customerSMS');
         
+        // Update process steps labels
+        this.updateProcessStepLabels();
+        
         // Update CSS variables for industry color
         this.updateIndustryColor();
+    },
+
+    updateProcessStepLabels() {
+        const indLang = getIndustryLang();
+        const steps = indLang.steps || ['Call', 'Order', 'Confirm', 'Done'];
+        
+        DOM.processSteps?.forEach((stepEl, i) => {
+            const label = stepEl.querySelector('span');
+            if (label && steps[i]) {
+                label.textContent = steps[i];
+            }
+        });
     },
 
     updateIndustryColor() {
