@@ -1,0 +1,434 @@
+/* ============================================
+   PHONE UI COMPONENT
+   ============================================ */
+
+/* ========== Phone Container ========== */
+.phone-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+    .phone-container {
+        position: sticky;
+        top: 100px;
+    }
+}
+
+/* ========== Phone Frame ========== */
+.phone-frame {
+    background: var(--bg-phone);
+    border-radius: 45px;
+    padding: 12px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow:
+        0 0 0 2px rgba(255, 255, 255, 0.1),
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 0 40px rgba(255, 255, 255, 0.02);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ========== Phone Notch ========== */
+.phone-notch {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 30px;
+    background: var(--black);
+    border-radius: 0 0 20px 20px;
+    z-index: 10;
+}
+
+.phone-notch::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--gray-800);
+    border-radius: var(--radius-full);
+}
+
+/* ========== Phone Header ========== */
+.phone-header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    padding: 2.5rem var(--space-4) var(--space-4);
+    border-radius: 35px 35px 0 0;
+    position: relative;
+}
+
+.call-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+}
+
+.call-pulse {
+    width: 10px;
+    height: 10px;
+    background: var(--success);
+    border-radius: var(--radius-full);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}
+
+.call-status span {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.call-timer {
+    text-align: center;
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--white);
+    font-family: var(--font-mono);
+}
+
+/* ========== Phone Screen ========== */
+.phone-screen {
+    background: var(--bg-primary);
+    min-height: 450px;
+    max-height: 450px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========== Caller Info ========== */
+.caller-info {
+    padding: var(--space-4);
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.caller-avatar {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-2xl);
+    margin: 0 auto var(--space-2);
+}
+
+.caller-name {
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+}
+
+.caller-number {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+/* ========== Conversation ========== */
+.conversation {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+/* ========== Messages ========== */
+.message {
+    display: flex;
+    gap: var(--space-2);
+    max-width: 85%;
+    animation: messageIn 0.3s ease;
+}
+
+@keyframes messageIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message.ai {
+    align-self: flex-start;
+}
+
+.message.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.msg-avatar {
+    width: 32px;
+    height: 32px;
+    background: var(--bg-elevated);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-sm);
+    flex-shrink: 0;
+}
+
+.message.ai .msg-avatar {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+}
+
+.msg-bubble {
+    background: var(--bg-elevated);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+    color: var(--text-primary);
+}
+
+.message.ai .msg-bubble {
+    border-bottom-left-radius: var(--radius-sm);
+}
+
+.message.user .msg-bubble {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--white);
+    border-bottom-right-radius: var(--radius-sm);
+}
+
+.msg-sender {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    margin-bottom: var(--space-1);
+}
+
+/* ========== Typing Indicator ========== */
+.typing-indicator {
+    display: none;
+    align-items: center;
+    gap: 4px;
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-elevated);
+    border-radius: var(--radius-lg);
+    width: fit-content;
+    margin: var(--space-2) var(--space-4);
+}
+
+.typing-indicator.visible {
+    display: flex;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background: var(--text-muted);
+    border-radius: var(--radius-full);
+    animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 60%, 100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ========== Phone Controls ========== */
+.phone-controls {
+    background: var(--bg-secondary);
+    padding: var(--space-4);
+    border-radius: 0 0 35px 35px;
+}
+
+.quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+    justify-content: center;
+}
+
+/* ========== Waveform Overlay ========== */
+.waveform-overlay {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: var(--z-toast);
+    display: none;
+}
+
+.waveform-overlay.visible {
+    display: block;
+}
+
+.waveform-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-full);
+    padding: var(--space-3) var(--space-6);
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    box-shadow: var(--shadow-xl);
+}
+
+.waveform-bars {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 30px;
+}
+
+.wave-bar {
+    width: 4px;
+    height: 100%;
+    background: var(--primary);
+    border-radius: var(--radius-full);
+    animation: waveform 0.5s ease-in-out infinite alternate;
+}
+
+.wave-bar:nth-child(2) { animation-delay: 0.1s; }
+.wave-bar:nth-child(3) { animation-delay: 0.2s; }
+.wave-bar:nth-child(4) { animation-delay: 0.3s; }
+.wave-bar:nth-child(5) { animation-delay: 0.4s; }
+.wave-bar:nth-child(6) { animation-delay: 0.3s; }
+.wave-bar:nth-child(7) { animation-delay: 0.2s; }
+.wave-bar:nth-child(8) { animation-delay: 0.1s; }
+.wave-bar:nth-child(9) { animation-delay: 0.05s; }
+.wave-bar:nth-child(10) { animation-delay: 0.15s; }
+
+@keyframes waveform {
+    from {
+        transform: scaleY(0.3);
+    }
+    to {
+        transform: scaleY(1);
+    }
+}
+
+.waveform-label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-secondary);
+}
+
+/* ========== Speaking Animation ========== */
+.speaking .msg-avatar {
+    animation: speakingPulse 0.5s infinite alternate;
+}
+
+@keyframes speakingPulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 767px) {
+    .phone-frame {
+        max-width: 100%;
+        border-radius: 35px;
+        margin: 0 var(--space-2);
+    }
+
+    .phone-screen {
+        min-height: 400px;
+        max-height: 400px;
+    }
+
+    .phone-header {
+        padding: 2rem var(--space-3) var(--space-3);
+        border-radius: 25px 25px 0 0;
+    }
+
+    .phone-notch {
+        width: 120px;
+        height: 25px;
+    }
+}
+
+@media (max-width: 575px) {
+    .phone-frame {
+        border-radius: 30px;
+        padding: 8px;
+    }
+
+    .phone-screen {
+        min-height: 350px;
+        max-height: 350px;
+    }
+
+    .phone-controls {
+        padding: var(--space-3);
+        border-radius: 0 0 25px 25px;
+    }
+
+    .caller-avatar {
+        width: 50px;
+        height: 50px;
+        font-size: var(--font-size-lg);
+    }
+
+    .conversation {
+        padding: var(--space-3);
+        gap: var(--space-2);
+    }
+
+    .msg-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: var(--font-size-xs);
+    }
+
+    .msg-bubble {
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--font-size-sm);
+    }
+}
+
+@media (max-width: 360px) {
+    .phone-screen {
+        min-height: 300px;
+        max-height: 300px;
+    }
+
+    .msg-bubble {
+        font-size: var(--font-size-xs);
+    }
+}

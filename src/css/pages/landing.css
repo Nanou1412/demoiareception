@@ -1,0 +1,290 @@
+/* ============================================
+   LANDING PAGE STYLES
+   ============================================ */
+
+/* ========== Landing Hero ========== */
+.landing-hero {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-8) 0;
+}
+
+.landing-hero .container {
+    text-align: center;
+}
+
+.landing-hero h1 {
+    font-size: var(--font-size-5xl);
+    margin-bottom: var(--space-4);
+}
+
+.hero-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto var(--space-8);
+}
+
+/* ========== Hero Badge ========== */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: rgba(var(--primary-rgb), 0.1);
+    border: 1px solid rgba(var(--primary-rgb), 0.3);
+    border-radius: var(--radius-full);
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--primary-light);
+    margin-bottom: var(--space-6);
+}
+
+.hero-badge .pulse {
+    width: 8px;
+    height: 8px;
+    background: var(--success);
+    border-radius: var(--radius-full);
+    animation: pulse 2s infinite;
+}
+
+/* ========== Sales Pitch Section ========== */
+.sales-pitch-section {
+    margin: var(--space-10) 0;
+    padding: var(--space-8);
+    background: var(--bg-card);
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--border-color);
+}
+
+/* ========== Section Title ========== */
+.section-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    margin-bottom: var(--space-8);
+    color: var(--text-primary);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-8);
+}
+
+/* ========== How It Works Section ========== */
+.how-it-works-section {
+    padding: var(--space-16) 0;
+    background: var(--bg-secondary);
+}
+
+.step-arrow {
+    font-size: var(--font-size-2xl);
+    color: var(--text-muted);
+    transform: rotate(0deg);
+}
+
+@media (max-width: 767px) {
+    .step-arrow {
+        transform: rotate(90deg);
+    }
+}
+
+/* ========== Use Cases Section ========== */
+.use-cases-section {
+    padding: var(--space-16) 0;
+}
+
+/* ========== Pricing Section ========== */
+.pricing-section {
+    padding: var(--space-16) 0;
+    background: var(--bg-secondary);
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-6) 0;
+    text-align: left;
+}
+
+.pricing-features li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+.pricing-features li i {
+    color: var(--success);
+}
+
+/* ========== ROI Calculator Section ========== */
+.roi-section {
+    padding: var(--space-16) 0;
+}
+
+.roi-calculator {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .roi-calculator {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ========== FAQ Section ========== */
+.faq-section {
+    padding: var(--space-16) 0;
+    background: var(--bg-secondary);
+}
+
+/* ========== CTA Section ========== */
+.cta-section {
+    padding: var(--space-16) 0;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-4);
+}
+
+.cta-section p {
+    color: var(--text-muted);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-8);
+}
+
+/* ========== Footer ========== */
+.landing-footer {
+    padding: var(--space-8) 0;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.landing-footer p {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+}
+
+/* ========== Comparison Table ========== */
+.comparison-table {
+    width: 100%;
+    max-width: 600px;
+    margin: var(--space-6) auto;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+}
+
+.comparison-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: var(--bg-elevated);
+    font-weight: var(--font-weight-semibold);
+}
+
+.comparison-header > div,
+.comparison-row > div {
+    padding: var(--space-4);
+    text-align: center;
+}
+
+.comparison-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid var(--border-color);
+}
+
+.comparison-row:nth-child(even) {
+    background: var(--bg-card);
+}
+
+.comparison-row .check {
+    color: var(--success);
+}
+
+.comparison-row .cross {
+    color: var(--error);
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 991px) {
+    .landing-hero {
+        min-height: auto;
+        padding: var(--space-8) 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .landing-hero h1 {
+        font-size: var(--font-size-3xl);
+    }
+
+    .hero-subtitle {
+        font-size: var(--font-size-base);
+        margin-bottom: var(--space-6);
+    }
+
+    .sales-pitch-section {
+        margin: var(--space-6) 0;
+        padding: var(--space-6);
+    }
+
+    .section-title {
+        font-size: var(--font-size-xl);
+    }
+
+    .how-it-works-section,
+    .use-cases-section,
+    .pricing-section,
+    .roi-section,
+    .faq-section,
+    .cta-section {
+        padding: var(--space-10) 0;
+    }
+}
+
+@media (max-width: 575px) {
+    .landing-hero {
+        padding: var(--space-6) 0;
+    }
+
+    .landing-hero h1 {
+        font-size: var(--font-size-2xl);
+    }
+
+    .hero-badge {
+        font-size: var(--font-size-xs);
+        padding: var(--space-1) var(--space-3);
+    }
+
+    .sales-pitch-section {
+        padding: var(--space-4);
+        border-radius: var(--radius-xl);
+    }
+
+    .comparison-table {
+        font-size: var(--font-size-xs);
+    }
+
+    .comparison-header > div,
+    .comparison-row > div {
+        padding: var(--space-2);
+    }
+}

@@ -1,0 +1,120 @@
+/* ============================================
+   LAYOUT - HEADER
+   ============================================ */
+
+/* ========== Base Header ========== */
+header,
+.header {
+    padding: var(--space-4) 0;
+    position: relative;
+    z-index: var(--z-sticky);
+}
+
+header .container,
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ========== Landing Header ========== */
+.landing-header {
+    padding: var(--space-5) 0;
+    background: transparent;
+}
+
+/* ========== Demo Header ========== */
+.demo-header {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* ========== Logo ========== */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.logo-icon {
+    font-size: var(--font-size-2xl);
+}
+
+.logo span {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ========== Header Actions ========== */
+.header-actions {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 767px) {
+    header,
+    .header {
+        padding: var(--space-3) 0;
+    }
+
+    .header-actions {
+        gap: var(--space-2);
+    }
+
+    .header-actions .btn-primary span,
+    .header-actions .btn-secondary span {
+        display: none;
+    }
+
+    .header-actions .btn-primary,
+    .header-actions .btn-secondary {
+        padding: var(--space-2) var(--space-3);
+    }
+
+    .logo {
+        font-size: var(--font-size-lg);
+    }
+
+    .logo-icon {
+        font-size: var(--font-size-xl);
+    }
+}
+
+@media (max-width: 575px) {
+    header .container,
+    .header .container {
+        padding: 0 var(--space-3);
+    }
+
+    .logo {
+        font-size: var(--font-size-base);
+    }
+
+    .logo-icon {
+        font-size: var(--font-size-lg);
+    }
+
+    .header-actions {
+        gap: var(--space-1);
+    }
+
+    .header-actions .btn-icon {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (max-width: 360px) {
+    .logo span {
+        display: none;
+    }
+}

@@ -1,0 +1,221 @@
+/* ============================================
+   CSS VARIABLES - Design Tokens
+   ============================================ */
+
+:root {
+    /* ========== Colors - Primary ========== */
+    --primary: #6366f1;
+    --primary-light: #818cf8;
+    --primary-dark: #4f46e5;
+    --primary-rgb: 99, 102, 241;
+
+    /* ========== Colors - Accent ========== */
+    --accent: #22d3ee;
+    --accent-light: #67e8f9;
+    --accent-dark: #06b6d4;
+    --accent-rgb: 34, 211, 238;
+
+    /* ========== Colors - Success/Error/Warning ========== */
+    --success: #22c55e;
+    --success-light: #4ade80;
+    --success-dark: #16a34a;
+
+    --error: #ef4444;
+    --error-light: #f87171;
+    --error-dark: #dc2626;
+
+    --warning: #f59e0b;
+    --warning-light: #fbbf24;
+    --warning-dark: #d97706;
+
+    /* ========== Colors - Neutrals ========== */
+    --white: #ffffff;
+    --black: #000000;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    --gray-950: #030712;
+
+    /* ========== Typography ========== */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+
+    --font-size-xs: 0.75rem;    /* 12px */
+    --font-size-sm: 0.875rem;   /* 14px */
+    --font-size-base: 1rem;     /* 16px */
+    --font-size-lg: 1.125rem;   /* 18px */
+    --font-size-xl: 1.25rem;    /* 20px */
+    --font-size-2xl: 1.5rem;    /* 24px */
+    --font-size-3xl: 1.875rem;  /* 30px */
+    --font-size-4xl: 2.25rem;   /* 36px */
+    --font-size-5xl: 3rem;      /* 48px */
+
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+
+    /* ========== Spacing ========== */
+    --space-0: 0;
+    --space-1: 0.25rem;   /* 4px */
+    --space-2: 0.5rem;    /* 8px */
+    --space-3: 0.75rem;   /* 12px */
+    --space-4: 1rem;      /* 16px */
+    --space-5: 1.25rem;   /* 20px */
+    --space-6: 1.5rem;    /* 24px */
+    --space-8: 2rem;      /* 32px */
+    --space-10: 2.5rem;   /* 40px */
+    --space-12: 3rem;     /* 48px */
+    --space-16: 4rem;     /* 64px */
+    --space-20: 5rem;     /* 80px */
+
+    /* ========== Border Radius ========== */
+    --radius-none: 0;
+    --radius-sm: 0.25rem;   /* 4px */
+    --radius-md: 0.5rem;    /* 8px */
+    --radius-lg: 0.75rem;   /* 12px */
+    --radius-xl: 1rem;      /* 16px */
+    --radius-2xl: 1.5rem;   /* 24px */
+    --radius-3xl: 2rem;     /* 32px */
+    --radius-full: 9999px;
+
+    /* ========== Shadows ========== */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    --shadow-glow: 0 0 20px rgba(var(--primary-rgb), 0.4);
+    --shadow-glow-accent: 0 0 20px rgba(var(--accent-rgb), 0.4);
+
+    /* ========== Transitions ========== */
+    --transition-fast: 150ms ease;
+    --transition-base: 200ms ease;
+    --transition-slow: 300ms ease;
+    --transition-slower: 500ms ease;
+
+    /* ========== Z-Index Scale ========== */
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-fixed: 300;
+    --z-modal-backdrop: 400;
+    --z-modal: 500;
+    --z-popover: 600;
+    --z-tooltip: 700;
+    --z-toast: 800;
+
+    /* ========== Breakpoints (for reference) ========== */
+    /* xs: 0px */
+    /* sm: 576px */
+    /* md: 768px */
+    /* lg: 992px */
+    /* xl: 1200px */
+    /* 2xl: 1400px */
+
+    /* ========== Container ========== */
+    --container-sm: 540px;
+    --container-md: 720px;
+    --container-lg: 960px;
+    --container-xl: 1140px;
+    --container-2xl: 1320px;
+}
+
+/* ========== Dark Mode Theme ========== */
+.dark-mode {
+    --bg-primary: var(--gray-950);
+    --bg-secondary: #0c0c14;
+    --bg-card: rgba(30, 30, 45, 0.8);
+    --bg-elevated: rgba(40, 40, 60, 0.9);
+    --bg-phone: #1a1a2e;
+    --bg-input: rgba(255, 255, 255, 0.05);
+
+    --text-primary: var(--white);
+    --text-secondary: var(--gray-300);
+    --text-muted: var(--gray-400);
+    --text-disabled: var(--gray-600);
+
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-hover: rgba(255, 255, 255, 0.2);
+    --border-focus: var(--primary);
+
+    --overlay: rgba(0, 0, 0, 0.7);
+}
+
+/* ========== Light Mode Theme ========== */
+.light-mode {
+    --bg-primary: var(--gray-50);
+    --bg-secondary: var(--white);
+    --bg-card: var(--white);
+    --bg-elevated: var(--gray-100);
+    --bg-phone: var(--gray-200);
+    --bg-input: var(--white);
+
+    --text-primary: var(--gray-900);
+    --text-secondary: var(--gray-700);
+    --text-muted: var(--gray-500);
+    --text-disabled: var(--gray-400);
+
+    --border-color: var(--gray-200);
+    --border-hover: var(--gray-300);
+    --border-focus: var(--primary);
+
+    --overlay: rgba(0, 0, 0, 0.5);
+}
+
+/* ========== Industry Colors ========== */
+:root {
+    --industry-restaurant: #ef4444;
+    --industry-pizza: #dc2626;
+    --industry-bakery: #f59e0b;
+    --industry-coffee: #92400e;
+    --industry-sushi: #ec4899;
+    --industry-fastfood: #f97316;
+    --industry-icecream: #06b6d4;
+
+    --industry-medical: #3b82f6;
+    --industry-dental: #60a5fa;
+    --industry-salon: #ec4899;
+    --industry-spa: #8b5cf6;
+    --industry-massage: #a855f7;
+    --industry-nailsalon: #f472b6;
+    --industry-optician: #0ea5e9;
+    --industry-podiatrist: #14b8a6;
+    --industry-pharmacy: #22c55e;
+    --industry-vet: #84cc16;
+
+    --industry-cleaning: #06b6d4;
+    --industry-electrician: #eab308;
+    --industry-plumber: #3b82f6;
+    --industry-landscaping: #22c55e;
+    --industry-locksmith: #6b7280;
+    --industry-moving: #f97316;
+    --industry-garage: #64748b;
+
+    --industry-lawyer: #1e293b;
+    --industry-realestate: #10b981;
+    --industry-tutoring: #8b5cf6;
+    --industry-drivingschool: #ef4444;
+
+    --industry-hotel: #6366f1;
+    --industry-gym: #ef4444;
+    --industry-florist: #ec4899;
+    --industry-photography: #8b5cf6;
+    --industry-tattoo: #1f2937;
+    --industry-petgrooming: #f59e0b;
+    --industry-petboarding: #22c55e;
+    --industry-daycare: #fbbf24;
+    --industry-wedding: #ec4899;
+    --industry-eventvenue: #6366f1;
+}

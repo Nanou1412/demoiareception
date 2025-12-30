@@ -1,10 +1,22 @@
 [build]
-  publish = "public"
+  command = "npm run build"
+  publish = "dist"
   functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "18"
 
 [functions]
   node_bundler = "esbuild"
 
+# Dev settings
+[dev]
+  command = "npm run dev"
+  port = 5173
+  targetPort = 5173
+  autoLaunch = true
+
+# API redirects
 [[redirects]]
   from = "/api/chat/tts"
   to = "/.netlify/functions/chat-tts"
@@ -19,3 +31,31 @@
   from = "/api/chat"
   to = "/.netlify/functions/chat"
   status = 200
+
+# SPA fallback for demo page
+[[redirects]]
+  from = "/demo/*"
+  to = "/demo.html"
+  status = 200
+
+# SPA fallback for main page
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Cache headers for static assets
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

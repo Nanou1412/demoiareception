@@ -1,0 +1,230 @@
+/* ============================================
+   FORMS COMPONENT
+   ============================================ */
+
+/* ========== Base Input ========== */
+.input,
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='number'],
+input[type='search'],
+textarea,
+select {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: var(--font-size-base);
+    transition: all var(--transition-fast);
+}
+
+.input:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+}
+
+.input::placeholder,
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-muted);
+}
+
+/* ========== Input Group ========== */
+.input-group {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.input-group .input {
+    flex: 1;
+}
+
+/* ========== Search Input ========== */
+.search-input {
+    display: flex;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-full);
+    padding: var(--space-3) var(--space-4);
+    gap: var(--space-3);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.search-input:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+}
+
+.search-input i {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+}
+
+.search-input input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    font-size: var(--font-size-base);
+    outline: none;
+    padding: 0;
+}
+
+.search-input input::placeholder {
+    color: var(--text-muted);
+}
+
+.search-count {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+/* ========== Chat Input Area ========== */
+.input-area {
+    display: flex;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    background: var(--bg-elevated);
+    border-radius: var(--radius-lg);
+}
+
+.input-area input {
+    flex: 1;
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-full);
+    color: var(--text-primary);
+    font-size: var(--font-size-base);
+}
+
+.input-area input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* ========== Range Input ========== */
+input[type='range'] {
+    width: 100%;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--border-color);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-full);
+    background: var(--primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+input[type='range']::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.5);
+}
+
+input[type='range']::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-full);
+    background: var(--primary);
+    cursor: pointer;
+    border: none;
+}
+
+/* ========== Checkbox & Radio ========== */
+.checkbox,
+.radio {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    cursor: pointer;
+}
+
+.checkbox input,
+.radio input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+}
+
+/* ========== Label ========== */
+label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2);
+}
+
+/* ========== Form Group ========== */
+.form-group {
+    margin-bottom: var(--space-4);
+}
+
+/* ========== Validation States ========== */
+.input-error {
+    border-color: var(--error) !important;
+}
+
+.input-success {
+    border-color: var(--success) !important;
+}
+
+.error-message {
+    font-size: var(--font-size-xs);
+    color: var(--error);
+    margin-top: var(--space-1);
+}
+
+/* ========== ROI Calculator Form ========== */
+.roi-input-group {
+    margin-bottom: var(--space-6);
+}
+
+.roi-input-group label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-3);
+}
+
+.roi-input-group .value-display {
+    font-weight: var(--font-weight-bold);
+    color: var(--primary);
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 575px) {
+    .search-input {
+        max-width: 100%;
+        margin: 0 var(--space-2);
+    }
+
+    .input-area {
+        padding: var(--space-2);
+    }
+
+    .input-area input {
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--font-size-sm);
+    }
+}

@@ -1,0 +1,397 @@
+/* ============================================
+   CARDS COMPONENT
+   ============================================ */
+
+/* ========== Base Card ========== */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    transition: all var(--transition-base);
+}
+
+.card:hover {
+    border-color: var(--border-hover);
+}
+
+/* ========== Industry Card ========== */
+.industry-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6) var(--space-5);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.industry-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--industry-color, var(--primary)), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.industry-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--industry-color, var(--primary));
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px var(--industry-glow, rgba(var(--primary-rgb), 0.3));
+}
+
+.industry-card:hover::before {
+    opacity: 0.1;
+}
+
+.industry-card-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-4);
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.industry-card h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-2);
+    color: var(--text-primary);
+    position: relative;
+    z-index: 1;
+}
+
+.industry-card p {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    line-height: var(--line-height-normal);
+    position: relative;
+    z-index: 1;
+}
+
+/* ========== Benefit Card ========== */
+.benefit-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+}
+
+.benefit-card h4 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-2);
+    color: var(--text-primary);
+}
+
+.benefit-card p {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    line-height: var(--line-height-relaxed);
+}
+
+/* ========== Step Card ========== */
+.step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    text-align: center;
+    width: 100%;
+    max-width: 280px;
+    position: relative;
+    transition: all var(--transition-base);
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--white);
+    margin: 0 auto var(--space-4);
+}
+
+.step-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-3);
+}
+
+.step-card h4 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-2);
+}
+
+.step-card p {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+/* ========== Use Case Card ========== */
+.use-case-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    transition: all var(--transition-base);
+}
+
+.use-case-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.use-case-icon {
+    font-size: 2rem;
+    margin-bottom: var(--space-3);
+}
+
+.use-case-card h4 {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-2);
+}
+
+.use-case-card p {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+/* ========== Stats Card ========== */
+.stats-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary);
+}
+
+.stat-label {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ========== Pricing Card ========== */
+.pricing-card {
+    background: linear-gradient(135deg, var(--bg-card), var(--bg-elevated));
+    border: 2px solid var(--primary);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-10) var(--space-8);
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+.pricing-badge {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: var(--white);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    display: inline-block;
+    margin-bottom: var(--space-6);
+}
+
+.weekly-price {
+    font-size: 4rem;
+    font-weight: var(--font-weight-extrabold);
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.weekly-price .currency {
+    font-size: var(--font-size-2xl);
+    vertical-align: top;
+}
+
+.weekly-price .period {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-normal);
+    color: var(--text-muted);
+}
+
+/* ========== FAQ Card ========== */
+.faq-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: var(--space-5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: var(--font-weight-semibold);
+    text-align: left;
+    color: var(--text-primary);
+    transition: background var(--transition-fast);
+}
+
+.faq-question:hover {
+    background: var(--bg-elevated);
+}
+
+.faq-answer {
+    padding: 0 var(--space-5) var(--space-5);
+    color: var(--text-muted);
+    line-height: var(--line-height-relaxed);
+    display: none;
+}
+
+.faq-item.open .faq-answer {
+    display: block;
+}
+
+.faq-item.open .faq-question i {
+    transform: rotate(180deg);
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 991px) {
+    .stats-card {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .industry-card {
+        padding: var(--space-4) var(--space-3);
+    }
+
+    .industry-card-icon {
+        font-size: 2.5rem;
+        margin-bottom: var(--space-3);
+    }
+
+    .industry-card h3 {
+        font-size: var(--font-size-base);
+    }
+
+    .industry-card p {
+        font-size: var(--font-size-xs);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .benefit-card {
+        padding: var(--space-4);
+    }
+
+    .step-card {
+        padding: var(--space-5);
+    }
+}
+
+@media (max-width: 575px) {
+    .industry-card {
+        padding: var(--space-3) var(--space-2);
+    }
+
+    .industry-card-icon {
+        font-size: 2rem;
+        margin-bottom: var(--space-2);
+    }
+
+    .industry-card h3 {
+        font-size: var(--font-size-sm);
+    }
+
+    .industry-card p {
+        display: none;
+    }
+
+    .stats-card {
+        grid-template-columns: repeat(3, 1fr);
+        padding: var(--space-3);
+        gap: var(--space-2);
+    }
+
+    .stat-value {
+        font-size: var(--font-size-lg);
+    }
+
+    .pricing-card {
+        padding: var(--space-6) var(--space-4);
+        margin: 0 var(--space-4);
+    }
+
+    .weekly-price {
+        font-size: 2.75rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .industry-card {
+        padding: var(--space-2);
+    }
+
+    .industry-card-icon {
+        font-size: 1.75rem;
+    }
+
+    .industry-card h3 {
+        font-size: var(--font-size-xs);
+    }
+}

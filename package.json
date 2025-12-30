@@ -2,17 +2,19 @@
     "name": "ai-receptionist-demo",
     "version": "2.0.0",
     "description": "AI Receptionist Demo - 38 Industries",
+    "type": "module",
     "main": "server.js",
     "scripts": {
-        "start": "node server.js",
-        "dev": "npm run build:dev && node server.js",
-        "build:dev": "node scripts/build-industries.js",
-        "build:prod": "node scripts/build.js",
-        "build": "npm run build:dev",
-        "lint": "eslint public/js/**/*.js industries/**/*.js --fix",
-        "lint:check": "eslint public/js/**/*.js industries/**/*.js",
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "server": "node server.js",
+        "start": "npm run build && npm run server",
+        "build:industries": "node scripts/build-industries.js",
+        "lint": "eslint src/**/*.js --fix",
+        "lint:check": "eslint src/**/*.js",
         "format": "prettier --write \"**/*.{js,json,css,html}\"",
-        "clean": "rm -rf dist public/js/industries.js"
+        "clean": "rm -rf dist"
     },
     "dependencies": {
         "dotenv": "^17.2.3",
@@ -20,8 +22,12 @@
         "openai": "^4.20.0"
     },
     "devDependencies": {
+        "autoprefixer": "^10.4.19",
+        "cssnano": "^7.0.0",
         "eslint": "^8.56.0",
-        "prettier": "^3.2.0"
+        "postcss": "^8.4.38",
+        "prettier": "^3.2.0",
+        "vite": "^5.2.0"
     },
     "engines": {
         "node": ">=18.0.0"
