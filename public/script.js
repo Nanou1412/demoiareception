@@ -2301,24 +2301,87 @@ Ready to see it in action? Pick your industry below and watch the magic happen!`
     // ========== CATEGORY FILTERS ==========
     const categoryBtns = document.querySelectorAll('.category-btn');
     const industryCards = document.querySelectorAll('.industry-card[data-category]');
+    const industrySearch = document.getElementById('industrySearch');
+    const searchCount = document.getElementById('searchCount');
+    const industryGrid = document.querySelector('.industry-grid');
     
+    // Current filter state
+    let currentCategory = 'all';
+    let currentSearch = '';
+    
+    // Filter function
+    const filterIndustries = () => {
+        let visibleCount = 0;
+        
+        industryCards.forEach(card => {
+            const matchesCategory = currentCategory === 'all' || card.dataset.category === currentCategory;
+            const cardName = card.querySelector('h3')?.textContent.toLowerCase() || '';
+            const cardDesc = card.querySelector('p')?.textContent.toLowerCase() || '';
+            const matchesSearch = !currentSearch || 
+                cardName.includes(currentSearch) || 
+                cardDesc.includes(currentSearch) ||
+                card.dataset.industry.includes(currentSearch);
+            
+            if (matchesCategory && matchesSearch) {
+                card.classList.remove('hidden');
+                visibleCount++;
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+        
+        // Update count
+        if (searchCount) {
+            searchCount.textContent = `${visibleCount} industr${visibleCount === 1 ? 'y' : 'ies'}`;
+        }
+        
+        // Show/hide no results message
+        let noResults = industryGrid?.querySelector('.no-results');
+        if (visibleCount === 0) {
+            if (!noResults) {
+                noResults = document.createElement('div');
+                noResults.className = 'no-results';
+                noResults.innerHTML = '<i class="fas fa-search"></i><p>No industries found. Try a different search.</p>';
+                industryGrid?.appendChild(noResults);
+            }
+        } else if (noResults) {
+            noResults.remove();
+        }
+    };
+    
+    // Category filter click
     categoryBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Update active button
             categoryBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            
-            const category = btn.dataset.category;
-            
-            // Filter cards
-            industryCards.forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
+            currentCategory = btn.dataset.category;
+            filterIndustries();
         });
+    });
+    
+    // Search input with debounce
+    let searchTimeout;
+    industrySearch?.addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            currentSearch = e.target.value.toLowerCase().trim();
+            // Reset category to "All" when searching
+            if (currentSearch) {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                categoryBtns[0]?.classList.add('active');
+                currentCategory = 'all';
+            }
+            filterIndustries();
+        }, 150); // Debounce 150ms
+    });
+    
+    // Clear search on Escape
+    industrySearch?.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            industrySearch.value = '';
+            currentSearch = '';
+            filterIndustries();
+        }
     });
 });
 
