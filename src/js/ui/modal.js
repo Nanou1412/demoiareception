@@ -1,8 +1,8 @@
 /**
- * Gestionnaire de Modals
- * ======================
+ * Modal Manager
+ * ==============
  *
- * Gestion centralisée des modals
+ * Centralized modal management
  */
 
 import { UI_CONFIG, EVENTS } from '../core/config.js';
@@ -23,10 +23,10 @@ class ModalManager {
     }
 
     /**
-     * Créer et enregistrer un modal
-     * @param {string} id - ID du modal
-     * @param {Object} options - Options du modal
-     * @returns {Element} Élément du modal
+     * Create and register a modal
+     * @param {string} id - Modal ID
+     * @param {Object} options - Modal options
+     * @returns {Element} Modal element
      */
     create(id, options) {
         const html = modalTemplate({ id, ...options });
@@ -47,9 +47,9 @@ class ModalManager {
     }
 
     /**
-     * Ouvrir un modal
-     * @param {string} id - ID du modal
-     * @param {Object} data - Données à passer au modal
+     * Open a modal
+     * @param {string} id - Modal ID
+     * @param {Object} data - Data to pass to modal
      */
     open(id, data = {}) {
         const modal = this.modals.get(id);
@@ -58,7 +58,7 @@ class ModalManager {
             return;
         }
 
-        // Fermer le modal actif si différent
+        // Close active modal if different
         if (this.activeModal && this.activeModal !== id) {
             this.close(this.activeModal);
         }
@@ -67,7 +67,7 @@ class ModalManager {
         element.classList.add('active');
         element.setAttribute('aria-hidden', 'false');
 
-        // Désactiver le scroll du body
+        // Disable body scroll
         document.body.style.overflow = 'hidden';
 
         this.activeModal = id;
@@ -77,8 +77,8 @@ class ModalManager {
     }
 
     /**
-     * Fermer un modal
-     * @param {string} id - ID du modal (optionnel, ferme l'actif si non spécifié)
+     * Close a modal
+     * @param {string} id - Modal ID (optional, closes active if not specified)
      */
     close(id = null) {
         const modalId = id || this.activeModal;
@@ -91,7 +91,7 @@ class ModalManager {
         element.classList.remove('active');
         element.setAttribute('aria-hidden', 'true');
 
-        // Réactiver le scroll du body
+        // Re-enable body scroll
         document.body.style.overflow = '';
 
         this.activeModal = null;
@@ -101,8 +101,8 @@ class ModalManager {
     }
 
     /**
-     * Basculer un modal
-     * @param {string} id - ID du modal
+     * Toggle a modal
+     * @param {string} id - Modal ID
      */
     toggle(id) {
         if (this.activeModal === id) {
@@ -113,8 +113,8 @@ class ModalManager {
     }
 
     /**
-     * Vérifier si un modal est ouvert
-     * @param {string} id - ID du modal (optionnel)
+     * Check if a modal is open
+     * @param {string} id - Modal ID (optional)
      * @returns {boolean}
      */
     isOpen(id = null) {
@@ -125,9 +125,9 @@ class ModalManager {
     }
 
     /**
-     * Mettre à jour le contenu d'un modal
-     * @param {string} id - ID du modal
-     * @param {string} content - Nouveau contenu HTML
+     * Update modal content
+     * @param {string} id - Modal ID
+     * @param {string} content - New HTML content
      */
     setContent(id, content) {
         const modal = this.modals.get(id);
@@ -140,8 +140,8 @@ class ModalManager {
     }
 
     /**
-     * Supprimer un modal
-     * @param {string} id - ID du modal
+     * Remove a modal
+     * @param {string} id - Modal ID
      */
     destroy(id) {
         const modal = this.modals.get(id);

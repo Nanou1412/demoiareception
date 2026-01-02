@@ -1,8 +1,8 @@
 /**
- * Notifications Toast
+ * Toast Notifications
  * ====================
  *
- * Système de notifications éphémères
+ * Ephemeral notification system
  */
 
 import { UI_CONFIG, EVENTS } from '../core/config.js';
@@ -22,10 +22,10 @@ class ToastManager {
     }
 
     /**
-     * Initialiser le container de toasts
+     * Initialize toast container
      */
     _init() {
-        // Créer le container s'il n'existe pas
+        // Create container if it doesn't exist
         this.container = $('#toast-container');
         if (!this.container) {
             this.container = createElement('div', {
@@ -44,11 +44,11 @@ class ToastManager {
     }
 
     /**
-     * Afficher un toast
-     * @param {string} message - Message à afficher
+     * Show a toast
+     * @param {string} message - Message to display
      * @param {string} type - Type (success, error, warning, info)
-     * @param {Object} options - Options supplémentaires
-     * @returns {string} ID du toast
+     * @param {Object} options - Additional options
+     * @returns {string} Toast ID
      */
     show(message, type = 'info', options = {}) {
         const id = shortId();
@@ -68,7 +68,7 @@ class ToastManager {
             closeBtn.addEventListener('click', () => this.hide(id));
         }
 
-        // Animation d'entrée
+        // Entry animation
         requestAnimationFrame(() => {
             toast.classList.add('show');
         });
@@ -82,8 +82,8 @@ class ToastManager {
     }
 
     /**
-     * Masquer un toast
-     * @param {string} id - ID du toast
+     * Hide a toast
+     * @param {string} id - Toast ID
      */
     hide(id) {
         const toast = this.toasts.get(id);
@@ -92,7 +92,7 @@ class ToastManager {
         toast.classList.remove('show');
         toast.classList.add('hide');
 
-        // Supprimer après l'animation
+        // Remove after animation
         setTimeout(() => {
             toast.remove();
             this.toasts.delete(id);
@@ -100,14 +100,14 @@ class ToastManager {
     }
 
     /**
-     * Masquer tous les toasts
+     * Hide all toasts
      */
     hideAll() {
         this.toasts.forEach((_, id) => this.hide(id));
     }
 
     /**
-     * Raccourcis par type
+     * Type shortcuts
      */
     success(message, options) {
         return this.show(message, 'success', options);
@@ -126,11 +126,11 @@ class ToastManager {
     }
 }
 
-// Instance singleton
+// Singleton instance
 export const toastManager = new ToastManager();
 
 // ============================================
-// Helpers exportés
+// Exported helpers
 // ============================================
 
 export const showToast = (message, type, options) => toastManager.show(message, type, options);
@@ -142,5 +142,5 @@ export const toast = {
     info: (msg, opts) => toastManager.info(msg, opts)
 };
 
-// Export de la classe pour les tests
+// Export class for tests
 export { ToastManager };

@@ -1,8 +1,8 @@
 /**
- * Service API
+ * API Service
  * ===========
  *
- * Gestion des appels API vers les fonctions Netlify
+ * API calls management to Netlify functions
  */
 
 import { API_CONFIG, EVENTS, ERROR_MESSAGES } from '../core/config.js';
@@ -21,7 +21,7 @@ class ApiClient {
     }
 
     /**
-     * Construire l'URL complète
+     * Build full URL
      * @param {string} endpoint - Endpoint
      * @returns {string}
      */
@@ -30,9 +30,9 @@ class ApiClient {
     }
 
     /**
-     * Effectuer une requête fetch
+     * Perform a fetch request
      * @param {string} endpoint - Endpoint
-     * @param {Object} options - Options fetch
+     * @param {Object} options - Fetch options
      * @returns {Promise<Response>}
      */
     async request(endpoint, options = {}) {
@@ -71,7 +71,7 @@ class ApiClient {
     }
 
     /**
-     * Annuler la requête en cours
+     * Cancel current request
      */
     abort() {
         if (this.abortController) {
@@ -80,7 +80,7 @@ class ApiClient {
     }
 }
 
-// Instance singleton
+// Singleton instance
 const apiClient = new ApiClient();
 
 // ============================================
@@ -88,15 +88,15 @@ const apiClient = new ApiClient();
 // ============================================
 
 /**
- * Envoyer un message au chat
- * @param {string} message - Message utilisateur
+ * Send a message to chat
+ * @param {string} message - User message
  * @param {Object} options - Options (industry, scenario, etc.)
- * @returns {Promise<Object>} Réponse de l'IA
+ * @returns {Promise<Object>} AI response
  */
 export async function sendMessage(message, options = {}) {
     const startTime = Date.now();
 
-    // Obtenir ou créer l'ID de session
+    // Get or create session ID
     let sessionId = store.get('sessionId');
     if (!sessionId) {
         sessionId = uuid();
@@ -169,7 +169,7 @@ export async function sendMessage(message, options = {}) {
 }
 
 /**
- * Réinitialiser la conversation
+ * Reset conversation
  * @returns {Promise<void>}
  */
 export async function resetChat() {
@@ -201,7 +201,7 @@ export async function resetChat() {
 }
 
 /**
- * Annuler la requête en cours
+ * Cancel current request
  */
 export function abortRequest() {
     apiClient.abort();
@@ -213,8 +213,8 @@ export function abortRequest() {
 // ============================================
 
 /**
- * Obtenir l'audio TTS pour un texte
- * @param {string} text - Texte à convertir
+ * Get TTS audio for text
+ * @param {string} text - Text to convert
  * @param {Object} options - Options (voice, speed, etc.)
  * @returns {Promise<Blob>} Audio blob
  */
@@ -223,7 +223,7 @@ export async function getTextToSpeech(text, options = {}) {
         method: 'POST',
         body: JSON.stringify({
             text,
-            voice: options.voice || 'alloy',
+            voice: options.voice || 'nova',
             speed: options.speed || 1.0
         })
     });
@@ -236,7 +236,7 @@ export async function getTextToSpeech(text, options = {}) {
 // ============================================
 
 /**
- * Vérifier la disponibilité de l'API
+ * Check API availability
  * @returns {Promise<boolean>}
  */
 export async function healthCheck() {
@@ -248,5 +248,5 @@ export async function healthCheck() {
     }
 }
 
-// Export de l'instance pour les tests
+// Export instance for tests
 export { apiClient };

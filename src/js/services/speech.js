@@ -1,8 +1,8 @@
 /**
- * Service de Reconnaissance Vocale
- * =================================
+ * Speech Recognition Service
+ * ==========================
  *
- * Gestion du Speech-to-Text via Web Speech API
+ * Speech-to-Text management via Web Speech API
  */
 
 import { AUDIO_CONFIG, EVENTS, ERROR_MESSAGES, FEATURES } from '../core/config.js';
@@ -25,8 +25,8 @@ class SpeechManager {
     }
 
     /**
-     * Initialiser la reconnaissance vocale
-     * @returns {boolean} Succès de l'initialisation
+     * Initialize speech recognition
+     * @returns {boolean} Initialization success
      */
     init() {
         if (!FEATURES.speechRecognition) {
@@ -85,7 +85,7 @@ class SpeechManager {
             this.isListening = false;
             store.set({ isListening: false });
 
-            // Ne pas émettre d'erreur pour les annulations normales
+            // Don't emit error for normal cancellations
             if (event.error !== 'aborted' && event.error !== 'no-speech') {
                 emitError('speech', event.error);
                 eventBus.emit(EVENTS.SPEECH_ERROR, { error: event.error });
@@ -107,7 +107,7 @@ class SpeechManager {
     }
 
     /**
-     * Démarrer l'écoute
+     * Start listening
      * @param {Object} options - Options
      * @returns {Promise<string>} Transcription
      */
@@ -139,7 +139,7 @@ class SpeechManager {
     }
 
     /**
-     * Arrêter l'écoute
+     * Stop listening
      */
     stop() {
         if (this.recognition && this.isListening) {
@@ -148,7 +148,7 @@ class SpeechManager {
     }
 
     /**
-     * Annuler l'écoute (sans déclencher onend)
+     * Cancel listening (without triggering onend)
      */
     abort() {
         if (this.recognition && this.isListening) {
@@ -158,8 +158,8 @@ class SpeechManager {
     }
 
     /**
-     * Basculer l'écoute
-     * @returns {boolean} Nouvel état (true = écoute)
+     * Toggle listening
+     * @returns {boolean} New state (true = listening)
      */
     toggle() {
         if (this.isListening) {
@@ -186,8 +186,8 @@ class SpeechManager {
     }
 
     /**
-     * Changer la langue
-     * @param {string} lang - Code de langue
+     * Change language
+     * @param {string} lang - Language code
      */
     setLanguage(lang) {
         if (this.recognition) {
@@ -200,7 +200,7 @@ class SpeechManager {
 export const speechManager = new SpeechManager();
 
 // ============================================
-// Helpers exportés
+// Exported helpers
 // ============================================
 
 export const startListening = (options) => speechManager.start(options);

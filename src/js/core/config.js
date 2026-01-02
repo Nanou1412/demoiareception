@@ -1,8 +1,8 @@
 /**
- * Configuration centrale de l'application
- * ========================================
+ * Central Application Configuration
+ * ==================================
  *
- * Toutes les constantes et configurations globales
+ * All global constants and configurations
  */
 
 // ============================================
@@ -24,7 +24,7 @@ export const API_CONFIG = {
 // Phone Simulation Configuration
 // ============================================
 export const PHONE_CONFIG = {
-    carrier: 'IA Réceptionniste',
+    carrier: 'AI Receptionist',
     defaultContact: 'Business',
     typingDelay: {
         min: 30,
@@ -41,12 +41,12 @@ export const PHONE_CONFIG = {
 // ============================================
 export const AUDIO_CONFIG = {
     tts: {
-        voice: 'alloy',
+        voice: 'nova',
         model: 'tts-1-hd',
         speed: 1.0
     },
     speech: {
-        lang: 'fr-FR',
+        lang: 'en-AU',
         continuous: false,
         interimResults: true
     },

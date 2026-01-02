@@ -1,8 +1,8 @@
 /**
- * Service Audio
+ * Audio Service
  * =============
  *
- * Gestion du Text-to-Speech et de la lecture audio
+ * Text-to-Speech and audio playback management
  */
 
 import { AUDIO_CONFIG, EVENTS, ERROR_MESSAGES } from '../core/config.js';
@@ -23,22 +23,22 @@ class AudioManager {
     }
 
     /**
-     * Initialiser le contexte audio
+     * Initialize audio context
      */
     async init() {
         if (!this.audioContext) {
             this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
         }
 
-        // Reprendre si suspendu (politique autoplay des navigateurs)
+        // Resume if suspended (browser autoplay policy)
         if (this.audioContext.state === 'suspended') {
             await this.audioContext.resume();
         }
     }
 
     /**
-     * Jouer un texte via TTS
-     * @param {string} text - Texte à lire
+     * Play text via TTS
+     * @param {string} text - Text to read
      * @param {Object} options - Options
      * @returns {Promise<void>}
      */
@@ -50,17 +50,17 @@ class AudioManager {
             store.set({ isSpeaking: true });
             eventBus.emit(EVENTS.AUDIO_PLAY, { text });
 
-            // Obtenir l'audio depuis l'API
+            // Get audio from API
             const audioBlob = await getTextToSpeech(text, {
                 voice: options.voice || AUDIO_CONFIG.tts.voice,
                 speed: options.speed || AUDIO_CONFIG.tts.speed
             });
 
-            // Créer et jouer l'audio
+            // Create and play audio
             const audioUrl = URL.createObjectURL(audioBlob);
             await this.playAudioUrl(audioUrl);
 
-            // Nettoyer
+            // Clean up
             URL.revokeObjectURL(audioUrl);
             store.set({ isSpeaking: false });
             eventBus.emit(EVENTS.AUDIO_STOP);
@@ -72,13 +72,13 @@ class AudioManager {
     }
 
     /**
-     * Jouer un fichier audio depuis une URL
-     * @param {string} url - URL de l'audio
+     * Play audio file from URL
+     * @param {string} url - Audio URL
      * @returns {Promise<void>}
      */
     playAudioUrl(url) {
         return new Promise((resolve, reject) => {
-            this.stop(); // Arrêter l'audio précédent
+            this.stop(); // Stop previous audio
 
             this.currentAudio = new Audio(url);
             this.currentAudio.volume = store.get('volume');
@@ -99,8 +99,8 @@ class AudioManager {
     }
 
     /**
-     * Jouer un son système
-     * @param {string} soundName - Nom du son (notification, success, error)
+     * Play system sound
+     * @param {string} soundName - Sound name (notification, success, error)
      */
     async playSound(soundName) {
         if (!AUDIO_CONFIG.sounds.enabled || store.get('isMuted')) return;
@@ -119,13 +119,13 @@ class AudioManager {
                 audio.volume = AUDIO_CONFIG.sounds.volume;
                 await audio.play();
             } catch {
-                // Ignorer les erreurs de son système
+                // Ignore system sound errors
             }
         }
     }
 
     /**
-     * Arrêter la lecture en cours
+     * Stop current playback
      */
     stop() {
         if (this.currentAudio) {
@@ -139,7 +139,7 @@ class AudioManager {
     }
 
     /**
-     * Mettre en pause/reprendre
+     * Pause/resume playback
      */
     togglePause() {
         if (!this.currentAudio) return;
@@ -154,7 +154,7 @@ class AudioManager {
     }
 
     /**
-     * Définir le volume
+     * Set volume
      * @param {number} volume - Volume (0-1)
      */
     setVolume(volume) {
@@ -167,7 +167,7 @@ class AudioManager {
     }
 
     /**
-     * Basculer le mode muet
+     * Toggle mute
      */
     toggleMute() {
         const isMuted = !store.get('isMuted');
@@ -179,7 +179,7 @@ class AudioManager {
     }
 
     /**
-     * Vérifier si audio est disponible
+     * Check if audio is available
      * @returns {boolean}
      */
     isAudioSupported() {
@@ -191,7 +191,7 @@ class AudioManager {
 export const audioManager = new AudioManager();
 
 // ============================================
-// Helpers exportés
+// Exported helpers
 // ============================================
 
 export const speak = (text, options) => audioManager.speak(text, options);

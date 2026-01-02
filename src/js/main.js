@@ -2,7 +2,7 @@
  * Main Application Entry Point
  * ============================
  *
- * Point d'entrée principal pour la page d'accueil
+ * Main entry point for the landing page
  */
 
 // ============================================
@@ -76,7 +76,7 @@ async function init() {
     applyTheme();
 
     appState.isInitialized = true;
-    console.log('IA Réceptionniste initialized');
+    console.log('AI Receptionist initialized');
 }
 
 // ============================================
@@ -168,9 +168,9 @@ function renderIndustries() {
             elements.industryGrid.innerHTML = `
                 <div class="empty-state">
                     <span class="empty-icon">🔍</span>
-                    <p>Aucune industrie trouvée</p>
+                    <p>No industries found</p>
                     <button class="btn btn-outline" id="resetFilters">
-                        Réinitialiser les filtres
+                        Reset filters
                     </button>
                 </div>
             `;
@@ -194,7 +194,7 @@ function renderIndustries() {
                     <h3 class="card-title">${ind.name}</h3>
                     <p class="card-description">${ind.description || ''}</p>
                     <button class="btn btn-demo" data-demo="${ind.id}">
-                        Tester <span class="arrow">→</span>
+                        Try demo <span class="arrow">→</span>
                     </button>
                 </article>
             `).join('');

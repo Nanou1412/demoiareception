@@ -21,7 +21,7 @@ exports.handler = async (event, _context) => {
     }
 
     try {
-        const { text, voice = 'echo', speed = 1.0 } = JSON.parse(event.body);
+        const { text, voice = 'nova', speed = 1.0 } = JSON.parse(event.body);
 
         if (!process.env.OPENAI_API_KEY) {
             return {
@@ -39,10 +39,10 @@ exports.handler = async (event, _context) => {
             };
         }
 
-        // Generate TTS audio for customer voice
+        // Generate TTS audio - 'nova' for natural, warm female voice
         const ttsResponse = await openai.audio.speech.create({
             model: 'tts-1-hd',
-            voice: voice, // 'echo' for male customer voice
+            voice: voice, // 'nova' for professional receptionist voice
             input: text,
             response_format: 'mp3',
             speed: speed

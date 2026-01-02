@@ -1,8 +1,8 @@
 /**
- * Fonctions utilitaires
- * =====================
+ * Utility Functions
+ * ==================
  *
- * Helpers réutilisables dans toute l'application
+ * Reusable helpers throughout the application
  */
 
 // ============================================
@@ -10,9 +10,9 @@
 // ============================================
 
 /**
- * Raccourci pour document.querySelector
- * @param {string} selector - Sélecteur CSS
- * @param {Element} parent - Parent (défaut: document)
+ * Shortcut for document.querySelector
+ * @param {string} selector - CSS selector
+ * @param {Element} parent - Parent (default: document)
  * @returns {Element|null}
  */
 export function $(selector, parent = document) {
@@ -20,9 +20,9 @@ export function $(selector, parent = document) {
 }
 
 /**
- * Raccourci pour document.querySelectorAll
- * @param {string} selector - Sélecteur CSS
- * @param {Element} parent - Parent (défaut: document)
+ * Shortcut for document.querySelectorAll
+ * @param {string} selector - CSS selector
+ * @param {Element} parent - Parent (default: document)
  * @returns {NodeList}
  */
 export function $$(selector, parent = document) {
@@ -30,10 +30,10 @@ export function $$(selector, parent = document) {
 }
 
 /**
- * Créer un élément DOM
- * @param {string} tag - Nom de la balise
- * @param {Object} attrs - Attributs
- * @param {string|Element|Array} children - Enfants
+ * Create a DOM element
+ * @param {string} tag - Tag name
+ * @param {Object} attrs - Attributes
+ * @param {string|Element|Array} children - Children
  * @returns {Element}
  */
 export function createElement(tag, attrs = {}, children = null) {
@@ -75,7 +75,7 @@ export function createElement(tag, attrs = {}, children = null) {
 }
 
 /**
- * Attendre que le DOM soit prêt
+ * Wait for DOM to be ready
  * @returns {Promise<void>}
  */
 export function domReady() {
@@ -93,8 +93,8 @@ export function domReady() {
 // ============================================
 
 /**
- * Échapper les caractères HTML
- * @param {string} str - Chaîne à échapper
+ * Escape HTML characters
+ * @param {string} str - String to escape
  * @returns {string}
  */
 export function escapeHtml(str) {
@@ -104,10 +104,10 @@ export function escapeHtml(str) {
 }
 
 /**
- * Tronquer une chaîne
- * @param {string} str - Chaîne à tronquer
- * @param {number} length - Longueur max
- * @param {string} suffix - Suffixe (défaut: '...')
+ * Truncate a string
+ * @param {string} str - String to truncate
+ * @param {number} length - Max length
+ * @param {string} suffix - Suffix (default: '...')
  * @returns {string}
  */
 export function truncate(str, length, suffix = '...') {
@@ -116,8 +116,8 @@ export function truncate(str, length, suffix = '...') {
 }
 
 /**
- * Capitaliser la première lettre
- * @param {string} str - Chaîne
+ * Capitalize first letter
+ * @param {string} str - String
  * @returns {string}
  */
 export function capitalize(str) {
@@ -125,8 +125,8 @@ export function capitalize(str) {
 }
 
 /**
- * Convertir en slug URL-friendly
- * @param {string} str - Chaîne
+ * Convert to URL-friendly slug
+ * @param {string} str - String
  * @returns {string}
  */
 export function slugify(str) {
@@ -143,8 +143,8 @@ export function slugify(str) {
 // ============================================
 
 /**
- * Limiter un nombre entre min et max
- * @param {number} num - Nombre
+ * Clamp a number between min and max
+ * @param {number} num - Number
  * @param {number} min - Minimum
  * @param {number} max - Maximum
  * @returns {number}
@@ -154,17 +154,17 @@ export function clamp(num, min, max) {
 }
 
 /**
- * Formater un nombre avec séparateurs
- * @param {number} num - Nombre
- * @param {string} locale - Locale (défaut: 'fr-FR')
+ * Format number with separators
+ * @param {number} num - Number
+ * @param {string} locale - Locale (default: 'en-AU')
  * @returns {string}
  */
-export function formatNumber(num, locale = 'fr-FR') {
+export function formatNumber(num, locale = 'en-AU') {
     return new Intl.NumberFormat(locale).format(num);
 }
 
 /**
- * Nombre aléatoire entre min et max
+ * Random number between min and max
  * @param {number} min - Minimum
  * @param {number} max - Maximum
  * @returns {number}
@@ -178,19 +178,19 @@ export function random(min, max) {
 // ============================================
 
 /**
- * Formater une heure (HH:MM)
+ * Format time (HH:MM)
  * @param {Date} date - Date
  * @returns {string}
  */
 export function formatTime(date = new Date()) {
-    return date.toLocaleTimeString('fr-FR', {
+    return date.toLocaleTimeString('en-AU', {
         hour: '2-digit',
         minute: '2-digit'
     });
 }
 
 /**
- * Formater une date relative
+ * Format relative time
  * @param {Date|string} date - Date
  * @returns {string}
  */
@@ -204,10 +204,10 @@ export function formatRelativeTime(date) {
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
 
-    if (days > 0) return `il y a ${days} jour${days > 1 ? 's' : ''}`;
-    if (hours > 0) return `il y a ${hours} heure${hours > 1 ? 's' : ''}`;
-    if (minutes > 0) return `il y a ${minutes} minute${minutes > 1 ? 's' : ''}`;
-    return "à l'instant";
+    if (days > 0) return `${days} day${days > 1 ? 's' : ''} ago`;
+    if (hours > 0) return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+    if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+    return 'just now';
 }
 
 // ============================================
@@ -215,8 +215,8 @@ export function formatRelativeTime(date) {
 // ============================================
 
 /**
- * Attendre un délai
- * @param {number} ms - Millisecondes
+ * Wait for a delay
+ * @param {number} ms - Milliseconds
  * @returns {Promise<void>}
  */
 export function delay(ms) {
@@ -224,9 +224,9 @@ export function delay(ms) {
 }
 
 /**
- * Debounce une fonction
- * @param {Function} func - Fonction à debounce
- * @param {number} wait - Délai en ms
+ * Debounce a function
+ * @param {Function} func - Function to debounce
+ * @param {number} wait - Delay in ms
  * @returns {Function}
  */
 export function debounce(func, wait) {
@@ -242,9 +242,9 @@ export function debounce(func, wait) {
 }
 
 /**
- * Throttle une fonction
- * @param {Function} func - Fonction à throttle
- * @param {number} limit - Intervalle en ms
+ * Throttle a function
+ * @param {Function} func - Function to throttle
+ * @param {number} limit - Interval in ms
  * @returns {Function}
  */
 export function throttle(func, limit) {
@@ -261,10 +261,10 @@ export function throttle(func, limit) {
 }
 
 /**
- * Réessayer une promesse avec délai exponentiel
- * @param {Function} fn - Fonction retournant une promesse
- * @param {number} retries - Nombre de tentatives
- * @param {number} baseDelay - Délai de base en ms
+ * Retry a promise with exponential backoff
+ * @param {Function} fn - Function returning a promise
+ * @param {number} retries - Number of attempts
+ * @param {number} baseDelay - Base delay in ms
  * @returns {Promise}
  */
 export async function retry(fn, retries = 3, baseDelay = 1000) {
@@ -283,8 +283,8 @@ export async function retry(fn, retries = 3, baseDelay = 1000) {
 // ============================================
 
 /**
- * Clone profond d'un objet
- * @param {Object} obj - Objet à cloner
+ * Deep clone an object
+ * @param {Object} obj - Object to clone
  * @returns {Object}
  */
 export function deepClone(obj) {
@@ -292,9 +292,9 @@ export function deepClone(obj) {
 }
 
 /**
- * Merge profond d'objets
- * @param {Object} target - Objet cible
- * @param {...Object} sources - Objets sources
+ * Deep merge objects
+ * @param {Object} target - Target object
+ * @param {...Object} sources - Source objects
  * @returns {Object}
  */
 export function deepMerge(target, ...sources) {
@@ -316,8 +316,8 @@ export function deepMerge(target, ...sources) {
 }
 
 /**
- * Vérifier si une valeur est un objet
- * @param {*} item - Valeur à vérifier
+ * Check if a value is an object
+ * @param {*} item - Value to check
  * @returns {boolean}
  */
 export function isObject(item) {
@@ -329,7 +329,7 @@ export function isObject(item) {
 // ============================================
 
 /**
- * Générer un UUID v4
+ * Generate a UUID v4
  * @returns {string}
  */
 export function uuid() {
@@ -341,8 +341,8 @@ export function uuid() {
 }
 
 /**
- * Générer un ID court
- * @param {number} length - Longueur (défaut: 8)
+ * Generate a short ID
+ * @param {number} length - Length (default: 8)
  * @returns {string}
  */
 export function shortId(length = 8) {
@@ -359,8 +359,8 @@ export function shortId(length = 8) {
 // ============================================
 
 /**
- * Parser les query params de l'URL
- * @param {string} url - URL (défaut: window.location.search)
+ * Parse URL query params
+ * @param {string} url - URL (default: window.location.search)
  * @returns {Object}
  */
 export function parseQueryParams(url = window.location.search) {
@@ -373,9 +373,9 @@ export function parseQueryParams(url = window.location.search) {
 }
 
 /**
- * Construire une URL avec query params
- * @param {string} baseUrl - URL de base
- * @param {Object} params - Paramètres
+ * Build URL with query params
+ * @param {string} baseUrl - Base URL
+ * @param {Object} params - Parameters
  * @returns {string}
  */
 export function buildUrl(baseUrl, params = {}) {
@@ -393,9 +393,9 @@ export function buildUrl(baseUrl, params = {}) {
 // ============================================
 
 /**
- * Sauvegarder dans localStorage avec JSON
- * @param {string} key - Clé
- * @param {*} value - Valeur
+ * Save to localStorage with JSON
+ * @param {string} key - Key
+ * @param {*} value - Value
  */
 export function setStorage(key, value) {
     try {
@@ -406,9 +406,9 @@ export function setStorage(key, value) {
 }
 
 /**
- * Récupérer depuis localStorage avec JSON
- * @param {string} key - Clé
- * @param {*} defaultValue - Valeur par défaut
+ * Retrieve from localStorage with JSON
+ * @param {string} key - Key
+ * @param {*} defaultValue - Default value
  * @returns {*}
  */
 export function getStorage(key, defaultValue = null) {
@@ -426,7 +426,7 @@ export function getStorage(key, defaultValue = null) {
 // ============================================
 
 /**
- * Détecter si on est sur mobile
+ * Detect if on mobile
  * @returns {boolean}
  */
 export function isMobile() {
@@ -436,7 +436,7 @@ export function isMobile() {
 }
 
 /**
- * Détecter si on est sur iOS
+ * Detect if on iOS
  * @returns {boolean}
  */
 export function isIOS() {
@@ -444,7 +444,7 @@ export function isIOS() {
 }
 
 /**
- * Vérifier le support de la synthèse vocale
+ * Check speech synthesis support
  * @returns {boolean}
  */
 export function supportsSpeechSynthesis() {
@@ -452,7 +452,7 @@ export function supportsSpeechSynthesis() {
 }
 
 /**
- * Vérifier le support de la reconnaissance vocale
+ * Check speech recognition support
  * @returns {boolean}
  */
 export function supportsSpeechRecognition() {

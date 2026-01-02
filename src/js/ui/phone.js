@@ -1,8 +1,8 @@
 /**
- * Composant Phone UI
+ * Phone UI Component
  * ===================
  *
- * Gestion de l'interface du simulateur de téléphone
+ * Phone simulator interface management
  */
 
 import { PHONE_CONFIG, EVENTS, QUICK_MESSAGES } from '../core/config.js';
@@ -24,8 +24,8 @@ class PhoneUI {
     }
 
     /**
-     * Initialiser le composant
-     * @param {string|Element} container - Conteneur ou sélecteur
+     * Initialize the component
+     * @param {string|Element} container - Container or selector
      */
     init(container) {
         const el = typeof container === 'string' ? $(container) : container;
@@ -40,14 +40,14 @@ class PhoneUI {
         this._subscribeToState();
         this._updateTime();
 
-        // Mettre à jour l'heure toutes les minutes
+        // Update time every minute
         setInterval(() => this._updateTime(), 60000);
 
         this.isInitialized = true;
     }
 
     /**
-     * Générer le HTML du téléphone
+     * Generate phone HTML
      * @returns {string}
      */
     _render() {
@@ -72,7 +72,7 @@ class PhoneUI {
                     </div>
                     <div class="contact-info">
                         <span class="contact-name">${escapeHtml(contactName)}</span>
-                        <span class="call-status">En appel</span>
+                        <span class="call-status">On call</span>
                     </div>
                 </div>
 
@@ -96,7 +96,7 @@ class PhoneUI {
                         <input type="text" 
                                id="messageInput" 
                                class="message-input" 
-                               placeholder="Écrivez votre message..."
+                               placeholder="Type your message..."
                                autocomplete="off">
                         <button class="control-btn mic-btn" id="micBtn" title="Parler">
                             🎤
@@ -123,7 +123,7 @@ class PhoneUI {
     }
 
     /**
-     * Générer les messages rapides
+     * Generate quick messages
      * @returns {string}
      */
     _renderQuickMessages() {
@@ -135,8 +135,8 @@ class PhoneUI {
     }
 
     /**
-     * Mettre en cache les éléments DOM
-     * @param {Element} container - Conteneur
+     * Cache DOM elements
+     * @param {Element} container - Container
      */
     _cacheElements(container) {
         this.elements = {
@@ -157,12 +157,12 @@ class PhoneUI {
     }
 
     /**
-     * Attacher les événements
+     * Attach events
      */
     _bindEvents() {
         const { input, sendBtn, micBtn, muteBtn, endCallBtn, quickMessages } = this.elements;
 
-        // Envoi de message
+        // Send message
         sendBtn.addEventListener('click', () => this._handleSend());
         input.addEventListener('keypress', (e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
@@ -171,16 +171,16 @@ class PhoneUI {
             }
         });
 
-        // Micro
+        // Microphone
         micBtn.addEventListener('click', () => this._handleMic());
 
-        // Muet
+        // Mute
         muteBtn.addEventListener('click', () => this._handleMute());
 
-        // Fin d'appel
+        // End call
         endCallBtn.addEventListener('click', () => this._handleEndCall());
 
-        // Messages rapides
+        // Quick messages
         quickMessages.addEventListener('click', (e) => {
             const btn = e.target.closest('.quick-btn');
             if (btn) {
@@ -194,10 +194,10 @@ class PhoneUI {
     }
 
     /**
-     * S'abonner aux changements d'état
+     * Subscribe to state changes
      */
     _subscribeToState() {
-        // Écouter les nouveaux messages
+        // Listen for new messages
         store.subscribe((updates) => {
             if ('messages' in updates) {
                 this._renderMessages();
@@ -218,7 +218,7 @@ class PhoneUI {
     }
 
     /**
-     * Gérer l'envoi de message
+     * Handle send message
      */
     async _handleSend() {
         const { input } = this.elements;
@@ -242,7 +242,7 @@ class PhoneUI {
     }
 
     /**
-     * Gérer le micro
+     * Handle microphone
      */
     async _handleMic() {
         const isListening = store.get('isListening');
@@ -268,7 +268,7 @@ class PhoneUI {
     }
 
     /**
-     * Gérer le muet
+     * Handle mute
      */
     _handleMute() {
         const isMuted = store.get('isMuted');
@@ -280,7 +280,7 @@ class PhoneUI {
     }
 
     /**
-     * Gérer la fin d'appel
+     * Handle end call
      */
     _handleEndCall() {
         abortRequest();
@@ -291,7 +291,7 @@ class PhoneUI {
     }
 
     /**
-     * Afficher les messages
+     * Render messages
      */
     _renderMessages() {
         const { messages: container } = this.elements;
@@ -304,13 +304,13 @@ class PhoneUI {
             </div>
         `).join('');
 
-        // Scroll vers le bas
+        // Scroll to bottom
         container.scrollTop = container.scrollHeight;
     }
 
     /**
-     * Ajouter un message d'erreur
-     * @param {string} text - Message d'erreur
+     * Add error message
+     * @param {string} text - Error message
      */
     _addErrorMessage(text) {
         const { messages: container } = this.elements;
@@ -323,8 +323,8 @@ class PhoneUI {
     }
 
     /**
-     * Basculer l'indicateur de frappe
-     * @param {boolean} show - Afficher ou non
+     * Toggle typing indicator
+     * @param {boolean} show - Show or hide
      */
     _toggleTyping(show) {
         this.elements.typingIndicator.classList.toggle('hidden', !show);
@@ -334,8 +334,8 @@ class PhoneUI {
     }
 
     /**
-     * Mettre à jour le bouton muet
-     * @param {boolean} isMuted - État muet
+     * Update mute button
+     * @param {boolean} isMuted - Mute state
      */
     _updateMuteButton(isMuted) {
         this.elements.muteBtn.textContent = isMuted ? '🔇' : '🔊';
@@ -343,8 +343,8 @@ class PhoneUI {
     }
 
     /**
-     * Mettre à jour le bouton micro
-     * @param {boolean} isListening - En écoute
+     * Update mic button
+     * @param {boolean} isListening - Listening state
      */
     _updateMicButton(isListening) {
         this.elements.micBtn.classList.toggle('listening', isListening);
@@ -352,8 +352,8 @@ class PhoneUI {
     }
 
     /**
-     * Mettre à jour les infos de contact
-     * @param {Object} config - Configuration de l'industrie
+     * Update contact info
+     * @param {Object} config - Industry configuration
      */
     _updateContact(config) {
         if (this.elements.contactName) {
@@ -365,7 +365,7 @@ class PhoneUI {
     }
 
     /**
-     * Mettre à jour l'heure
+     * Update time
      */
     _updateTime() {
         if (this.elements.phoneTime) {
@@ -374,7 +374,7 @@ class PhoneUI {
     }
 
     /**
-     * Détruire le composant
+     * Destroy component
      */
     destroy() {
         if (this.elements.container) {
@@ -385,8 +385,8 @@ class PhoneUI {
     }
 }
 
-// Instance singleton
+// Singleton instance
 export const phoneUI = new PhoneUI();
 
-// Export de la classe pour les tests
+// Export class for tests
 export { PhoneUI };

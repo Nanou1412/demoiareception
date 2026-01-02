@@ -1,8 +1,8 @@
 /**
- * Service Industries
- * ===================
+ * Industry Service
+ * ==================
  *
- * Gestion du chargement et de la configuration des industries
+ * Industry loading and configuration management
  */
 
 import { INDUSTRY_CATEGORIES, EVENTS } from '../core/config.js';
@@ -10,7 +10,7 @@ import { eventBus } from '../core/events.js';
 import { setCurrentIndustry } from '../core/state.js';
 
 // ============================================
-// Registry des industries
+// Industry Registry
 // ============================================
 
 const industryRegistry = new Map();
@@ -26,8 +26,8 @@ class IndustryManager {
     }
 
     /**
-     * Enregistrer une industrie
-     * @param {Object} config - Configuration de l'industrie
+     * Register an industry
+     * @param {Object} config - Industry configuration
      */
     register(config) {
         if (!config.id) {
@@ -36,16 +36,16 @@ class IndustryManager {
         }
 
         const industry = {
-            // Valeurs par défaut
+            // Default values
             version: '1.0',
             category: 'services',
             icon: '🏢',
             enabled: true,
 
-            // Configuration fournie
+            // Provided configuration
             ...config,
 
-            // Générer le système prompt si non fourni
+            // Generate system prompt if not provided
             systemPrompt: config.systemPrompt || this._generateSystemPrompt(config)
         };
 
@@ -54,8 +54,8 @@ class IndustryManager {
     }
 
     /**
-     * Obtenir une industrie par ID
-     * @param {string} id - ID de l'industrie
+     * Get an industry by ID
+     * @param {string} id - Industry ID
      * @returns {Object|null}
      */
     get(id) {
@@ -63,7 +63,7 @@ class IndustryManager {
     }
 
     /**
-     * Obtenir toutes les industries
+     * Get all industries
      * @returns {Object[]}
      */
     getAll() {
@@ -71,8 +71,8 @@ class IndustryManager {
     }
 
     /**
-     * Obtenir les industries par catégorie
-     * @param {string} category - Catégorie
+     * Get industries by category
+     * @param {string} category - Category
      * @returns {Object[]}
      */
     getByCategory(category) {
@@ -81,7 +81,7 @@ class IndustryManager {
     }
 
     /**
-     * Obtenir les catégories avec compteur
+     * Get categories with count
      * @returns {Object[]}
      */
     getCategories() {
@@ -106,8 +106,8 @@ class IndustryManager {
     }
 
     /**
-     * Sélectionner une industrie
-     * @param {string} id - ID de l'industrie
+     * Select an industry
+     * @param {string} id - Industry ID
      */
     select(id) {
         const industry = this.get(id);
@@ -118,8 +118,8 @@ class IndustryManager {
     }
 
     /**
-     * Rechercher des industries
-     * @param {string} query - Recherche
+     * Search industries
+     * @param {string} query - Search query
      * @returns {Object[]}
      */
     search(query) {
@@ -159,14 +159,14 @@ GUIDELINES:
     }
 
     /**
-     * Charger les industries depuis les modules
+     * Load industries from modules
      * @returns {Promise<void>}
      */
     async loadAll() {
         if (this.loaded) return;
 
         try {
-            // Import dynamique de toutes les industries
+            // Dynamic import of all industries
             const modules = import.meta.glob('/src/industries/*.js');
 
             for (const path in modules) {
@@ -187,11 +187,11 @@ GUIDELINES:
     }
 }
 
-// Instance singleton
+// Singleton instance
 export const industryManager = new IndustryManager();
 
 // ============================================
-// Helpers exportés
+// Exported helpers
 // ============================================
 
 export const getIndustry = (id) => industryManager.get(id);
@@ -203,6 +203,6 @@ export const searchIndustries = (query) => industryManager.search(query);
 export const registerIndustry = (config) => industryManager.register(config);
 
 // ============================================
-// Export du registry pour les tests
+// Export registry for tests
 // ============================================
 export { industryRegistry };

@@ -1,8 +1,8 @@
 /**
- * Système d'événements global
- * ===========================
+ * Global Event System
+ * ====================
  *
- * EventEmitter léger pour la communication inter-modules
+ * Lightweight EventEmitter for inter-module communication
  */
 
 class EventEmitter {
@@ -12,10 +12,10 @@ class EventEmitter {
     }
 
     /**
-     * S'abonner à un événement
-     * @param {string} event - Nom de l'événement
-     * @param {Function} callback - Fonction de rappel
-     * @returns {Function} Fonction de désabonnement
+     * Subscribe to an event
+     * @param {string} event - Event name
+     * @param {Function} callback - Callback function
+     * @returns {Function} Unsubscribe function
      */
     on(event, callback) {
         if (!this.events.has(event)) {
@@ -23,14 +23,14 @@ class EventEmitter {
         }
         this.events.get(event).add(callback);
 
-        // Retourne une fonction de désabonnement
+        // Return unsubscribe function
         return () => this.off(event, callback);
     }
 
     /**
-     * S'abonner à un événement une seule fois
-     * @param {string} event - Nom de l'événement
-     * @param {Function} callback - Fonction de rappel
+     * Subscribe to an event once
+     * @param {string} event - Event name
+     * @param {Function} callback - Callback function
      */
     once(event, callback) {
         if (!this.onceEvents.has(event)) {
@@ -40,9 +40,9 @@ class EventEmitter {
     }
 
     /**
-     * Se désabonner d'un événement
-     * @param {string} event - Nom de l'événement
-     * @param {Function} callback - Fonction de rappel à retirer
+     * Unsubscribe from an event
+     * @param {string} event - Event name
+     * @param {Function} callback - Callback to remove
      */
     off(event, callback) {
         if (this.events.has(event)) {
@@ -54,12 +54,12 @@ class EventEmitter {
     }
 
     /**
-     * Émettre un événement
-     * @param {string} event - Nom de l'événement
-     * @param {*} data - Données à transmettre
+     * Emit an event
+     * @param {string} event - Event name
+     * @param {*} data - Data to transmit
      */
     emit(event, data) {
-        // Exécuter les callbacks réguliers
+        // Execute regular callbacks
         if (this.events.has(event)) {
             this.events.get(event).forEach(callback => {
                 try {
@@ -70,7 +70,7 @@ class EventEmitter {
             });
         }
 
-        // Exécuter et supprimer les callbacks "once"
+        // Execute and remove "once" callbacks
         if (this.onceEvents.has(event)) {
             this.onceEvents.get(event).forEach(callback => {
                 try {
@@ -84,8 +84,8 @@ class EventEmitter {
     }
 
     /**
-     * Supprimer tous les listeners d'un événement
-     * @param {string} event - Nom de l'événement (optionnel, si absent supprime tout)
+     * Remove all listeners for an event
+     * @param {string} event - Event name (optional, if absent removes all)
      */
     removeAllListeners(event) {
         if (event) {
@@ -98,9 +98,9 @@ class EventEmitter {
     }
 
     /**
-     * Obtenir le nombre de listeners pour un événement
-     * @param {string} event - Nom de l'événement
-     * @returns {number} Nombre de listeners
+     * Get listener count for an event
+     * @param {string} event - Event name
+     * @returns {number} Number of listeners
      */
     listenerCount(event) {
         const regular = this.events.has(event) ? this.events.get(event).size : 0;
@@ -109,8 +109,8 @@ class EventEmitter {
     }
 
     /**
-     * Obtenir tous les événements avec des listeners
-     * @returns {string[]} Liste des événements
+     * Get all events with listeners
+     * @returns {string[]} List of events
      */
     eventNames() {
         const names = new Set([
@@ -121,37 +121,37 @@ class EventEmitter {
     }
 }
 
-// Instance globale
+// Global instance
 export const eventBus = new EventEmitter();
 
-// Export de la classe pour créer des instances locales
+// Export class for creating local instances
 export { EventEmitter };
 
 // ============================================
-// Helpers pour les événements courants
+// Helpers for common events
 // ============================================
 
 /**
- * Émettre un événement de chargement
- * @param {boolean} isLoading - État de chargement
+ * Emit a loading event
+ * @param {boolean} isLoading - Loading state
  */
 export function emitLoading(isLoading) {
     eventBus.emit('ui:loading', { isLoading });
 }
 
 /**
- * Émettre une notification toast
- * @param {string} message - Message à afficher
- * @param {string} type - Type de notification (success, error, warning, info)
+ * Emit a toast notification
+ * @param {string} message - Message to display
+ * @param {string} type - Notification type (success, error, warning, info)
  */
 export function emitToast(message, type = 'info') {
     eventBus.emit('ui:toast', { message, type });
 }
 
 /**
- * Émettre une erreur
- * @param {string} source - Source de l'erreur
- * @param {Error|string} error - Erreur
+ * Emit an error
+ * @param {string} source - Error source
+ * @param {Error|string} error - Error
  */
 export function emitError(source, error) {
     eventBus.emit(`${source}:error`, {

@@ -1,15 +1,15 @@
 /**
- * Gestion d'état centralisée
- * ==========================
+ * Centralized State Management
+ * ============================
  *
- * Store réactif pour l'état de l'application
+ * Reactive store for application state
  */
 
 import { eventBus } from './events.js';
 import { EVENTS, STORAGE_KEYS } from './config.js';
 
 // ============================================
-// État initial
+// Initial State
 // ============================================
 const initialState = {
     // Session
@@ -57,31 +57,31 @@ class Store {
         this._history = [];
         this._maxHistory = 50;
 
-        // Charger les préférences sauvegardées
+        // Load saved preferences
         this._loadPersistedState();
     }
 
     /**
-     * Obtenir l'état actuel (lecture seule)
-     * @returns {Object} État actuel
+     * Get current state (read-only)
+     * @returns {Object} Current state
      */
     get state() {
         return { ...this._state };
     }
 
     /**
-     * Obtenir une valeur spécifique de l'état
-     * @param {string} key - Clé de l'état
-     * @returns {*} Valeur
+     * Get a specific state value
+     * @param {string} key - State key
+     * @returns {*} Value
      */
     get(key) {
         return this._state[key];
     }
 
     /**
-     * Mettre à jour l'état
-     * @param {Object} updates - Mises à jour partielles
-     * @param {boolean} silent - Si true, ne pas notifier les subscribers
+     * Update state
+     * @param {Object} updates - Partial updates
+     * @param {boolean} silent - If true, don't notify subscribers
      */
     set(updates, silent = false) {
         const prevState = { ...this._state };
@@ -115,8 +115,8 @@ class Store {
     }
 
     /**
-     * Réinitialiser l'état
-     * @param {boolean} keepPreferences - Garder les préférences utilisateur
+     * Reset state
+     * @param {boolean} keepPreferences - Keep user preferences
      */
     reset(keepPreferences = true) {
         const preserved = keepPreferences ? {
@@ -137,9 +137,9 @@ class Store {
     }
 
     /**
-     * S'abonner aux changements d'état
-     * @param {Function} callback - Fonction appelée lors des changements
-     * @returns {Function} Fonction de désabonnement
+     * Subscribe to state changes
+     * @param {Function} callback - Function called on changes
+     * @returns {Function} Unsubscribe function
      */
     subscribe(callback) {
         this._subscribers.add(callback);
@@ -147,10 +147,10 @@ class Store {
     }
 
     /**
-     * S'abonner aux changements d'une clé spécifique
-     * @param {string} key - Clé à surveiller
-     * @param {Function} callback - Fonction appelée lors des changements
-     * @returns {Function} Fonction de désabonnement
+     * Watch a specific key for changes
+     * @param {string} key - Key to watch
+     * @param {Function} callback - Function called on changes
+     * @returns {Function} Unsubscribe function
      */
     watch(key, callback) {
         const watcher = (updates) => {
@@ -162,17 +162,17 @@ class Store {
     }
 
     /**
-     * Obtenir l'historique des changements
-     * @returns {Array} Historique
+     * Get change history
+     * @returns {Array} History
      */
     getHistory() {
         return [...this._history];
     }
 
     /**
-     * Notifier les subscribers des changements
-     * @param {Object} updates - Mises à jour
-     * @param {Object} prevState - État précédent
+     * Notify subscribers of changes
+     * @param {Object} updates - Updates
+     * @param {Object} prevState - Previous state
      */
     _notify(updates, prevState) {
         this._subscribers.forEach(callback => {
@@ -183,7 +183,7 @@ class Store {
             }
         });
 
-        // Émettre l'événement global
+        // Emit global event
         eventBus.emit(EVENTS.STATE_CHANGE, {
             updates,
             state: this.state,
@@ -192,7 +192,7 @@ class Store {
     }
 
     /**
-     * Notifier tous les subscribers de l'état complet
+     * Notify all subscribers of full state
      */
     _notifyAll() {
         const fullState = this.state;
@@ -206,7 +206,7 @@ class Store {
     }
 
     /**
-     * Charger l'état persisté depuis le localStorage
+     * Load persisted state from localStorage
      */
     _loadPersistedState() {
         try {
@@ -220,7 +220,7 @@ class Store {
                 try {
                     this._state.currentIndustry = JSON.parse(lastIndustry);
                 } catch {
-                    // Ignorer si le JSON est invalide
+                    // Ignore if JSON is invalid
                 }
             }
         } catch (error) {
@@ -229,7 +229,7 @@ class Store {
     }
 
     /**
-     * Persister certains états dans le localStorage
+     * Persist certain state to localStorage
      */
     _persistState() {
         try {
@@ -249,17 +249,17 @@ class Store {
 }
 
 // ============================================
-// Instance singleton du store
+// Store singleton instance
 // ============================================
 export const store = new Store(initialState);
 
 // ============================================
-// Helpers pour les mises à jour courantes
+// Helpers for common updates
 // ============================================
 
 /**
- * Ajouter un message au chat
- * @param {Object} message - Message à ajouter
+ * Add a message to chat
+ * @param {Object} message - Message to add
  */
 export function addMessage(message) {
     const messages = [...store.get('messages'), {
@@ -278,8 +278,8 @@ export function addMessage(message) {
 }
 
 /**
- * Définir l'industrie courante
- * @param {Object} industry - Configuration de l'industrie
+ * Set current industry
+ * @param {Object} industry - Industry configuration
  */
 export function setCurrentIndustry(industry) {
     store.set({
@@ -293,8 +293,8 @@ export function setCurrentIndustry(industry) {
 }
 
 /**
- * Définir le scénario courant
- * @param {string} scenarioId - ID du scénario
+ * Set current scenario
+ * @param {string} scenarioId - Scenario ID
  */
 export function setCurrentScenario(scenarioId) {
     store.set({ currentScenario: scenarioId });
@@ -302,8 +302,8 @@ export function setCurrentScenario(scenarioId) {
 }
 
 /**
- * Mettre à jour les stats de démo
- * @param {Object} stats - Stats partielles à mettre à jour
+ * Update demo stats
+ * @param {Object} stats - Partial stats to update
  */
 export function updateDemoStats(stats) {
     store.set({
@@ -315,7 +315,7 @@ export function updateDemoStats(stats) {
 }
 
 /**
- * Basculer le thème
+ * Toggle theme
  */
 export function toggleTheme() {
     const newTheme = store.get('theme') === 'dark' ? 'light' : 'dark';
@@ -324,6 +324,6 @@ export function toggleTheme() {
 }
 
 // ============================================
-// Export de la classe pour les tests
+// Export class for tests
 // ============================================
 export { Store };

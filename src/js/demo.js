@@ -2,7 +2,7 @@
  * Demo Page Entry Point
  * =====================
  *
- * Point d'entrée pour la page de démonstration
+ * Entry point for the demo page
  */
 
 // ============================================
@@ -361,14 +361,14 @@ function updateIndustryDisplay() {
     }
 
     // Update page title
-    document.title = `${industry.name} - Démo IA Réceptionniste`;
+    document.title = `${industry.name} - AI Receptionist Demo`;
 
     // Update industry info card
     if (elements.industryInfo) {
         const description = elements.industryInfo.querySelector('.industry-description');
         if (description) {
             description.textContent = industry.description ||
-                `Cette IA est configurée pour simuler un réceptionniste professionnel dans le secteur ${industry.name.toLowerCase()}.`;
+                `This AI is configured to simulate a professional receptionist for the ${industry.name.toLowerCase()} industry.`;
         }
     }
 }

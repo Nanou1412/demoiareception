@@ -1,8 +1,8 @@
 /**
- * Templates HTML
+ * HTML Templates
  * ===============
  *
- * Fonctions pour générer le HTML des composants
+ * Functions to generate component HTML
  */
 
 import { escapeHtml, formatNumber } from '../core/utils.js';
@@ -12,8 +12,8 @@ import { escapeHtml, formatNumber } from '../core/utils.js';
 // ============================================
 
 /**
- * Générer une carte d'industrie
- * @param {Object} industry - Configuration de l'industrie
+ * Generate an industry card
+ * @param {Object} industry - Industry configuration
  * @returns {string} HTML
  */
 export function industryCard(industry) {
@@ -25,7 +25,7 @@ export function industryCard(industry) {
             <div class="card-footer">
                 <span class="card-badge">${escapeHtml(industry.category)}</span>
                 <button class="btn btn-demo" data-demo="${industry.id}">
-                    Tester <span class="arrow">→</span>
+                    Try demo <span class="arrow">→</span>
                 </button>
             </div>
         </article>
@@ -33,8 +33,8 @@ export function industryCard(industry) {
 }
 
 /**
- * Générer la grille d'industries
- * @param {Object[]} industries - Liste des industries
+ * Generate industry grid
+ * @param {Object[]} industries - List of industries
  * @returns {string} HTML
  */
 export function industryGrid(industries) {
@@ -42,7 +42,7 @@ export function industryGrid(industries) {
         return `
             <div class="empty-state">
                 <span class="empty-icon">🔍</span>
-                <p>Aucune industrie trouvée</p>
+                <p>No industries found</p>
             </div>
         `;
     }
@@ -59,9 +59,9 @@ export function industryGrid(industries) {
 // ============================================
 
 /**
- * Générer les filtres de catégories
- * @param {Object[]} categories - Liste des catégories
- * @param {string} activeId - ID de la catégorie active
+ * Generate category filters
+ * @param {Object[]} categories - List of categories
+ * @param {string} activeId - Active category ID
  * @returns {string} HTML
  */
 export function categoryFilters(categories, activeId = 'all') {
@@ -84,8 +84,8 @@ export function categoryFilters(categories, activeId = 'all') {
 // ============================================
 
 /**
- * Générer une carte de bénéfice
- * @param {Object} benefit - Données du bénéfice
+ * Generate a benefit card
+ * @param {Object} benefit - Benefit data
  * @returns {string} HTML
  */
 export function benefitCard(benefit) {
@@ -103,8 +103,8 @@ export function benefitCard(benefit) {
 // ============================================
 
 /**
- * Générer une stat
- * @param {Object} stat - Données de la stat
+ * Generate a stat item
+ * @param {Object} stat - Stat data
  * @returns {string} HTML
  */
 export function statItem(stat) {
@@ -117,8 +117,8 @@ export function statItem(stat) {
 }
 
 /**
- * Générer la ligne de stats
- * @param {Object[]} stats - Liste des stats
+ * Generate stats row
+ * @param {Object[]} stats - List of stats
  * @returns {string} HTML
  */
 export function statsRow(stats) {
@@ -134,15 +134,15 @@ export function statsRow(stats) {
 // ============================================
 
 /**
- * Générer le sélecteur de scénarios
- * @param {Object} scenarios - Scénarios disponibles
- * @param {string} activeId - ID du scénario actif
+ * Generate scenario selector
+ * @param {Object} scenarios - Available scenarios
+ * @param {string} activeId - Active scenario ID
  * @returns {string} HTML
  */
 export function scenarioSelector(scenarios, activeId = 'reservation') {
     return `
         <div class="scenario-selector">
-            <label class="scenario-label">Scénario :</label>
+            <label class="scenario-label">Scenario:</label>
             <div class="scenario-buttons">
                 ${Object.entries(scenarios).map(([id, scenario]) => `
                     <button class="scenario-btn ${id === activeId ? 'active' : ''}" 
@@ -162,8 +162,8 @@ export function scenarioSelector(scenarios, activeId = 'reservation') {
 // ============================================
 
 /**
- * Générer une carte de cas d'usage
- * @param {Object} useCase - Données du cas d'usage
+ * Generate a use case card
+ * @param {Object} useCase - Use case data
  * @returns {string} HTML
  */
 export function useCaseCard(useCase) {
@@ -187,8 +187,8 @@ export function useCaseCard(useCase) {
 // ============================================
 
 /**
- * Générer un modal
- * @param {Object} options - Options du modal
+ * Generate a modal
+ * @param {Object} options - Modal options
  * @returns {string} HTML
  */
 export function modal(options) {
@@ -215,8 +215,8 @@ export function modal(options) {
 // ============================================
 
 /**
- * Générer un toast
- * @param {Object} options - Options du toast
+ * Generate a toast
+ * @param {Object} options - Toast options
  * @returns {string} HTML
  */
 export function toast(options) {
@@ -242,8 +242,8 @@ export function toast(options) {
 // ============================================
 
 /**
- * Générer un spinner de chargement
- * @param {string} size - Taille (small, medium, large)
+ * Generate a loading spinner
+ * @param {string} size - Size (small, medium, large)
  * @returns {string} HTML
  */
 export function spinner(size = 'medium') {
@@ -251,8 +251,8 @@ export function spinner(size = 'medium') {
 }
 
 /**
- * Générer un skeleton loader
- * @param {string} type - Type de skeleton
+ * Generate a skeleton loader
+ * @param {string} type - Skeleton type
  * @returns {string} HTML
  */
 export function skeleton(type = 'text') {
@@ -280,9 +280,9 @@ export function skeleton(type = 'text') {
 // ============================================
 
 /**
- * Générer la barre de processus
- * @param {Object[]} steps - Étapes du processus
- * @param {number} currentStep - Étape courante
+ * Generate process bar
+ * @param {Object[]} steps - Process steps
+ * @param {number} currentStep - Current step
  * @returns {string} HTML
  */
 export function processBar(steps, currentStep = 0) {
@@ -304,7 +304,7 @@ export function processBar(steps, currentStep = 0) {
 // ============================================
 
 /**
- * Générer le header
+ * Generate header
  * @param {Object} options - Options
  * @returns {string} HTML
  */
@@ -316,7 +316,7 @@ export function header(options = {}) {
             <div class="container">
                 <a href="/" class="logo">
                     <span class="logo-icon">📞</span>
-                    <span class="logo-text">IA Réceptionniste</span>
+                    <span class="logo-text">AI Receptionist</span>
                 </a>
                 
                 ${currentIndustry ? `
@@ -329,7 +329,7 @@ export function header(options = {}) {
                 <div class="header-actions">
                     ${showSearch ? `
                         <div class="search-bar">
-                            <input type="search" placeholder="Rechercher..." id="searchInput">
+                            <input type="search" placeholder="Search..." id="searchInput">
                             <span class="search-icon">🔍</span>
                         </div>
                     ` : ''}
