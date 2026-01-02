@@ -1,4 +1,4 @@
-export default {
+^export default {
     id: 'eventvenue',
     name: 'Event Venue',
     icon: '🎉',
